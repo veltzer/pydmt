@@ -86,3 +86,6 @@ celerybeat-schedule
 
 # Rope project settings
 .ropeproject
+
+# idea
+/.idea/workspace.xml
