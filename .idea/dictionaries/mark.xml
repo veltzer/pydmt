@@ -31,6 +31,7 @@
       <w>passwd</w>
       <w>pigz</w>
       <w>postgresql</w>
+      <w>pydmt</w>
       <w>pymount</w>
       <w>pypi</w>
       <w>pypipegzip</w>
@@ -38,6 +39,7 @@
       <w>ramdisk</w>
       <w>relicensing</w>
       <w>sbin</w>
+      <w>scons</w>
       <w>sublicenses</w>
       <w>sublicensing</w>
       <w>sysstat</w>
