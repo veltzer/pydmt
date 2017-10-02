@@ -1,0 +1,3 @@
+virtual_env_python=/usr/bin/python3
+virtual_env_name=pydmt
+virtual_env_requirement_files=requirements.txt requirements.dev.txt
