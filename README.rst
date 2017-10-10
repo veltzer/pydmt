@@ -1,1 +1,4 @@
-This is to make 'python setup.py sdist' happy...
+pydmt
+=====
+
+pydmt is a software dependency and construction tool.
