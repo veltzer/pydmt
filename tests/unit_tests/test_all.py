@@ -10,8 +10,9 @@ class TestAll(unittest.TestCase):
 
     def testCreateBuild(self):
         p = pydmt.core.pydmt.PyDMT()
-        p.build_by_names([])
+        p.build_by_targets([])
 
     # def testCheckSimpleCopy(self):
     #     p = pydmt.core.pydmt.PyDMT()
+
 
