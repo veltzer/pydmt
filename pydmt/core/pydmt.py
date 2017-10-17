@@ -14,6 +14,7 @@ class PyDMT:
         self.cache = Cache()
 
     def build_by_builder(self, b: Builder) -> None:
+        """ run one builder, return weather we ran it or not """
         target_signature = b.get_signature()
         blob_name = self.cache.get_list_by_signature(target_signature)
         if blob_name:
@@ -34,12 +35,10 @@ class PyDMT:
             self.cache.save_list_by_signature(target_signature, content)
 
     def build_by_target(self, target: str) -> None:
-        print("building [{}]".format(target))
         b = self.target_to_builder[target]
         self.build_by_builder(b)
 
     def build_by_targets(self, targets: List[str]) -> None:
-        print("building [{}]".format(targets))
         for target in targets:
             self.build_by_target(target)
 

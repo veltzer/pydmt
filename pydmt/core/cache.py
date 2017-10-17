@@ -1,7 +1,7 @@
 import os
 from typing import Tuple, Iterable, List
 
-import shutil
+from pydmt.core.utils import copy_mkdir, makedirs_for_file
 
 
 class Cache:
@@ -24,12 +24,13 @@ class Cache:
 
     def save_list_by_signature(self, signature: str, content: str):
         full_path = os.path.join(self.folder, "lists", signature[:2], signature[2:])
-        with open(full_path) as file_handle:
+        makedirs_for_file(full_path)
+        with open(full_path, "wt") as file_handle:
             file_handle.write(content)
 
     def save_object_by_signature(self, signature: str, file_name: str):
         full_path = os.path.join(self.folder, "objects", signature[:2], signature[2:])
-        shutil.copy(file_name, full_path)
+        copy_mkdir(file_name, full_path)
 
     @staticmethod
     def iterate_objects(file_name: str) -> Iterable[Tuple[str, str]]:
