@@ -4,6 +4,7 @@ import shutil
 
 import os
 
+from pydmt.builders.fail import Fail
 from pydmt.core.pydmt import PyDMT, BuildProcessStats
 from pydmt.builders.copy import Copy
 from pydmt.core.tempdir import tempdir
@@ -11,14 +12,14 @@ from pydmt.core.tempdir import tempdir
 
 class TestAll(unittest.TestCase):
 
-    def testCreateObject(self):
+    def testCreatePyDMT(self):
         PyDMT()
 
-    def testCreateBuild(self):
+    def testNullBuild(self):
         p = PyDMT()
         p.build_by_targets([], BuildProcessStats())
 
-    def testCheckSimpleCopy(self):
+    def testSimpleCopy(self):
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()
@@ -29,7 +30,7 @@ class TestAll(unittest.TestCase):
             self.assertEqual(stats.builder, 1)
             self.assertEqual(stats.copy, 0)
 
-    def testCheckIncremental(self):
+    def testIncremental(self):
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()
@@ -42,7 +43,7 @@ class TestAll(unittest.TestCase):
             self.assertEqual(stats.copy, 0)
             self.assertEqual(stats.nop, 1)
 
-    def testCheckCopyAfterRemove(self):
+    def testCopyAfterRemove(self):
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()
@@ -56,3 +57,17 @@ class TestAll(unittest.TestCase):
             self.assertEqual(stats.copy, 1)
             self.assertEqual(stats.nop, 0)
             self.assertEqual(stats.missing, 1)
+
+    def testFail(self):
+        with tempdir():
+            shutil.copy("/etc/passwd", "passwd")
+            p = PyDMT()
+            b = Fail("passwd", "copy_of_passwd")
+            p.addBuilder(b)
+            stats = BuildProcessStats()
+            p.build_by_builder(b, stats)
+            self.assertEqual(stats.builder, 1)
+            self.assertEqual(stats.copy, 0)
+            self.assertEqual(stats.fail, 1)
+            self.assertEqual(stats.nop, 0)
+            self.assertEqual(stats.missing, 0)

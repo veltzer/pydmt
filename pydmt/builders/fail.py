@@ -1,12 +1,10 @@
 from typing import List
 
-import shutil
-
 from pydmt.api.builder import Builder
 from pydmt.core.utils import sha1_file
 
 
-class Copy(Builder):
+class Fail(Builder):
     def __init__(self, source: str, target: str):
         self.source = source
         self.target = target
@@ -15,7 +13,7 @@ class Copy(Builder):
         return sha1_file(self.source)
 
     def build(self):
-        shutil.copy(self.source, self.target)
+        raise ValueError("fail")
 
     def get_targets(self) -> List[str]:
         return [self.target]

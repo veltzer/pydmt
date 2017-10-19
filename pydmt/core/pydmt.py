@@ -15,6 +15,8 @@ class BuildProcessStats:
         self.copy = 0
         self.nop = 0
         self.missing = 0
+        self.fail = 0
+        self.success = 0
 
     def add_builder(self):
         self.builder += 1
@@ -27,6 +29,12 @@ class BuildProcessStats:
 
     def add_missing(self):
         self.missing += 1
+
+    def add_fail(self):
+        self.fail += 1
+
+    def add_success(self):
+        self.success += 1
 
 
 class PyDMT:
@@ -55,18 +63,22 @@ class PyDMT:
                     stats.add_copy()
         else:
             stats.add_builder()
-            b.build()
-            # first lets build a list of what was constructed
-            targets = b.get_targets()
-            if targets is None:
-                targets = b.get_targets_post_build()
-            content = ""
-            for target in targets:
-                signature = sha1_file(target)
-                content += target + " " + signature
-                self.cache.save_object_by_signature(signature, target)
-
-            self.cache.save_list_by_signature(target_signature, content)
+            # noinspection PyBroadException
+            try:
+                b.build()
+                stats.add_success()
+                # first lets build a list of what was constructed
+                targets = b.get_targets()
+                if targets is None:
+                    targets = b.get_targets_post_build()
+                content = ""
+                for target in targets:
+                    signature = sha1_file(target)
+                    content += target + " " + signature
+                    self.cache.save_object_by_signature(signature, target)
+                self.cache.save_list_by_signature(target_signature, content)
+            except Exception:
+                stats.add_fail()
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
         b = self.target_to_builder[target]
