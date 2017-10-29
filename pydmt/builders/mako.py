@@ -7,7 +7,8 @@ from pydmt.core.utils import sha1_file
 
 
 class Mako(Builder):
-    def __init__(self, source, target, ):
+    def __init__(self, source, target):
+        super().__init__()
         self.source = source
         self.target = target
 
