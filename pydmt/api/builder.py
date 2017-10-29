@@ -6,6 +6,11 @@ class Builder(metaclass=abc.ABCMeta):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
+    def __init__(self):
+        """ initialize your builder here """
+        pass
+
+    @abc.abstractmethod
     def build(self):
         """ this method actually does the building """
         pass

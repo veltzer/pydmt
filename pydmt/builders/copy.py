@@ -8,6 +8,7 @@ from pydmt.core.utils import sha1_file
 
 class Copy(Builder):
     def __init__(self, source: str, target: str):
+        super().__init__()
         self.source = source
         self.target = target
 
