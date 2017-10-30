@@ -20,7 +20,8 @@ def sha1_file(filename: str) -> str:
 
 def makedirs_for_file(filename: str):
     folder = os.path.dirname(filename)
-    os.makedirs(folder)
+    if folder != "":
+        os.makedirs(folder)
 
 
 def copy_mkdir(source: str, destination: str):
