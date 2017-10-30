@@ -4,19 +4,28 @@
       <w>affero</w>
       <w>awscli</w>
       <w>awskey</w>
+      <w>cache nos</w>
+      <w>celerybeat</w>
       <w>chown</w>
       <w>csvkit</w>
       <w>csvtool</w>
+      <w>dotenv</w>
       <w>envs</w>
+      <w>file cele</w>
       <w>fstab</w>
       <w>gitconfig</w>
       <w>gitignore</w>
       <w>hspell</w>
+      <w>htmlcov</w>
       <w>htmls</w>
       <w>hushlogin</w>
+      <w>infor</w>
+      <w>ings .ropep</w>
+      <w>ings .spyderp</w>
       <w>iops</w>
       <w>iostat</w>
       <w>iotop</w>
+      <w>le #</w>
       <w>lftp</w>
       <w>lgpl</w>
       <w>licensors</w>
@@ -27,31 +36,42 @@
       <w>mdadm</w>
       <w>mkfs</w>
       <w>myrepos</w>
+      <w>nce/ .web</w>
       <w>noncommercially</w>
+      <w>nosetests</w>
       <w>partprobe</w>
       <w>passwd</w>
       <w>pigz</w>
+      <w>populator</w>
+      <w>ports h</w>
       <w>postgresql</w>
       <w>pydmt</w>
+      <w>pyenv</w>
       <w>pymount</w>
       <w>pypi</w>
       <w>pypipegzip</w>
       <w>qffxd</w>
       <w>ramdisk</w>
       <w>relicensing</w>
+      <w>ropeproject</w>
       <w>sbin</w>
       <w>scons</w>
+      <w>spyder</w>
+      <w>spyderproject</w>
       <w>sublicenses</w>
       <w>sublicensing</w>
       <w>sysstat</w>
       <w>timedatectl</w>
       <w>tofrodos</w>
+      <w>ts #</w>
       <w>udevadm</w>
       <w>ujson</w>
       <w>umount</w>
       <w>unmount</w>
       <w>unmounting</w>
+      <w>v/ #</w>
       <w>virtualenvwrapper</w>
+      <w>webassets</w>
       <w>werror</w>
       <w>wipo</w>
       <w>xlarge</w>
