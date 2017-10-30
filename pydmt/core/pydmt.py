@@ -17,6 +17,7 @@ class BuildProcessStats:
         self.missing = 0
         self.fail = 0
         self.success = 0
+        self.exceptions = []
 
     def add_builder(self):
         self.builder += 1
@@ -30,8 +31,9 @@ class BuildProcessStats:
     def add_missing(self):
         self.missing += 1
 
-    def add_fail(self):
+    def add_fail(self, e: Exception):
         self.fail += 1
+        self.exceptions.append(e)
 
     def add_success(self):
         self.success += 1
@@ -77,8 +79,8 @@ class PyDMT:
                     content += target + " " + signature
                     self.cache.save_object_by_signature(signature, target)
                 self.cache.save_list_by_signature(target_signature, content)
-            except Exception:
-                stats.add_fail()
+            except Exception as e:
+                stats.add_fail(e)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
         b = self.target_to_builder[target]
