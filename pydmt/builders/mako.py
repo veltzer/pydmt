@@ -55,6 +55,10 @@ class Mako(Builder):
         self.target: str = target
 
     def get_signature(self) -> str:
+        # FIXME: this should be the sha1 of the source + all the definition files
+        # and even a better correction:
+        # sha1 of the source file + the sha1 of all the variables references from within
+        # the source file.
         return sha1_file(self.source)
 
     def build(self):
