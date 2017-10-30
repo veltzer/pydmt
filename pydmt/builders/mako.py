@@ -29,6 +29,7 @@ class D(dict):
 
 class Mako(Builder):
     def __init__(self, definitions_folder: str, source: str, target: str):
+        super().__init__()
         self.definitions_folder = definitions_folder
         self.source = source
         self.target = target
