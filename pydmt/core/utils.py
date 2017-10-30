@@ -1,10 +1,6 @@
 import hashlib
 import os
-import pkgutil
 import shutil
-from typing import Generator
-
-from api.builder import Populator
 
 
 def hex_digest(filename: str, algorithm_name: str) -> str:
@@ -31,11 +27,3 @@ def copy_mkdir(source: str, destination: str):
     makedirs_for_file(destination)
     shutil.copy(source, destination)
 
-
-def get_modules_list(folder: str) -> Generator[Populator, None, None]:
-    for (module_loader, name, is_package) in pkgutil.iter_modules(path=[folder]):
-        if is_package:
-            continue
-        ml = module_loader.find_module(name)
-        m = ml.load_module()
-        yield m

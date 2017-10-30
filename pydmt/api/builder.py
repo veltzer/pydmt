@@ -32,12 +32,3 @@ class Builder(metaclass=abc.ABCMeta):
     def get_signature(self) -> str:
         """ return the sha1 of anything that identifies the build """
         pass
-
-
-class Populator(metaclass=abc.ABCMeta):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
-    def populate(self):
-        """ this method actually does the populating """
-        pass
