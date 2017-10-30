@@ -1,11 +1,13 @@
-from typing import List
+import abc
+import pkgutil
+from typing import List, Generator
 
 import os
 
 import sys
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_file, get_modules_list, makedirs_for_file
+from pydmt.core.utils import sha1_file, makedirs_for_file
 import mako
 import mako.exceptions
 import mako.template
@@ -25,6 +27,24 @@ class D(dict):
 
     def __setattr__(self, name, val):
         self[name] = val
+
+
+class Populator(metaclass=abc.ABCMeta):
+    __metaclass__ = abc.ABCMeta
+
+    @abc.abstractmethod
+    def populate(self):
+        """ this method actually does the populating """
+        pass
+
+
+def get_modules_list(folder: str) -> Generator[Populator, None, None]:
+    for (module_loader, name, is_package) in pkgutil.iter_modules(path=[folder]):
+        if is_package:
+            continue
+        ml = module_loader.find_module(name)
+        m = ml.load_module()
+        yield m
 
 
 class Mako(Builder):
