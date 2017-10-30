@@ -28,8 +28,13 @@ class D(dict):
 
 
 class Mako(Builder):
+<<<<<<< HEAD
     def __init__(self, definitions_folder: str, source: str, target: str):
         self.definitions_folder = definitions_folder
+=======
+    def __init__(self, source, target):
+        super().__init__()
+>>>>>>> 6736e4221c483118bc851261c6c411797b6b2465
         self.source = source
         self.target = target
 
