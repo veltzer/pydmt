@@ -88,7 +88,7 @@ class PyDMT:
         for target in targets:
             self.build_by_target(target, stats)
 
-    def addBuilder(self, b: Builder) -> None:
+    def add_builder(self, b: Builder) -> None:
         self.builders.append(b)
         targets = b.get_targets()
         if targets:
