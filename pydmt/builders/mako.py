@@ -48,22 +48,22 @@ def get_modules_list(folder: str) -> Generator[Populator, None, None]:
 
 
 class Mako(Builder):
-    def __init__(self, definitions_folder: str, source: str, target: str):
+    def __init__(self, definitions_folders: List[str], source: str, target: str):
         super().__init__()
-        self.definitions_folder = definitions_folder
-        self.source = source
-        self.target = target
+        self.definitions_folders: List[str] = definitions_folders
+        self.source: str = source
+        self.target: str = target
 
     def get_signature(self) -> str:
         return sha1_file(self.source)
 
     def build(self):
-        d = load_and_populate(self.definitions_folder)
-        process(
-            d,
-            input_file=self.source,
-            output_file=self.target,
-        )
+
+        d = load_and_populate(self.definitions_folders)
+        template = mako.template.Template(filename=self.source)
+        makedirs_for_file(self.target)
+        with open(self.target, 'w') as file_handle:
+            file_handle.write(template.render(tdefs=d))
 
     def get_targets(self) -> List[str]:
         return [self.target]
@@ -75,10 +75,11 @@ class Mako(Builder):
 override_var_name = 'TEMPLAR_OVERRIDE'
 
 
-def load_and_populate(folder: str):
+def load_and_populate(folders: List[str]):
     d = D()
-    for m in get_modules_list(folder):
-        m.populate(d)
+    for folder in folders:
+        for m in get_modules_list(folder):
+            m.populate(d)
 
     # environment override
     if override_var_name in os.environ:
@@ -88,25 +89,6 @@ def load_and_populate(folder: str):
             d[k] = v
 
     return d
-
-
-def process(d, input_file, output_file, input_encoding=sys.getdefaultencoding(),
-            output_encoding=sys.getdefaultencoding()):
-    lookup = mako.lookup.TemplateLookup(
-        directories=['.'],
-        input_encoding=input_encoding,
-        output_encoding=output_encoding,
-    )
-    template = mako.template.Template(
-        filename=input_file,
-        lookup=lookup,
-        input_encoding=input_encoding,
-        output_encoding=output_encoding,
-    )
-    makedirs_for_file(output_file)
-    f = open(output_file, 'wb')
-    f.write(template.render(tdefs=d))
-    f.close()
 
 
 def print_full_exception():
