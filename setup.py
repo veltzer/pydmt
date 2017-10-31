@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='pydmt',
-    version='0.0.8',
+    version='0.0.9',
     description='pydmt is a tool for constructing software',
     long_description='pydmt is a tool for constructing software',
     url='https://github.com/veltzer/pydmt',
@@ -24,6 +24,7 @@ setuptools.setup(
         'mako',  # for template handling
         'click',  # for command line parsing
         'pyfakeuse',  # for ignoring arguments to functions
+        'pylogconf',  # for configuring logging
     ],
     entry_points={
         'console_scripts': [

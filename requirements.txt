@@ -1,3 +1,4 @@
 mako
 click
 pyfakeuse
+pylogconf
