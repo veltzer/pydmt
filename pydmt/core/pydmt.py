@@ -45,9 +45,9 @@ class PyDMT:
         self.target_to_builder = {}  # type: Dict[str, Builder]
         self.cache = Cache()
 
-    def build_by_builder(self, b: Builder, stats: BuildProcessStats):
+    def build_by_builder(self, builder: Builder, stats: BuildProcessStats):
         """ run one builder, return statistics about the run """
-        target_signature = b.get_signature()
+        target_signature = builder.get_signature()
         blob_name = self.cache.get_list_by_signature(target_signature)
         if blob_name:
             for object_name, signature in Cache.iterate_objects(blob_name):
@@ -67,12 +67,12 @@ class PyDMT:
             stats.add_builder()
             # noinspection PyBroadException
             try:
-                b.build()
+                builder.build()
                 stats.add_success()
                 # first lets build a list of what was constructed
-                targets = b.get_targets()
+                targets = builder.get_targets()
                 if targets is None:
-                    targets = b.get_targets_post_build()
+                    targets = builder.get_targets_post_build()
                 content = ""
                 for target in targets:
                     signature = sha1_file(target)
@@ -89,6 +89,19 @@ class PyDMT:
     def build_by_targets(self, targets: List[str], stats: BuildProcessStats) -> None:
         for target in targets:
             self.build_by_target(target, stats)
+
+    def build_all(self) -> BuildProcessStats:
+        """
+        Build all the targets, very high level method
+        :return:
+        """
+        stats = BuildProcessStats()
+        for builder in self.builders:
+            self.build_by_builder(
+                builder=builder,
+                stats=stats,
+            )
+        return stats
 
     def add_builder(self, b: Builder) -> None:
         self.builders.append(b)

@@ -17,7 +17,12 @@ class TestAll(unittest.TestCase):
 
     def testNullBuild(self):
         p = PyDMT()
-        p.build_by_targets([], BuildProcessStats())
+        p.build_all()
+
+    def testReturnType(self):
+        p = PyDMT()
+        stats = p.build_all()
+        self.assertIsInstance(stats, BuildProcessStats, "must be BuildProcessStats")
 
     def testSimpleCopy(self):
         with tempdir():
@@ -25,8 +30,7 @@ class TestAll(unittest.TestCase):
             p = PyDMT()
             b = Copy("passwd", "copy_of_passwd")
             p.add_builder(b)
-            stats = BuildProcessStats()
-            p.build_by_builder(b, stats)
+            stats = p.build_all()
             self.assertEqual(stats.builder, 1)
             self.assertEqual(stats.copy, 0)
 
@@ -36,12 +40,10 @@ class TestAll(unittest.TestCase):
             p = PyDMT()
             b = Copy("passwd", "copy_of_passwd")
             p.add_builder(b)
-            p.build_by_builder(b, BuildProcessStats())
-            stats = BuildProcessStats()
-            p.build_by_builder(b, stats)
-            self.assertEqual(stats.builder, 0)
+            stats = p.build_all()
+            self.assertEqual(stats.builder, 1)
             self.assertEqual(stats.copy, 0)
-            self.assertEqual(stats.nop, 1)
+            self.assertEqual(stats.nop, 0)
 
     def testCopyAfterRemove(self):
         with tempdir():
@@ -49,10 +51,9 @@ class TestAll(unittest.TestCase):
             p = PyDMT()
             b = Copy("passwd", "copy_of_passwd")
             p.add_builder(b)
-            p.build_by_builder(b, BuildProcessStats())
-            stats = BuildProcessStats()
+            p.build_all()
             os.unlink("copy_of_passwd")
-            p.build_by_builder(b, stats)
+            stats = p.build_all()
             self.assertEqual(stats.builder, 0)
             self.assertEqual(stats.copy, 1)
             self.assertEqual(stats.nop, 0)
@@ -64,8 +65,7 @@ class TestAll(unittest.TestCase):
             p = PyDMT()
             b = Fail("passwd", "copy_of_passwd")
             p.add_builder(b)
-            stats = BuildProcessStats()
-            p.build_by_builder(b, stats)
+            stats = p.build_all()
             self.assertEqual(stats.builder, 1)
             self.assertEqual(stats.copy, 0)
             self.assertEqual(stats.fail, 1)
