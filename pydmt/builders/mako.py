@@ -50,7 +50,7 @@ def get_modules_list(folder: str) -> Generator[Populator, None, None]:
 class Mako(Builder):
     def __init__(self, definitions_folders: List[str], source: str, target: str):
         super().__init__()
-        self.definitions_folders: List[str] = definitions_folders
+        self.definitions_folders = definitions_folders
         self.source: str = source
         self.target: str = target
 
