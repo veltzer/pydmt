@@ -1,3 +1,4 @@
+import logging
 from typing import List, Dict
 
 import shutil
@@ -11,32 +12,38 @@ from pydmt.core.utils import sha1_file
 
 class BuildProcessStats:
     def __init__(self):
-        self.builder = 0
-        self.copy = 0
-        self.nop = 0
-        self.missing = 0
-        self.fail = 0
-        self.success = 0
-        self.exceptions = []
+        self.builder_fail = []
+        self.builder_ok = []
+        self.copy_missing = []
+        self.copy_sha1 = []
+        self.nop = []
 
-    def add_builder(self):
-        self.builder += 1
+    def add_copy_missing(self, filename: str, object_name: str):
+        self.copy_missing.append((filename, object_name))
 
-    def add_copy(self):
-        self.copy += 1
+    def get_copy_missing(self):
+        return len(self.copy_missing)
 
-    def add_nop(self):
-        self.nop += 1
+    def add_copy_sha1(self, filename: str, object_name: str):
+        self.copy_sha1.append((filename, object_name))
 
-    def add_missing(self):
-        self.missing += 1
+    def add_nop(self, filename: str, object_name: str):
+        self.nop.append((filename, object_name))
 
-    def add_fail(self, e: Exception):
-        self.fail += 1
-        self.exceptions.append(e)
+    def get_nop(self):
+        return len(self.nop)
 
-    def add_success(self):
-        self.success += 1
+    def add_builder_ok(self, builder: Builder):
+        self.builder_ok.append(builder)
+
+    def add_builder_fail(self, builder: Builder, e: Exception):
+        self.builder_fail.append((builder, e))
+
+    def get_builder_ok(self):
+        return len(self.builder_ok)
+
+    def get_builder_fail(self):
+        return len(self.builder_fail)
 
 
 class PyDMT:
@@ -47,6 +54,7 @@ class PyDMT:
 
     def build_by_builder(self, builder: Builder, stats: BuildProcessStats):
         """ run one builder, return statistics about the run """
+        logger = logging.getLogger(__name__)
         target_signature = builder.get_signature()
         blob_name = self.cache.get_list_by_signature(target_signature)
         if blob_name:
@@ -55,20 +63,23 @@ class PyDMT:
                 if os.path.isfile(object_name):
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:
+                        logger.info("file [{}] is incorrect. Getting from cache.".format(object_name))
                         shutil.copy(filename, object_name)
-                        stats.add_copy()
+                        stats.add_copy_sha1(filename, object_name)
                     else:
-                        stats.add_nop()
+                        logger.info("file [{}] is up to date".format(object_name))
+                        stats.add_nop(filename, object_name)
                 else:
-                    stats.add_missing()
+                    logger.info("file [{}] is missing. Getting from cache.".format(object_name))
                     shutil.copy(filename, object_name)
-                    stats.add_copy()
+                    stats.add_copy_missing(filename, object_name)
+
         else:
-            stats.add_builder()
             # noinspection PyBroadException
             try:
+                logger.info("running [{}]".format(builder.get_name()))
                 builder.build()
-                stats.add_success()
+                stats.add_builder_ok(builder)
                 # first lets build a list of what was constructed
                 targets = builder.get_targets()
                 if targets is None:
@@ -80,7 +91,7 @@ class PyDMT:
                     self.cache.save_object_by_signature(signature, target)
                 self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
-                stats.add_fail(e)
+                stats.add_builder_fail(builder, e)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
         b = self.target_to_builder[target]

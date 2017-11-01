@@ -5,6 +5,9 @@ from typing import List
 class Builder(metaclass=abc.ABCMeta):
     __metaclass__ = abc.ABCMeta
 
+    def get_name(self) -> str:
+        return self.__class__.__name__
+
     @abc.abstractmethod
     def __init__(self):
         """ initialize your builder here """
