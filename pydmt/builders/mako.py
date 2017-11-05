@@ -62,7 +62,6 @@ class Mako(Builder):
         return sha1_file(self.source)
 
     def build(self):
-
         d = load_and_populate(self.definitions_folders)
         template = mako.template.Template(filename=self.source)
         makedirs_for_file(self.target)
