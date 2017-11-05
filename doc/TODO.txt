@@ -1,1 +1,6 @@
+- currently pydmt prints out an event including doing
+	nothing.
+	make the standard configure not print anything when there
+	is nothing to do.
+	make this configurable.
 - emit logging messages when things are running.
