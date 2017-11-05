@@ -3,6 +3,12 @@ from typing import List
 
 
 class Builder(metaclass=abc.ABCMeta):
+    """
+    A Builder is what really builds things in the system.
+    A builder knows on which inputs it relies and what
+    outputs it generates (sometimes before build and sometimes
+    after).
+    """
     __metaclass__ = abc.ABCMeta
 
     def get_name(self) -> str:
