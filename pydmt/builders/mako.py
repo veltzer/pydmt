@@ -51,8 +51,8 @@ class Mako(Builder):
     def __init__(self, definitions_folders: List[str], source: str, target: str):
         super().__init__()
         self.definitions_folders = definitions_folders
-        self.source: str = source
-        self.target: str = target
+        self.source = source  # type: str
+        self.target = target  # type: str
 
     def get_signature(self) -> str:
         # FIXME: this should be the sha1 of the source + all the definition files
