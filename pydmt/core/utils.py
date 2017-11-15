@@ -49,8 +49,8 @@ def unlink_files(files: List[str], only_if_exist: bool=True) -> None:
 
 def files_under_folder(folder: str) -> List[str]:
     f = []
-    for (_, _, filenames) in os.walk(folder):
-        f.extend(filenames)
+    for (dir_path, _dir_names, filenames) in os.walk(folder):
+        f.extend([os.path.join(dir_path, filename) for filename in filenames])
     return f
 
 
