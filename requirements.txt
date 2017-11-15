@@ -1,4 +1,5 @@
-mako
 click
 pyfakeuse
 pylogconf
+mako
+Sphinx
