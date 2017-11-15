@@ -69,3 +69,8 @@ def sha1_files_folders(files: List[str], folders: List[str]) -> str:
     f = files
     f.extend(files_under_folders(folders=folders))
     return sha1_files(f)
+
+
+def touch(filename: str) -> None:
+    with open(filename, "w"):
+        pass

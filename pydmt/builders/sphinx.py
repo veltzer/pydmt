@@ -3,7 +3,7 @@ import shutil
 from typing import List
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files
+from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files, touch
 import subprocess
 
 
@@ -62,6 +62,7 @@ class Sphinx(Builder):
             self.source_folder,
             self.target_folder,
         ])
+        touch(os.path.join(self.target_folder, ".nojekyll"))
 
     def get_targets(self) -> List[str]:
         return []
