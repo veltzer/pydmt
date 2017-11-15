@@ -3,7 +3,7 @@ import shutil
 from typing import List
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_files_folders, sha1_folders, files_under_folder, unlink_files
+from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files
 import subprocess
 
 
@@ -24,13 +24,25 @@ class Sphinx(Builder):
                 folders=[self.source_folder],
             )
         if os.path.isdir(self.package_name):
-            return sha1_folders(folders=[self.source_folder, self.package_name])
+            return sha1_files_folders(
+                files=self._get_source_folder_real(),
+                folders=[
+                    os.path.join(self.source_folder, "static"),
+                    self.package_name,
+                ]
+            )
 
     def _get_source_folder_targets(self) -> List[str]:
         return [
             os.path.join(self.source_folder, "modules.rst"),
             os.path.join(self.source_folder, "{}.rst".format(self.package_name)),
             os.path.join(self.source_folder, "{}.scripts.rst".format(self.package_name)),
+        ]
+
+    def _get_source_folder_real(self) -> List[str]:
+        return [
+            os.path.join(self.source_folder, "index.rst"),
+            os.path.join(self.source_folder, "conf.py"),
         ]
 
     def build(self) -> None:
