@@ -3,8 +3,15 @@ import shutil
 from typing import List
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files, touch
+from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files
 import subprocess
+
+
+"""
+This is review of how to build a sphinx documentation:
+- if you want documentation for the code you need to run "sphinx-apidoc"
+- it will generated 
+"""
 
 
 class Sphinx(Builder):
@@ -66,9 +73,6 @@ class Sphinx(Builder):
         for filename in files_under_folder(os.path.join(self.source_folder, "copy")):
             basename = os.path.basename(filename)
             shutil.copy(filename, os.path.join(self.target_folder, basename))
-
-    def get_targets(self) -> List[str]:
-        return []
 
     def get_targets_post_build(self) -> List[str]:
         return_list = self._get_source_folder_targets()
