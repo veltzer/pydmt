@@ -31,7 +31,7 @@ def sha1_files(filenames: List[str]) -> str:
 def makedirs_for_file(filename: str):
     folder = os.path.dirname(filename)
     if folder != "":
-        os.makedirs(folder)
+        os.makedirs(folder, exist_ok=True)
 
 
 def copy_mkdir(source: str, destination: str):

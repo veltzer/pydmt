@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='pydmt',
-    version='0.0.20',
+    version='0.0.21',
     description='pydmt is a tool for constructing software',
     long_description='pydmt is a tool for constructing software',
     url='https://github.com/veltzer/pydmt',
