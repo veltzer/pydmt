@@ -28,6 +28,7 @@ class Sphinx(Builder):
                 files=self._get_source_folder_real(),
                 folders=[
                     os.path.join(self.source_folder, "static"),
+                    os.path.join(self.source_folder, "copy"),
                     self.package_name,
                 ]
             )
@@ -62,7 +63,9 @@ class Sphinx(Builder):
             self.source_folder,
             self.target_folder,
         ])
-        touch(os.path.join(self.target_folder, ".nojekyll"))
+        for filename in files_under_folder(os.path.join(self.source_folder, "copy")):
+            basename = os.path.basename(filename)
+            shutil.copy(filename, os.path.join(self.target_folder, basename))
 
     def get_targets(self) -> List[str]:
         return []
