@@ -79,6 +79,7 @@ class PyDMT:
             try:
                 logger.info("running [{}]".format(builder.get_name()))
                 builder.build()
+                logger.info("ok [{}]".format(builder.get_name()))
                 stats.add_builder_ok(builder)
                 # first lets build a list of what was constructed
                 targets = builder.get_targets()
@@ -91,6 +92,7 @@ class PyDMT:
                     self.cache.save_object_by_signature(signature, target)
                 self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
+                logger.error("failed [{}]".format(builder.get_name()))
                 stats.add_builder_fail(builder, e)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
