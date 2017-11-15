@@ -83,8 +83,7 @@ class PyDMT:
                 stats.add_builder_ok(builder)
                 # first lets build a list of what was constructed
                 targets = builder.get_targets()
-                if targets is None:
-                    targets = builder.get_targets_post_build()
+                targets.extend(builder.get_targets_post_build())
                 content = ""
                 for target in targets:
                     signature = sha1_file(target)
