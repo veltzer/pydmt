@@ -41,8 +41,9 @@ def copy_mkdir(source: str, destination: str):
 
 def unlink_files(files: List[str], only_if_exist: bool=True) -> None:
     for file in files:
-        if only_if_exist and os.path.isfile(file):
-            os.unlink(file)
+        if only_if_exist:
+            if os.path.isfile(file):
+                os.unlink(file)
         else:
             os.unlink(file)
 
