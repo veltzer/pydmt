@@ -16,7 +16,7 @@ class Templating(Feature):
                     builder = Mako(
                         definitions_folders=[
                             os.path.expanduser("~/.config/pydmt"),
-                            'definitions',
+                            'config',
                         ],
                         source=source,
                         target=target,
