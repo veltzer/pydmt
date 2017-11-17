@@ -2,6 +2,7 @@
   <dictionary name="mark">
     <words>
       <w>affero</w>
+      <w>apidoc</w>
       <w>awscli</w>
       <w>awskey</w>
       <w>cache nos</w>
@@ -37,6 +38,7 @@
       <w>mkfs</w>
       <w>myrepos</w>
       <w>nce/ .web</w>
+      <w>nojekyll</w>
       <w>noncommercially</w>
       <w>nosetests</w>
       <w>partprobe</w>

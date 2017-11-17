@@ -33,9 +33,6 @@ class Mako(Builder):
     def get_targets(self) -> List[str]:
         return [self.target]
 
-    def get_targets_post_build(self) -> List[str]:
-        return []
-
 
 def print_full_exception():
     print('printing full exception')
