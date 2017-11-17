@@ -87,7 +87,7 @@ class PyDMT:
                 content = ""
                 for target in targets:
                     signature = sha1_file(target)
-                    content += target + " " + signature
+                    content += target + " " + signature + "\n"
                     self.cache.save_object_by_signature(signature, target)
                 self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
