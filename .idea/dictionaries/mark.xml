@@ -45,6 +45,7 @@
       <w>populator</w>
       <w>ports h</w>
       <w>postgresql</w>
+      <w>pycache</w>
       <w>pydmt</w>
       <w>pyenv</w>
       <w>pymount</w>

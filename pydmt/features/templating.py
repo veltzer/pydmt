@@ -6,6 +6,9 @@ from pydmt.core.pydmt import PyDMT
 
 
 class Templating(Feature):
+    def __init__(self, config):
+        self.config = config
+
     def setup(self, pydmt: PyDMT) -> None:
         for root, directories, filenames in os.walk("templates"):
             for filename in filenames:
@@ -14,11 +17,8 @@ class Templating(Feature):
                 if ext == '.mako':
                     target = os.sep.join(target_base.split(os.sep)[1:])
                     builder = Mako(
-                        definitions_folders=[
-                            os.path.expanduser("~/.config/pydmt"),
-                            'definitions',
-                        ],
                         source=source,
                         target=target,
+                        config=self.config,
                     )
                     pydmt.add_builder(builder)
