@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='pydmt',
-    version='0.0.14',
+    version='0.0.22',
     description='pydmt is a tool for constructing software',
     long_description='pydmt is a tool for constructing software',
     url='https://github.com/veltzer/pydmt',
@@ -21,10 +21,13 @@ setuptools.setup(
     keywords='pydmt cons scons software construction make maven mvn',
     packages=setuptools.find_packages(),
     install_requires=[
-        'mako',  # for template handling
+        # code requirements
         'click',  # for command line parsing
         'pyfakeuse',  # for ignoring arguments to functions
         'pylogconf',  # for configuring logging
+        # builder requirements
+        'mako',  # for template handling
+        'Sphinx',  # for the sphinx builder
     ],
     entry_points={
         'console_scripts': [
