@@ -42,4 +42,4 @@ class Cache:
     def save_objects(file_name: str, object_tuples: List[Tuple[str, str]]) -> None:
         with open(file_name, "w") as file_handle:
             for object_tuple in object_tuples:
-                file_handle.write(" ".join(object_tuple))
+                file_handle.write(" ".join(object_tuple)+"\n")
