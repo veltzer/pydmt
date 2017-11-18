@@ -1,13 +1,11 @@
 import logging
 from typing import List, Dict
 
-import shutil
-
 import os
 
 from pydmt.api.builder import Builder
 from pydmt.core.cache import Cache
-from pydmt.core.utils import sha1_file
+from pydmt.core.utils import sha1_file, copy_mkdir
 
 
 class BuildProcessStats:
@@ -64,14 +62,14 @@ class PyDMT:
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:
                         logger.info("file [{}] is incorrect. Getting from cache.".format(object_name))
-                        shutil.copy(filename, object_name)
+                        copy_mkdir(filename, object_name)
                         stats.add_copy_sha1(filename, object_name)
                     else:
                         logger.info("file [{}] is up to date".format(object_name))
                         stats.add_nop(filename, object_name)
                 else:
                     logger.info("file [{}] is missing. Getting from cache.".format(object_name))
-                    shutil.copy(filename, object_name)
+                    copy_mkdir(filename, object_name)
                     stats.add_copy_missing(filename, object_name)
         else:
             # noinspection PyBroadException
