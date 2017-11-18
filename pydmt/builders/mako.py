@@ -5,6 +5,7 @@ import mako
 import mako.exceptions
 import mako.lookup
 import mako.template
+import os
 
 from pydmt.api.builder import Builder
 from pydmt.core.utils import sha1_file, makedirs_for_file
@@ -25,10 +26,15 @@ class Mako(Builder):
         return sha1_file(self.source)
 
     def build(self):
-        template = mako.template.Template(filename=self.source)
-        makedirs_for_file(self.target)
-        with open(self.target, 'w') as file_handle:
-            file_handle.write(template.render(config=self.config))
+        try:
+            template = mako.template.Template(filename=self.source)
+            makedirs_for_file(self.target)
+            with open(self.target, 'w') as file_handle:
+                file_handle.write(template.render(config=self.config))
+        except Exception as e:
+            if os.path.isfile(self.target):
+                os.unlink(self.target)
+            raise e
 
     def get_targets(self) -> List[str]:
         return [self.target]
