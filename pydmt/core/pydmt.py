@@ -55,22 +55,32 @@ class PyDMT:
         logger = logging.getLogger(__name__)
         target_signature = builder.get_signature()
         if self.cache.list_sig_ok(target_signature):
+            file_bad = 0
+            file_correct = 0
+            file_missing = 0
+            file_total = 0
             list_filename = self.cache.get_list_filename(target_signature)
             for object_name, signature in Cache.iterate_objects(list_filename):
                 filename = self.cache.get_object_filename(signature)
                 if os.path.isfile(object_name):
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:
-                        logger.info("file [{}] is incorrect. Getting from cache.".format(object_name))
+                        # logger.info("file [{}] is incorrect. Getting from cache.".format(object_name))
                         copy_mkdir(filename, object_name)
                         stats.add_copy_sha1(filename, object_name)
+                        file_bad += 1
                     else:
-                        logger.info("file [{}] is up to date".format(object_name))
+                        # logger.info("file [{}] is up to date".format(object_name))
                         stats.add_nop(filename, object_name)
+                        file_correct += 1
                 else:
-                    logger.info("file [{}] is missing. Getting from cache.".format(object_name))
+                    # logger.info("file [{}] is missing. Getting from cache.".format(object_name))
                     copy_mkdir(filename, object_name)
                     stats.add_copy_missing(filename, object_name)
+                    file_missing += 1
+                file_total += 1
+            logger.info("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
+                file_total, file_bad, file_correct, file_missing))
         else:
             # noinspection PyBroadException
             try:
