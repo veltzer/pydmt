@@ -56,10 +56,10 @@ class PyDMT:
         """ run one builder, return statistics about the run """
         logger = logging.getLogger(__name__)
         target_signature = builder.get_signature()
-        blob_name = self.cache.get_list_by_signature(target_signature)
-        if blob_name:
-            for object_name, signature in Cache.iterate_objects(blob_name):
-                filename = self.cache.get_object_by_signature(signature)
+        if self.cache.list_sig_ok(target_signature):
+            list_filename = self.cache.get_list_filename(target_signature)
+            for object_name, signature in Cache.iterate_objects(list_filename):
+                filename = self.cache.get_object_filename(signature)
                 if os.path.isfile(object_name):
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:
@@ -73,7 +73,6 @@ class PyDMT:
                     logger.info("file [{}] is missing. Getting from cache.".format(object_name))
                     shutil.copy(filename, object_name)
                     stats.add_copy_missing(filename, object_name)
-
         else:
             # noinspection PyBroadException
             try:
@@ -91,7 +90,7 @@ class PyDMT:
                     self.cache.save_object_by_signature(signature, target)
                 self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
-                logger.error("failed [{}]".format(builder.get_name()))
+                logger.info("failed [{}]".format(builder.get_name()))
                 stats.add_builder_fail(builder, e)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
