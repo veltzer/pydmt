@@ -15,6 +15,9 @@ This is review of how to build a sphinx documentation:
 
 
 class Sphinx(Builder):
+    def get_sources(self) -> List[str]:
+        return self._get_source_folder_real()
+
     def __init__(self,
                  package_name: str,
                  source_folder: str = "sphinx",

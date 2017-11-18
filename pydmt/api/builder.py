@@ -12,7 +12,7 @@ class Builder(metaclass=abc.ABCMeta):
     __metaclass__ = abc.ABCMeta
 
     def get_name(self) -> str:
-        return self.__class__.__name__
+        return self.__class__.__name__+" "+",".join(self.get_sources())+"->"+",".join(self.get_targets())
 
     @abc.abstractmethod
     def __init__(self):
@@ -23,6 +23,10 @@ class Builder(metaclass=abc.ABCMeta):
     def build(self):
         """ this method actually does the building """
         pass
+
+    @abc.abstractmethod
+    def get_sources(self) -> List[str]:
+        return []
 
     def get_targets(self) -> List[str]:
         """ return the names of the files that you are sure you produce. If you do not know them,

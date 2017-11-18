@@ -12,6 +12,9 @@ from pydmt.core.utils import sha1_file, makedirs_for_file
 
 
 class Mako(Builder):
+    def get_sources(self) -> List[str]:
+        return [self.source]
+
     def __init__(self, source: str, target: str, config):
         super().__init__()
         self.source = source  # type: str
