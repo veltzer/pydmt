@@ -55,6 +55,7 @@ class PyDMT:
         logger = logging.getLogger(__name__)
         target_signature = builder.get_signature()
         if self.cache.list_sig_ok(target_signature):
+            logger.info("verifying [{}]".format(builder.get_name()))
             file_bad = 0
             file_correct = 0
             file_missing = 0
@@ -79,8 +80,11 @@ class PyDMT:
                     stats.add_copy_missing(filename, object_name)
                     file_missing += 1
                 file_total += 1
-            logger.info("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
-                file_total, file_bad, file_correct, file_missing))
+            if file_bad > 0 or file_missing > 0:
+                logger.info("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
+                    file_total, file_bad, file_correct, file_missing))
+            else:
+                logger.info("ok [{}]".format(builder.get_name()))
         else:
             # noinspection PyBroadException
             try:
