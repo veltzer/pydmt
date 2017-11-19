@@ -68,13 +68,19 @@ class Sphinx(Builder):
         subprocess.check_call(args)
         if os.path.isdir(self.target_folder):
             shutil.rmtree(self.target_folder, ignore_errors=False)
-        subprocess.check_call([
-            "sphinx-build",
-            # don't use a saved environment, always read all files
-            # "-E",
-            self.source_folder,
-            self.target_folder,
-        ])
+            subprocess.check_call([
+                "sphinx-build",
+                # don't use a saved environment, always read all files
+                # "-E",
+                # Do not emit colored output(default: auto - detect)
+                "--no-color",
+                # turn warnings into errors
+                "-W",
+                # no output on stdout, just warnings on stderr
+                "-q",
+                self.source_folder,
+                self.target_folder,
+            ])
         for filename in files_under_folder(os.path.join(self.source_folder, "copy")):
             basename = os.path.basename(filename)
             shutil.copy(filename, os.path.join(self.target_folder, basename))

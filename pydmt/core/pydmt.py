@@ -103,6 +103,7 @@ class PyDMT:
                 self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
                 logger.info("failed [{}]".format(builder.get_name()))
+                logger.info("exception [{}]".format(e))
                 stats.add_builder_fail(builder, e)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
