@@ -70,6 +70,8 @@ class Sphinx(Builder):
             shutil.rmtree(self.target_folder, ignore_errors=False)
         subprocess.check_call([
             "sphinx-build",
+            # don't use a saved environment, always read all files
+            # "-E",
             self.source_folder,
             self.target_folder,
         ])

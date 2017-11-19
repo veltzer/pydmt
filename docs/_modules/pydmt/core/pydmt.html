@@ -1,0 +1,218 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pydmt.core.pydmt &#8212; pydmt 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pydmt.core.pydmt</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="k">import</span> <span class="n">Builder</span>
+<span class="kn">from</span> <span class="nn">pydmt.core.cache</span> <span class="k">import</span> <span class="n">Cache</span>
+<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">sha1_file</span><span class="p">,</span> <span class="n">copy_mkdir</span>
+
+
+<div class="viewcode-block" id="BuildProcessStats"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats">[docs]</a><span class="k">class</span> <span class="nc">BuildProcessStats</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder_fail</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder_ok</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy_missing</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy_sha1</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nop</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="BuildProcessStats.add_copy_missing"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_copy_missing">[docs]</a>    <span class="k">def</span> <span class="nf">add_copy_missing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">object_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy_missing</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.get_copy_missing"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_copy_missing">[docs]</a>    <span class="k">def</span> <span class="nf">get_copy_missing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">copy_missing</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.add_copy_sha1"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_copy_sha1">[docs]</a>    <span class="k">def</span> <span class="nf">add_copy_sha1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">object_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy_sha1</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.add_nop"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_nop">[docs]</a>    <span class="k">def</span> <span class="nf">add_nop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">object_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nop</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.get_nop"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_nop">[docs]</a>    <span class="k">def</span> <span class="nf">get_nop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nop</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.add_builder_ok"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_builder_ok">[docs]</a>    <span class="k">def</span> <span class="nf">add_builder_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">:</span> <span class="n">Builder</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder_ok</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">builder</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.add_builder_fail"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_builder_fail">[docs]</a>    <span class="k">def</span> <span class="nf">add_builder_fail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">:</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builder_fail</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">builder</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.get_builder_ok"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_builder_ok">[docs]</a>    <span class="k">def</span> <span class="nf">get_builder_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_ok</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.get_builder_fail"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_builder_fail">[docs]</a>    <span class="k">def</span> <span class="nf">get_builder_fail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_fail</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PyDMT"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT">[docs]</a><span class="k">class</span> <span class="nc">PyDMT</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builders</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[Builder]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_to_builder</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[str, Builder]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">()</span>
+
+<div class="viewcode-block" id="PyDMT.build_by_builder"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_by_builder">[docs]</a>    <span class="k">def</span> <span class="nf">build_by_builder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">:</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">BuildProcessStats</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; run one builder, return statistics about the run &quot;&quot;&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="n">target_signature</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_signature</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">list_sig_ok</span><span class="p">(</span><span class="n">target_signature</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;verifying [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+            <span class="n">file_bad</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">file_correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">file_missing</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">file_total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">list_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get_list_filename</span><span class="p">(</span><span class="n">target_signature</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">signature</span> <span class="ow">in</span> <span class="n">Cache</span><span class="o">.</span><span class="n">iterate_objects</span><span class="p">(</span><span class="n">list_filename</span><span class="p">):</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get_object_filename</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">object_name</span><span class="p">):</span>
+                    <span class="n">object_name_signature</span> <span class="o">=</span> <span class="n">sha1_file</span><span class="p">(</span><span class="n">object_name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">object_name_signature</span> <span class="o">!=</span> <span class="n">signature</span><span class="p">:</span>
+                        <span class="c1"># logger.info(&quot;file [{}] is incorrect. Getting from cache.&quot;.format(object_name))</span>
+                        <span class="n">copy_mkdir</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
+                        <span class="n">stats</span><span class="o">.</span><span class="n">add_copy_sha1</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
+                        <span class="n">file_bad</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># logger.info(&quot;file [{}] is up to date&quot;.format(object_name))</span>
+                        <span class="n">stats</span><span class="o">.</span><span class="n">add_nop</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
+                        <span class="n">file_correct</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># logger.info(&quot;file [{}] is missing. Getting from cache.&quot;.format(object_name))</span>
+                    <span class="n">copy_mkdir</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
+                    <span class="n">stats</span><span class="o">.</span><span class="n">add_copy_missing</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
+                    <span class="n">file_missing</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">file_total</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">file_bad</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">file_missing</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Retrieved </span><span class="si">{}</span><span class="s2"> files from cache (bad/correct/missing = </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">file_total</span><span class="p">,</span> <span class="n">file_bad</span><span class="p">,</span> <span class="n">file_correct</span><span class="p">,</span> <span class="n">file_missing</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;ok [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># noinspection PyBroadException</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;running [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+                <span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;ok [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">add_builder_ok</span><span class="p">(</span><span class="n">builder</span><span class="p">)</span>
+                <span class="c1"># first lets build a list of what was constructed</span>
+                <span class="n">targets</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_targets</span><span class="p">()</span>
+                <span class="n">targets</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_targets_post_build</span><span class="p">())</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+                    <span class="n">signature</span> <span class="o">=</span> <span class="n">sha1_file</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                    <span class="n">content</span> <span class="o">+=</span> <span class="n">target</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">signature</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">save_object_by_signature</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">save_list_by_signature</span><span class="p">(</span><span class="n">target_signature</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;failed [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">add_builder_fail</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDMT.build_by_target"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_by_target">[docs]</a>    <span class="k">def</span> <span class="nf">build_by_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">BuildProcessStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_to_builder</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_by_builder</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDMT.build_by_targets"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_by_targets">[docs]</a>    <span class="k">def</span> <span class="nf">build_by_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">stats</span><span class="p">:</span> <span class="n">BuildProcessStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_by_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyDMT.build_all"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_all">[docs]</a>    <span class="k">def</span> <span class="nf">build_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BuildProcessStats</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build all the targets, very high level method</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">BuildProcessStats</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">builder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">builders</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_by_builder</span><span class="p">(</span>
+                <span class="n">builder</span><span class="o">=</span><span class="n">builder</span><span class="p">,</span>
+                <span class="n">stats</span><span class="o">=</span><span class="n">stats</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">stats</span></div>
+
+<div class="viewcode-block" id="PyDMT.add_builder"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.add_builder">[docs]</a>    <span class="k">def</span> <span class="nf">add_builder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Builder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">get_targets</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">target_to_builder</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Mark Veltzer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

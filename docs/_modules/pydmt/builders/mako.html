@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pydmt.builders.mako &#8212; pydmt 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pydmt.builders.mako</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
+
+<span class="kn">import</span> <span class="nn">mako</span>
+<span class="kn">import</span> <span class="nn">mako.exceptions</span>
+<span class="kn">import</span> <span class="nn">mako.lookup</span>
+<span class="kn">import</span> <span class="nn">mako.template</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="k">import</span> <span class="n">Builder</span>
+<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">sha1_file</span><span class="p">,</span> <span class="n">makedirs_for_file</span>
+
+
+<div class="viewcode-block" id="Mako"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako">[docs]</a><span class="k">class</span> <span class="nc">Mako</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
+<div class="viewcode-block" id="Mako.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>  <span class="c1"># type: str</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>  <span class="c1"># type: str</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+
+<div class="viewcode-block" id="Mako.get_signature"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_signature">[docs]</a>    <span class="k">def</span> <span class="nf">get_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># FIXME: this should be the sha1 of the source + all the definition files</span>
+        <span class="c1"># and even a better correction:</span>
+        <span class="c1"># sha1 of the source file + the sha1 of all the variables references from within</span>
+        <span class="c1"># the source file.</span>
+        <span class="k">return</span> <span class="n">sha1_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Mako.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">template</span> <span class="o">=</span> <span class="n">mako</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="n">makedirs_for_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
+                <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span></div>
+
+<div class="viewcode-block" id="Mako.get_targets"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="print_full_exception"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.print_full_exception">[docs]</a><span class="k">def</span> <span class="nf">print_full_exception</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;printing full exception&#39;</span><span class="p">)</span>
+    <span class="n">traceback</span> <span class="o">=</span> <span class="n">mako</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RichTraceback</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">function_name</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="ow">in</span> <span class="n">traceback</span><span class="o">.</span><span class="n">traceback</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File </span><span class="si">{0}</span><span class="s1">, line </span><span class="si">{1}</span><span class="s1">, in </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">function_name</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">),</span> <span class="n">traceback</span><span class="o">.</span><span class="n">error</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="print_exception"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.print_exception">[docs]</a><span class="k">def</span> <span class="nf">print_exception</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">input_file</span><span class="p">):</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">traceback</span> <span class="o">=</span> <span class="n">mako</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RichTraceback</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">function_name</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="ow">in</span> <span class="n">traceback</span><span class="o">.</span><span class="n">traceback</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="o">==</span> <span class="n">input_file</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">: error </span><span class="si">{1}</span><span class="s1"> in </span><span class="si">{2}</span><span class="s1">, line </span><span class="si">{3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">filename</span><span class="p">,</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">function_name</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">function_name</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="ow">in</span> <span class="n">traceback</span><span class="o">.</span><span class="n">traceback</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File </span><span class="si">{0}</span><span class="s1">, line </span><span class="si">{1}</span><span class="s1">, in </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">function_name</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">),</span> <span class="n">traceback</span><span class="o">.</span><span class="n">error</span><span class="p">))</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Mark Veltzer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
