@@ -3,8 +3,11 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.pydmt" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/docs" />
       <excludeFolder url="file://$MODULE_DIR$/pydmt.egg-info" />
+      <excludeFolder url="file://$MODULE_DIR$/sphinx" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6.3 virtualenv at ~/.virtualenvs/pydmt" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

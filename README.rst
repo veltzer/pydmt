@@ -1,4 +1,3 @@
-pydmt
-=====
-
-pydmt is a software dependency and construction tool.
+=======================
+*pydmt* project by Mark Veltzer
+=======================

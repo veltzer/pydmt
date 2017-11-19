@@ -1,5 +1,5 @@
 import sys
-from typing import List
+from typing import List, Dict
 
 import mako
 import mako.exceptions
@@ -15,11 +15,11 @@ class Mako(Builder):
     def get_sources(self) -> List[str]:
         return [self.source]
 
-    def __init__(self, source: str, target: str, config):
+    def __init__(self, source: str, target: str, data: Dict[str, object]):
         super().__init__()
         self.source = source  # type: str
         self.target = target  # type: str
-        self.config = config
+        self.data = data
 
     def get_signature(self) -> str:
         # FIXME: this should be the sha1 of the source + all the definition files
@@ -33,7 +33,7 @@ class Mako(Builder):
             template = mako.template.Template(filename=self.source)
             makedirs_for_file(self.target)
             with open(self.target, 'w') as file_handle:
-                file_handle.write(template.render(config=self.config))
+                file_handle.write(template.render(**self.data))
         except Exception as e:
             if os.path.isfile(self.target):
                 os.unlink(self.target)

@@ -6,8 +6,8 @@ from pydmt.core.pydmt import PyDMT
 
 
 class Templating(Feature):
-    def __init__(self, config):
-        self.config = config
+    def __init__(self, data):
+        self.data = data
 
     def setup(self, pydmt: PyDMT) -> None:
         for root, directories, filenames in os.walk("templates"):
@@ -19,6 +19,6 @@ class Templating(Feature):
                     builder = Mako(
                         source=source,
                         target=target,
-                        config=self.config,
+                        data=self.data,
                     )
                     pydmt.add_builder(builder)
