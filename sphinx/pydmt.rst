@@ -11,6 +11,7 @@ Subpackages
     pydmt.core
     pydmt.features
     pydmt.scripts
+    pydmt.utils
 
 Submodules
 ----------

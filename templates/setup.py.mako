@@ -8,7 +8,7 @@
 # until we make printing pretty
 # noinspection PyPep8
 setuptools.setup(
-    name='${config.python.project_name}',
+    name='${config.project.project_name}',
     version='${pydmt.version.version_str}',
     description='${config.project.project_description}',
     long_description='${config.project.project_long_description}',
