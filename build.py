@@ -26,5 +26,3 @@ f.setup(p)
 b = Sphinx(package_name=config.python.project_name)
 p.add_builder(b)
 p.build_all()
-
-__all__ = [config, config.python, config.personal]
