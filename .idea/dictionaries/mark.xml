@@ -6,28 +6,38 @@
       <w>affero</w>
       <w>apidoc</w>
       <w>aqxvse</w>
+      <w>asprxr</w>
       <w>awscli</w>
       <w>awskey</w>
+      <w>builddepends</w>
       <w>cache nos</w>
       <w>celerybeat</w>
       <w>chown</w>
       <w>cloudsql</w>
       <w>csvkit</w>
       <w>csvtool</w>
+      <w>debhelper</w>
+      <w>doctrees</w>
       <w>domainname</w>
+      <w>dont</w>
       <w>doron</w>
       <w>dotenv</w>
+      <w>dpkg</w>
       <w>envs</w>
       <w>file cele</w>
+      <w>filenames</w>
       <w>firstname</w>
       <w>fstab</w>
       <w>gitconfig</w>
       <w>gitignore</w>
+      <w>gmail</w>
+      <w>homedir</w>
       <w>hspell</w>
       <w>htmlcov</w>
       <w>htmls</w>
       <w>hushlogin</w>
       <w>hzfa</w>
+      <w>imap</w>
       <w>infor</w>
       <w>ings .ropep</w>
       <w>ings .spyderp</w>
@@ -44,8 +54,11 @@
       <w>lrzip</w>
       <w>lsblk</w>
       <w>maindb</w>
+      <w>makedirs</w>
       <w>makepasswd</w>
+      <w>mako</w>
       <w>mdadm</w>
+      <w>mkdir</w>
       <w>mkfs</w>
       <w>mnwey</w>
       <w>myrepos</w>
@@ -58,9 +71,11 @@
       <w>noncommercially</w>
       <w>nosetests</w>
       <w>odbo</w>
+      <w>pageview</w>
       <w>partprobe</w>
       <w>passphrase</w>
       <w>passwd</w>
+      <w>paypal</w>
       <w>pigz</w>
       <w>populator</w>
       <w>ports h</w>
@@ -68,18 +83,25 @@
       <w>pycache</w>
       <w>pydmt</w>
       <w>pyenv</w>
+      <w>pyfakeuse</w>
+      <w>pylogconf</w>
       <w>pymount</w>
       <w>pypi</w>
       <w>pypipegzip</w>
+      <w>pypitools</w>
+      <w>pyscrapers</w>
       <w>qffxd</w>
       <w>ramdisk</w>
       <w>reemj</w>
       <w>relicensing</w>
       <w>ropeproject</w>
+      <w>rstrip</w>
       <w>sbin</w>
       <w>scons</w>
+      <w>scrapy</w>
       <w>signkey</w>
       <w>smtp</w>
+      <w>snipplet</w>
       <w>spyder</w>
       <w>spyderproject</w>
       <w>sublicenses</w>
@@ -98,11 +120,15 @@
       <w>unmounting</w>
       <w>usetls</w>
       <w>v/ #</w>
+      <w>veltzer</w>
+      <w>venv</w>
       <w>vgyzp</w>
       <w>virtualenvwrapper</w>
       <w>webassets</w>
       <w>werror</w>
       <w>wipo</w>
+      <w>xclick</w>
+      <w>xenial</w>
       <w>xlarge</w>
       <w>xvdh</w>
       <w>yphp</w>
