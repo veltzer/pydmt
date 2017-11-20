@@ -2,27 +2,15 @@
 
 import pylogconf
 
-# noinspection PyUnresolvedReferences
-import config
-# noinspection PyUnresolvedReferences
-import config.python
-# noinspection PyUnresolvedReferences
-import config.personal
-# noinspection PyUnresolvedReferences
-import config.project
-
-import pydmt.version
 from pydmt.builders.sphinx import Sphinx
 from pydmt.core.pydmt import PyDMT
 from pydmt.features.templating import Templating
 
+import config.python
+
 pylogconf.setup()
 p = PyDMT()
-f = Templating(data={
-    "config": config,
-    "version": pydmt.version,
-})
-f.setup(p)
-b = Sphinx(package_name=config.python.project_name)
-p.add_builder(b)
+t = Templating()
+t.setup(p)
+p.add_builder(Sphinx(package_name=config.python.project_name))
 p.build_all()

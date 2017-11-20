@@ -6,7 +6,7 @@ from pydmt.core.pydmt import PyDMT
 
 
 class Templating(Feature):
-    def __init__(self, data):
+    def __init__(self, data=None):
         self.data = data
 
     def setup(self, pydmt: PyDMT) -> None:
