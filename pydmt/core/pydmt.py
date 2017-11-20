@@ -86,6 +86,7 @@ class PyDMT:
             else:
                 logger.info("ok [{}]".format(builder.get_name()))
         else:
+            # this is one of the rare cases in which really want to catch all exceptions.
             # noinspection PyBroadException
             try:
                 logger.info("running [{}]".format(builder.get_name()))

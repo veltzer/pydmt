@@ -127,6 +127,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;ok [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># this is one of the rare cases in which really want to catch all exceptions.</span>
             <span class="c1"># noinspection PyBroadException</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;running [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>

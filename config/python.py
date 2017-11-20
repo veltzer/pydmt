@@ -1,4 +1,3 @@
-project_name = "pydmt"
 # deb section
 deb_package = True
 deb_section = 'python'
@@ -18,6 +17,17 @@ deb_standards_version = '3.9.8'
 deb_x_python_version = '>= 3.4'
 deb_x_python3_version = '>= 3.4'
 deb_urgency = 'low'
+# archive of package
+deb_repo = '~/packages'
+# where to put packages that are built?
+deb_out_folder = 'out'
+# build_all = build.all
+# where to build source packages?
+# build_source = build.source
+# where to build source packages?
+# build_gbp = build.gbp
+
+# python section
 entry_points = {
     'console_scripts': [
     ],
