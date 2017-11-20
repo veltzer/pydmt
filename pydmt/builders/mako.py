@@ -1,5 +1,5 @@
 import sys
-from typing import List, Dict
+from typing import List, Dict, Union
 
 import mako
 import mako.exceptions
@@ -15,11 +15,14 @@ class Mako(Builder):
     def get_sources(self) -> List[str]:
         return [self.source]
 
-    def __init__(self, source: str, target: str, data: Dict[str, object]):
+    def __init__(self, source: str, target: str, data: Union[Dict[str, object], None]):
         super().__init__()
         self.source = source  # type: str
         self.target = target  # type: str
-        self.data = data
+        if data is None:
+            self.data = dict()
+        else:
+            self.data = data
 
     def get_signature(self) -> str:
         # FIXME: this should be the sha1 of the source + all the definition files
