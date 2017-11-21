@@ -1,5 +1,7 @@
+# infra
 click
 pyfakeuse
 pylogconf
+# plugins
 mako
 Sphinx
