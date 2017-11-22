@@ -5,3 +5,6 @@ pylogconf
 # plugins
 mako
 Sphinx
+# development tools
+pypitools
+pydmt
