@@ -3,7 +3,7 @@ import shutil
 from typing import List
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files
+from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files, copy_mkdir
 import subprocess
 
 
@@ -83,7 +83,7 @@ class Sphinx(Builder):
             ])
         for filename in files_under_folder(os.path.join(self.source_folder, "copy")):
             basename = os.path.basename(filename)
-            shutil.copy(filename, os.path.join(self.target_folder, basename))
+            copy_mkdir(filename, os.path.join(self.target_folder, basename))
 
     def get_targets_post_build(self) -> List[str]:
         return_list = self._get_source_folder_targets()
