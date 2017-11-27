@@ -4,7 +4,7 @@ import setuptools
 # noinspection PyPep8
 setuptools.setup(
     name='pydmt',
-    version='0.0.41',
+    version='0.0.43',
     description='python dependency management tool',
     long_description='python dependency management tool',
     author='Mark Veltzer',
