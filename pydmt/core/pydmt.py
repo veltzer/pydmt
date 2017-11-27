@@ -54,6 +54,7 @@ class PyDMT:
         """ run one builder, return statistics about the run """
         logger = logging.getLogger(__name__)
         target_signature = builder.get_signature()
+        assert target_signature is not None, "builder signature is None"
         if self.cache.list_sig_ok(target_signature):
             logger.info("verifying [{}]".format(builder.get_name()))
             file_bad = 0
