@@ -44,14 +44,22 @@
 <span class="kn">from</span> <span class="nn">pydmt.api.feature</span> <span class="k">import</span> <span class="n">Feature</span>
 <span class="kn">from</span> <span class="nn">pydmt.builders.mako</span> <span class="k">import</span> <span class="n">Mako</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="k">import</span> <span class="n">PyDMT</span>
+<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">files_under_folder</span>
 
 
 <div class="viewcode-block" id="Templating"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.templating.Templating">[docs]</a><span class="k">class</span> <span class="nc">Templating</span><span class="p">(</span><span class="n">Feature</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">templates_folder</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;templates&quot;</span><span class="p">,</span>
+            <span class="n">config_folder</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;config&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">templates_folder</span> <span class="o">=</span> <span class="n">templates_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_folder</span> <span class="o">=</span> <span class="n">config_folder</span>
 
 <div class="viewcode-block" id="Templating.setup"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.templating.Templating.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s2">&quot;templates&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">templates_folder</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
                 <span class="n">source</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
                 <span class="n">target_base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
@@ -61,6 +69,7 @@
                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
                         <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
                         <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">dep_files</span><span class="o">=</span><span class="n">files_under_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_folder</span><span class="p">),</span>
                     <span class="p">)</span>
                     <span class="n">pydmt</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">builder</span><span class="p">)</span></div></div>
 </pre></div>

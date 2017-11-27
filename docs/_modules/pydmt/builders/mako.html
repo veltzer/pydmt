@@ -49,17 +49,23 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="k">import</span> <span class="n">Builder</span>
-<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">sha1_file</span><span class="p">,</span> <span class="n">makedirs_for_file</span>
+<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">makedirs_for_file</span><span class="p">,</span> <span class="n">sha1_files</span>
 
 
 <div class="viewcode-block" id="Mako"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako">[docs]</a><span class="k">class</span> <span class="nc">Mako</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
 <div class="viewcode-block" id="Mako.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="kc">None</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="kc">None</span><span class="p">],</span>
+                 <span class="n">dep_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                 <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>  <span class="c1"># type: str</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>  <span class="c1"># type: str</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dep_files</span> <span class="o">=</span> <span class="n">dep_files</span>  <span class="c1"># type: List[str]</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -70,7 +76,7 @@
         <span class="c1"># and even a better correction:</span>
         <span class="c1"># sha1 of the source file + the sha1 of all the variables references from within</span>
         <span class="c1"># the source file.</span>
-        <span class="k">return</span> <span class="n">sha1_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">sha1_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dep_files</span><span class="o">+</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="Mako.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
