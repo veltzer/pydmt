@@ -8,17 +8,23 @@ import mako.template
 import os
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_file, makedirs_for_file
+from pydmt.core.utils import makedirs_for_file, sha1_files
 
 
 class Mako(Builder):
     def get_sources(self) -> List[str]:
         return [self.source]
 
-    def __init__(self, source: str, target: str, data: Union[Dict[str, object], None]):
+    def __init__(self,
+                 source: str,
+                 target: str,
+                 data: Union[Dict[str, object], None],
+                 dep_files: List[str],
+                 ):
         super().__init__()
         self.source = source  # type: str
         self.target = target  # type: str
+        self.dep_files = dep_files  # type: List[str]
         if data is None:
             self.data = dict()
         else:
@@ -29,7 +35,7 @@ class Mako(Builder):
         # and even a better correction:
         # sha1 of the source file + the sha1 of all the variables references from within
         # the source file.
-        return sha1_file(self.source)
+        return sha1_files(self.dep_files+[self.source])
 
     def build(self):
         try:

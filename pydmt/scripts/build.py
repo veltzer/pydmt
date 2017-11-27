@@ -8,7 +8,7 @@ from pydmt.features.templating import Templating
 
 def main():
     debug = False
-    sphinx = False
+    sphinx = True
     add_import_of_cwd = True
     if add_import_of_cwd:
         if sys.path[0] != "":
