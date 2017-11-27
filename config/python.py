@@ -1,6 +1,6 @@
 entry_points = {
     'console_scripts': [
-        'pydmt_build=pydmt.scripts.pydmt_build:main',
+        'pydmt_build=pydmt.scripts.build:main',
     ],
 }
 install_requires = [
