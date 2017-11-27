@@ -1,4 +1,5 @@
 import pylogconf
+import sys
 
 from pydmt.builders.sphinx import Sphinx
 from pydmt.core.pydmt import PyDMT
@@ -8,7 +9,10 @@ import config.project
 
 
 def main():
+    debug=True
     pylogconf.setup()
+    if debug:
+        print("system path is [{}]".format(sys.path))
     p = PyDMT()
     t = Templating()
     t.setup(p)

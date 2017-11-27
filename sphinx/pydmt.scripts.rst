@@ -4,10 +4,10 @@ pydmt\.scripts package
 Submodules
 ----------
 
-pydmt\.scripts\.pydmt\_build module
------------------------------------
+pydmt\.scripts\.build module
+----------------------------
 
-.. automodule:: pydmt.scripts.pydmt_build
+.. automodule:: pydmt.scripts.build
     :members:
     :undoc-members:
     :show-inheritance:
