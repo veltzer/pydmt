@@ -19,7 +19,7 @@ def main():
     p = PyDMT()
     t = Templating()
     t.setup(p)
-    if sphinx:
+    if sphinx and os.path.isdir("sphinx"):
         import config.project
         p.add_builder(Sphinx(package_name=config.project.project_name))
     p.build_all()
