@@ -1,10 +1,9 @@
-# infra
+# production requirements
 click
 pyfakeuse
 pylogconf
-# plugins
 mako
 Sphinx
-# development tools
+# dev requirements
 pypitools
 pydmt

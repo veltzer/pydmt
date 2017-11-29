@@ -4,12 +4,15 @@ entry_points = {
     ],
 }
 install_requires = [
-    # code requirements
+    # core
     'click',  # for command line parsing
     'pyfakeuse',  # for ignoring arguments to functions
     'pylogconf',  # for configuring logging
-    # builder requirements
+    # plugins
     'mako',  # for template handling
     'Sphinx',  # for the sphinx builder
     ]
-requirements3 = install_requires 
+dev_requires = [
+    'pypitools',  # for upload and registration
+    'pydmt',  # for building
+]
