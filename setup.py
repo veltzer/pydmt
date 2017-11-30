@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='pydmt',
-    version='0.0.46',
+    version='0.0.47',
     description='python dependency management tool',
     long_description='python dependency management tool',
     author='Mark Veltzer',
