@@ -1,6 +1,8 @@
 console_scripts = [
     'pydmt_build=pydmt.scripts.build:main',
 ]
+setup_requires = [
+]
 install_requires = [
     # core
     'click',  # for command line parsing
