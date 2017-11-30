@@ -1,8 +1,6 @@
-entry_points = {
-    'console_scripts': [
-        'pydmt_build=pydmt.scripts.build:main',
-    ],
-}
+console_scripts = [
+    'pydmt_build=pydmt.scripts.build:main',
+]
 install_requires = [
     # core
     'click',  # for command line parsing
@@ -15,4 +13,5 @@ install_requires = [
 dev_requires = [
     'pypitools',  # for upload and registration
     'pydmt',  # for building
+    'pyclassifiers',  # for specifying classifications
 ]
