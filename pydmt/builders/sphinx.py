@@ -42,12 +42,14 @@ class Sphinx(Builder):
                     self.package_name,
                 ]
             )
+        raise ValueError("Sphinx cannot find source code")
 
     def _get_source_folder_targets(self) -> List[str]:
         return [
             os.path.join(self.source_folder, "modules.rst"),
             os.path.join(self.source_folder, "{}.rst".format(self.package_name)),
-            os.path.join(self.source_folder, "{}.scripts.rst".format(self.package_name)),
+            # We need to add the list of all output files of running sphinx-apidoc
+            # os.path.join(self.source_folder, "{}.scripts.rst".format(self.package_name)),
         ]
 
     def _get_source_folder_real(self) -> List[str]:
