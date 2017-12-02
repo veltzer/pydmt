@@ -81,6 +81,7 @@
       <w>ports h</w>
       <w>postgresql</w>
       <w>pycache</w>
+      <w>pyclassifiers</w>
       <w>pydmt</w>
       <w>pyenv</w>
       <w>pyfakeuse</w>
