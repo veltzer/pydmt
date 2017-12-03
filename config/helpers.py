@@ -24,9 +24,12 @@ def array_indented(level: int, l: List[str], quote_char='\'', comma_after=False)
 def find_packages(path: str) -> List[str]:
     """
     A better version of find_packages than what setuptools offers
+    This function needs to be deterministic.
     :param path:
     :return:
     """
+    ret = []
     for root, _dir, files in os.walk(path):
         if '__init__.py' in files:
-            yield root.replace("/", ".")
+            ret.append(root.replace("/", "."))
+    return sorted(ret)

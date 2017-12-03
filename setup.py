@@ -10,12 +10,12 @@ setuptools.setup(
     version='0.0.49',
     packages=[
         'pydmt',
-        'pydmt.core',
-        'pydmt.builders',
-        'pydmt.utils',
-        'pydmt.scripts',
         'pydmt.api',
+        'pydmt.builders',
+        'pydmt.core',
         'pydmt.features',
+        'pydmt.scripts',
+        'pydmt.utils',
     ],
     # from here all is optional
     description='python dependency management tool',
