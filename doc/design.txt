@@ -82,3 +82,7 @@ Dependencies? How do you specify them?
 What if a rule does not know which files it is building?
 	We need an API for this.
 	In this `
+
+What about the name of the output file(s)? Should they be part of the checksum
+of the builder?
+	Think about it.
