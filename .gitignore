@@ -84,3 +84,5 @@ celerybeat-schedule
 /.pydmt
 
 /docs/.doctrees
+
+/inspections/
