@@ -7,6 +7,7 @@
       <w>apidoc</w>
       <w>aqxvse</w>
       <w>asprxr</w>
+      <w>autodoc</w>
       <w>awscli</w>
       <w>awskey</w>
       <w>builddepends</w>
@@ -18,6 +19,7 @@
       <w>csvtool</w>
       <w>debhelper</w>
       <w>doctrees</w>
+      <w>documentclass</w>
       <w>domainname</w>
       <w>dont</w>
       <w>doron</w>
@@ -28,12 +30,17 @@
       <w>filenames</w>
       <w>firstname</w>
       <w>fstab</w>
+      <w>genindex</w>
+      <w>gettext</w>
       <w>gitconfig</w>
       <w>gitignore</w>
       <w>gmail</w>
       <w>homedir</w>
+      <w>howto</w>
       <w>hspell</w>
+      <w>htbp</w>
       <w>htmlcov</w>
+      <w>htmlhelp</w>
       <w>htmls</w>
       <w>hushlogin</w>
       <w>hzfa</w>
@@ -46,6 +53,7 @@
       <w>iotop</w>
       <w>kdoibefntsfcidhn</w>
       <w>le #</w>
+      <w>letterpaper</w>
       <w>lftp</w>
       <w>lgpl</w>
       <w>licensors</w>
@@ -61,6 +69,7 @@
       <w>mkdir</w>
       <w>mkfs</w>
       <w>mnwey</w>
+      <w>modindex</w>
       <w>myrepos</w>
       <w>myworld</w>
       <w>mzqh</w>
@@ -72,17 +81,20 @@
       <w>nosetests</w>
       <w>odbo</w>
       <w>pageview</w>
+      <w>papersize</w>
       <w>partprobe</w>
       <w>passphrase</w>
       <w>passwd</w>
       <w>paypal</w>
       <w>pigz</w>
+      <w>pointsize</w>
       <w>populator</w>
       <w>ports h</w>
       <w>postgresql</w>
       <w>pycache</w>
       <w>pyclassifiers</w>
       <w>pydmt</w>
+      <w>pydmtdoc</w>
       <w>pyenv</w>
       <w>pyfakeuse</w>
       <w>pylogconf</w>
@@ -100,6 +112,7 @@
       <w>sbin</w>
       <w>scons</w>
       <w>scrapy</w>
+      <w>searchbox</w>
       <w>signkey</w>
       <w>smtp</w>
       <w>snipplet</w>
@@ -109,8 +122,10 @@
       <w>sublicensing</w>
       <w>sysstat</w>
       <w>templating</w>
+      <w>texinfo</w>
       <w>thls</w>
       <w>timedatectl</w>
+      <w>todos</w>
       <w>tofrodos</w>
       <w>ts #</w>
       <w>udevadm</w>
@@ -124,6 +139,7 @@
       <w>veltzer</w>
       <w>venv</w>
       <w>vgyzp</w>
+      <w>viewcode</w>
       <w>virtualenvwrapper</w>
       <w>webassets</w>
       <w>werror</w>

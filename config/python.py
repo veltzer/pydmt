@@ -17,7 +17,7 @@ install_requires = [
     # plugins
     'mako',  # for template handling
     'Sphinx',  # for the sphinx builder
-    ]
+]
 
 dev_requires = [
     'pypitools',  # for upload and registration

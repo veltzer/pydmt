@@ -28,10 +28,15 @@ class Sphinx(Builder):
         self.target_folder = target_folder
 
     def get_signature(self) -> str:
-        if os.path.isfile(self.package_name):
+        if os.path.isfile(self.package_name+".py"):
+            files = [self.package_name+".py"]
+            files.extend(self._get_source_folder_real())
             return sha1_files_folders(
-                files=[self.package_name],
-                folders=[self.source_folder],
+                files=files,
+                folders=[
+                    os.path.join(self.source_folder, "static"),
+                    os.path.join(self.source_folder, "copy"),
+                ],
             )
         if os.path.isdir(self.package_name):
             return sha1_files_folders(
