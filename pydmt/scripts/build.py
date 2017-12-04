@@ -1,5 +1,5 @@
 import os
-import pylogconf
+import pylogconf.core
 import sys
 
 from pydmt.builders.sphinx import Sphinx
@@ -14,7 +14,7 @@ def main():
     if add_import_of_cwd:
         if sys.path[0] != "":
             sys.path.insert(0, "")
-    pylogconf.setup()
+    pylogconf.core.setup()
     if debug:
         print("system path is [{}]".format(sys.path))
     p = PyDMT()
