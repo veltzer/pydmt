@@ -70,8 +70,11 @@ class Sphinx(Builder):
             "-f",
             "-o",
             self.source_folder,
-            self.package_name,
         ]
+        if os.path.isfile(self.package_name+'.py'):
+            args.append(self.package_name+'.py')
+        else:
+            args.append(self.package_name)
         subprocess.check_call(args)
         if os.path.isdir(self.target_folder):
             shutil.rmtree(self.target_folder, ignore_errors=False)
