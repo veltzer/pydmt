@@ -1,3 +1,9 @@
+- cannot do something like:
+	$ pydmt_build | foo
+	get weird errors - take care of that.
+- only print things that fail by default.
+- return code of pydmt is always ok even though some targets
+	fail.
 - currently pydmt prints out an event including doing
 	nothing.
 	make the standard configure not print anything when there

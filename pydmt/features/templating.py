@@ -8,10 +8,10 @@ from pydmt.core.utils import files_under_folder
 
 class Templating(Feature):
     def __init__(
-            self,
-            data=None,
-            templates_folder: str="templates",
-            config_folder: str="config",
+        self,
+        data=None,
+        templates_folder: str = "templates",
+        config_folder: str = "config",
     ):
         self.data = data
         self.templates_folder = templates_folder
