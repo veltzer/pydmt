@@ -41,7 +41,7 @@
 <span id="pydmt-api-builder-module"></span><h2>pydmt.api.builder module<a class="headerlink" href="#module-pydmt.api.builder" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pydmt.api.builder.Builder">
-<em class="property">class </em><code class="descclassname">pydmt.api.builder.</code><code class="descname">Builder</code><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pydmt.api.builder.</code><code class="sig-name descname">Builder</code><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A Builder is what really builds things in the system.
 A builder knows on which inputs it relies and what
@@ -49,36 +49,36 @@ outputs it generates (sometimes before build and sometimes
 after).</p>
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.build">
-<code class="descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.build" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method actually does the building</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_name">
-<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_signature">
-<code class="descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_signature" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the sha1 of anything that identifies the build</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_sources">
-<code class="descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_targets">
-<code class="descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
 you must implement the get_results_names_post_build method and return None here.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_targets_post_build">
-<code class="descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
 <dd><p>find out the names of the files that you produced.
 If you implemented the get_results_names and there you return all the results
 that you created then you don’t need to implement anything here</p>
@@ -91,7 +91,7 @@ that you created then you don’t need to implement anything here</p>
 <span id="pydmt-api-feature-module"></span><h2>pydmt.api.feature module<a class="headerlink" href="#module-pydmt.api.feature" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pydmt.api.feature.Feature">
-<em class="property">class </em><code class="descclassname">pydmt.api.feature.</code><code class="descname">Feature</code><a class="reference internal" href="_modules/pydmt/api/feature.html#Feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pydmt.api.feature.</code><code class="sig-name descname">Feature</code><a class="reference internal" href="_modules/pydmt/api/feature.html#Feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A Feature is a piece of code that adds builder to a pydmt system in a predefined
 way. This is a way to share common practices between projects.</p>
@@ -101,7 +101,7 @@ way. This is a way to share common practices between projects.</p>
 <p>These are similar to facets or natures in development environments.</p>
 <dl class="method">
 <dt id="pydmt.api.feature.Feature.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><em>pydmt: pydmt.core.pydmt.PyDMT</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/api/feature.html#Feature.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature.setup" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">setup</code><span class="sig-paren">(</span><em class="sig-param">pydmt: pydmt.core.pydmt.PyDMT</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/api/feature.html#Feature.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>build your feature here</p>
 </dd></dl>
 
@@ -133,10 +133,10 @@ way. This is a way to share common practices between projects.</p>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -150,7 +150,7 @@ way. This is a way to share common practices between projects.</p>
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
