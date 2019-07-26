@@ -20,7 +20,7 @@ def main():
         if folder not in sys.path:
             sys.path.insert(0, folder)
     if add_import_of_home:
-        folder = os.path.join(str(pathlib.Path.home()), ".config/pydmt/config")
+        folder = os.path.join(str(pathlib.Path.home()), ".config/pydmt")
         if folder not in sys.path:
             sys.path.insert(0, folder)
     if add_import_of_cwd:
