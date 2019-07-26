@@ -30,23 +30,23 @@ class TestAll(unittest.TestCase):
         stats = p.build_all()
         self.assertIsInstance(stats, BuildProcessStats, "must be BuildProcessStats")
 
+    @staticmethod
+    def get_std_test():
+        shutil.copy("/etc/passwd", "passwd")
+        p = PyDMT()
+        b = Copy("passwd", "copy_of_passwd")
+        p.add_builder(b)
+        return p.build_all()
+
     def test03SimpleCopy(self):
         with tempdir():
-            shutil.copy("/etc/passwd", "passwd")
-            p = PyDMT()
-            b = Copy("passwd", "copy_of_passwd")
-            p.add_builder(b)
-            stats = p.build_all()
+            stats = self.get_std_test()
             self.assertEqual(stats.get_builder_ok(), 1)
             self.assertEqual(stats.get_copy_missing(), 0)
 
     def test04Incremental(self):
         with tempdir():
-            shutil.copy("/etc/passwd", "passwd")
-            p = PyDMT()
-            b = Copy("passwd", "copy_of_passwd")
-            p.add_builder(b)
-            stats = p.build_all()
+            stats = self.get_std_test()
             self.assertEqual(stats.get_builder_ok(), 1)
             self.assertEqual(stats.get_copy_missing(), 0)
             self.assertEqual(stats.get_nop(), 0)
