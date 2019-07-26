@@ -1,11 +1,19 @@
-pydmt\.utils package
-====================
+pydmt.utils package
+===================
 
 Submodules
 ----------
 
-pydmt\.utils\.python module
----------------------------
+pydmt.utils.php module
+----------------------
+
+.. automodule:: pydmt.utils.php
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pydmt.utils.python module
+-------------------------
 
 .. automodule:: pydmt.utils.python
     :members:

@@ -1,19 +1,19 @@
-pydmt\.api package
-==================
+pydmt.api package
+=================
 
 Submodules
 ----------
 
-pydmt\.api\.builder module
---------------------------
+pydmt.api.builder module
+------------------------
 
 .. automodule:: pydmt.api.builder
     :members:
     :undoc-members:
     :show-inheritance:
 
-pydmt\.api\.feature module
---------------------------
+pydmt.api.feature module
+------------------------
 
 .. automodule:: pydmt.api.feature
     :members:

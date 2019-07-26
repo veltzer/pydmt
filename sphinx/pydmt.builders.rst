@@ -1,35 +1,35 @@
-pydmt\.builders package
-=======================
+pydmt.builders package
+======================
 
 Submodules
 ----------
 
-pydmt\.builders\.copy module
-----------------------------
+pydmt.builders.copy module
+--------------------------
 
 .. automodule:: pydmt.builders.copy
     :members:
     :undoc-members:
     :show-inheritance:
 
-pydmt\.builders\.fail module
-----------------------------
+pydmt.builders.fail module
+--------------------------
 
 .. automodule:: pydmt.builders.fail
     :members:
     :undoc-members:
     :show-inheritance:
 
-pydmt\.builders\.mako module
-----------------------------
+pydmt.builders.mako module
+--------------------------
 
 .. automodule:: pydmt.builders.mako
     :members:
     :undoc-members:
     :show-inheritance:
 
-pydmt\.builders\.sphinx module
-------------------------------
+pydmt.builders.sphinx module
+----------------------------
 
 .. automodule:: pydmt.builders.sphinx
     :members:
