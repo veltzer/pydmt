@@ -16,7 +16,7 @@ def main():
     add_import_of_home = True
     add_import_of_shared = True
     if add_import_of_shared:
-        folder = "/etc/pydmt/config"
+        folder = "/etc/pydmt"
         if folder not in sys.path:
             sys.path.insert(0, folder)
     if add_import_of_home:

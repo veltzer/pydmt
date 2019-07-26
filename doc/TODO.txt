@@ -1,3 +1,9 @@
+- today pydmt gets configs from:
+	.
+	~/.config/pydmt
+	/etc/pydmt
+	make it take configs also from the installation of pydmt
+	so that I could share configs like git etc...
 - cannot do something like:
 	$ pydmt_build | foo
 	get weird errors - take care of that.
