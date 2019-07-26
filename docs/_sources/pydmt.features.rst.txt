@@ -1,11 +1,11 @@
-pydmt\.features package
-=======================
+pydmt.features package
+======================
 
 Submodules
 ----------
 
-pydmt\.features\.templating module
-----------------------------------
+pydmt.features.templating module
+--------------------------------
 
 .. automodule:: pydmt.features.templating
     :members:

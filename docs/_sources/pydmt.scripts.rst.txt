@@ -1,11 +1,11 @@
-pydmt\.scripts package
-======================
+pydmt.scripts package
+=====================
 
 Submodules
 ----------
 
-pydmt\.scripts\.build module
-----------------------------
+pydmt.scripts.build module
+--------------------------
 
 .. automodule:: pydmt.scripts.build
     :members:

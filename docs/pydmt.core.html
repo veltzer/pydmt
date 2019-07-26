@@ -1,26 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>pydmt.core package &#8212; pydmt 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pydmt.features package" href="pydmt.features.html" />
@@ -31,13 +22,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="pydmt-core-package">
@@ -50,7 +42,7 @@
 <dl class="class">
 <dt id="pydmt.core.cache.Cache">
 <em class="property">class </em><code class="descclassname">pydmt.core.cache.</code><code class="descname">Cache</code><a class="reference internal" href="_modules/pydmt/core/cache.html#Cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.cache.Cache" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="pydmt.core.cache.Cache.get_list_filename">
 <code class="descname">get_list_filename</code><span class="sig-paren">(</span><em>signature: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/core/cache.html#Cache.get_list_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.cache.Cache.get_list_filename" title="Permalink to this definition">¶</a></dt>
@@ -63,7 +55,7 @@
 
 <dl class="staticmethod">
 <dt id="pydmt.core.cache.Cache.iterate_objects">
-<em class="property">static </em><code class="descname">iterate_objects</code><span class="sig-paren">(</span><em>file_name: str</em><span class="sig-paren">)</span> &#x2192; typing.Iterable[typing.Tuple[str, str]]<a class="reference internal" href="_modules/pydmt/core/cache.html#Cache.iterate_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.cache.Cache.iterate_objects" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">iterate_objects</code><span class="sig-paren">(</span><em>file_name: str</em><span class="sig-paren">)</span> &#x2192; Iterable[Tuple[str, str]]<a class="reference internal" href="_modules/pydmt/core/cache.html#Cache.iterate_objects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.cache.Cache.iterate_objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -92,7 +84,7 @@
 <dl class="class">
 <dt id="pydmt.core.graph.Graph">
 <em class="property">class </em><code class="descclassname">pydmt.core.graph.</code><code class="descname">Graph</code><a class="reference internal" href="_modules/pydmt/core/graph.html#Graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.graph.Graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 </div>
@@ -101,7 +93,7 @@
 <dl class="class">
 <dt id="pydmt.core.pydmt.BuildProcessStats">
 <em class="property">class </em><code class="descclassname">pydmt.core.pydmt.</code><code class="descname">BuildProcessStats</code><a class="reference internal" href="_modules/pydmt/core/pydmt.html#BuildProcessStats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.pydmt.BuildProcessStats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="pydmt.core.pydmt.BuildProcessStats.add_builder_fail">
 <code class="descname">add_builder_fail</code><span class="sig-paren">(</span><em>builder: pydmt.api.builder.Builder</em>, <em>e: Exception</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/core/pydmt.html#BuildProcessStats.add_builder_fail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.pydmt.BuildProcessStats.add_builder_fail" title="Permalink to this definition">¶</a></dt>
@@ -152,7 +144,7 @@
 <dl class="class">
 <dt id="pydmt.core.pydmt.PyDMT">
 <em class="property">class </em><code class="descclassname">pydmt.core.pydmt.</code><code class="descname">PyDMT</code><a class="reference internal" href="_modules/pydmt/core/pydmt.html#PyDMT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.pydmt.PyDMT" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="pydmt.core.pydmt.PyDMT.add_builder">
 <code class="descname">add_builder</code><span class="sig-paren">(</span><em>b: pydmt.api.builder.Builder</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/core/pydmt.html#PyDMT.add_builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.pydmt.PyDMT.add_builder" title="Permalink to this definition">¶</a></dt>
@@ -178,7 +170,7 @@
 
 <dl class="method">
 <dt id="pydmt.core.pydmt.PyDMT.build_by_targets">
-<code class="descname">build_by_targets</code><span class="sig-paren">(</span><em>targets: typing.List[str], stats: pydmt.core.pydmt.BuildProcessStats</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/core/pydmt.html#PyDMT.build_by_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.pydmt.PyDMT.build_by_targets" title="Permalink to this definition">¶</a></dt>
+<code class="descname">build_by_targets</code><span class="sig-paren">(</span><em>targets: List[str], stats: pydmt.core.pydmt.BuildProcessStats</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/core/pydmt.html#PyDMT.build_by_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.pydmt.PyDMT.build_by_targets" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -188,7 +180,7 @@
 <span id="pydmt-core-tempdir-module"></span><h2>pydmt.core.tempdir module<a class="headerlink" href="#module-pydmt.core.tempdir" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="pydmt.core.tempdir.cd">
-<code class="descclassname">pydmt.core.tempdir.</code><code class="descname">cd</code><span class="sig-paren">(</span><em>new_dir: str</em>, <em>cleanup: typing.Callable</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/core/tempdir.html#cd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.tempdir.cd" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.tempdir.</code><code class="descname">cd</code><span class="sig-paren">(</span><em>new_dir: str</em>, <em>cleanup: Callable</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/core/tempdir.html#cd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.tempdir.cd" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -206,12 +198,12 @@
 
 <dl class="function">
 <dt id="pydmt.core.utils.files_under_folder">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">files_under_folder</code><span class="sig-paren">(</span><em>folder: str</em><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference internal" href="_modules/pydmt/core/utils.html#files_under_folder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.files_under_folder" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">files_under_folder</code><span class="sig-paren">(</span><em>folder: str</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/core/utils.html#files_under_folder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.files_under_folder" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pydmt.core.utils.files_under_folders">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">files_under_folders</code><span class="sig-paren">(</span><em>folders: typing.List[str]</em><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference internal" href="_modules/pydmt/core/utils.html#files_under_folders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.files_under_folders" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">files_under_folders</code><span class="sig-paren">(</span><em>folders: List[str]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/core/utils.html#files_under_folders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.files_under_folders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -221,7 +213,7 @@
 
 <dl class="function">
 <dt id="pydmt.core.utils.hex_digest_files">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">hex_digest_files</code><span class="sig-paren">(</span><em>filenames: typing.List[str], algorithm_name: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#hex_digest_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.hex_digest_files" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">hex_digest_files</code><span class="sig-paren">(</span><em>filenames: List[str], algorithm_name: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#hex_digest_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.hex_digest_files" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -236,17 +228,17 @@
 
 <dl class="function">
 <dt id="pydmt.core.utils.sha1_files">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">sha1_files</code><span class="sig-paren">(</span><em>filenames: typing.List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#sha1_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.sha1_files" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">sha1_files</code><span class="sig-paren">(</span><em>filenames: List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#sha1_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.sha1_files" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pydmt.core.utils.sha1_files_folders">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">sha1_files_folders</code><span class="sig-paren">(</span><em>files: typing.List[str], folders: typing.List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#sha1_files_folders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.sha1_files_folders" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">sha1_files_folders</code><span class="sig-paren">(</span><em>files: List[str], folders: List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#sha1_files_folders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.sha1_files_folders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="pydmt.core.utils.sha1_folders">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">sha1_folders</code><span class="sig-paren">(</span><em>folders: typing.List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#sha1_folders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.sha1_folders" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">sha1_folders</code><span class="sig-paren">(</span><em>folders: List[str]</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/core/utils.html#sha1_folders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.sha1_folders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -256,7 +248,7 @@
 
 <dl class="function">
 <dt id="pydmt.core.utils.unlink_files">
-<code class="descclassname">pydmt.core.utils.</code><code class="descname">unlink_files</code><span class="sig-paren">(</span><em>files: typing.List[str], only_if_exist: bool = True</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/core/utils.html#unlink_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.unlink_files" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pydmt.core.utils.</code><code class="descname">unlink_files</code><span class="sig-paren">(</span><em>files: List[str], only_if_exist: bool = True</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/core/utils.html#unlink_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.core.utils.unlink_files" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -267,6 +259,7 @@
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -285,12 +278,12 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -301,8 +294,8 @@
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/pydmt.core.rst.txt"

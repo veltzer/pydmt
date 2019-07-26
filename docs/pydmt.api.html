@@ -1,26 +1,17 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>pydmt.api package &#8212; pydmt 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pydmt.builders package" href="pydmt.builders.html" />
@@ -31,13 +22,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="pydmt-api-package">
@@ -50,7 +42,7 @@
 <dl class="class">
 <dt id="pydmt.api.builder.Builder">
 <em class="property">class </em><code class="descclassname">pydmt.api.builder.</code><code class="descname">Builder</code><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A Builder is what really builds things in the system.
 A builder knows on which inputs it relies and what
 outputs it generates (sometimes before build and sometimes
@@ -74,19 +66,19 @@ after).</p>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_sources">
-<code class="descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_targets">
-<code class="descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
 you must implement the get_results_names_post_build method and return None here.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pydmt.api.builder.Builder.get_targets_post_build">
-<code class="descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
 <dd><p>find out the names of the files that you produced.
 If you implemented the get_results_names and there you return all the results
 that you created then you don’t need to implement anything here</p>
@@ -100,7 +92,7 @@ that you created then you don’t need to implement anything here</p>
 <dl class="class">
 <dt id="pydmt.api.feature.Feature">
 <em class="property">class </em><code class="descclassname">pydmt.api.feature.</code><code class="descname">Feature</code><a class="reference internal" href="_modules/pydmt/api/feature.html#Feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A Feature is a piece of code that adds builder to a pydmt system in a predefined
 way. This is a way to share common practices between projects.</p>
 <p>Examples of features can be:
@@ -123,6 +115,7 @@ way. This is a way to share common practices between projects.</p>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -141,12 +134,12 @@ way. This is a way to share common practices between projects.</p>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -157,8 +150,8 @@ way. This is a way to share common practices between projects.</p>
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/pydmt.api.rst.txt"
