@@ -3,7 +3,8 @@ import shutil
 from typing import List
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_files_folders, files_under_folder, unlink_files, copy_mkdir
+from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
+from pydmt.utils.digest import sha1_files_folders
 import subprocess
 
 

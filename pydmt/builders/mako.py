@@ -8,7 +8,8 @@ import mako.template
 import os
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import makedirs_for_file, sha1_files
+from pydmt.utils.filesystem import makedirs_for_file
+from pydmt.utils.digest import sha1_files
 
 
 class Mako(Builder):

@@ -1,7 +1,7 @@
 import os
 from typing import Tuple, Iterable
 
-from pydmt.core.utils import copy_mkdir, makedirs_for_file, files_under_folder
+from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file, files_under_folder
 
 NAME_OBJECTS = "objects"
 NAME_LISTS = "lists"
