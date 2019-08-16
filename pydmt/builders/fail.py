@@ -1,7 +1,7 @@
 from typing import List
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_file
+from pydmt.utils.digest import sha1_file
 
 
 class Fail(Builder):

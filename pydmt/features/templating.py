@@ -3,7 +3,7 @@ import os
 from pydmt.api.feature import Feature
 from pydmt.builders.mako import Mako
 from pydmt.core.pydmt import PyDMT
-from pydmt.core.utils import files_under_folder
+from pydmt.utils.filesystem import files_under_folder
 
 
 class Templating(Feature):

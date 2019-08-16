@@ -3,7 +3,7 @@ from typing import List
 import shutil
 
 from pydmt.api.builder import Builder
-from pydmt.core.utils import sha1_file
+from pydmt.utils.digest import sha1_file
 
 
 class Copy(Builder):

@@ -5,7 +5,8 @@ import os
 
 from pydmt.api.builder import Builder
 from pydmt.core.cache import Cache
-from pydmt.core.utils import sha1_file, copy_mkdir
+from pydmt.utils.filesystem import copy_mkdir
+from pydmt.utils.digest import sha1_file
 
 
 class BuildProcessStats:
