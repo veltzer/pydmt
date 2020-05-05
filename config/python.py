@@ -9,6 +9,12 @@ console_scripts = [
 setup_requires = [
 ]
 
+test_requires = [
+    'pylint',  # to check for lint errors
+    'pytest',  # for testing
+    'pyflakes',  # for testing
+]
+
 install_requires = [
     # core
     'click',  # for command line parsing

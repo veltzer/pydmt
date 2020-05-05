@@ -36,14 +36,6 @@ pydmt.core.tempdir module
    :undoc-members:
    :show-inheritance:
 
-pydmt.core.utils module
------------------------
-
-.. automodule:: pydmt.core.utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 
 Module contents
 ---------------

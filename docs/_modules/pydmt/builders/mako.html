@@ -41,7 +41,8 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="k">import</span> <span class="n">Builder</span>
-<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">makedirs_for_file</span><span class="p">,</span> <span class="n">sha1_files</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="k">import</span> <span class="n">makedirs_for_file</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="k">import</span> <span class="n">sha1_files</span>
 
 
 <div class="viewcode-block" id="Mako"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako">[docs]</a><span class="k">class</span> <span class="nc">Mako</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>

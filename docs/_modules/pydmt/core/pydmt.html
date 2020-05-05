@@ -38,7 +38,8 @@
 
 <span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="k">import</span> <span class="n">Builder</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.cache</span> <span class="k">import</span> <span class="n">Cache</span>
-<span class="kn">from</span> <span class="nn">pydmt.core.utils</span> <span class="k">import</span> <span class="n">sha1_file</span><span class="p">,</span> <span class="n">copy_mkdir</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="k">import</span> <span class="n">copy_mkdir</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="k">import</span> <span class="n">sha1_file</span>
 
 
 <div class="viewcode-block" id="BuildProcessStats"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats">[docs]</a><span class="k">class</span> <span class="nc">BuildProcessStats</span><span class="p">:</span>

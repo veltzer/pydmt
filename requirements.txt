@@ -9,3 +9,7 @@ Sphinx
 pypitools
 pydmt
 pyclassifiers
+# test requirements
+pylint
+pytest
+pyflakes

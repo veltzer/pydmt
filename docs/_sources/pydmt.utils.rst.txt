@@ -4,6 +4,22 @@ pydmt.utils package
 Submodules
 ----------
 
+pydmt.utils.digest module
+-------------------------
+
+.. automodule:: pydmt.utils.digest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pydmt.utils.filesystem module
+-----------------------------
+
+.. automodule:: pydmt.utils.filesystem
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.utils.php module
 ----------------------
 
