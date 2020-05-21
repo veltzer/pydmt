@@ -79,6 +79,8 @@ class Sphinx(Builder):
         subprocess.check_call(args)
         if os.path.isdir(self.target_folder):
             shutil.rmtree(self.target_folder, ignore_errors=False)
+            # TODO: add PYTHONPATH="." since somehow sphinx-build does not make imports from the
+            # . folder but from general python path
             subprocess.check_call([
                 "sphinx-build",
                 # don't use a saved environment, always read all files
