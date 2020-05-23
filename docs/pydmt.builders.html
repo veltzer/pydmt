@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
     <title>pydmt.builders package &#8212; pydmt 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pydmt.core package" href="pydmt.core.html" />
@@ -39,30 +39,30 @@
 </div>
 <div class="section" id="module-pydmt.builders.copy">
 <span id="pydmt-builders-copy-module"></span><h2>pydmt.builders.copy module<a class="headerlink" href="#module-pydmt.builders.copy" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="pydmt.builders.copy.Copy">
-<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.copy.</code><code class="sig-name descname">Copy</code><span class="sig-paren">(</span><em class="sig-param">source: str</em>, <em class="sig-param">target: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.copy.</code><code class="sig-name descname">Copy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">target</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pydmt.api.html#pydmt.api.builder.Builder" title="pydmt.api.builder.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">pydmt.api.builder.Builder</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.copy.Copy.build">
 <code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method actually does the building</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.copy.Copy.get_signature">
 <code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.get_signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the sha1 of anything that identifies the build</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.copy.Copy.get_sources">
-<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.get_sources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.copy.Copy.get_targets">
-<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.get_targets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
 you must implement the get_results_names_post_build method and return None here.</p>
 </dd></dl>
@@ -72,30 +72,30 @@ you must implement the get_results_names_post_build method and return None here.
 </div>
 <div class="section" id="module-pydmt.builders.fail">
 <span id="pydmt-builders-fail-module"></span><h2>pydmt.builders.fail module<a class="headerlink" href="#module-pydmt.builders.fail" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="pydmt.builders.fail.Fail">
-<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.fail.</code><code class="sig-name descname">Fail</code><span class="sig-paren">(</span><em class="sig-param">source: str</em>, <em class="sig-param">target: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.fail.</code><code class="sig-name descname">Fail</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">target</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pydmt.api.html#pydmt.api.builder.Builder" title="pydmt.api.builder.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">pydmt.api.builder.Builder</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.fail.Fail.build">
 <code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method actually does the building</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.fail.Fail.get_signature">
 <code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.get_signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the sha1 of anything that identifies the build</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.fail.Fail.get_sources">
-<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.get_sources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.fail.Fail.get_targets">
-<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.get_targets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
 you must implement the get_results_names_post_build method and return None here.</p>
 </dd></dl>
@@ -105,42 +105,42 @@ you must implement the get_results_names_post_build method and return None here.
 </div>
 <div class="section" id="module-pydmt.builders.mako">
 <span id="pydmt-builders-mako-module"></span><h2>pydmt.builders.mako module<a class="headerlink" href="#module-pydmt.builders.mako" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="pydmt.builders.mako.Mako">
-<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.mako.</code><code class="sig-name descname">Mako</code><span class="sig-paren">(</span><em class="sig-param">source: str, target: str, data: Optional[Dict[str, object]], dep_files: List[str]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.mako.</code><code class="sig-name descname">Mako</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">target</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>object<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">dep_files</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pydmt.api.html#pydmt.api.builder.Builder" title="pydmt.api.builder.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">pydmt.api.builder.Builder</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.mako.Mako.build">
 <code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method actually does the building</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.mako.Mako.get_signature">
 <code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.get_signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the sha1 of anything that identifies the build</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.mako.Mako.get_sources">
-<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.get_sources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.mako.Mako.get_targets">
-<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.get_targets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
 you must implement the get_results_names_post_build method and return None here.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="pydmt.builders.mako.print_exception">
-<code class="sig-prename descclassname">pydmt.builders.mako.</code><code class="sig-name descname">print_exception</code><span class="sig-paren">(</span><em class="sig-param">e</em>, <em class="sig-param">input_file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#print_exception"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.print_exception" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pydmt.builders.mako.</code><code class="sig-name descname">print_exception</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e</span></em>, <em class="sig-param"><span class="n">input_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#print_exception"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.print_exception" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="pydmt.builders.mako.print_full_exception">
 <code class="sig-prename descclassname">pydmt.builders.mako.</code><code class="sig-name descname">print_full_exception</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#print_full_exception"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.print_full_exception" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -148,30 +148,30 @@ you must implement the get_results_names_post_build method and return None here.
 </div>
 <div class="section" id="module-pydmt.builders.sphinx">
 <span id="pydmt-builders-sphinx-module"></span><h2>pydmt.builders.sphinx module<a class="headerlink" href="#module-pydmt.builders.sphinx" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="pydmt.builders.sphinx.Sphinx">
-<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.sphinx.</code><code class="sig-name descname">Sphinx</code><span class="sig-paren">(</span><em class="sig-param">package_name: str</em>, <em class="sig-param">source_folder: str = 'sphinx'</em>, <em class="sig-param">target_folder: str = 'docs'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.sphinx.</code><code class="sig-name descname">Sphinx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">source_folder</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'sphinx'</span></em>, <em class="sig-param"><span class="n">target_folder</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'docs'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pydmt.api.html#pydmt.api.builder.Builder" title="pydmt.api.builder.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">pydmt.api.builder.Builder</span></code></a></p>
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.sphinx.Sphinx.build">
 <code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method actually does the building</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.sphinx.Sphinx.get_signature">
 <code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.get_signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the sha1 of anything that identifies the build</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.sphinx.Sphinx.get_sources">
-<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.get_sources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.builders.sphinx.Sphinx.get_targets_post_build">
-<code class="sig-name descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
 <dd><p>find out the names of the files that you produced.
 If you implemented the get_results_names and there you return all the results
 that you created then you don’t need to implement anything here</p>
@@ -213,7 +213,7 @@ that you created then you don’t need to implement anything here</p>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -222,7 +222,7 @@ that you created then you don’t need to implement anything here</p>
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

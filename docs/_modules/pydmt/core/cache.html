@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
     <title>pydmt.core.cache &#8212; pydmt 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
    
@@ -32,9 +32,9 @@
             
   <h1>Source code for pydmt.core.cache</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Iterable</span>
 
-<span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="k">import</span> <span class="n">copy_mkdir</span><span class="p">,</span> <span class="n">makedirs_for_file</span><span class="p">,</span> <span class="n">files_under_folder</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">copy_mkdir</span><span class="p">,</span> <span class="n">makedirs_for_file</span><span class="p">,</span> <span class="n">files_under_folder</span>
 
 <span class="n">NAME_OBJECTS</span> <span class="o">=</span> <span class="s2">&quot;objects&quot;</span>
 <span class="n">NAME_LISTS</span> <span class="o">=</span> <span class="s2">&quot;lists&quot;</span>
@@ -42,7 +42,7 @@
 
 
 <div class="viewcode-block" id="Cache"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache">[docs]</a><span class="k">class</span> <span class="nc">Cache</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">files_under_folder</span><span class="p">(</span><span class="n">FOLDER_NAME</span><span class="p">))</span>
 
 <div class="viewcode-block" id="Cache.get_list_filename"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache.get_list_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_list_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -116,7 +116,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -125,7 +125,7 @@
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

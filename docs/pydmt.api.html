@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
     <title>pydmt.api package &#8212; pydmt 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pydmt.builders package" href="pydmt.builders.html" />
@@ -39,7 +39,7 @@
 </div>
 <div class="section" id="module-pydmt.api.builder">
 <span id="pydmt-api-builder-module"></span><h2>pydmt.api.builder module<a class="headerlink" href="#module-pydmt.api.builder" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="pydmt.api.builder.Builder">
 <em class="property">class </em><code class="sig-prename descclassname">pydmt.api.builder.</code><code class="sig-name descname">Builder</code><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -47,38 +47,38 @@
 A builder knows on which inputs it relies and what
 outputs it generates (sometimes before build and sometimes
 after).</p>
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.builder.Builder.build">
 <em class="property">abstract </em><code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>this method actually does the building</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_name">
 <code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_signature">
 <em class="property">abstract </em><code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_signature" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the sha1 of anything that identifies the build</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_sources">
-<em class="property">abstract </em><code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_targets">
-<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
 you must implement the get_results_names_post_build method and return None here.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_targets_post_build">
-<code class="sig-name descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_targets_post_build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_targets_post_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_targets_post_build" title="Permalink to this definition">¶</a></dt>
 <dd><p>find out the names of the files that you produced.
 If you implemented the get_results_names and there you return all the results
 that you created then you don’t need to implement anything here</p>
@@ -89,7 +89,7 @@ that you created then you don’t need to implement anything here</p>
 </div>
 <div class="section" id="module-pydmt.api.feature">
 <span id="pydmt-api-feature-module"></span><h2>pydmt.api.feature module<a class="headerlink" href="#module-pydmt.api.feature" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="pydmt.api.feature.Feature">
 <em class="property">class </em><code class="sig-prename descclassname">pydmt.api.feature.</code><code class="sig-name descname">Feature</code><a class="reference internal" href="_modules/pydmt/api/feature.html#Feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -99,9 +99,9 @@ way. This is a way to share common practices between projects.</p>
 - all the rules about how to build a python module with documentation and release it.
 - all the rules about how to build a C project and release it.</p>
 <p>These are similar to facets or natures in development environments.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="pydmt.api.feature.Feature.setup">
-<em class="property">abstract </em><code class="sig-name descname">setup</code><span class="sig-paren">(</span><em class="sig-param">pydmt: pydmt.core.pydmt.PyDMT</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/api/feature.html#Feature.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature.setup" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">setup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pydmt</span><span class="p">:</span> <span class="n"><a class="reference internal" href="pydmt.core.html#pydmt.core.pydmt.PyDMT" title="pydmt.core.pydmt.PyDMT">pydmt.core.pydmt.PyDMT</a></span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/api/feature.html#Feature.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.feature.Feature.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>build your feature here</p>
 </dd></dl>
 
@@ -141,7 +141,7 @@ way. This is a way to share common practices between projects.</p>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -150,7 +150,7 @@ way. This is a way to share common practices between projects.</p>
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
