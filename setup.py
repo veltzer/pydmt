@@ -40,7 +40,6 @@ setuptools.setup(
         'python3',
     ],
     install_requires=[
-        'click',
         'pyfakeuse',
         'pylogconf',
         'mako',
