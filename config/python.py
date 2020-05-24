@@ -17,7 +17,6 @@ test_requires = [
 
 install_requires = [
     # core
-    'click',  # for command line parsing
     'pyfakeuse',  # for ignoring arguments to functions
     'pylogconf',  # for configuring logging
     # plugins
