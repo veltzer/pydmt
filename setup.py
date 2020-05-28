@@ -7,7 +7,7 @@ http://setuptools.readthedocs.io/en/latest/setuptools.html
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pydmt',
-    version='0.0.55',
+    version='0.0.56',
     packages=[
         'pydmt',
         'pydmt.api',
