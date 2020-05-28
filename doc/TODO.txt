@@ -1,5 +1,3 @@
-- return code of pydmt is always ok even though some targets
-	fail.
 - fix the fact that we run sphinx several times
 	(we need to add . to pythonpath).
 - support other template types like jinja2, mustache, string.template (standard library), ...
