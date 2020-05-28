@@ -1,5 +1,7 @@
 - fix the fact that we run sphinx several times
 	(we need to add . to pythonpath).
+- suppress the output of sphinx and only show it when there are problems.
+- maybe run sphinx programaticlly?
 - support other template types like jinja2, mustache, string.template (standard library), ...
 - today pydmt gets configs from:
 	.
@@ -8,13 +10,6 @@
 	make it take configs also from the installation of pydmt
 	so that I could share configs like git etc...
 - cannot do something like:
-	$ pydmt_build | foo
+	$ pydmt build | foo
 	get weird errors - take care of that.
-- only print things that actually run stuff.
-	we are printing way too much.
-- currently pydmt prints out an event including doing
-	nothing.
-	make the standard configure not print anything when there
-	is nothing to do.
-	make this configurable.
 - emit logging messages when things are running.
