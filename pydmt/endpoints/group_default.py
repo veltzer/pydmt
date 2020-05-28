@@ -1,14 +1,46 @@
 import os
+
+import pydmt.version
 import pylogconf.core
 import sys
 import pathlib
+
+from pytconf.config import register_function_group, register_endpoint
 
 from pydmt.builders.sphinx import Sphinx
 from pydmt.core.pydmt import PyDMT
 from pydmt.features.templating import Templating
 
 
-def main():
+GROUP_NAME_DEFAULT = "default"
+GROUP_DESCRIPTION_DEFAULT = "all pymakehelper commands"
+
+
+def register_group_default():
+    """
+    register the name and description of this group
+    """
+    register_function_group(
+        function_group_name=GROUP_NAME_DEFAULT,
+        function_group_description=GROUP_DESCRIPTION_DEFAULT,
+    )
+
+
+@register_endpoint(
+    group=GROUP_NAME_DEFAULT,
+)
+def version() -> None:
+    """
+    Print version
+    """
+    print(pydmt.version.VERSION_STR)
+
+
+@register_endpoint(
+    group=GROUP_NAME_DEFAULT,
+)
+def build():
+    """ build the project """
     # parameters
     debug = False
     sphinx = True
@@ -41,7 +73,3 @@ def main():
         import config.project
         p.add_builder(Sphinx(package_name=config.project.project_name))
     p.build_all()
-
-
-if __name__ == '__main__':
-    main()

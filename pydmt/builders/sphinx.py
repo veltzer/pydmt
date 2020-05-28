@@ -55,7 +55,7 @@ class Sphinx(Builder):
             os.path.join(self.source_folder, "modules.rst"),
             os.path.join(self.source_folder, "{}.rst".format(self.package_name)),
             # We need to add the list of all output files of running sphinx-apidoc
-            # os.path.join(self.source_folder, "{}.scripts.rst".format(self.package_name)),
+            # os.path.join(self.source_folder, "{}.endpoints.rst".format(self.package_name)),
         ]
 
     def _get_source_folder_real(self) -> List[str]:

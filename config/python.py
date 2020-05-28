@@ -1,9 +1,10 @@
 import config.project
+import pydmt.endpoints.main
 
 package_name = config.project.project_name
 
 console_scripts = [
-    'pydmt_build=pydmt.scripts.build:main',
+    'pydmt=' + pydmt.endpoints.main.__name__ + ":" + pydmt.endpoints.main.main.__name__,
 ]
 
 setup_requires = [
@@ -19,6 +20,7 @@ install_requires = [
     # core
     'pyfakeuse',  # for ignoring arguments to functions
     'pylogconf',  # for configuring logging
+    'pytconf',  # for handling command line arguments
     # plugins
     'mako',  # for template handling
     'Sphinx',  # for the sphinx builder

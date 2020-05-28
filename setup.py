@@ -7,14 +7,14 @@ http://setuptools.readthedocs.io/en/latest/setuptools.html
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pydmt',
-    version='0.0.54',
+    version='0.0.55',
     packages=[
         'pydmt',
         'pydmt.api',
         'pydmt.builders',
         'pydmt.core',
+        'pydmt.endpoints',
         'pydmt.features',
-        'pydmt.scripts',
         'pydmt.utils',
     ],
     # from here all is optional
@@ -42,6 +42,7 @@ setuptools.setup(
     install_requires=[
         'pyfakeuse',
         'pylogconf',
+        'pytconf',
         'mako',
         'Sphinx',
     ],
@@ -56,7 +57,7 @@ setuptools.setup(
     data_files=[
     ],
     entry_points={'console_scripts': [
-        'pydmt_build=pydmt.scripts.build:main',
+        'pydmt=pydmt.endpoints.main:main',
     ]},
     python_requires='>=3',
 )

@@ -1,3 +1,4 @@
+- support other template types like jinja2, mustache, string.template (standard library), ...
 - today pydmt gets configs from:
 	.
 	~/.config/pydmt
