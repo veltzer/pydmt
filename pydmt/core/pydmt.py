@@ -44,6 +44,12 @@ class BuildProcessStats:
     def get_builder_fail(self):
         return len(self.builder_fail)
 
+    def get_os_error_code(self) -> int:
+        if len(self.builder_fail) > 0:
+            return 1
+        else:
+            return 0
+
 
 class PyDMT:
     def __init__(self):
@@ -57,7 +63,7 @@ class PyDMT:
         target_signature = builder.get_signature()
         assert target_signature is not None, "builder signature is None"
         if self.cache.list_sig_ok(target_signature):
-            logger.info("verifying [{}]".format(builder.get_name()))
+            logger.debug("verifying [{}]".format(builder.get_name()))
             file_bad = 0
             file_correct = 0
             file_missing = 0
@@ -68,25 +74,25 @@ class PyDMT:
                 if os.path.isfile(object_name):
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:
-                        # logger.info("file [{}] is incorrect. Getting from cache.".format(object_name))
+                        logger.debug("file [{}] is incorrect. Getting from cache.".format(object_name))
                         copy_mkdir(filename, object_name)
                         stats.add_copy_sha1(filename, object_name)
                         file_bad += 1
                     else:
-                        # logger.info("file [{}] is up to date".format(object_name))
+                        logger.debug("file [{}] is up to date".format(object_name))
                         stats.add_nop(filename, object_name)
                         file_correct += 1
                 else:
-                    # logger.info("file [{}] is missing. Getting from cache.".format(object_name))
+                    logger.debug("file [{}] is missing. Getting from cache.".format(object_name))
                     copy_mkdir(filename, object_name)
                     stats.add_copy_missing(filename, object_name)
                     file_missing += 1
                 file_total += 1
             if file_bad > 0 or file_missing > 0:
-                logger.info("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
+                logger.debug("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
                     file_total, file_bad, file_correct, file_missing))
             else:
-                logger.info("ok [{}]".format(builder.get_name()))
+                logger.debug("ok [{}]".format(builder.get_name()))
         else:
             # this is one of the rare cases in which really want to catch all exceptions.
             # noinspection PyBroadException

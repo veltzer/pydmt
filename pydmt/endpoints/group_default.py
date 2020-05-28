@@ -72,4 +72,5 @@ def build():
     if sphinx and os.path.isdir("sphinx"):
         import config.project
         p.add_builder(Sphinx(package_name=config.project.project_name))
-    p.build_all()
+    stats = p.build_all()
+    sys.exit(stats.get_os_error_code())
