@@ -47,8 +47,8 @@ class BuildProcessStats:
 
 class PyDMT:
     def __init__(self):
-        self.builders = []  # type: List[Builder]
-        self.target_to_builder = {}  # type: Dict[str, Builder]
+        self.builders: List[Builder] = []
+        self.target_to_builder: Dict[str, Builder] = {}
         self.cache = Cache()
 
     def build_by_builder(self, builder: Builder, stats: BuildProcessStats):
