@@ -13,7 +13,7 @@ from pydmt.features.templating import Templating
 
 
 GROUP_NAME_DEFAULT = "default"
-GROUP_DESCRIPTION_DEFAULT = "all pymakehelper commands"
+GROUP_DESCRIPTION_DEFAULT = "all pydmt commands"
 
 
 def register_group_default():
