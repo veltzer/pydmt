@@ -75,7 +75,13 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_ok</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BuildProcessStats.get_builder_fail"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_builder_fail">[docs]</a>    <span class="k">def</span> <span class="nf">get_builder_fail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_fail</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_fail</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BuildProcessStats.get_os_error_code"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_os_error_code">[docs]</a>    <span class="k">def</span> <span class="nf">get_os_error_code</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_fail</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span></div></div>
 
 
 <div class="viewcode-block" id="PyDMT"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT">[docs]</a><span class="k">class</span> <span class="nc">PyDMT</span><span class="p">:</span>
@@ -90,7 +96,7 @@
         <span class="n">target_signature</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_signature</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">target_signature</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;builder signature is None&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">list_sig_ok</span><span class="p">(</span><span class="n">target_signature</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;verifying [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;verifying [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
             <span class="n">file_bad</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">file_correct</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">file_missing</span> <span class="o">=</span> <span class="mi">0</span>
@@ -101,25 +107,25 @@
                 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">object_name</span><span class="p">):</span>
                     <span class="n">object_name_signature</span> <span class="o">=</span> <span class="n">sha1_file</span><span class="p">(</span><span class="n">object_name</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">object_name_signature</span> <span class="o">!=</span> <span class="n">signature</span><span class="p">:</span>
-                        <span class="c1"># logger.info(&quot;file [{}] is incorrect. Getting from cache.&quot;.format(object_name))</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;file [</span><span class="si">{}</span><span class="s2">] is incorrect. Getting from cache.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">object_name</span><span class="p">))</span>
                         <span class="n">copy_mkdir</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
                         <span class="n">stats</span><span class="o">.</span><span class="n">add_copy_sha1</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
                         <span class="n">file_bad</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="c1"># logger.info(&quot;file [{}] is up to date&quot;.format(object_name))</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;file [</span><span class="si">{}</span><span class="s2">] is up to date&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">object_name</span><span class="p">))</span>
                         <span class="n">stats</span><span class="o">.</span><span class="n">add_nop</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
                         <span class="n">file_correct</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="c1"># logger.info(&quot;file [{}] is missing. Getting from cache.&quot;.format(object_name))</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;file [</span><span class="si">{}</span><span class="s2">] is missing. Getting from cache.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">object_name</span><span class="p">))</span>
                     <span class="n">copy_mkdir</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
                     <span class="n">stats</span><span class="o">.</span><span class="n">add_copy_missing</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">object_name</span><span class="p">)</span>
                     <span class="n">file_missing</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">file_total</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">file_bad</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">file_missing</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Retrieved </span><span class="si">{}</span><span class="s2"> files from cache (bad/correct/missing = </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Retrieved </span><span class="si">{}</span><span class="s2"> files from cache (bad/correct/missing = </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="n">file_total</span><span class="p">,</span> <span class="n">file_bad</span><span class="p">,</span> <span class="n">file_correct</span><span class="p">,</span> <span class="n">file_missing</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;ok [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;ok [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># this is one of the rare cases in which really want to catch all exceptions.</span>
             <span class="c1"># noinspection PyBroadException</span>
