@@ -80,8 +80,8 @@
 
 <div class="viewcode-block" id="PyDMT"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT">[docs]</a><span class="k">class</span> <span class="nc">PyDMT</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">builders</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: List[Builder]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">target_to_builder</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[str, Builder]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">builders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Builder</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_to_builder</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Builder</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">Cache</span><span class="p">()</span>
 
 <div class="viewcode-block" id="PyDMT.build_by_builder"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_by_builder">[docs]</a>    <span class="k">def</span> <span class="nf">build_by_builder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">:</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">BuildProcessStats</span><span class="p">):</span>

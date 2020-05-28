@@ -19,7 +19,7 @@ def register_all_groups():
 @register_main()
 def main():
     """
-    pydmt build anything
+    pydmt builds anything
     """
     pylogconf.core.setup()
     register_all_groups()

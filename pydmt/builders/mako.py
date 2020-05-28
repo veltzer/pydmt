@@ -23,9 +23,9 @@ class Mako(Builder):
                  dep_files: List[str],
                  ):
         super().__init__()
-        self.source = source  # type: str
-        self.target = target  # type: str
-        self.dep_files = dep_files  # type: List[str]
+        self.source: str = source
+        self.target: str = target
+        self.dep_files: List[str] = dep_files
         if data is None:
             self.data = dict()
         else:
