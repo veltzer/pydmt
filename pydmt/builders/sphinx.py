@@ -1,3 +1,11 @@
+"""
+This is the module which is in charge of running sphinx to generate
+automatic documentation.
+
+
+"""
+
+
 import os
 import shutil
 from typing import List
@@ -73,6 +81,7 @@ class Sphinx(Builder):
             "-o",
             self.source_folder,
         ]
+        # single file module vs package
         if os.path.isfile(self.package_name+'.py'):
             args.append(self.package_name+'.py')
         else:

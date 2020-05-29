@@ -107,6 +107,15 @@
         <span class="n">p</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">Sphinx</span><span class="p">(</span><span class="n">package_name</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">project_name</span><span class="p">))</span>
     <span class="n">stats</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">build_all</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_os_error_code</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../../pydmt.endpoints.html#pydmt.endpoints.group_default.clean">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">clean</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    clean all generated files</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 </pre></div>
 
           </div>
