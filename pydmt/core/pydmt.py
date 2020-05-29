@@ -97,13 +97,13 @@ class PyDMT:
             # this is one of the rare cases in which really want to catch all exceptions.
             # noinspection PyBroadException
             try:
-                # logger.info("running [{}]".format(builder.get_name()))
-                if len(builder.get_targets()) > 0:
-                    logger.info("doing [{}]".format(','.join(builder.get_targets())))
-                else:
-                    logger.info("doing [{}]".format(builder.__class__.__name__))
+                logger.debug("running [{}]".format(builder.get_name()))
+                print("{} [{}]...".format(
+                    builder.__class__.__name__,
+                    ','.join(builder.get_targets()),
+                ), end="", flush=True)
                 builder.build()
-                logger.debug("ok [{}]".format(builder.get_name()))
+                print("OK")
                 stats.add_builder_ok(builder)
                 # first lets build a list of what was constructed
                 targets = builder.get_targets()
@@ -115,8 +115,8 @@ class PyDMT:
                     self.cache.save_object_by_signature(signature, target)
                 self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
-                logger.info("failed [{}]".format(builder.get_name()))
-                logger.info("exception [{}]".format(e))
+                print("FAIL")
+                logger.exception("exception")
                 stats.add_builder_fail(builder, e)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:

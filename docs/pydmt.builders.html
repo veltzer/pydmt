@@ -64,7 +64,7 @@
 <dt id="pydmt.builders.copy.Copy.get_targets">
 <code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/copy.html#Copy.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.copy.Copy.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
-you must implement the get_results_names_post_build method and return None here.</p>
+you must implement the ‘get_targets_post_build’ method and return None here.</p>
 </dd></dl>
 
 </dd></dl>
@@ -97,7 +97,7 @@ you must implement the get_results_names_post_build method and return None here.
 <dt id="pydmt.builders.fail.Fail.get_targets">
 <code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/fail.html#Fail.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.fail.Fail.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
-you must implement the get_results_names_post_build method and return None here.</p>
+you must implement the ‘get_targets_post_build’ method and return None here.</p>
 </dd></dl>
 
 </dd></dl>
@@ -130,7 +130,7 @@ you must implement the get_results_names_post_build method and return None here.
 <dt id="pydmt.builders.mako.Mako.get_targets">
 <code class="sig-name descname">get_targets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/builders/mako.html#Mako.get_targets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.mako.Mako.get_targets" title="Permalink to this definition">¶</a></dt>
 <dd><p>return the names of the files that you are sure you produce. If you do not know them,
-you must implement the get_results_names_post_build method and return None here.</p>
+you must implement the ‘get_targets_post_build’ method and return None here.</p>
 </dd></dl>
 
 </dd></dl>
@@ -148,6 +148,8 @@ you must implement the get_results_names_post_build method and return None here.
 </div>
 <div class="section" id="module-pydmt.builders.sphinx">
 <span id="pydmt-builders-sphinx-module"></span><h2>pydmt.builders.sphinx module<a class="headerlink" href="#module-pydmt.builders.sphinx" title="Permalink to this headline">¶</a></h2>
+<p>This is the module which is in charge of running sphinx to generate
+automatic documentation.</p>
 <dl class="py class">
 <dt id="pydmt.builders.sphinx.Sphinx">
 <em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.sphinx.</code><code class="sig-name descname">Sphinx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">source_folder</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'sphinx'</span></em>, <em class="sig-param"><span class="n">target_folder</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'docs'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx" title="Permalink to this definition">¶</a></dt>

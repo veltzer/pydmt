@@ -31,7 +31,15 @@
           <div class="body" role="main">
             
   <h1>Source code for pydmt.builders.sphinx</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is the module which is in charge of running sphinx to generate</span>
+<span class="sd">automatic documentation.</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
@@ -106,6 +114,7 @@
             <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">source_folder</span><span class="p">,</span>
         <span class="p">]</span>
+        <span class="c1"># single file module vs package</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="o">+</span><span class="s1">&#39;.py&#39;</span><span class="p">):</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="o">+</span><span class="s1">&#39;.py&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
