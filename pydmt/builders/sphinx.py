@@ -2,7 +2,9 @@
 This is the module which is in charge of running sphinx to generate
 automatic documentation.
 
-
+TODO
+maybe call sphinx programatically and this way we would not have
+to set the PYTHONPATH and get better integration with sphinx?
 """
 
 
@@ -19,7 +21,9 @@ import subprocess
 """
 This is review of how to build a sphinx documentation:
 - if you want documentation for the code you need to run "sphinx-apidoc"
-- it will generated 
+- it will generate files that describe every sub package in your package.
+- after this you run "sphinx-build"
+- "sphinx-quickstart" is not needed unless you are starting a new project. 
 """
 
 
