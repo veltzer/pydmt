@@ -1,6 +1,6 @@
 import os
 import shutil
-from typing import List
+from typing import List, Union
 
 
 def makedirs_for_file(filename: str):
@@ -23,10 +23,12 @@ def unlink_files(files: List[str], only_if_exist: bool = True) -> None:
             os.unlink(file)
 
 
-def files_under_folder(folder: str) -> List[str]:
+def files_under_folder(folder: str, suffix: Union[str, None] = None) -> List[str]:
     file_list = []
-    for (dir_path, _dir_names, filenames) in os.walk(folder):
-        file_list.extend([os.path.join(dir_path, filename) for filename in filenames])
+    for dir_path, _dir_names, filenames in os.walk(folder):
+        for filename in filenames:
+            if suffix is None or filename.endswith(suffix):
+                file_list.append(os.path.join(dir_path, filename))
     return file_list
 
 

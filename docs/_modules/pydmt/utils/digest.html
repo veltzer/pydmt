@@ -46,6 +46,12 @@
             <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">hash_object</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
                 <span class="n">buf</span> <span class="o">=</span> <span class="n">file_handle</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">block_size</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    print(&quot;digest: {} {}&quot;.format(</span>
+<span class="sd">        &#39;,&#39;.join(filenames),</span>
+<span class="sd">        hash_object.hexdigest(),</span>
+<span class="sd">    ))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">hash_object</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
 
 
@@ -65,7 +71,7 @@
     <span class="k">return</span> <span class="n">sha1_files</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="n">files_under_folders</span><span class="p">(</span><span class="n">folders</span><span class="o">=</span><span class="n">folders</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="sha1_files_folders"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.digest.sha1_files_folders">[docs]</a><span class="k">def</span> <span class="nf">sha1_files_folders</span><span class="p">(</span><span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">folders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="sha1_files_folders"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.digest.sha1_files_folders">[docs]</a><span class="k">def</span> <span class="nf">sha1_files_folders</span><span class="p">(</span><span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span> <span class="n">folders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">())</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">files</span>
     <span class="n">f</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">files_under_folders</span><span class="p">(</span><span class="n">folders</span><span class="o">=</span><span class="n">folders</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">sha1_files</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>

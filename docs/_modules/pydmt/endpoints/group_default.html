@@ -40,7 +40,7 @@
 
 <span class="kn">from</span> <span class="nn">pytconf.config</span> <span class="kn">import</span> <span class="n">register_function_group</span><span class="p">,</span> <span class="n">register_endpoint</span>
 
-<span class="kn">from</span> <span class="nn">pydmt.builders.sphinx</span> <span class="kn">import</span> <span class="n">Sphinx</span>
+<span class="kn">from</span> <span class="nn">pydmt.features.documentation</span> <span class="kn">import</span> <span class="n">Documentation</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="kn">import</span> <span class="n">PyDMT</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.templating</span> <span class="kn">import</span> <span class="n">Templating</span>
 
@@ -76,7 +76,6 @@
     <span class="sd">&quot;&quot;&quot; build the project &quot;&quot;&quot;</span>
     <span class="c1"># parameters</span>
     <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">sphinx</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_cwd</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_home</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_shared</span> <span class="o">=</span> <span class="kc">True</span>
@@ -98,13 +97,13 @@
     <span class="n">p</span> <span class="o">=</span> <span class="n">PyDMT</span><span class="p">()</span>
 
     <span class="c1"># add templating support</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">Templating</span><span class="p">()</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">Templating</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
-    <span class="c1"># add sphinx builder support</span>
-    <span class="k">if</span> <span class="n">sphinx</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;sphinx&quot;</span><span class="p">):</span>
-        <span class="kn">import</span> <span class="nn">config.project</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">Sphinx</span><span class="p">(</span><span class="n">package_name</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">project_name</span><span class="p">))</span>
+    <span class="c1"># add sphinx support</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">Documentation</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
     <span class="n">stats</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">build_all</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_os_error_code</span><span class="p">())</span></div>
 

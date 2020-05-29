@@ -7,7 +7,7 @@ import pathlib
 
 from pytconf.config import register_function_group, register_endpoint
 
-from pydmt.builders.sphinx import Sphinx
+from pydmt.features.documentation import Documentation
 from pydmt.core.pydmt import PyDMT
 from pydmt.features.templating import Templating
 
@@ -43,7 +43,6 @@ def build():
     """ build the project """
     # parameters
     debug = False
-    sphinx = True
     add_import_of_cwd = True
     add_import_of_home = True
     add_import_of_shared = True
@@ -65,13 +64,13 @@ def build():
     p = PyDMT()
 
     # add templating support
-    t = Templating()
-    t.setup(p)
+    f = Templating()
+    f.setup(p)
 
-    # add sphinx builder support
-    if sphinx and os.path.isdir("sphinx"):
-        import config.project
-        p.add_builder(Sphinx(package_name=config.project.project_name))
+    # add sphinx support
+    f = Documentation()
+    f.setup(p)
+
     stats = p.build_all()
     sys.exit(stats.get_os_error_code())
 
