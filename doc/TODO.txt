@@ -1,3 +1,7 @@
+- look at the fact that we need to run pydmt two times for every chnage.
+	- change the version
+	- run pydmt
+	- and again
 - fix the fact that we run sphinx several times
 	(we need to add . to pythonpath).
 - suppress the output of sphinx and only show it when there are problems.
