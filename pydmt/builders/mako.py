@@ -26,10 +26,7 @@ class Mako(Builder):
         self.source: str = source
         self.target: str = target
         self.dep_files: List[str] = dep_files
-        if data is None:
-            self.data = dict()
-        else:
-            self.data = data
+        self.data = data
 
     def get_signature(self) -> str:
         # FIXME: this should be the sha1 of the source + all the definition files
@@ -43,7 +40,10 @@ class Mako(Builder):
             template = mako.template.Template(filename=self.source)
             makedirs_for_file(self.target)
             with open(self.target, 'w') as file_handle:
-                file_handle.write(template.render(**self.data))
+                if self.data is None:
+                    file_handle.write(template.render())
+                else:
+                    file_handle.write(template.render(**self.data))
         except Exception as e:
             if os.path.isfile(self.target):
                 os.unlink(self.target)

@@ -13,6 +13,12 @@ def hex_digest_files(filenames: List[str], algorithm_name: str) -> str:
             while len(buf) > 0:
                 hash_object.update(buf)
                 buf = file_handle.read(block_size)
+    """
+    print("digest: {} {}".format(
+        ','.join(filenames),
+        hash_object.hexdigest(),
+    ))
+    """
     return hash_object.hexdigest()
 
 
@@ -32,7 +38,7 @@ def sha1_folders(folders: List[str]) -> str:
     return sha1_files(filenames=files_under_folders(folders=folders))
 
 
-def sha1_files_folders(files: List[str], folders: List[str]) -> str:
+def sha1_files_folders(files: List[str] = (), folders: List[str] = ()) -> str:
     f = files
     f.extend(files_under_folders(folders=folders))
     return sha1_files(f)

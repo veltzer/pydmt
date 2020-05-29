@@ -18,6 +18,8 @@ class Templating(Feature):
         self.config_folder = config_folder
 
     def setup(self, pydmt: PyDMT) -> None:
+        if not os.path.isdir(self.templates_folder):
+            return
         for root, directories, filenames in os.walk(self.templates_folder):
             for filename in filenames:
                 source = os.path.join(root, filename)
@@ -28,6 +30,6 @@ class Templating(Feature):
                         source=source,
                         target=target,
                         data=self.data,
-                        dep_files=files_under_folder(self.config_folder),
+                        dep_files=files_under_folder(self.config_folder, suffix=".py"),
                     )
                     pydmt.add_builder(builder)

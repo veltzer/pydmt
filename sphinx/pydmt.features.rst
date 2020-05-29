@@ -4,6 +4,14 @@ pydmt.features package
 Submodules
 ----------
 
+pydmt.features.documentation module
+-----------------------------------
+
+.. automodule:: pydmt.features.documentation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.features.templating module
 --------------------------------
 

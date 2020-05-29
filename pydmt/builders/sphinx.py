@@ -25,7 +25,7 @@ This is review of how to build a sphinx documentation:
 
 class Sphinx(Builder):
     def get_sources(self) -> List[str]:
-        return self._get_source_folder_real()
+        return self._get_source_folder_source_files()
 
     def __init__(self,
                  package_name: str,
@@ -39,7 +39,7 @@ class Sphinx(Builder):
     def get_signature(self) -> str:
         if os.path.isfile(self.package_name+".py"):
             files = [self.package_name+".py"]
-            files.extend(self._get_source_folder_real())
+            files.extend(self._get_source_folder_source_files())
             return sha1_files_folders(
                 files=files,
                 folders=[
@@ -48,14 +48,11 @@ class Sphinx(Builder):
                 ],
             )
         if os.path.isdir(self.package_name):
-            return sha1_files_folders(
-                files=self._get_source_folder_real(),
-                folders=[
-                    os.path.join(self.source_folder, "static"),
-                    os.path.join(self.source_folder, "copy"),
-                    self.package_name,
-                ]
-            )
+            files = self._get_source_folder_source_files()
+            files.extend(files_under_folder(self.package_name, suffix=".py"))
+            files.extend(files_under_folder(os.path.join(self.source_folder, "static")))
+            files.extend(files_under_folder(os.path.join(self.source_folder, "copy")))
+            return sha1_files_folders(files=files)
         raise ValueError("Sphinx cannot find source code")
 
     def _get_source_folder_targets(self) -> List[str]:
@@ -66,7 +63,7 @@ class Sphinx(Builder):
             # os.path.join(self.source_folder, "{}.endpoints.rst".format(self.package_name)),
         ]
 
-    def _get_source_folder_real(self) -> List[str]:
+    def _get_source_folder_source_files(self) -> List[str]:
         return [
             os.path.join(self.source_folder, "index.rst"),
             os.path.join(self.source_folder, "conf.py"),
@@ -89,8 +86,7 @@ class Sphinx(Builder):
         subprocess.check_call(args)
         if os.path.isdir(self.target_folder):
             shutil.rmtree(self.target_folder, ignore_errors=False)
-            # TODO: add PYTHONPATH="." since somehow sphinx-build does not make imports from the
-            # . folder but from general python path
+            os.environ["PYTHONPATH"] = "."
             subprocess.check_call([
                 "sphinx-build",
                 # don't use a saved environment, always read all files
