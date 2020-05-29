@@ -68,6 +68,7 @@ class Sphinx(Builder):
         unlink_files(self._get_source_folder_targets(), only_if_exist=True)
         args = [
             "sphinx-apidoc",
+            "-q",  # quiet
             "-f",
             "-o",
             self.source_folder,

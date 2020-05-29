@@ -74,3 +74,12 @@ def build():
         p.add_builder(Sphinx(package_name=config.project.project_name))
     stats = p.build_all()
     sys.exit(stats.get_os_error_code())
+
+
+@register_endpoint(
+    group=GROUP_NAME_DEFAULT,
+)
+def clean() -> None:
+    """
+    clean all generated files
+    """
