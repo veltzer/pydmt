@@ -26,11 +26,11 @@ class Builder(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def get_sources(self) -> List[str]:
-        return []
+        pass
 
     def get_targets(self) -> List[str]:
         """ return the names of the files that you are sure you produce. If you do not know them,
-        you must implement the get_results_names_post_build method and return None here."""
+        you must implement the 'get_targets_post_build' method and return None here."""
         return []
 
     def get_targets_post_build(self) -> List[str]:

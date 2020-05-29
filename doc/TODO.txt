@@ -1,6 +1,7 @@
 - fix the fact that we run sphinx several times
 	(we need to add . to pythonpath).
 - suppress the output of sphinx and only show it when there are problems.
+	we now run it quitly.
 - maybe run sphinx programaticlly?
 - support other template types like jinja2, mustache, string.template (standard library), ...
 - today pydmt gets configs from:
