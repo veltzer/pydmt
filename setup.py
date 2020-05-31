@@ -7,7 +7,7 @@ http://setuptools.readthedocs.io/en/latest/setuptools.html
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pydmt',
-    version='0.0.64',
+    version='0.0.65',
     packages=[
         'pydmt',
         'pydmt.api',
@@ -15,6 +15,7 @@ setuptools.setup(
         'pydmt.core',
         'pydmt.endpoints',
         'pydmt.features',
+        'pydmt.helpers',
         'pydmt.utils',
     ],
     # from here all is optional
