@@ -12,6 +12,7 @@ Subpackages
    pydmt.core
    pydmt.endpoints
    pydmt.features
+   pydmt.helpers
    pydmt.utils
 
 Submodules
