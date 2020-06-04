@@ -40,6 +40,37 @@
 <div class="section" id="module-pydmt.helpers.python">
 <span id="pydmt-helpers-python-module"></span><h2>pydmt.helpers.python module<a class="headerlink" href="#module-pydmt.helpers.python" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt id="pydmt.helpers.python.array_indented">
+<code class="sig-prename descclassname">pydmt.helpers.python.</code><code class="sig-name descname">array_indented</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">array</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">quote_char</span><span class="o">=</span><span class="default_value">&quot;'&quot;</span></em>, <em class="sig-param"><span class="n">comma_after</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/helpers/python.html#array_indented"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.helpers.python.array_indented" title="Permalink to this definition">¶</a></dt>
+<dd><p>return an array indented according to indent level
+:param level:
+:param array:
+:param quote_char:
+:param comma_after:
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pydmt.helpers.python.dict_indented">
+<code class="sig-prename descclassname">pydmt.helpers.python.</code><code class="sig-name descname">dict_indented</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">dictionary</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">quote_char</span><span class="o">=</span><span class="default_value">&quot;'&quot;</span></em>, <em class="sig-param"><span class="n">comma_after</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/helpers/python.html#dict_indented"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.helpers.python.dict_indented" title="Permalink to this definition">¶</a></dt>
+<dd><p>return an dict indented according to indent level
+:param level:
+:param dictionary:
+:param quote_char:
+:param comma_after:
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pydmt.helpers.python.find_packages">
+<code class="sig-prename descclassname">pydmt.helpers.python.</code><code class="sig-name descname">find_packages</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/helpers/python.html#find_packages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.helpers.python.find_packages" title="Permalink to this definition">¶</a></dt>
+<dd><p>A better version of find_packages than what setuptools offers
+This function needs to be deterministic.
+:param path:
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="pydmt.helpers.python.make_console_script">
 <code class="sig-prename descclassname">pydmt.helpers.python.</code><code class="sig-name descname">make_console_script</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">main</span><span class="p">:</span> <span class="n">Callable</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/helpers/python.html#make_console_script"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.helpers.python.make_console_script" title="Permalink to this definition">¶</a></dt>
 <dd><p>return a string suitable to be used as the section ‘console_scripts’

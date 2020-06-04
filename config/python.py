@@ -33,3 +33,7 @@ dev_requires = [
 ]
 
 python_requires = ">=3"
+
+extras_require={
+#    ':python_version == "2.7"': ['futures'],  # for python2.7 backport of concurrent.futures
+}

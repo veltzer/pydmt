@@ -31,7 +31,8 @@
           <div class="body" role="main">
             
   <h1>Source code for pydmt.helpers.python</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
 
 
 <div class="viewcode-block" id="make_console_script"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.make_console_script">[docs]</a><span class="k">def</span> <span class="nf">make_console_script</span><span class="p">(</span><span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">main</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
@@ -49,6 +50,64 @@
         <span class="nb">getattr</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">),</span>
         <span class="n">main</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
     <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="array_indented"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.array_indented">[docs]</a><span class="k">def</span> <span class="nf">array_indented</span><span class="p">(</span><span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">quote_char</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">comma_after</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return an array indented according to indent level</span>
+<span class="sd">    :param level:</span>
+<span class="sd">    :param array:</span>
+<span class="sd">    :param quote_char:</span>
+<span class="sd">    :param comma_after:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;[</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="p">(((</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">quote_char</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">quote_char</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="p">((</span><span class="n">level</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
+    <span class="k">if</span> <span class="n">comma_after</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;,&quot;</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="dict_indented"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.dict_indented">[docs]</a><span class="k">def</span> <span class="nf">dict_indented</span><span class="p">(</span><span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">quote_char</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">comma_after</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return an dict indented according to indent level</span>
+<span class="sd">    :param level:</span>
+<span class="sd">    :param dictionary:</span>
+<span class="sd">    :param quote_char:</span>
+<span class="sd">    :param comma_after:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">spaces</span> <span class="o">=</span> <span class="p">(((</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{}{}{}{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">spaces</span><span class="p">,</span>
+            <span class="n">quote_char</span><span class="p">,</span>
+            <span class="n">k</span><span class="p">,</span>
+            <span class="n">quote_char</span><span class="p">,</span>
+            <span class="n">v</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">spaces</span> <span class="o">=</span> <span class="p">((</span><span class="n">level</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">}}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spaces</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">comma_after</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;,&quot;</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="find_packages"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.find_packages">[docs]</a><span class="k">def</span> <span class="nf">find_packages</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A better version of find_packages than what setuptools offers</span>
+<span class="sd">    This function needs to be deterministic.</span>
+<span class="sd">    :param path:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_dir</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;__init__.py&#39;</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span></div>
 </pre></div>
 
           </div>

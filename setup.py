@@ -1,13 +1,9 @@
 import setuptools
 
-"""
-The documentation can be found at:
-http://setuptools.readthedocs.io/en/latest/setuptools.html
-"""
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pydmt',
-    version='0.0.65',
+    version='0.0.66',
     packages=[
         'pydmt',
         'pydmt.api',
@@ -47,6 +43,8 @@ setuptools.setup(
         'mako',
         'Sphinx',
     ],
+    extras_require={
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
