@@ -12,10 +12,12 @@ class Templating(Feature):
         data=None,
         templates_folder: str = "templates",
         config_folder: str = "config",
+        snipplet_folder: str = "snipplets",
     ):
         self.data = data
         self.templates_folder = templates_folder
         self.config_folder = config_folder
+        self.snipplet_folder = snipplet_folder
 
     def setup(self, pydmt: PyDMT) -> None:
         if not os.path.isdir(self.templates_folder):
@@ -30,6 +32,7 @@ class Templating(Feature):
                         source=source,
                         target=target,
                         data=self.data,
-                        dep_files=files_under_folder(self.config_folder, suffix=".py"),
+                        config_files=files_under_folder(self.config_folder, suffix=".py"),
+                        snipplet_files=files_under_folder(self.snipplet_folder, suffix=".mako"),
                     )
                     pydmt.add_builder(builder)

@@ -20,21 +20,24 @@ class Mako(Builder):
                  source: str,
                  target: str,
                  data: Union[Dict[str, object], None],
-                 dep_files: List[str],
+                 config_files: List[str],
+                 snipplet_files: List[str],
                  ):
         super().__init__()
         self.source: str = source
         self.target: str = target
         self.data = data
-        self.dep_files: List[str] = dep_files
+        self.config_files: List[str] = config_files
+        self.snipplet_files: List[str] = snipplet_files
 
     def get_signature(self) -> str:
         # TODO: currentl we work at the file level and so we sha1
-        # the source file + all dep files which are the defition files.
+        # the source file + all config files + all snipplet files
         # it would be much better to work at the variable level
         # and sha1 only the variables and the values which are actually
         # used in the source file.
-        return sha1_files(self.dep_files+[self.source])
+        # and only add snipplet files which we actually use.
+        return sha1_files(self.config_files + self.snipplet_files + [self.source])
 
     def build(self):
         try:
