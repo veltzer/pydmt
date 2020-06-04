@@ -3,7 +3,7 @@ import setuptools
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pydmt',
-    version='0.0.68',
+    version='0.0.69',
     packages=[
         'pydmt',
         'pydmt.api',
