@@ -45,10 +45,12 @@
         <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">templates_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span>
         <span class="n">config_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span>
+        <span class="n">snipplet_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;snipplets&quot;</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">templates_folder</span> <span class="o">=</span> <span class="n">templates_folder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_folder</span> <span class="o">=</span> <span class="n">config_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snipplet_folder</span> <span class="o">=</span> <span class="n">snipplet_folder</span>
 
 <div class="viewcode-block" id="Templating.setup"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.templating.Templating.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">templates_folder</span><span class="p">):</span>
@@ -63,7 +65,8 @@
                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
                         <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
                         <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                        <span class="n">dep_files</span><span class="o">=</span><span class="n">files_under_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_folder</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.py&quot;</span><span class="p">),</span>
+                        <span class="n">config_files</span><span class="o">=</span><span class="n">files_under_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_folder</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.py&quot;</span><span class="p">),</span>
+                        <span class="n">snipplet_files</span><span class="o">=</span><span class="n">files_under_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">snipplet_folder</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.mako&quot;</span><span class="p">),</span>
                     <span class="p">)</span>
                     <span class="n">pydmt</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">builder</span><span class="p">)</span></div></div>
 </pre></div>

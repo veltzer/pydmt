@@ -53,21 +53,24 @@
                  <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="kc">None</span><span class="p">],</span>
-                 <span class="n">dep_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                 <span class="n">config_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                 <span class="n">snipplet_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
                  <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">source</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">target</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dep_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">dep_files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config_files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">snipplet_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">snipplet_files</span>
 
 <div class="viewcode-block" id="Mako.get_signature"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_signature">[docs]</a>    <span class="k">def</span> <span class="nf">get_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="c1"># TODO: currentl we work at the file level and so we sha1</span>
-        <span class="c1"># the source file + all dep files which are the defition files.</span>
+        <span class="c1"># the source file + all config files + all snipplet files</span>
         <span class="c1"># it would be much better to work at the variable level</span>
         <span class="c1"># and sha1 only the variables and the values which are actually</span>
         <span class="c1"># used in the source file.</span>
-        <span class="k">return</span> <span class="n">sha1_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dep_files</span><span class="o">+</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">])</span></div>
+        <span class="c1"># and only add snipplet files which we actually use.</span>
+        <span class="k">return</span> <span class="n">sha1_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_files</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">snipplet_files</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="Mako.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
