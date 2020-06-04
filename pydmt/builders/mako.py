@@ -25,25 +25,35 @@ class Mako(Builder):
         super().__init__()
         self.source: str = source
         self.target: str = target
-        self.dep_files: List[str] = dep_files
         self.data = data
+        self.dep_files: List[str] = dep_files
 
     def get_signature(self) -> str:
-        # FIXME: this should be the sha1 of the source + all the definition files
-        # and even a better correction:
-        # sha1 of the source file + the sha1 of all the variables references from within
-        # the source file.
+        # TODO: currentl we work at the file level and so we sha1
+        # the source file + all dep files which are the defition files.
+        # it would be much better to work at the variable level
+        # and sha1 only the variables and the values which are actually
+        # used in the source file.
         return sha1_files(self.dep_files+[self.source])
 
     def build(self):
         try:
-            template = mako.template.Template(filename=self.source)
+            lookup = mako.lookup.TemplateLookup(
+                directories=['.'],
+                input_encoding='utf-8',
+                output_encoding='utf-8',
+            )
+            template = mako.template.Template(
+                filename=self.source,
+                lookup=lookup,
+            )
             makedirs_for_file(self.target)
+            if self.data is None:
+                output = template.render()
+            else:
+                output = template.render(**self.data)
             with open(self.target, 'w') as file_handle:
-                if self.data is None:
-                    file_handle.write(template.render())
-                else:
-                    file_handle.write(template.render(**self.data))
+                file_handle.write(output)
         except Exception as e:
             if os.path.isfile(self.target):
                 os.unlink(self.target)
