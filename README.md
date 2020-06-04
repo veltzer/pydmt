@@ -9,3 +9,5 @@
 
 python dependency management tool
 
+project website: https://veltzer.github.io/pydmt
+
