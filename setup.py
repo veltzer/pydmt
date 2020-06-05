@@ -2,8 +2,8 @@ import setuptools
 
 setuptools.setup(
     # the first three fields are a must according to the documentation
-    name='pydmt',
-    version='0.0.69',
+    name="pydmt",
+    version="0.0.69",
     packages=[
         'pydmt',
         'pydmt.api',
@@ -15,12 +15,13 @@ setuptools.setup(
         'pydmt.utils',
     ],
     # from here all is optional
-    description='python dependency management tool',
-    long_description='python dependency management tool',
-    author='Mark Veltzer',
-    author_email='mark.veltzer@gmail.com',
-    maintainer='Mark Veltzer',
-    maintainer_email='mark.veltzer@gmail.com',
+    description="python dependency management tool",
+    long_description="python dependency management tool",
+    long_description_content_type="text/x-rst",
+    author="Mark Veltzer",
+    author_email="mark.veltzer@gmail.com",
+    maintainer="Mark Veltzer",
+    maintainer_email="mark.veltzer@gmail.com",
     keywords=[
         'pydmt',
         'cons',
@@ -30,9 +31,9 @@ setuptools.setup(
         'maven',
         'mvn',
     ],
-    url='https://veltzer.github.io/pydmt',
-    download_url='https://github.com/veltzer/pydmt',
-    license='MIT',
+    url="https://veltzer.github.io/pydmt",
+    download_url="https://github.com/veltzer/pydmt",
+    license="MIT",
     platforms=[
         'python3',
     ],
@@ -55,8 +56,8 @@ setuptools.setup(
     ],
     data_files=[
     ],
-    entry_points={'console_scripts': [
+    entry_points={"console_scripts": [
         'pydmt=pydmt.endpoints.main:main',
     ]},
-    python_requires='>=3.5',
+    python_requires=">=3.5",
 )
