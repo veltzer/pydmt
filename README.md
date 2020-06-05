@@ -6,6 +6,10 @@
 ![GitHub](https://img.shields.io/github/license/veltzer/pydmt)
 ![PyPI](https://img.shields.io/pypi/v/pydmt)
 ![PyPI - Format](https://img.shields.io/pypi/format/pydmt)
+[![Downloads](https://pepy.tech/badge/pytsv)](https://pepy.tech/project/pydmt)
+[![Downloads](https://pepy.tech/badge/pytsv/month)](https://pepy.tech/project/pydmt/month)
+[![Downloads](https://pepy.tech/badge/pytsv/week)](https://pepy.tech/project/pydmt/week)
+
 
 python dependency management tool
 
