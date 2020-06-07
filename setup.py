@@ -33,7 +33,7 @@ setuptools.setup(
     ],
     url="https://veltzer.github.io/pydmt",
     download_url="https://github.com/veltzer/pydmt",
-    license="MIT",
+    # license="MIT",
     platforms=[
         'python3',
     ],
