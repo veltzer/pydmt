@@ -1,5 +1,11 @@
 import setuptools
 
+
+def get_readme():
+    with open('README.rst') as f:
+        return f.read()
+
+
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pydmt",
@@ -16,7 +22,7 @@ setuptools.setup(
     ],
     # from here all is optional
     description="python dependency management tool",
-    long_description="python dependency management tool",
+    long_description=get_readme(),
     long_description_content_type="text/x-rst",
     author="Mark Veltzer",
     author_email="mark.veltzer@gmail.com",
