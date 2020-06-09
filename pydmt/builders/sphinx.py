@@ -29,7 +29,10 @@ This is review of how to build a sphinx documentation:
 
 class Sphinx(Builder):
     def get_sources(self) -> List[str]:
-        return self._get_source_folder_source_files()
+        return [
+            os.path.join(self.source_folder, "index.rst"),
+            os.path.join(self.source_folder, "conf.py"),
+        ]
 
     def __init__(self,
                  package_name: str,
