@@ -20,12 +20,30 @@ class Builder(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def build(self):
-        """ this method actually does the building """
+    def build(self) -> None:
+        """
+        this method actually does the building
+        Just do whatever you want here. Options are:
+        - Write pure python code
+        - Call native code
+        - Call external programs
+        - A combination of the above
+        If there are any problems then throw an exception.
+        Try not to segfault the interpreter in this method...:)
+        """
         pass
 
     @abc.abstractmethod
     def get_sources(self) -> List[str]:
+        """
+        return the name of the source files for this builder
+        If the builder takes a whole folder the list all the filers in that folder.
+        If a built takes all the .py files in a folder then list those.
+        In the current implementation this method is not really that important because
+        it is not used to calculate the signature of the input to the build.
+        The @get_signature method is use for that.
+        In the future the get_signature method will go away.
+        """
         pass
 
     def get_targets(self) -> List[str]:
@@ -41,5 +59,9 @@ class Builder(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def get_signature(self) -> str:
-        """ return the sha1 of anything that identifies the build """
+        """
+        return the sha1 of anything that identifies the sources of the build
+        Techically this is the sha1 of the file content of the list of files
+        returned from :func:`~get_sources`
+        """
         pass

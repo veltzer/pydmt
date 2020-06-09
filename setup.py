@@ -70,5 +70,5 @@ setuptools.setup(
     entry_points={"console_scripts": [
         'pydmt=pydmt.endpoints.main:main',
     ]},
-    python_requires=">=3.5",
+    python_requires=">=3.6",
 )

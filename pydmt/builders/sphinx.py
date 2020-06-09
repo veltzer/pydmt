@@ -41,23 +41,24 @@ class Sphinx(Builder):
         self.target_folder = target_folder
 
     def get_signature(self) -> str:
+        files = [
+            os.path.join(self.source_folder, "index.rst"),
+            os.path.join(self.source_folder, "conf.py"),
+        ]
+        folders = [
+            os.path.join(self.source_folder, "static"),
+            os.path.join(self.source_folder, "copy"),
+        ]
         if os.path.isfile(self.package_name+".py"):
-            files = [self.package_name+".py"]
-            files.extend(self._get_source_folder_source_files())
-            return sha1_files_folders(
-                files=files,
-                folders=[
-                    os.path.join(self.source_folder, "static"),
-                    os.path.join(self.source_folder, "copy"),
-                ],
-            )
+            files.append(self.package_name+".py")
         if os.path.isdir(self.package_name):
-            files = self._get_source_folder_source_files()
+            # we add only py files because python source folder may have .pyc
+            # and other junk floating around...
             files.extend(files_under_folder(self.package_name, suffix=".py"))
-            files.extend(files_under_folder(os.path.join(self.source_folder, "static")))
-            files.extend(files_under_folder(os.path.join(self.source_folder, "copy")))
-            return sha1_files_folders(files=files)
-        raise ValueError("Sphinx cannot find source code")
+        return sha1_files_folders(
+            files=files,
+            folders=folders,
+        )
 
     def _get_source_folder_targets(self) -> List[str]:
         return [
@@ -65,12 +66,6 @@ class Sphinx(Builder):
             os.path.join(self.source_folder, "{}.rst".format(self.package_name)),
             # We need to add the list of all output files of running sphinx-apidoc
             # os.path.join(self.source_folder, "{}.endpoints.rst".format(self.package_name)),
-        ]
-
-    def _get_source_folder_source_files(self) -> List[str]:
-        return [
-            os.path.join(self.source_folder, "index.rst"),
-            os.path.join(self.source_folder, "conf.py"),
         ]
 
     def build(self) -> None:
