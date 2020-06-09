@@ -62,7 +62,10 @@
 
 <div class="viewcode-block" id="Sphinx"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx">[docs]</a><span class="k">class</span> <span class="nc">Sphinx</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
 <div class="viewcode-block" id="Sphinx.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_source_folder_source_files</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_folder</span><span class="p">,</span> <span class="s2">&quot;index.rst&quot;</span><span class="p">),</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_folder</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">),</span>
+        <span class="p">]</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
