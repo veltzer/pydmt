@@ -19,6 +19,7 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -27,6 +28,8 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="pydmt-api-package">
@@ -46,8 +49,15 @@ outputs it generates (sometimes before build and sometimes
 after).</p>
 <dl class="py method">
 <dt id="pydmt.api.builder.Builder.build">
-<em class="property">abstract </em><code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.build" title="Permalink to this definition">¶</a></dt>
-<dd><p>this method actually does the building</p>
+<em class="property">abstract </em><code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method actually does the building
+Just do whatever you want here. Options are:
+- Write pure python code
+- Call native code
+- Call external programs
+- A combination of the above
+If there are any problems then throw an exception.
+Try not to segfault the interpreter in this method…:)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -58,13 +68,22 @@ after).</p>
 <dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_signature">
 <em class="property">abstract </em><code class="sig-name descname">get_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_signature" title="Permalink to this definition">¶</a></dt>
-<dd><p>return the sha1 of anything that identifies the build</p>
+<dd><p>return the sha1 of anything that identifies the sources of the build
+Techically this is the sha1 of the file content of the list of files
+returned from <a class="reference internal" href="#pydmt.api.builder.Builder.get_sources" title="pydmt.api.builder.Builder.get_sources"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_sources()</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_sources">
 <em class="property">abstract </em><code class="sig-name descname">get_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="reference internal" href="_modules/pydmt/api/builder.html#Builder.get_sources"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.api.builder.Builder.get_sources" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>return the name of the source files for this builder
+If the builder takes a whole folder the list all the filers in that folder.
+If a built takes all the .py files in a folder then list those.
+In the current implementation this method is not really that important because
+it is not used to calculate the signature of the input to the build.
+The &#64;get_signature method is use for that.
+In the future the get_signature method will go away.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="pydmt.api.builder.Builder.get_targets">
@@ -112,6 +131,7 @@ way. This is a way to share common practices between projects.</p>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -147,7 +167,7 @@ way. This is a way to share common practices between projects.</p>
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/pydmt.api.rst.txt"
