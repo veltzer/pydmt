@@ -3,6 +3,7 @@ import os
 from pydmt.api.feature import Feature
 from pydmt.builders.sphinx import Sphinx
 from pydmt.core.pydmt import PyDMT
+import config.project
 
 
 class Documentation(Feature):
@@ -15,5 +16,4 @@ class Documentation(Feature):
     def setup(self, pydmt: PyDMT) -> None:
         if not os.path.isdir(self.sphinx_folder):
             return
-        import config.project
         pydmt.add_builder(Sphinx(package_name=config.project.project_name))

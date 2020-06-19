@@ -22,7 +22,7 @@ class Templating(Feature):
     def setup(self, pydmt: PyDMT) -> None:
         if not os.path.isdir(self.templates_folder):
             return
-        for root, directories, filenames in os.walk(self.templates_folder):
+        for root, _, filenames in os.walk(self.templates_folder):
             for filename in filenames:
                 source = os.path.join(root, filename)
                 target_base, ext = os.path.splitext(source)

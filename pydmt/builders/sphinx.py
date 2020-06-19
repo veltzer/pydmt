@@ -11,23 +11,21 @@ to set the PYTHONPATH and get better integration with sphinx?
 import os
 import shutil
 from typing import List
+import subprocess
 
 from pydmt.api.builder import Builder
 from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
 from pydmt.utils.digest import sha1_files_folders
-import subprocess
-
-
-"""
-This is review of how to build a sphinx documentation:
-- if you want documentation for the code you need to run "sphinx-apidoc"
-- it will generate files that describe every sub package in your package.
-- after this you run "sphinx-build"
-- "sphinx-quickstart" is not needed unless you are starting a new project. 
-"""
 
 
 class Sphinx(Builder):
+    """
+    This is review of how to build a sphinx documentation:
+    - if you want documentation for the code you need to run "sphinx-apidoc"
+    - it will generate files that describe every sub package in your package.
+    - after this you run "sphinx-build"
+    - "sphinx-quickstart" is not needed unless you are starting a new project.
+    """
     def get_sources(self) -> List[str]:
         return [
             os.path.join(self.source_folder, "index.rst"),

@@ -12,7 +12,7 @@ def hlp_source_under(folder):
     # walk the folder and find the __init__.py entries for packages.
     packages = []
     package_dir = dict()
-    for root, dirs, files in os.walk(folder):
+    for root, _, files in os.walk(folder):
         for file in files:
             if file != '__init__.py':
                 continue

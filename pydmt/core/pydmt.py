@@ -47,8 +47,7 @@ class BuildProcessStats:
     def get_os_error_code(self) -> int:
         if len(self.builder_fail) > 0:
             return 1
-        else:
-            return 0
+        return 0
 
 
 class PyDMT:
