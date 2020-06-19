@@ -1,5 +1,4 @@
 
-
 # *pydmt* project by Mark Veltzer
 
 ![PyPI - Status](https://img.shields.io/pypi/status/pydmt)
@@ -17,7 +16,8 @@
 ![Downloads](https://pepy.tech/badge/pydmt/month)
 ![Downloads](https://pepy.tech/badge/pydmt/week)
 
+![build](https://github.com/veltzer/pydmt/workflows/build/badge.svg)
+
 python dependency management tool
 
-project website: https://veltzer.github.io/pydmt
-
+project website: <https://veltzer.github.io/pydmt>

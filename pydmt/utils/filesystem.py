@@ -25,7 +25,7 @@ def unlink_files(files: List[str], only_if_exist: bool = True) -> None:
 
 def files_under_folder(folder: str, suffix: Union[str, None] = None) -> List[str]:
     file_list = []
-    for dir_path, _dir_names, filenames in os.walk(folder):
+    for dir_path, _, filenames in os.walk(folder):
         for filename in filenames:
             if suffix is None or filename.endswith(suffix):
                 file_list.append(os.path.join(dir_path, filename))

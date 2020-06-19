@@ -6,7 +6,7 @@ def make_console_script(package_name: str, main: Callable):
     """
     return a string suitable to be used as the section 'console_scripts'
     of the 'entry_points' parameters of setup.py.
-    
+
     example: 'pycmdtools=pycmdtools.endpoints.main:main'
     :param package_name:
     :param main:
@@ -30,7 +30,7 @@ def array_indented(level: int, array: List[str], quote_char='\'', comma_after=Fa
     """
     out = "[\n"
     for x in array:
-        out += (((level+1) * 4) * " ") + '{}{}{}'.format(quote_char, x, quote_char) + ",\n"
+        out += (((level+1) * 4) * " ") + '{qc}{x}{qc}'.format(qc=quote_char, x=x) + ",\n"
     out += ((level * 4) * " ") + "]"
     if comma_after:
         out += ","
@@ -49,12 +49,11 @@ def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char='\'',
     out = "{\n"
     for k, v in dictionary.items():
         spaces = (((level+1) * 4) * " ")
-        out += '{}{}{}{}: {},\n'.format(
-            spaces,
-            quote_char,
-            k,
-            quote_char,
-            v,
+        out += '{spaces}{qc}{k}{qc}: {v},\n'.format(
+            spaces=spaces,
+            qc=quote_char,
+            k=k,
+            v=v,
         )
     spaces = ((level * 4) * " ")
     out += "{}}}".format(spaces)

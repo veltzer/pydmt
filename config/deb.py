@@ -29,5 +29,5 @@ deb_out_folder = 'out'
 # build_gbp = build.gbp
 
 # create this with 'date -R'
-# TODO: this should be created automatically here in python
+# this should be created automatically here in python
 deb_date = 'Mon, 17 Oct 2016 09:44:00 +0300'

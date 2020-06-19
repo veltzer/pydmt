@@ -13,12 +13,6 @@ def hex_digest_files(filenames: List[str], algorithm_name: str) -> str:
             while len(buf) > 0:
                 hash_object.update(buf)
                 buf = file_handle.read(block_size)
-    """
-    print("digest: {} {}".format(
-        ','.join(filenames),
-        hash_object.hexdigest(),
-    ))
-    """
     return hash_object.hexdigest()
 
 

@@ -19,4 +19,3 @@ class Feature(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def setup(self, pydmt: PyDMT) -> None:
         """ build your feature here """
-        pass

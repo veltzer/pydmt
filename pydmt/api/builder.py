@@ -17,7 +17,6 @@ class Builder(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def __init__(self):
         """ initialize your builder here """
-        pass
 
     @abc.abstractmethod
     def build(self) -> None:
@@ -31,7 +30,6 @@ class Builder(metaclass=abc.ABCMeta):
         If there are any problems then throw an exception.
         Try not to segfault the interpreter in this method...:)
         """
-        pass
 
     @abc.abstractmethod
     def get_sources(self) -> List[str]:
@@ -44,7 +42,6 @@ class Builder(metaclass=abc.ABCMeta):
         The @get_signature method is use for that.
         In the future the get_signature method will go away.
         """
-        pass
 
     def get_targets(self) -> List[str]:
         """ return the names of the files that you are sure you produce. If you do not know them,
@@ -64,4 +61,3 @@ class Builder(metaclass=abc.ABCMeta):
         Techically this is the sha1 of the file content of the list of files
         returned from :func:`~get_sources`
         """
-        pass

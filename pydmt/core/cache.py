@@ -16,15 +16,13 @@ class Cache:
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
         if full_path in self.name_cache:
             return full_path
-        else:
-            return None
+        return None
 
     def get_object_filename(self, signature: str):
         full_path = os.path.join(FOLDER_NAME, NAME_OBJECTS, signature[:2], signature[2:])
         if full_path in self.name_cache:
             return full_path
-        else:
-            return None
+        return None
 
     def list_sig_ok(self, signature: str):
         """
@@ -35,7 +33,7 @@ class Cache:
         list_filename = self.get_list_filename(signature)
         if list_filename not in self.name_cache:
             return False
-        for _object_name, sig in Cache.iterate_objects(list_filename):
+        for _, sig in Cache.iterate_objects(list_filename):
             if not self.get_object_filename(sig):
                 return False
         return True

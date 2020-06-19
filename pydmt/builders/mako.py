@@ -1,11 +1,11 @@
 import sys
+import os
 from typing import List, Dict, Union
 
 import mako
 import mako.exceptions
 import mako.lookup
 import mako.template
-import os
 
 from pydmt.api.builder import Builder
 from pydmt.utils.filesystem import makedirs_for_file
