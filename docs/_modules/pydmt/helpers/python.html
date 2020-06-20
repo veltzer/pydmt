@@ -17,7 +17,6 @@
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -26,8 +25,6 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <h1>Source code for pydmt.helpers.python</h1><div class="highlight"><pre>
@@ -39,7 +36,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    return a string suitable to be used as the section &#39;console_scripts&#39;</span>
 <span class="sd">    of the &#39;entry_points&#39; parameters of setup.py.</span>
-<span class="sd">    </span>
+
 <span class="sd">    example: &#39;pycmdtools=pycmdtools.endpoints.main:main&#39;</span>
 <span class="sd">    :param package_name:</span>
 <span class="sd">    :param main:</span>
@@ -63,7 +60,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;[</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="p">(((</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">quote_char</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">quote_char</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="p">(((</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{qc}{x}{qc}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qc</span><span class="o">=</span><span class="n">quote_char</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="n">out</span> <span class="o">+=</span> <span class="p">((</span><span class="n">level</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
     <span class="k">if</span> <span class="n">comma_after</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;,&quot;</span>
@@ -82,12 +79,11 @@
     <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">spaces</span> <span class="o">=</span> <span class="p">(((</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{}{}{}{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">spaces</span><span class="p">,</span>
-            <span class="n">quote_char</span><span class="p">,</span>
-            <span class="n">k</span><span class="p">,</span>
-            <span class="n">quote_char</span><span class="p">,</span>
-            <span class="n">v</span><span class="p">,</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{spaces}{qc}{k}{qc}</span><span class="s1">: </span><span class="si">{v}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">spaces</span><span class="o">=</span><span class="n">spaces</span><span class="p">,</span>
+            <span class="n">qc</span><span class="o">=</span><span class="n">quote_char</span><span class="p">,</span>
+            <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+            <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="n">spaces</span> <span class="o">=</span> <span class="p">((</span><span class="n">level</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">}}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spaces</span><span class="p">)</span>
@@ -111,7 +107,6 @@
 </pre></div>
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -143,7 +138,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
     </div>
 

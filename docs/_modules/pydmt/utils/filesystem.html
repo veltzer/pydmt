@@ -17,7 +17,6 @@
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -26,8 +25,6 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <h1>Source code for pydmt.utils.filesystem</h1><div class="highlight"><pre>
@@ -58,7 +55,7 @@
 
 <div class="viewcode-block" id="files_under_folder"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.filesystem.files_under_folder">[docs]</a><span class="k">def</span> <span class="nf">files_under_folder</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">suffix</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="n">file_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">dir_path</span><span class="p">,</span> <span class="n">_dir_names</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">dir_path</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">suffix</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">suffix</span><span class="p">):</span>
                 <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
@@ -78,7 +75,6 @@
 </pre></div>
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -110,7 +106,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
     </div>
 

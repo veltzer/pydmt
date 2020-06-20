@@ -17,7 +17,6 @@
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -26,8 +25,6 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <h1>Source code for pydmt.features.documentation</h1><div class="highlight"><pre>
@@ -36,6 +33,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.api.feature</span> <span class="kn">import</span> <span class="n">Feature</span>
 <span class="kn">from</span> <span class="nn">pydmt.builders.sphinx</span> <span class="kn">import</span> <span class="n">Sphinx</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="kn">import</span> <span class="n">PyDMT</span>
+<span class="kn">import</span> <span class="nn">config.project</span>
 
 
 <div class="viewcode-block" id="Documentation"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.documentation.Documentation">[docs]</a><span class="k">class</span> <span class="nc">Documentation</span><span class="p">(</span><span class="n">Feature</span><span class="p">):</span>
@@ -48,12 +46,10 @@
 <div class="viewcode-block" id="Documentation.setup"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.documentation.Documentation.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sphinx_folder</span><span class="p">):</span>
             <span class="k">return</span>
-        <span class="kn">import</span> <span class="nn">config.project</span>
         <span class="n">pydmt</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">Sphinx</span><span class="p">(</span><span class="n">package_name</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">project_name</span><span class="p">))</span></div></div>
 </pre></div>
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -85,7 +81,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
     </div>
 

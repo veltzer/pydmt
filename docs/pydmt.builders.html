@@ -19,7 +19,6 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -28,8 +27,6 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="pydmt-builders-package">
@@ -205,6 +202,11 @@ to set the PYTHONPATH and get better integration with sphinx?</p>
 <dt id="pydmt.builders.sphinx.Sphinx">
 <em class="property">class </em><code class="sig-prename descclassname">pydmt.builders.sphinx.</code><code class="sig-name descname">Sphinx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">source_folder</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'sphinx'</span></em>, <em class="sig-param"><span class="n">target_folder</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'docs'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pydmt.api.html#pydmt.api.builder.Builder" title="pydmt.api.builder.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">pydmt.api.builder.Builder</span></code></a></p>
+<p>This is review of how to build a sphinx documentation:
+- if you want documentation for the code you need to run “sphinx-apidoc”
+- it will generate files that describe every sub package in your package.
+- after this you run “sphinx-build”
+- “sphinx-quickstart” is not needed unless you are starting a new project.</p>
 <dl class="py method">
 <dt id="pydmt.builders.sphinx.Sphinx.build">
 <code class="sig-name descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pydmt/builders/sphinx.html#Sphinx.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pydmt.builders.sphinx.Sphinx.build" title="Permalink to this definition">¶</a></dt>
@@ -256,7 +258,6 @@ that you created then you don’t need to implement anything here</p>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -292,7 +293,7 @@ that you created then you don’t need to implement anything here</p>
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/pydmt.builders.rst.txt"
