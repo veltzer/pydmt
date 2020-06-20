@@ -16,7 +16,6 @@
 ![Downloads](https://pepy.tech/badge/pydmt/month)
 ![Downloads](https://pepy.tech/badge/pydmt/week)
 
-![build](https://github.com/veltzer/pydmt/workflows/build/badge.svg)
 
 python dependency management tool
 
