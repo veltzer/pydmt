@@ -4,7 +4,7 @@ import sys
 import pathlib
 
 import pylogconf.core
-from pytconf.config import register_function_group, register_endpoint
+from pytconf import register_function_group, register_endpoint
 
 import pydmt.version
 from pydmt.features.documentation import Documentation
