@@ -34,7 +34,7 @@ class Cache:
         if list_filename not in self.name_cache:
             return False
         for _, sig in Cache.iterate_objects(list_filename):
-            if not self.get_object_filename(sig):
+            if self.get_object_filename(sig) is None:
                 return False
         return True
 
