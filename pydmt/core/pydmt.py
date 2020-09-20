@@ -60,9 +60,8 @@ class PyDMT:
         """ run one builder, return statistics about the run """
         logger = logging.getLogger(__name__)
         target_signature = builder.get_signature()
-        assert target_signature is not None, "builder signature is None"
         if self.cache.list_sig_ok(target_signature):
-            logger.debug("verifying [{}]".format(builder.get_name()))
+            logger.debug(f"verifying [{builder.get_name()}]")
             file_bad = 0
             file_correct = 0
             file_missing = 0
@@ -91,32 +90,27 @@ class PyDMT:
                 logger.debug("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
                     file_total, file_bad, file_correct, file_missing))
             else:
-                logger.debug("ok [{}]".format(builder.get_name()))
+                logger.debug(f"ok [{builder.get_name()}]")
         else:
+            logger.debug(f"running [{builder.get_name()}]")
+            print(f"{builder.get_name()}...", end="", flush=True)
             # this is one of the rare cases in which really want to catch all exceptions.
             # noinspection PyBroadException
             try:
-                logger.debug("running [{}]".format(builder.get_name()))
-                print("{} [{}]...".format(
-                    builder.__class__.__name__,
-                    ','.join(builder.get_targets()),
-                ), end="", flush=True)
                 builder.build()
-                print("OK")
-                stats.add_builder_ok(builder)
-                # first lets build a list of what was constructed
-                targets = builder.get_targets()
-                targets.extend(builder.get_targets_post_build())
-                content = ""
-                for target in targets:
-                    signature = sha1_file(target)
-                    content += target + " " + signature + "\n"
-                    self.cache.save_object_by_signature(signature, target)
-                self.cache.save_list_by_signature(target_signature, content)
             except Exception as e:
                 print("FAIL")
                 logger.exception("exception")
                 stats.add_builder_fail(builder, e)
+                return
+            print("OK")
+            stats.add_builder_ok(builder)
+
+            content = ""
+            for signature, target in builder.yield_results():
+                self.cache.save_object_by_signature(signature, target)
+                content += target + " " + signature + "\n"
+            self.cache.save_list_by_signature(target_signature, content)
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
         b = self.target_to_builder[target]
@@ -129,7 +123,8 @@ class PyDMT:
     def build_all(self) -> BuildProcessStats:
         """
         Build all the targets, very high level method
-        :return:
+        TODO: order builders by depenencies and do this multi-core
+        :return: statistics about the build
         """
         stats = BuildProcessStats()
         for builder in self.builders:

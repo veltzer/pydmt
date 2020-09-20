@@ -12,5 +12,13 @@ target:
 
 Builder: a piece of code that builds.
     It receives multiple targets as inputs (often one) and produces multiple targets (often one)
-    Builders have a type but do not have a name.
+    Builders have a type and can have a name.
+    You can run a builder by a name.
     If you want to run a specific builder then you can run it with a reference.
+
+How do you run a build?
+    You can either run all builders (or a default builder).
+    You can ask to run a builder by name (which recursively will run all builders
+        it depends upon).
+    You can ask to run a build for target name in which case the system will find
+        which builder builds that target and will run it.

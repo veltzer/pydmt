@@ -51,6 +51,7 @@
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -62,14 +63,30 @@
 </li>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_builder_ok">add_builder_ok() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_copy_missing">add_copy_missing() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_copy_sha1">add_copy_sha1() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
+      <li><a href="pydmt.utils.html#pydmt.utils.digester.Digester.add_file">add_file() (pydmt.utils.digester.Digester method)</a>
+</li>
+      <li><a href="pydmt.utils.html#pydmt.utils.digester.Digester.add_files">add_files() (pydmt.utils.digester.Digester method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pydmt.utils.html#pydmt.utils.digester.Digester.add_files_folders">add_files_folders() (pydmt.utils.digester.Digester method)</a>
+</li>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.add_nop">add_nop() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
+      <li><a href="pydmt.api.html#pydmt.api.builder.Source.add_to_digester">add_to_digester() (pydmt.api.builder.Source method)</a>
+
+      <ul>
+        <li><a href="pydmt.api.html#pydmt.api.builder.SourceFile.add_to_digester">(pydmt.api.builder.SourceFile method)</a>
+</li>
+        <li><a href="pydmt.api.html#pydmt.api.builder.SourceFiles.add_to_digester">(pydmt.api.builder.SourceFiles method)</a>
+</li>
+        <li><a href="pydmt.api.html#pydmt.api.builder.SourceFolder.add_to_digester">(pydmt.api.builder.SourceFolder method)</a>
+</li>
+      </ul></li>
       <li><a href="pydmt.helpers.html#pydmt.helpers.python.array_indented">array_indented() (in module pydmt.helpers.python)</a>
 </li>
   </ul></td>
@@ -134,6 +151,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pydmt.utils.html#pydmt.utils.digester.Digester">Digester (class in pydmt.utils.digester)</a>
+</li>
       <li><a href="pydmt.features.html#pydmt.features.documentation.Documentation">Documentation (class in pydmt.features.documentation)</a>
 </li>
   </ul></td>
@@ -166,30 +185,38 @@
 </li>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_copy_missing">get_copy_missing() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
+      <li><a href="pydmt.utils.html#pydmt.utils.digester.Digester.get_hexdigest">get_hexdigest() (pydmt.utils.digester.Digester method)</a>
+</li>
       <li><a href="pydmt.core.html#pydmt.core.cache.Cache.get_list_filename">get_list_filename() (pydmt.core.cache.Cache method)</a>
 </li>
       <li><a href="pydmt.api.html#pydmt.api.builder.Builder.get_name">get_name() (pydmt.api.builder.Builder method)</a>
+
+      <ul>
+        <li><a href="pydmt.api.html#pydmt.api.builder.Source.get_name">(pydmt.api.builder.Source method)</a>
 </li>
+        <li><a href="pydmt.api.html#pydmt.api.builder.SourceFile.get_name">(pydmt.api.builder.SourceFile method)</a>
+</li>
+        <li><a href="pydmt.api.html#pydmt.api.builder.SourceFiles.get_name">(pydmt.api.builder.SourceFiles method)</a>
+</li>
+        <li><a href="pydmt.api.html#pydmt.api.builder.SourceFolder.get_name">(pydmt.api.builder.SourceFolder method)</a>
+</li>
+      </ul></li>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_nop">get_nop() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
       <li><a href="pydmt.core.html#pydmt.core.cache.Cache.get_object_filename">get_object_filename() (pydmt.core.cache.Cache method)</a>
 </li>
       <li><a href="pydmt.core.html#pydmt.core.pydmt.BuildProcessStats.get_os_error_code">get_os_error_code() (pydmt.core.pydmt.BuildProcessStats method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pydmt.api.html#pydmt.api.builder.Builder.get_signature">get_signature() (pydmt.api.builder.Builder method)</a>
 
       <ul>
-        <li><a href="pydmt.builders.html#pydmt.builders.copy.Copy.get_signature">(pydmt.builders.copy.Copy method)</a>
-</li>
-        <li><a href="pydmt.builders.html#pydmt.builders.fail.Fail.get_signature">(pydmt.builders.fail.Fail method)</a>
-</li>
         <li><a href="pydmt.builders.html#pydmt.builders.mako.Mako.get_signature">(pydmt.builders.mako.Mako method)</a>
 </li>
         <li><a href="pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_signature">(pydmt.builders.sphinx.Sphinx method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pydmt.api.html#pydmt.api.builder.Builder.get_sources">get_sources() (pydmt.api.builder.Builder method)</a>
 
       <ul>
@@ -202,22 +229,16 @@
         <li><a href="pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_sources">(pydmt.builders.sphinx.Sphinx method)</a>
 </li>
       </ul></li>
-      <li><a href="pydmt.api.html#pydmt.api.builder.Builder.get_targets">get_targets() (pydmt.api.builder.Builder method)</a>
+      <li><a href="pydmt.builders.html#pydmt.builders.copy.Copy.get_targets">get_targets() (pydmt.builders.copy.Copy method)</a>
 
       <ul>
-        <li><a href="pydmt.builders.html#pydmt.builders.copy.Copy.get_targets">(pydmt.builders.copy.Copy method)</a>
-</li>
         <li><a href="pydmt.builders.html#pydmt.builders.fail.Fail.get_targets">(pydmt.builders.fail.Fail method)</a>
 </li>
         <li><a href="pydmt.builders.html#pydmt.builders.mako.Mako.get_targets">(pydmt.builders.mako.Mako method)</a>
 </li>
       </ul></li>
-      <li><a href="pydmt.api.html#pydmt.api.builder.Builder.get_targets_post_build">get_targets_post_build() (pydmt.api.builder.Builder method)</a>
-
-      <ul>
-        <li><a href="pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_targets_post_build">(pydmt.builders.sphinx.Sphinx method)</a>
+      <li><a href="pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_targets_post_build">get_targets_post_build() (pydmt.builders.sphinx.Sphinx method)</a>
 </li>
-      </ul></li>
       <li><a href="pydmt.core.html#pydmt.core.graph.Graph">Graph (class in pydmt.core.graph)</a>
 </li>
   </ul></td>
@@ -325,6 +346,8 @@
         <li><a href="pydmt.utils.html#module-pydmt.utils">pydmt.utils</a>
 </li>
         <li><a href="pydmt.utils.html#module-pydmt.utils.digest">pydmt.utils.digest</a>
+</li>
+        <li><a href="pydmt.utils.html#module-pydmt.utils.digester">pydmt.utils.digester</a>
 </li>
         <li><a href="pydmt.utils.html#module-pydmt.utils.filesystem">pydmt.utils.filesystem</a>
 </li>
@@ -438,8 +461,6 @@
         <li><a href="pydmt.core.html#module-pydmt.core.pydmt">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pydmt.core.tempdir
 
@@ -447,6 +468,8 @@
         <li><a href="pydmt.core.html#module-pydmt.core.tempdir">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pydmt.endpoints
 
@@ -518,6 +541,13 @@
 </li>
       </ul></li>
       <li>
+    pydmt.utils.digester
+
+      <ul>
+        <li><a href="pydmt.utils.html#module-pydmt.utils.digester">module</a>
+</li>
+      </ul></li>
+      <li>
     pydmt.utils.filesystem
 
       <ul>
@@ -575,15 +605,23 @@
         <li><a href="pydmt.features.html#pydmt.features.templating.Templating.setup">(pydmt.features.templating.Templating method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pydmt.utils.html#pydmt.utils.digest.sha1_file">sha1_file() (in module pydmt.utils.digest)</a>
 </li>
       <li><a href="pydmt.utils.html#pydmt.utils.digest.sha1_files">sha1_files() (in module pydmt.utils.digest)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pydmt.utils.html#pydmt.utils.digest.sha1_files_folders">sha1_files_folders() (in module pydmt.utils.digest)</a>
 </li>
       <li><a href="pydmt.utils.html#pydmt.utils.digest.sha1_folders">sha1_folders() (in module pydmt.utils.digest)</a>
+</li>
+      <li><a href="pydmt.api.html#pydmt.api.builder.Source">Source (class in pydmt.api.builder)</a>
+</li>
+      <li><a href="pydmt.api.html#pydmt.api.builder.SourceFile">SourceFile (class in pydmt.api.builder)</a>
+</li>
+      <li><a href="pydmt.api.html#pydmt.api.builder.SourceFiles">SourceFiles (class in pydmt.api.builder)</a>
+</li>
+      <li><a href="pydmt.api.html#pydmt.api.builder.SourceFolder">SourceFolder (class in pydmt.api.builder)</a>
 </li>
       <li><a href="pydmt.builders.html#pydmt.builders.sphinx.Sphinx">Sphinx (class in pydmt.builders.sphinx)</a>
 </li>
@@ -618,6 +656,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pydmt.endpoints.html#pydmt.endpoints.group_default.version">version() (in module pydmt.endpoints.group_default)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pydmt.api.html#pydmt.api.builder.Builder.yield_results">yield_results() (pydmt.api.builder.Builder method)</a>
 </li>
   </ul></td>
 </tr></table>

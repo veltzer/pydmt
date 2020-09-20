@@ -1,23 +1,20 @@
 from typing import List
 
-from pydmt.api.builder import Builder
-from pydmt.utils.digest import sha1_file
+from pydmt.api.builder import Builder, Source, SourceFile
 
 
 class Fail(Builder):
-    def get_sources(self) -> List[str]:
-        return [self.source]
 
     def __init__(self, source: str, target: str):
         super().__init__()
-        self.source = source
-        self.target = target
+        self.sources = [SourceFile(filename=source)]
+        self.targets = [target]
 
-    def get_signature(self) -> str:
-        return sha1_file(self.source)
+    def get_sources(self) -> List[Source]:
+        return self.sources
+
+    def get_targets(self) -> List[str]:
+        return self.targets
 
     def build(self):
         raise ValueError("fail")
-
-    def get_targets(self) -> List[str]:
-        return [self.target]

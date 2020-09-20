@@ -11,5 +11,5 @@ Question:
 	time?
 
 Answers:
-	All inputs will in inherit from input and all outputs will in inherit from
+	All inputs will inherit from input and all outputs will inherit from
 	output and input and output will in inherit from ingredient.

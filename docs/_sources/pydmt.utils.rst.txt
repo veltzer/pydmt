@@ -12,6 +12,14 @@ pydmt.utils.digest module
    :undoc-members:
    :show-inheritance:
 
+pydmt.utils.digester module
+---------------------------
+
+.. automodule:: pydmt.utils.digester
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.utils.filesystem module
 -----------------------------
 

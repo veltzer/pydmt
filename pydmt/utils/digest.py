@@ -4,15 +4,17 @@ from typing import List
 from pydmt.utils.filesystem import files_under_folders
 
 
+BLOCK_SIZE = 65536
+
+
 def hex_digest_files(filenames: List[str], algorithm_name: str) -> str:
-    block_size = 65536
     hash_object = hashlib.new(algorithm_name)
     for filename in filenames:
         with open(filename, 'rb') as file_handle:
-            buf = file_handle.read(block_size)
+            buf = file_handle.read(BLOCK_SIZE)
             while len(buf) > 0:
                 hash_object.update(buf)
-                buf = file_handle.read(block_size)
+                buf = file_handle.read(BLOCK_SIZE)
     return hash_object.hexdigest()
 
 

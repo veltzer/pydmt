@@ -2,8 +2,7 @@ from typing import List
 
 import shutil
 
-from pydmt.api.builder import Builder
-from pydmt.utils.digest import sha1_file
+from pydmt.api.builder import Builder, SourceFile, Source
 
 
 class Copy(Builder):
@@ -12,15 +11,15 @@ class Copy(Builder):
         super().__init__()
         self.source = source
         self.target = target
+        self.sources = [SourceFile(filename=source)]
+        self.targets = [target]
 
-    def get_signature(self) -> str:
-        return sha1_file(self.source)
+    def get_sources(self) -> List[Source]:
+        return self.sources
+
+    def get_targets(self) -> List[str]:
+        return self.targets
 
     def build(self):
         shutil.copy(self.source, self.target)
 
-    def get_sources(self) -> List[str]:
-        return [self.source]
-
-    def get_targets(self) -> List[str]:
-        return [self.target]

@@ -68,7 +68,7 @@
         <span class="k">if</span> <span class="n">list_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">Cache</span><span class="o">.</span><span class="n">iterate_objects</span><span class="p">(</span><span class="n">list_filename</span><span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object_filename</span><span class="p">(</span><span class="n">sig</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object_filename</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 

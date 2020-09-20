@@ -3,7 +3,7 @@ import abc
 from pydmt.core.pydmt import PyDMT
 
 
-class Feature(metaclass=abc.ABCMeta):
+class Feature(abc.ABC):
     """
     A Feature is a piece of code that adds builder to a pydmt system in a predefined
     way. This is a way to share common practices between projects.
@@ -14,7 +14,6 @@ class Feature(metaclass=abc.ABCMeta):
 
     These are similar to facets or natures in development environments.
     """
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def setup(self, pydmt: PyDMT) -> None:
