@@ -16,6 +16,8 @@
 ![Downloads](https://pepy.tech/badge/pydmt/month)
 ![Downloads](https://pepy.tech/badge/pydmt/week)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/veltzer/pydmt/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/veltzer/pydmt?targetFile=requirements.txt)
+
 
 
 python dependency management tool

@@ -4,44 +4,17 @@ import sys
 import pathlib
 
 import pylogconf.core
-from pytconf import register_function_group, register_endpoint
+from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-import pydmt.version
 from pydmt.features.documentation import Documentation
 from pydmt.core.pydmt import PyDMT
 from pydmt.features.templating import Templating
 
 
-GROUP_NAME_DEFAULT = "default"
-GROUP_DESCRIPTION_DEFAULT = "all pydmt commands"
-
-
-def register_group_default():
-    """
-    register the name and description of this group
-    """
-    register_function_group(
-        function_group_name=GROUP_NAME_DEFAULT,
-        function_group_description=GROUP_DESCRIPTION_DEFAULT,
-    )
-
-
 @register_endpoint(
-    group=GROUP_NAME_DEFAULT,
-)
-def version() -> None:
-    """
-    Print version
-    """
-    print(pydmt.version.VERSION_STR)
-
-
-@register_endpoint(
-    group=GROUP_NAME_DEFAULT,
+    description="Build the project",
 )
 def build():
-    """ build the project """
-    # parameters
     debug = False
     add_import_of_cwd = True
     add_import_of_home = True
@@ -76,9 +49,20 @@ def build():
 
 
 @register_endpoint(
-    group=GROUP_NAME_DEFAULT,
+    description="Clean all generated files"
 )
 def clean() -> None:
+    pass
+
+
+@register_main()
+def main():
     """
-    clean all generated files
+    pydmt builds anything
     """
+    pylogconf.core.setup()
+    config_arg_parse_and_launch()
+
+
+if __name__ == '__main__':
+    main()
