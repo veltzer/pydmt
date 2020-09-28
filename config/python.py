@@ -1,10 +1,9 @@
 import config.project
-import pydmt.endpoints.main
 
 package_name = config.project.project_name
 
 console_scripts = [
-    'pydmt=' + pydmt.endpoints.main.__name__ + ":" + pydmt.endpoints.main.main.__name__,
+    "pydmt.main:main",
 ]
 
 setup_requires = [

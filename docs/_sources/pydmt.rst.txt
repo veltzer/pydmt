@@ -10,7 +10,6 @@ Subpackages
    pydmt.api
    pydmt.builders
    pydmt.core
-   pydmt.endpoints
    pydmt.features
    pydmt.helpers
    pydmt.utils
@@ -18,10 +17,18 @@ Subpackages
 Submodules
 ----------
 
-pydmt.version module
---------------------
+pydmt.main module
+-----------------
 
-.. automodule:: pydmt.version
+.. automodule:: pydmt.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pydmt.static module
+-------------------
+
+.. automodule:: pydmt.static
    :members:
    :undoc-members:
    :show-inheritance:

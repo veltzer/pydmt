@@ -15,7 +15,6 @@ setuptools.setup(
         'pydmt.api',
         'pydmt.builders',
         'pydmt.core',
-        'pydmt.endpoints',
         'pydmt.features',
         'pydmt.helpers',
         'pydmt.utils',
@@ -68,7 +67,7 @@ setuptools.setup(
     data_files=[
     ],
     entry_points={"console_scripts": [
-        'pydmt=pydmt.endpoints.main:main',
+        'pydmt.main:main',
     ]},
     python_requires=">=3.6",
 )

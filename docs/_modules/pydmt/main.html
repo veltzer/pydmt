@@ -5,18 +5,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pydmt.endpoints.group_default &#8212; pydmt 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
+    <title>pydmt.main &#8212; pydmt 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
    
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -31,51 +31,24 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for pydmt.endpoints.group_default</h1><div class="highlight"><pre>
+  <h1>Source code for pydmt.main</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
 
 <span class="kn">import</span> <span class="nn">pylogconf.core</span>
-<span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_function_group</span><span class="p">,</span> <span class="n">register_endpoint</span>
+<span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_endpoint</span><span class="p">,</span> <span class="n">register_main</span><span class="p">,</span> <span class="n">config_arg_parse_and_launch</span>
 
-<span class="kn">import</span> <span class="nn">pydmt.version</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.documentation</span> <span class="kn">import</span> <span class="n">Documentation</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="kn">import</span> <span class="n">PyDMT</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.templating</span> <span class="kn">import</span> <span class="n">Templating</span>
 
 
-<span class="n">GROUP_NAME_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
-<span class="n">GROUP_DESCRIPTION_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;all pydmt commands&quot;</span>
-
-
-<div class="viewcode-block" id="register_group_default"><a class="viewcode-back" href="../../../pydmt.endpoints.html#pydmt.endpoints.group_default.register_group_default">[docs]</a><span class="k">def</span> <span class="nf">register_group_default</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    register the name and description of this group</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">register_function_group</span><span class="p">(</span>
-        <span class="n">function_group_name</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
-        <span class="n">function_group_description</span><span class="o">=</span><span class="n">GROUP_DESCRIPTION_DEFAULT</span><span class="p">,</span>
-    <span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="version"><a class="viewcode-back" href="../../../pydmt.endpoints.html#pydmt.endpoints.group_default.version">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span> <span class="nf">version</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Print version</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">pydmt</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION_STR</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="build"><a class="viewcode-back" href="../../../pydmt.endpoints.html#pydmt.endpoints.group_default.build">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+<div class="viewcode-block" id="build"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.build">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Build the project&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">build</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot; build the project &quot;&quot;&quot;</span>
-    <span class="c1"># parameters</span>
     <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">add_import_of_cwd</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_home</span> <span class="o">=</span> <span class="kc">True</span>
@@ -109,13 +82,24 @@
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_os_error_code</span><span class="p">())</span></div>
 
 
-<div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../../pydmt.endpoints.html#pydmt.endpoints.group_default.clean">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+<div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.clean">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Clean all generated files&quot;</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">clean</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.main">[docs]</a><span class="nd">@register_main</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    clean all generated files</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    pydmt builds anything</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">config_arg_parse_and_launch</span><span class="p">()</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
           </div>
@@ -126,8 +110,8 @@
         <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../index.html">Module code</a><ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
   </ul></li>
   </ul></li>
 </ul>
@@ -135,7 +119,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
