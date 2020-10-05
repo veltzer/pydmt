@@ -19,10 +19,13 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/veltzer/pydmt/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/veltzer/pydmt?targetFile=requirements.txt)
 
 
+Actions
+
+![build](https://github.com/veltzer/pydmt/workflows/build/badge.svg)
 
 python dependency management tool
 
-project website: <https://veltzer.github.io/pydmt>
+project website: https://veltzer.github.io/pydmt
 
 chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
