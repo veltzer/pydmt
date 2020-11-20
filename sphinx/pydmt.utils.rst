@@ -44,7 +44,6 @@ pydmt.utils.python module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

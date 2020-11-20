@@ -36,7 +36,6 @@ pydmt.builders.sphinx module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 
