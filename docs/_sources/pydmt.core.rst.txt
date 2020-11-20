@@ -36,7 +36,6 @@ pydmt.core.tempdir module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 
