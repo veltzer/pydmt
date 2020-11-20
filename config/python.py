@@ -10,29 +10,28 @@ setup_requires = [
 ]
 
 test_requires = [
-    'pylint',  # to check for lint errors
-    'pytest',  # for testing
-    'pyflakes',  # for testing
+    'pylint',
+    'pytest',
+    'pyflakes',
 ]
 
 install_requires = [
-    # core
-    'pyfakeuse',  # for ignoring arguments to functions
-    'pylogconf',  # for configuring logging
-    'pytconf',  # for handling command line arguments
-    # plugins
-    'mako',  # for template handling
-    'Sphinx',  # for the sphinx builder
+  
+    'pyfakeuse',
+    'pylogconf',
+    'pytconf',
+  
+    'mako',
+    'Sphinx',
 ]
 
 dev_requires = [
-    'pypitools',  # for upload and registration
-    'pydmt',  # for building
-    'pyclassifiers',  # for specifying classifications
+    'pypitools',
+    'pydmt',
+    'pyclassifiers',
 ]
 
 python_requires = ">=3.6"
 
 extras_require = {
-    # ':python_version == "2.7"': ['futures'],  # for python2.7 backport of concurrent.futures
 }
