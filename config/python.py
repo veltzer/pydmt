@@ -16,11 +16,9 @@ test_requires = [
 ]
 
 install_requires = [
-  
     'pyfakeuse',
     'pylogconf',
     'pytconf',
-  
     'mako',
     'Sphinx',
 ]
@@ -29,6 +27,7 @@ dev_requires = [
     'pypitools',
     'pydmt',
     'pyclassifiers',
+    'pymakehelper',
 ]
 
 python_requires = ">=3.6"

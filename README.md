@@ -14,7 +14,6 @@
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 ![build](https://github.com/veltzer/pydmt/workflows/build/badge.svg)
-
 python dependency management tool
 
 project website: https://veltzer.github.io/pydmt
