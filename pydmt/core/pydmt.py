@@ -94,7 +94,7 @@ class PyDMT:
         else:
             logger.debug(f"running [{builder.get_name()}]")
             print(f"{builder.get_name()}...", end="", flush=True)
-            # this is one of the rare cases in which really want to catch all exceptions.
+            # this is one of the rare cases in which we really want to catch all exceptions.
             # pylint: disable=broad-except
             # noinspection PyBroadException
             try:

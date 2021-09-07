@@ -127,7 +127,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;running [</span><span class="si">{</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="c1"># this is one of the rare cases in which really want to catch all exceptions.</span>
+            <span class="c1"># this is one of the rare cases in which we really want to catch all exceptions.</span>
             <span class="c1"># pylint: disable=broad-except</span>
             <span class="c1"># noinspection PyBroadException</span>
             <span class="k">try</span><span class="p">:</span>

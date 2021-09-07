@@ -42,6 +42,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.features.documentation</span> <span class="kn">import</span> <span class="n">Documentation</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="kn">import</span> <span class="n">PyDMT</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.templating</span> <span class="kn">import</span> <span class="n">Templating</span>
+<span class="kn">from</span> <span class="nn">pydmt.static</span> <span class="kn">import</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">VERSION_STR</span><span class="p">,</span> <span class="n">DESCRIPTION</span>
 
 
 <div class="viewcode-block" id="build"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.build">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
@@ -88,11 +89,12 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.main">[docs]</a><span class="nd">@register_main</span><span class="p">()</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.main">[docs]</a><span class="nd">@register_main</span><span class="p">(</span>
+    <span class="n">app_name</span><span class="o">=</span><span class="n">APP_NAME</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">VERSION_STR</span><span class="p">,</span>
+    <span class="n">main_description</span><span class="o">=</span><span class="n">DESCRIPTION</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    pydmt builds anything</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
     <span class="n">config_arg_parse_and_launch</span><span class="p">()</span></div>
 

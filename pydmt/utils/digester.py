@@ -23,7 +23,11 @@ class Digester:
         for filename in filenames:
             self.add_file(filename)
 
-    def add_files_folders(self, files: List[str] = (), folders: List[str] = ()) -> None:
+    def add_folders(self, folders: List[str]) -> None:
+        for filename in files_under_folders(folders=folders):
+            self.add_file(filename)
+
+    def add_files_folders(self, files: List[str], folders: List[str]) -> None:
         f = files
         f.extend(files_under_folders(folders=folders))
         self.add_files(f)

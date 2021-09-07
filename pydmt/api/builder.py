@@ -131,7 +131,7 @@ class SourceFolder(Node):
         self.folder = folder
 
     def add_to_digester(self, d: Digester) -> None:
-        d.add_files_folders(folders=[self.folder])
+        d.add_folders(folders=[self.folder])
 
     def get_name(self):
         return self.folder
