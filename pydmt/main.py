@@ -37,11 +37,8 @@ def build():
     pylogconf.core.setup()
     p = PyDMT()
 
-    # add templating support
     f = Templating()
     f.setup(p)
-
-    # add sphinx support
     f = Documentation()
     f.setup(p)
 
