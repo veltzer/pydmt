@@ -137,7 +137,5 @@ class PyDMT:
 
     def add_builder(self, b: Builder) -> None:
         self.builders.append(b)
-        targets = b.get_targets()
-        if targets:
-            for target in targets:
-                self.target_to_builder[target] = b
+        for target in b.get_targets():
+            self.target_to_builder[target] = b
