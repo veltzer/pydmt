@@ -37,8 +37,6 @@ class Mako(Builder):
         try:
             lookup = mako.lookup.TemplateLookup(
                 directories=['.'],
-                input_encoding='utf-8',
-                output_encoding='utf-8',
             )
             template = mako.template.Template(
                 filename=self.source,
@@ -49,7 +47,7 @@ class Mako(Builder):
                 output = template.render()
             else:
                 output = template.render(**self.data)
-            with open(self.target, "w", encoding="uft8") as file_handle:
+            with open(self.target, "w") as file_handle:
                 file_handle.write(output)
         except Exception as e:
             if os.path.isfile(self.target):
