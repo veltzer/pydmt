@@ -1,6 +1,5 @@
-import os
-
 import sys
+import os
 import pathlib
 
 import pylogconf.core
@@ -12,11 +11,7 @@ from pydmt.features.templating import Templating
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
 
-@register_endpoint(
-    description="Build the project",
-)
-def build():
-    debug = False
+def add_to_path():
     add_import_of_cwd = True
     add_import_of_home = True
     add_import_of_shared = True
@@ -32,9 +27,14 @@ def build():
         if "" not in sys.path:
             sys.path.insert(0, "")
 
+
+@register_endpoint(
+    description="Build the project",
+)
+def build():
+    # add_to_path()
+
     pylogconf.core.setup()
-    if debug:
-        print("system path is [{}]".format(sys.path))
     p = PyDMT()
 
     # add templating support

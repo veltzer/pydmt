@@ -31,9 +31,8 @@
           <div class="body" role="main">
             
   <h1>Source code for pydmt.main</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
 
 <span class="kn">import</span> <span class="nn">pylogconf.core</span>
@@ -45,11 +44,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.static</span> <span class="kn">import</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">VERSION_STR</span><span class="p">,</span> <span class="n">DESCRIPTION</span>
 
 
-<div class="viewcode-block" id="build"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.build">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Build the project&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span> <span class="nf">build</span><span class="p">():</span>
-    <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="viewcode-block" id="add_to_path"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.add_to_path">[docs]</a><span class="k">def</span> <span class="nf">add_to_path</span><span class="p">():</span>
     <span class="n">add_import_of_cwd</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_home</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_shared</span> <span class="o">=</span> <span class="kc">True</span>
@@ -63,11 +58,16 @@
             <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">add_import_of_cwd</span><span class="p">:</span>
         <span class="k">if</span> <span class="s2">&quot;&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="build"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.build">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Build the project&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">build</span><span class="p">():</span>
+    <span class="c1"># add_to_path()</span>
 
     <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;system path is [</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">PyDMT</span><span class="p">()</span>
 
     <span class="c1"># add templating support</span>
