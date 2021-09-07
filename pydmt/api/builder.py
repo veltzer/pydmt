@@ -85,6 +85,9 @@ class Builder(abc.ABC):
             source.add_to_digester(d)
         return d.get_hexdigest()
 
+    def get_targets_as_string(self) -> str:
+        return ",".join([x.get_name() for x in self.get_targets()])
+
 
 class File(Node):
     """
@@ -123,9 +126,9 @@ class SourceFiles(Node):
         return self.name
 
 
-class SourceFolder(Node):
+class Folder(Node):
     """
-    This is a source of a single folder
+    This is a node representing a single Folder
     """
     def __init__(self, folder: str):
         self.folder = folder
@@ -135,3 +138,11 @@ class SourceFolder(Node):
 
     def get_name(self):
         return self.folder
+
+
+class SourceFolder(Folder):
+    pass
+
+
+class TargetFolder(Folder):
+    pass
