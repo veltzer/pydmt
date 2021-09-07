@@ -4,7 +4,7 @@ from typing import List, Generator, Tuple
 from pydmt.utils.digester import Digester
 
 
-class Source(abc.ABC):
+class Node(abc.ABC):
     """
     This is a source object which knows how to add his checksum to a checksum
     calculation
@@ -33,6 +33,7 @@ class Builder(abc.ABC):
         """
         return f"{self.__class__.__name__}"
 
+    @abc.abstractmethod
     def __init__(self):
         """ initialize your builder here """
 
@@ -49,7 +50,8 @@ class Builder(abc.ABC):
         Try not to segfault the interpreter in this method...:)
         """
 
-    def get_sources(self) -> List[Source]:
+    @abc.abstractmethod
+    def get_sources(self) -> List[Node]:
         """
         return the name of the source files for this builder
         If the builder takes a whole folder the list all the filers in that folder.
@@ -58,6 +60,11 @@ class Builder(abc.ABC):
         it is not used to calculate the signature of the input to the build.
         The @get_signature method is use for that.
         In the future the get_signature method will go away.
+        """
+    @abc.abstractmethod
+    def get_targets(self) -> List[Node]:
+        """
+        return list of targets
         """
 
     @abc.abstractmethod
@@ -79,9 +86,9 @@ class Builder(abc.ABC):
         return d.get_hexdigest()
 
 
-class SourceFile(Source):
+class File(Node):
     """
-    This is a source of a single file type
+    This is a node which is a file
     """
     def __init__(self, filename: str):
         self.filename = filename
@@ -93,7 +100,15 @@ class SourceFile(Source):
         return self.filename
 
 
-class SourceFiles(Source):
+class SourceFile(File):
+    pass
+
+
+class TargetFile(File):
+    pass
+
+
+class SourceFiles(Node):
     """
     This is a source of many files
     """
@@ -108,7 +123,7 @@ class SourceFiles(Source):
         return self.name
 
 
-class SourceFolder(Source):
+class SourceFolder(Node):
     """
     This is a source of a single folder
     """

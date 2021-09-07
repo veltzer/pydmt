@@ -28,6 +28,14 @@ pydmt.builders.mako module
    :undoc-members:
    :show-inheritance:
 
+pydmt.builders.one\_source\_one\_target module
+----------------------------------------------
+
+.. automodule:: pydmt.builders.one_source_one_target
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.builders.sphinx module
 ----------------------------
 

@@ -30,7 +30,7 @@ def array_indented(level: int, array: List[str], quote_char='\'', comma_after=Fa
     """
     out = "[\n"
     for x in array:
-        out += (((level+1) * 4) * " ") + '{qc}{x}{qc}'.format(qc=quote_char, x=x) + ",\n"
+        out += (((level + 1) * 4) * " ") + '{qc}{x}{qc}'.format(qc=quote_char, x=x) + ",\n"
     out += ((level * 4) * " ") + "]"
     if comma_after:
         out += ","
@@ -48,7 +48,7 @@ def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char='\'',
     """
     out = "{\n"
     for k, v in dictionary.items():
-        spaces = (((level+1) * 4) * " ")
+        spaces = (((level + 1) * 4) * " ")
         out += '{spaces}{qc}{k}{qc}: {v},\n'.format(
             spaces=spaces,
             qc=quote_char,

@@ -11,8 +11,12 @@ class Documentation(Feature):
         sphinx_folder: str = "sphinx",
     ):
         self.sphinx_folder = sphinx_folder
-        import config.project
-        self.project_name = config.project.project_name
+        # pylint: disable=import-outside-toplevel
+        try:
+            import config.project
+            self.project_name = config.project.project_name
+        except ModuleNotFoundError:
+            pass
 
     def setup(self, pydmt: PyDMT) -> None:
         if not os.path.isdir(self.sphinx_folder):
