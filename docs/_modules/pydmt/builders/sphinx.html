@@ -73,6 +73,8 @@
             <span class="c1"># and other junk floating around...</span>
             <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">files_under_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.py&quot;</span><span class="p">):</span>
                 <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFile</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">):</span>
+            <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFolder</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">file_list</span></div>
 
 <div class="viewcode-block" id="Sphinx.get_targets"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
