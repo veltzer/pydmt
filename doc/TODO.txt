@@ -3,14 +3,17 @@
 	then build again
 	somehow the second build still does something
 	fix that
+- add a plugin system to pydmt.
+	pick up all features and builders
+	This way we will not need hardcoding of default builders in pydmt/main.py build method
 - implement the "clean" method
 	just go over all builders, take all targets and remove them.
 	The problems is what happens with targets we discover after building?
 		write a doc about it.
 - support yaml validations
-- maybe run sphinx programaticlly?
+- maybe run sphinx programaticlly instead of via the executable?
 - support other template types like jinja2, mustache, string.template (standard library), ...
 - cannot do something like:
 	$ pydmt build | foo
 	get weird errors - take care of that.
-- emit logging messages when things are running.
+- emit logging messages when things are running for easy debugging.
