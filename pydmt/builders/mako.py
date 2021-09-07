@@ -49,7 +49,7 @@ class Mako(Builder):
                 output = template.render()
             else:
                 output = template.render(**self.data)
-            with open(self.target, 'w') as file_handle:
+            with open(self.target, "w", encoding="uft8") as file_handle:
                 file_handle.write(output)
         except Exception as e:
             if os.path.isfile(self.target):

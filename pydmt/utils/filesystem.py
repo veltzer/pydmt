@@ -40,5 +40,5 @@ def files_under_folders(folders: List[str]) -> List[str]:
 
 
 def touch(filename: str) -> None:
-    with open(filename, "w"):
+    with open(filename, "w", encoding="utf8"):
         pass

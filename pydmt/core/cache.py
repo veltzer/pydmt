@@ -41,7 +41,7 @@ class Cache:
     def save_list_by_signature(self, signature: str, content: str):
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
         makedirs_for_file(full_path)
-        with open(full_path, "wt") as file_handle:
+        with open(full_path, "wt", encoding="utf8") as file_handle:
             file_handle.write(content)
         self.name_cache.add(full_path)
 
@@ -52,7 +52,7 @@ class Cache:
 
     @staticmethod
     def iterate_objects(file_name: str) -> Iterable[Tuple[str, str]]:
-        with open(file_name) as file_handle:
+        with open(file_name, encoding="utf8") as file_handle:
             for line in file_handle:
                 line = line[:-1]
                 yield tuple(line.split(" "))
