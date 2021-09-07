@@ -40,6 +40,8 @@ class Sphinx(Builder):
             # and other junk floating around...
             for fname in files_under_folder(self.package_name, suffix=".py"):
                 file_list.append(SourceFile(fname))
+        if os.path.isdir("config"):
+            file_list.append(SourceFolder("config"))
         return file_list
 
     def get_targets(self) -> List[Node]:

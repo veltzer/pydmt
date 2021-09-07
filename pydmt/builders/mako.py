@@ -1,5 +1,6 @@
 import sys
 import os
+import os.path
 from typing import List, Dict, Union, Generator, Tuple
 
 import mako
@@ -7,7 +8,7 @@ import mako.exceptions
 import mako.lookup
 import mako.template
 
-from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
+from pydmt.api.builder import Builder, Node, SourceFile, TargetFile, SourceFolder
 from pydmt.utils.filesystem import makedirs_for_file
 from pydmt.utils.digest import sha1_file
 
@@ -26,12 +27,16 @@ class Mako(Builder):
         self.data = data
         self.config_files: List[str] = config_files
         self.snipplet_files: List[str] = snipplet_files
+        self.sources = [SourceFile(self.source)]
+        if os.path.isdir("config"):
+            self.sources.append(SourceFolder("config"))
+        self.targets = [TargetFile(self.target)]
 
     def get_sources(self) -> List[Node]:
-        return [SourceFile(self.source)]
+        return self.sources
 
     def get_targets(self) -> List[Node]:
-        return [TargetFile(self.target)]
+        return self.targets
 
     def build(self):
         try:
