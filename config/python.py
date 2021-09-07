@@ -3,7 +3,7 @@ import config.project
 package_name = config.project.project_name
 
 console_scripts = [
-    "pydmt.main:main",
+    "pydmt=pydmt.main:main",
 ]
 
 setup_requires = [
