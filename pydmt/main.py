@@ -9,6 +9,7 @@ from pytconf import register_endpoint, register_main, config_arg_parse_and_launc
 from pydmt.features.documentation import Documentation
 from pydmt.core.pydmt import PyDMT
 from pydmt.features.templating import Templating
+from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
 
 @register_endpoint(
@@ -55,11 +56,12 @@ def clean() -> None:
     pass
 
 
-@register_main()
+@register_main(
+    app_name=APP_NAME,
+    version=VERSION_STR,
+    main_description=DESCRIPTION,
+)
 def main():
-    """
-    pydmt builds anything
-    """
     pylogconf.core.setup()
     config_arg_parse_and_launch()
 
