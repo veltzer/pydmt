@@ -93,7 +93,7 @@ class PyDMT:
                 logger.debug(f"ok [{builder.get_name()}]")
         else:
             logger.debug(f"running [{builder.get_name()}]")
-            print(f"{builder.get_name()}...", end="", flush=True)
+            print(f"{builder.get_name()}: [{builder.get_targets_as_string()}]...", end="", flush=True)
             # this is one of the rare cases in which we really want to catch all exceptions.
             # pylint: disable=broad-except
             # noinspection PyBroadException

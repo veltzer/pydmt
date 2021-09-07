@@ -13,7 +13,7 @@ import shutil
 from typing import List, Generator, Tuple
 import subprocess
 
-from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder
+from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
 from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
 from pydmt.utils.digest import sha1_file
 
@@ -43,7 +43,7 @@ class Sphinx(Builder):
         return file_list
 
     def get_targets(self) -> List[Node]:
-        return []
+        return [TargetFolder(self.target_folder)]
 
     def __init__(self,
                  package_name: str,

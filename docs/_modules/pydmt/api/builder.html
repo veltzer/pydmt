@@ -116,7 +116,10 @@
         <span class="n">d</span> <span class="o">=</span> <span class="n">Digester</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sources</span><span class="p">():</span>
             <span class="n">source</span><span class="o">.</span><span class="n">add_to_digester</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">get_hexdigest</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">get_hexdigest</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Builder.get_targets_as_string"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.Builder.get_targets_as_string">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets_as_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_targets</span><span class="p">()])</span></div></div>
 
 
 <div class="viewcode-block" id="File"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.File">[docs]</a><span class="k">class</span> <span class="nc">File</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
@@ -156,18 +159,26 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div></div>
 
 
-<div class="viewcode-block" id="SourceFolder"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.SourceFolder">[docs]</a><span class="k">class</span> <span class="nc">SourceFolder</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="Folder"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.Folder">[docs]</a><span class="k">class</span> <span class="nc">Folder</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This is a source of a single folder</span>
+<span class="sd">    This is a node representing a single Folder</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
 
-<div class="viewcode-block" id="SourceFolder.add_to_digester"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.SourceFolder.add_to_digester">[docs]</a>    <span class="k">def</span> <span class="nf">add_to_digester</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Digester</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Folder.add_to_digester"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.Folder.add_to_digester">[docs]</a>    <span class="k">def</span> <span class="nf">add_to_digester</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Digester</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">d</span><span class="o">.</span><span class="n">add_folders</span><span class="p">(</span><span class="n">folders</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="SourceFolder.get_name"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.SourceFolder.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Folder.get_name"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.Folder.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span></div></div>
+
+
+<div class="viewcode-block" id="SourceFolder"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.SourceFolder">[docs]</a><span class="k">class</span> <span class="nc">SourceFolder</span><span class="p">(</span><span class="n">Folder</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="TargetFolder"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.builder.TargetFolder">[docs]</a><span class="k">class</span> <span class="nc">TargetFolder</span><span class="p">(</span><span class="n">Folder</span><span class="p">):</span>
+    <span class="k">pass</span></div>
 </pre></div>
 
           </div>
