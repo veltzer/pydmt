@@ -3,6 +3,10 @@
 	then build again
 	somehow the second build still does something
 	fix that
+- implement the "clean" method
+	just go over all builders, take all targets and remove them.
+	The problems is what happens with targets we discover after building?
+		write a doc about it.
 - support yaml validations
 - maybe run sphinx programaticlly?
 - support other template types like jinja2, mustache, string.template (standard library), ...
