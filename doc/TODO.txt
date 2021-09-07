@@ -1,5 +1,8 @@
-- why doesnt pydmt notice when config/version.py changes...?
-	check that
+- change version
+	then build
+	then build again
+	somehow the second build still does something
+	fix that
 - support yaml validations
 - maybe run sphinx programaticlly?
 - support other template types like jinja2, mustache, string.template (standard library), ...
