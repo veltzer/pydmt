@@ -1,21 +1,18 @@
 import sys
 import os
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Generator, Tuple
 
 import mako
 import mako.exceptions
 import mako.lookup
 import mako.template
 
-from pydmt.api.builder import Builder
+from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
 from pydmt.utils.filesystem import makedirs_for_file
-from pydmt.utils.digest import sha1_files
+from pydmt.utils.digest import sha1_file
 
 
 class Mako(Builder):
-    def get_sources(self) -> List[str]:
-        return [self.source]
-
     def __init__(self,
                  source: str,
                  target: str,
@@ -24,20 +21,17 @@ class Mako(Builder):
                  snipplet_files: List[str],
                  ):
         super().__init__()
-        self.source: str = source
-        self.target: str = target
+        self.source = source
+        self.target = target
         self.data = data
         self.config_files: List[str] = config_files
         self.snipplet_files: List[str] = snipplet_files
 
-    def get_signature(self) -> str:
-        # TODO: currentl we work at the file level and so we sha1
-        # the source file + all config files + all snipplet files
-        # it would be much better to work at the variable level
-        # and sha1 only the variables and the values which are actually
-        # used in the source file.
-        # and only add snipplet files which we actually use.
-        return sha1_files(self.config_files + self.snipplet_files + [self.source])
+    def get_sources(self) -> List[Node]:
+        return [SourceFile(self.source)]
+
+    def get_targets(self) -> List[Node]:
+        return [TargetFile(self.target)]
 
     def build(self):
         try:
@@ -62,17 +56,17 @@ class Mako(Builder):
                 os.unlink(self.target)
             raise e
 
-    def get_targets(self) -> List[str]:
-        return [self.target]
+    def yield_results(self) -> Generator[Tuple[str, str], None, None]:
+        yield sha1_file(self.target), self.target
 
 
 def print_full_exception():
-    print('printing full exception')
+    print("printing full exception")
     traceback = mako.exceptions.RichTraceback()
     for (filename, line_number, function_name, line) in traceback.traceback:
-        print('File {0}, line {1}, in {2}'.format(filename, line_number, function_name))
+        print(f"File {filename}, line {line_number}, in {function_name}")
         print(line)
-    print('{0}: {1}'.format(str(traceback.error.__class__.__name__), traceback.error))
+    print(f"{traceback.error.__class__.__name__}: {traceback.error}")
 
 
 def print_exception(e, input_file):
@@ -80,11 +74,11 @@ def print_exception(e, input_file):
     traceback = mako.exceptions.RichTraceback()
     for (filename, line_number, function_name, line) in traceback.traceback:
         if filename == input_file:
-            print('{0}: error {1} in {2}, line {3}'.format(sys.argv[0], str(e), filename, line_number, function_name))
-            print('{0}'.format(line))
+            print(f"{sys.argv[0]}: error {e} in {filename}, line {line_number} function {function_name}")
+            print(f"{line}")
             found = True
     if not found:
         for (filename, line_number, function_name, line) in traceback.traceback:
-            print('File {0}, line {1}, in {2}'.format(filename, line_number, function_name))
+            print(f"File {filename}, line {line_number}, in {function_name}")
             print(line)
-        print('{0}: {1}'.format(str(traceback.error.__class__.__name__), traceback.error))
+        print(f"{traceback.error.__class__.__name__}: {traceback.error}")

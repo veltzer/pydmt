@@ -1,20 +1,12 @@
-from typing import List
-
-from pydmt.api.builder import Builder, Source, SourceFile
+from pydmt.builders.one_source_one_target import OneSourceOneTarget
 
 
-class Fail(Builder):
-
-    def __init__(self, source: str, target: str):
-        super().__init__()
-        self.sources = [SourceFile(filename=source)]
-        self.targets = [target]
-
-    def get_sources(self) -> List[Source]:
-        return self.sources
-
-    def get_targets(self) -> List[str]:
-        return self.targets
-
+class Fail(OneSourceOneTarget):
+    """
+    This is a builder that fails.
+    Why do we need it? Tests
+    Why does it need a source and target?
+    Because otherwise it would not get triggered
+    """
     def build(self):
         raise ValueError("fail")
