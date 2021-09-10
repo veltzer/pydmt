@@ -12,6 +12,10 @@ from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
 
 def add_to_path():
+    """
+    This adds to PYTHONPATH various paths we need
+    If you disable this then templates would not be able to find things like 'config/python.py'
+    """
     add_import_of_cwd = True
     add_import_of_home = True
     add_import_of_shared = True
@@ -32,7 +36,7 @@ def add_to_path():
     description="Build the project",
 )
 def build():
-    # add_to_path()
+    add_to_path()
 
     pylogconf.core.setup()
     p = PyDMT()

@@ -45,6 +45,10 @@
 
 
 <div class="viewcode-block" id="add_to_path"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.add_to_path">[docs]</a><span class="k">def</span> <span class="nf">add_to_path</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This adds to PYTHONPATH various paths we need</span>
+<span class="sd">    If you disable this then templates would not be able to find things like &#39;config/python.py&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">add_import_of_cwd</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_home</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">add_import_of_shared</span> <span class="o">=</span> <span class="kc">True</span>
@@ -65,16 +69,13 @@
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Build the project&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">build</span><span class="p">():</span>
-    <span class="c1"># add_to_path()</span>
+    <span class="n">add_to_path</span><span class="p">()</span>
 
     <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">PyDMT</span><span class="p">()</span>
 
-    <span class="c1"># add templating support</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">Templating</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-
-    <span class="c1"># add sphinx support</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">Documentation</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
