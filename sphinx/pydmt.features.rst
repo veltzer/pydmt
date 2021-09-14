@@ -20,6 +20,14 @@ pydmt.features.templating module
    :undoc-members:
    :show-inheritance:
 
+pydmt.features.yaml module
+--------------------------
+
+.. automodule:: pydmt.features.yaml
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

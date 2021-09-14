@@ -44,6 +44,14 @@ pydmt.builders.sphinx module
    :undoc-members:
    :show-inheritance:
 
+pydmt.builders.yaml module
+--------------------------
+
+.. automodule:: pydmt.builders.yaml
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
