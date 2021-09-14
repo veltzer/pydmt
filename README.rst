@@ -12,6 +12,6 @@ project website: https://veltzer.github.io/pydmt
 
 author: Mark Veltzer
 
-version: 0.0.81
+version: 0.0.82
 
 
