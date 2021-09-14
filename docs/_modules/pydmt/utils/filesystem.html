@@ -75,6 +75,11 @@
 <div class="viewcode-block" id="touch"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.filesystem.touch">[docs]</a><span class="k">def</span> <span class="nf">touch</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">):</span>
         <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="mkdir_touch"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.filesystem.mkdir_touch">[docs]</a><span class="k">def</span> <span class="nf">mkdir_touch</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">makedirs_for_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">touch</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
 </pre></div>
 
           </div>

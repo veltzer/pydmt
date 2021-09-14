@@ -42,3 +42,8 @@ def files_under_folders(folders: List[str]) -> List[str]:
 def touch(filename: str) -> None:
     with open(filename, "w"):
         pass
+
+
+def mkdir_touch(filename: str) -> None:
+    makedirs_for_file(filename)
+    touch(filename)
