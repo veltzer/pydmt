@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pydmt",
-    version="0.0.82",
+    version="0.0.83",
     packages=[
         'pydmt',
         'pydmt.api',
@@ -48,6 +48,8 @@ setuptools.setup(
         'pytconf',
         'mako',
         'Sphinx',
+        'pyyaml',
+        'jsonschema',
     ],
     extras_require={
     },

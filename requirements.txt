@@ -5,6 +5,8 @@ pylogconf
 pytconf
 mako
 Sphinx
+pyyaml
+jsonschema
 # dev requirements
 pypitools
 pydmt
