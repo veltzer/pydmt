@@ -1,3 +1,4 @@
+import json
 import yaml
 
 from jsonschema import validate
@@ -16,6 +17,6 @@ class YamlValidate(OneSourceOneTarget):
             data = yaml.load(input_handle, yaml.SafeLoader)
             if METADATA in data:
                 schema_file = data[METADATA][SCHEMA_FILE]
-                schema = yaml.load(schema_file, Loader=yaml.SafeLoader)
+                schema = json.load(schema_file, Loader=yaml.SafeLoader)
                 validate(data, schema)
         mkdir_touch(self.target)
