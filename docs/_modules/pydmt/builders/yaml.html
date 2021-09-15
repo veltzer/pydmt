@@ -41,7 +41,8 @@
 <span class="kn">from</span> <span class="nn">pydmt.builders.one_source_one_target</span> <span class="kn">import</span> <span class="n">OneSourceOneTarget</span>
 
 <span class="n">METADATA</span> <span class="o">=</span> <span class="s2">&quot;metadata&quot;</span>
-<span class="n">SCHEMA_FILE</span> <span class="o">=</span> <span class="s2">&quot;schema_file&quot;</span>
+<span class="n">SCHEMA_FILE_JSON</span> <span class="o">=</span> <span class="s2">&quot;schema_file_json&quot;</span>
+<span class="n">SCHEMA_FILE_YAML</span> <span class="o">=</span> <span class="s2">&quot;schema_file_yaml&quot;</span>
 
 
 <div class="viewcode-block" id="YamlValidate"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.yaml.YamlValidate">[docs]</a><span class="k">class</span> <span class="nc">YamlValidate</span><span class="p">(</span><span class="n">OneSourceOneTarget</span><span class="p">):</span>
@@ -49,10 +50,17 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_stream</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yaml_stream</span><span class="p">,</span> <span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">METADATA</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-                <span class="n">schema_file</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">METADATA</span><span class="p">][</span><span class="n">SCHEMA_FILE</span><span class="p">]</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">schema_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">schema_stream</span><span class="p">:</span>
-                    <span class="n">schema</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">schema_stream</span><span class="p">)</span>
-                    <span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+                <span class="n">metadata</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">METADATA</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">SCHEMA_FILE_JSON</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+                    <span class="n">schema_file</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">METADATA</span><span class="p">][</span><span class="n">SCHEMA_FILE_JSON</span><span class="p">]</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">schema_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">schema_stream</span><span class="p">:</span>
+                        <span class="n">schema</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">schema_stream</span><span class="p">)</span>
+                        <span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">SCHEMA_FILE_YAML</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+                    <span class="n">schema_file</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">METADATA</span><span class="p">][</span><span class="n">SCHEMA_FILE_YAML</span><span class="p">]</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">schema_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">schema_stream</span><span class="p">:</span>
+                        <span class="n">schema</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">schema_stream</span><span class="p">,</span> <span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)</span>
+                        <span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
             <span class="n">mkdir_touch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span></div></div>
 </pre></div>
 
