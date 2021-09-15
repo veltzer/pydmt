@@ -13,10 +13,11 @@ SCHEMA_FILE = "schema_file"
 
 class YamlValidate(OneSourceOneTarget):
     def build(self):
-        with open(self.source, "rt") as input_handle:
-            data = yaml.load(input_handle, yaml.SafeLoader)
+        with open(self.source) as yaml_stream:
+            data = yaml.load(yaml_stream, yaml.SafeLoader)
             if METADATA in data:
                 schema_file = data[METADATA][SCHEMA_FILE]
-                schema = json.load(schema_file, Loader=yaml.SafeLoader)
-                validate(data, schema)
-        mkdir_touch(self.target)
+                with open(schema_file) as schema_stream:
+                    schema = json.load(schema_stream)
+                    validate(data, schema)
+            mkdir_touch(self.target)
