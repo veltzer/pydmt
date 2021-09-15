@@ -1,7 +1,3 @@
-- add validation with yaml schemas and not juse json schemas.
-	allow to have 'schema_file_json' and 'schema_file_yaml'
-	in metadata and work according to that.
-	modify the data files accordingly.
 - change version
 	then build
 	then build again
