@@ -20,8 +20,9 @@ class Yaml(Feature):
         for root, _, filenames in os.walk(self.yaml_folder):
             for filename in filenames:
                 source = os.path.join(root, filename)
-                if filename.endswith('.yaml'):
-                    target = os.sep.join([self.validation_folder, source])
+                target_base, ext = os.path.splitext(source)
+                if ext == ".yaml":
+                    target = os.sep.join([self.validation_folder, target_base, source + ".stamp"])
                     builder = YamlValidate(
                         source=source,
                         target=target,
