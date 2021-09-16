@@ -1,3 +1,7 @@
+- add to YAML scanning and finding of vscode type schema and
+	using it.
+- add loading of url.
+- add json validation with Coc.
 - change version
 	then build
 	then build again
