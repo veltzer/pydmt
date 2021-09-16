@@ -3,3 +3,4 @@
 	in metadata and work according to that.
 	modify the data files accordingly.
 - add loading of url.
+- removed now unneeded file support (left onyl url support)
