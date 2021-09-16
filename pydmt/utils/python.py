@@ -21,23 +21,24 @@ def hlp_source_under(folder):
             packages.append(relative)
             package_dir[relative] = full
     # we use pprint because we want the order to always remain the same
-    return 'packages={0},\npackage_dir={1}'.format(sorted(packages), pprint.pformat(package_dir))
+    return f"packages={sorted(packages)},\npackage_dir={pprint.pformat(package_dir)}"
 
 
 def hlp_files_under(destination_folder, pat):
-    return '(\'{0}\', {1})'.format(destination_folder, [x for x in glob.glob(pat) if os.path.isfile(x)])
+    file_list = [x for x in glob.glob(pat) if os.path.isfile(x)]
+    return f"('{destination_folder}', {file_list})"
 
 
 def make_hlp_project_keywords(d):
     def hlp_project_keywords():
-        return '{0}'.format(d.project_keywords.split())
+        return f"{d.project_keywords.split()}"
 
     return hlp_project_keywords
 
 
 def make_hlp_project_platforms(d):
     def hlp_project_platforms():
-        return '{0}'.format(d.project_platforms.split())
+        return f"{d.project_platforms.split()}"
 
     return hlp_project_platforms
 
@@ -46,7 +47,7 @@ def make_hlp_project_classifiers(d):
     def hlp_project_classifiers():
         classifiers = d.project_classifiers.split('\n')
         classifiers = [x.strip()[1:-1] for x in classifiers]
-        return '{0}'.format(classifiers)
+        return f"{classifiers}"
 
     return hlp_project_classifiers
 

@@ -72,23 +72,23 @@ class PyDMT:
                 if os.path.isfile(object_name):
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:
-                        logger.debug("file [{}] is incorrect. Getting from cache.".format(object_name))
+                        logger.debug(f"file [{object_name}] is incorrect. Getting from cache.")
                         copy_mkdir(filename, object_name)
                         stats.add_copy_sha1(filename, object_name)
                         file_bad += 1
                     else:
-                        logger.debug("file [{}] is up to date".format(object_name))
+                        logger.debug(f"file [{object_name}] is up to date")
                         stats.add_nop(filename, object_name)
                         file_correct += 1
                 else:
-                    logger.debug("file [{}] is missing. Getting from cache.".format(object_name))
+                    logger.debug(f"file [{object_name}] is missing. Getting from cache.")
                     copy_mkdir(filename, object_name)
                     stats.add_copy_missing(filename, object_name)
                     file_missing += 1
                 file_total += 1
             if file_bad > 0 or file_missing > 0:
-                logger.debug("Retrieved {} files from cache (bad/correct/missing = {}/{}/{}".format(
-                    file_total, file_bad, file_correct, file_missing))
+                logger.debug(f"Retrieved {file_total} files from cache")
+                logger.debug(f"(bad/correct/missing = {file_bad}/{file_correct}/{file_missing}")
             else:
                 logger.debug(f"ok [{builder.get_name()}]")
         else:
