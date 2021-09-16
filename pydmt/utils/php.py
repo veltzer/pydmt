@@ -1,6 +1,6 @@
 def to_php(x):
     if isinstance(x, str):
-        return '\'{0}\''.format(x)
+        return f"'{x}'"
     if isinstance(x, bool):
         if x:
             return 'TRUE'
