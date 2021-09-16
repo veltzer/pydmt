@@ -34,11 +34,11 @@ class YamlValidate(OneSourceOneTarget):
                 if SCHEMA_URL_JSON in metadata:
                     schema_url = data[METADATA][SCHEMA_URL_JSON]
                     with urlopen(schema_url) as f:
-                        schema = json.load(f.read())
+                        schema = json.load(f.read().decode())
                         validate(data, schema)
                 if SCHEMA_URL_YAML in metadata:
                     schema_url = data[METADATA][SCHEMA_URL_YAML]
                     with urlopen(schema_url) as f:
-                        schema = json.load(f.read())
+                        schema = json.load(f.read().decode())
                         validate(data, schema)
             mkdir_touch(self.target)
