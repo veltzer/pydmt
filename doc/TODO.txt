@@ -2,6 +2,8 @@
 	using it.
 - add json validation with Coc.
 - add conversion of yaml to json.
+- add pylinting to pydmt
+	https://stackoverflow.com/questions/2028268/invoking-pylint-programmatically
 
 - change version
 	then build
