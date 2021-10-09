@@ -39,25 +39,20 @@ class Mako(Builder):
         return self.targets
 
     def build(self):
-        try:
-            lookup = mako.lookup.TemplateLookup(
-                directories=['.'],
-            )
-            template = mako.template.Template(
-                filename=self.source,
-                lookup=lookup,
-            )
-            makedirs_for_file(self.target)
-            if self.data is None:
-                output = template.render()
-            else:
-                output = template.render(**self.data)
-            with open(self.target, "w") as file_handle:
-                file_handle.write(output)
-        except Exception as e:
-            if os.path.isfile(self.target):
-                os.unlink(self.target)
-            raise e
+        lookup = mako.lookup.TemplateLookup(
+            directories=['.'],
+        )
+        template = mako.template.Template(
+            filename=self.source,
+            lookup=lookup,
+        )
+        makedirs_for_file(self.target)
+        if self.data is None:
+            output = template.render()
+        else:
+            output = template.render(**self.data)
+        with open(self.target, "w") as file_handle:
+            file_handle.write(output)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
         yield sha1_file(self.target), self.target
