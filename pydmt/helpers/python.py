@@ -74,6 +74,6 @@ def find_packages(path: str) -> List[str]:
 
 def get_list_unquoted(a_list: List[str]) -> str:
     s = "[ "
-    s += ",".join(a_list)
+    s += ", ".join(a_list)
     s += " ]"
     return s
