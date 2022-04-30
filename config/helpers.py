@@ -1,5 +1,4 @@
 import datetime
-from typing import List
 
 
 def get_copyright_years(project_year_started):
@@ -30,10 +29,3 @@ def get_paypal(project_paypal_donate_button_id):
     alt="PayPal - The safer, easier way to pay online!">
     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>"""
-
-
-def get_list_unquoted(a_list: List[str]) -> str:
-    s = "[ "
-    s += ",".join(a_list)
-    s += " ]"
-    return s

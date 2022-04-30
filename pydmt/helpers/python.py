@@ -70,3 +70,10 @@ def find_packages(path: str) -> List[str]:
         if '__init__.py' in files:
             ret.append(root.replace("/", "."))
     return sorted(ret)
+
+
+def get_list_unquoted(a_list: List[str]) -> str:
+    s = "[ "
+    s += ",".join(a_list)
+    s += " ]"
+    return s
