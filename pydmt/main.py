@@ -5,11 +5,13 @@ import pathlib
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
+from pydmt.core.pydmt import PyDMT
+from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
+
 from pydmt.features.documentation import Documentation
 from pydmt.features.templating import Templating
 from pydmt.features.yaml import Yaml
-from pydmt.core.pydmt import PyDMT
-from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
+from pydmt.features.packages import Packages
 
 
 def add_to_path():
@@ -47,6 +49,8 @@ def build():
     f = Documentation()
     f.setup(p)
     f = Yaml()
+    f.setup(p)
+    f = Packages()
     f.setup(p)
 
     stats = p.build_all()
