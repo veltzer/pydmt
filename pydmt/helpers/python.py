@@ -73,7 +73,12 @@ def find_packages(path: str) -> List[str]:
 
 
 def get_list_unquoted(a_list: List[str]) -> str:
-    s = "[ "
+    """
+    The exact format of this output is to be used in python code from templates,
+    that is why the left bracket ([) does not have space following it and the
+    same for the right bracker (]).
+    """
+    s = "["
     s += ", ".join(a_list)
-    s += " ]"
+    s += "]"
     return s
