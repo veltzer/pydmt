@@ -7,6 +7,7 @@ class Packages(Feature):
     def __init__(
         self,
     ):
+        self.packages = None
         # pylint: disable=import-outside-toplevel
         try:
             import config.deps
@@ -15,4 +16,5 @@ class Packages(Feature):
             pass
 
     def setup(self, pydmt: PyDMT) -> None:
-        pydmt.add_builder(Installer(packages=self.packages))
+        if self.packages is not None:
+            pydmt.add_builder(Installer(packages=self.packages))
