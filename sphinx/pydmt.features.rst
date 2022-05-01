@@ -12,6 +12,14 @@ pydmt.features.documentation module
    :undoc-members:
    :show-inheritance:
 
+pydmt.features.packages module
+------------------------------
+
+.. automodule:: pydmt.features.packages
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.features.templating module
 --------------------------------
 

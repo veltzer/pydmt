@@ -20,6 +20,14 @@ pydmt.builders.fail module
    :undoc-members:
    :show-inheritance:
 
+pydmt.builders.installer module
+-------------------------------
+
+.. automodule:: pydmt.builders.installer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.builders.mako module
 --------------------------
 
