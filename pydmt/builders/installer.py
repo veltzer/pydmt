@@ -18,6 +18,7 @@ class Installer(OneSourceOneTarget):
 
     def build(self) -> None:
         unlink_files(self.target)
+        # xargs -a packages.txt sudo apt-get -y install > /dev/null
         args = [
             'sudo',
             'apt-get',
