@@ -36,6 +36,14 @@ pydmt.builders.mako module
    :undoc-members:
    :show-inheritance:
 
+pydmt.builders.npm module
+-------------------------
+
+.. automodule:: pydmt.builders.npm
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.builders.one\_source\_one\_target module
 ----------------------------------------------
 

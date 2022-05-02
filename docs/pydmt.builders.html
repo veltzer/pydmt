@@ -166,6 +166,29 @@ In the future the get_signature method will go away.</p>
 <dd></dd></dl>
 
 </section>
+<section id="module-pydmt.builders.npm">
+<span id="pydmt-builders-npm-module"></span><h2>pydmt.builders.npm module<a class="headerlink" href="#module-pydmt.builders.npm" title="Permalink to this headline">¶</a></h2>
+<p>This module installs npm packages</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pydmt.builders.npm.Installer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.builders.npm.</span></span><span class="sig-name descname"><span class="pre">Installer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/builders/npm.html#Installer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.builders.npm.Installer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pydmt.builders.one_source_one_target.OneSourceOneTarget" title="pydmt.builders.one_source_one_target.OneSourceOneTarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">pydmt.builders.one_source_one_target.OneSourceOneTarget</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pydmt.builders.npm.Installer.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pydmt/builders/npm.html#Installer.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.builders.npm.Installer.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method actually does the building
+Just do whatever you want here. Options are:
+- Write pure python code
+- Call native code
+- Call external programs
+- A combination of the above
+If there are any problems then throw an exception.
+Try not to segfault the interpreter in this method…:)</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 <section id="module-pydmt.builders.one_source_one_target">
 <span id="pydmt-builders-one-source-one-target-module"></span><h2>pydmt.builders.one_source_one_target module<a class="headerlink" href="#module-pydmt.builders.one_source_one_target" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
