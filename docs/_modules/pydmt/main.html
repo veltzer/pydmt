@@ -91,6 +91,22 @@
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_os_error_code</span><span class="p">())</span></div>
 
 
+<div class="viewcode-block" id="build_tools"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.build_tools">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Build tools&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">build_tools</span><span class="p">():</span>
+    <span class="n">add_to_path</span><span class="p">()</span>
+
+    <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">PyDMT</span><span class="p">()</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="n">Packages</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">build_all</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_os_error_code</span><span class="p">())</span></div>
+
+
 <div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.clean">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Clean all generated files&quot;</span>
 <span class="p">)</span>
