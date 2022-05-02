@@ -46,6 +46,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.features.templating</span> <span class="kn">import</span> <span class="n">Templating</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.yaml</span> <span class="kn">import</span> <span class="n">Yaml</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.packages</span> <span class="kn">import</span> <span class="n">Packages</span>
+<span class="kn">from</span> <span class="nn">pydmt.features.npm</span> <span class="kn">import</span> <span class="n">Npm</span>
 
 
 <div class="viewcode-block" id="add_to_path"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.add_to_path">[docs]</a><span class="k">def</span> <span class="nf">add_to_path</span><span class="p">():</span>
@@ -101,6 +102,8 @@
     <span class="n">p</span> <span class="o">=</span> <span class="n">PyDMT</span><span class="p">()</span>
 
     <span class="n">f</span> <span class="o">=</span> <span class="n">Packages</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">Npm</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
     <span class="n">stats</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">build_all</span><span class="p">()</span>
