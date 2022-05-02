@@ -1,3 +1,9 @@
+- add the ability to add parameters to:
+	$ pydmt build [paramters]
+  and control which features and builders are we running.
+  this will enabled me to not run templating when doing CI/CD
+	which currently breaks my code.
+
 - add to YAML scanning and finding of vscode type schema and
 	using it.
 - add json validation with Coc.
