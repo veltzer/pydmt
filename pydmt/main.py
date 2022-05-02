@@ -59,6 +59,22 @@ def build():
 
 
 @register_endpoint(
+    description="Build tools",
+)
+def build_tools():
+    add_to_path()
+
+    pylogconf.core.setup()
+    p = PyDMT()
+
+    f = Packages()
+    f.setup(p)
+
+    stats = p.build_all()
+    sys.exit(stats.get_os_error_code())
+
+
+@register_endpoint(
     description="Clean all generated files"
 )
 def clean() -> None:
