@@ -13,6 +13,7 @@ from pydmt.features.documentation import Documentation
 from pydmt.features.templating import Templating
 from pydmt.features.yaml import Yaml
 from pydmt.features.packages import Packages
+from pydmt.features.npm import Npm
 
 
 def add_to_path():
@@ -68,6 +69,8 @@ def build_tools():
     p = PyDMT()
 
     f = Packages()
+    f.setup(p)
+    f = Npm()
     f.setup(p)
 
     stats = p.build_all()
