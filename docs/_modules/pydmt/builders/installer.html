@@ -51,6 +51,7 @@
 
 <div class="viewcode-block" id="Installer.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.installer.Installer.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">unlink_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+        <span class="c1"># xargs -a [file with list of packages] sudo apt-get -y install &gt; /dev/null</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s1">&#39;sudo&#39;</span><span class="p">,</span>
             <span class="s1">&#39;apt-get&#39;</span><span class="p">,</span>
