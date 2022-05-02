@@ -7,10 +7,6 @@
 	$ bundle install --local
 	and works from a Gemfile and Gemfile.lock
 	look at site-personal-jekyll.
-- add installer for npm which works like this:
-	$ npm install --quiet --silent htmlhint > /dev/null
-	and works from a package.json and package-lock.json
-	have a look at riddle-book project for example
 
 - add to YAML scanning and finding of vscode type schema and
 	using it.
