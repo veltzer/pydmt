@@ -4,3 +4,7 @@
 	modify the data files accordingly.
 - add loading of url.
 - removed now unneeded file support (left onyl url support)
+- add installer for npm which works like this:
+	$ npm install --quiet --silent htmlhint > /dev/null
+	and works from a package.json and package-lock.json
+	have a look at riddle-book project for example
