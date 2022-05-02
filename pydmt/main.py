@@ -1,6 +1,7 @@
 import sys
 import os
 import pathlib
+import shutil
 
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
@@ -61,7 +62,14 @@ def build():
     description="Clean all generated files"
 )
 def clean() -> None:
-    pass
+    print("TBD")
+
+
+@register_endpoint(
+    description="Clean all files and pydmt cache"
+)
+def clean_hard() -> None:
+    shutil.rmtree(".pydmt")
 
 
 @register_main(
