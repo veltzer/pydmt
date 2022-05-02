@@ -17,4 +17,8 @@ class Packages(Feature):
 
     def setup(self, pydmt: PyDMT) -> None:
         if self.packages is not None:
-            pydmt.add_builder(Installer(packages=self.packages))
+            pydmt.add_builder(Installer(
+                source="config/deps.py",
+                target="out/deps.stamp",
+                packages=self.packages
+            ))

@@ -3,39 +3,21 @@ This is a module that will install OS packages for you.
 """
 
 
-from typing import List, Generator, Tuple
+from typing import List
 import subprocess
 
-from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
-from pydmt.utils.filesystem import unlink_files
-from pydmt.utils.digest import sha1_file
+from pydmt.utils.filesystem import unlink_files, mkdir_touch
 
-RESULT = "deps.stamp"
+from pydmt.builders.one_source_one_target import OneSourceOneTarget
 
 
-class Installer(Builder):
-    """
-    This is review of how to build a sphinx documentation:
-    - if you want documentation for the code you need to run "sphinx-apidoc"
-    - it will generate files that describe every sub package in your package.
-    - after this you run "sphinx-build"
-    - "sphinx-quickstart" is not needed unless you are starting a new project.
-    """
-    def get_sources(self) -> List[Node]:
-        file_list = [
-            SourceFile("config/deps.py"),
-        ]
-        return file_list
-
-    def get_targets(self) -> List[Node]:
-        return [TargetFile(RESULT)]
-
-    def __init__(self, packages: List[str]):
-        super().__init__()
+class Installer(OneSourceOneTarget):
+    def __init__(self, source: str, target: str, packages: List[str]):
+        super().__init__(source, target)
         self.packages = packages
 
     def build(self) -> None:
-        unlink_files(RESULT)
+        unlink_files(self.target)
         args = [
             'sudo',
             'apt-get',
@@ -43,6 +25,4 @@ class Installer(Builder):
         ]
         args.extend(self.packages)
         subprocess.check_call(args)
-
-    def yield_results(self) -> Generator[Tuple[str, str], None, None]:
-        yield sha1_file(RESULT), RESULT
+        mkdir_touch(self.target)
