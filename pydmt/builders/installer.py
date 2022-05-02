@@ -22,6 +22,7 @@ class Installer(OneSourceOneTarget):
         args = [
             'sudo',
             'apt-get',
+            '--yes',
             'install',
         ]
         args.extend(self.packages)
