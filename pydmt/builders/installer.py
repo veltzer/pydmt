@@ -7,6 +7,7 @@ from typing import List
 import subprocess
 
 from pydmt.utils.filesystem import unlink_files, mkdir_touch
+from pydmt.configs import ConfigSudo
 
 from pydmt.builders.one_source_one_target import OneSourceOneTarget
 
@@ -18,13 +19,14 @@ class Installer(OneSourceOneTarget):
 
     def build(self) -> None:
         unlink_files(self.target)
-        # xargs -a [file with list of packages] sudo apt-get -y install > /dev/null
-        args = [
-            'sudo',
+        args = []
+        if ConfigSudo.sudo:
+            args.append("sudo")
+        args.extend([
             'apt-get',
             '--yes',
             'install',
-        ]
+        ])
         args.extend(self.packages)
         subprocess.check_call(args)
         mkdir_touch(self.target)

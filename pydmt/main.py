@@ -6,6 +6,7 @@ import shutil
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
+from pydmt.configs import ConfigSudo
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
@@ -39,6 +40,7 @@ def add_to_path():
 
 @register_endpoint(
     description="Build the project",
+    configs=[ConfigSudo],
 )
 def build():
     add_to_path()
@@ -61,6 +63,7 @@ def build():
 
 @register_endpoint(
     description="Build tools",
+    configs=[ConfigSudo],
 )
 def build_tools():
     add_to_path()
