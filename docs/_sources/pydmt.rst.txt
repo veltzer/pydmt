@@ -17,6 +17,14 @@ Subpackages
 Submodules
 ----------
 
+pydmt.configs module
+--------------------
+
+.. automodule:: pydmt.configs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.main module
 -----------------
 
