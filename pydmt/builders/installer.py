@@ -5,6 +5,7 @@ This is a module that will install OS packages for you.
 
 from typing import List
 import subprocess
+import os
 
 from pydmt.utils.filesystem import unlink_files, mkdir_touch
 from pydmt.configs import ConfigSudo
@@ -19,12 +20,14 @@ class Installer(OneSourceOneTarget):
 
     def build(self) -> None:
         unlink_files(self.target)
+        os.environ['DEBIAN_FRONTEND'] = 'noninteractive'
         args = []
         if ConfigSudo.sudo:
             args.append("sudo")
         args.extend([
             'apt-get',
             '--yes',
+            '--quiet',
             'install',
         ])
         args.extend(self.packages)
