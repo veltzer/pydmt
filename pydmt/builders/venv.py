@@ -12,6 +12,8 @@ from pydmt.api.builder import Builder, Node, SourceFile, TargetFolder
 from pydmt.utils.filesystem import files_under_folder
 from pydmt.utils.digest import sha1_file
 
+from pydmt.configs import ConfigOutput
+
 SOURCE_FILE = "config/python.py"
 TARGET_FOLDER = ".venv/default"
 
@@ -44,7 +46,10 @@ class BuilderVenv(Builder):
             "virtualenv",
             TARGET_FOLDER,
         ]
-        subprocess.check_call(args)
+        if ConfigOutput.verbose:
+            subprocess.check_call(args)
+        else:
+            subprocess.check_call(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
         for x in files_under_folder(TARGET_FOLDER):
