@@ -72,7 +72,7 @@ class BuilderSphinx(Builder):
             "sphinx-apidoc",
             "-q",  # quiet
             "-o",
-            self.target_folder,
+            # self.target_folder,
             self.source_folder,
         ]
         # single file module vs package
