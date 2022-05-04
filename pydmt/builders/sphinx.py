@@ -66,11 +66,13 @@ class BuilderSphinx(Builder):
 
     def build(self) -> None:
         unlink_files(self._get_source_folder_targets(), only_if_exist=True)
+        if os.path.isdir(self.target_folder):
+            shutil.rmtree(self.target_folder, ignore_errors=False)
         args = [
             "sphinx-apidoc",
             "-q",  # quiet
-            "-f",
             "-o",
+            self.target_folder,
             self.source_folder,
         ]
         # single file module vs package
@@ -79,22 +81,20 @@ class BuilderSphinx(Builder):
         else:
             args.append(self.package_name)
         subprocess.check_call(args)
-        if os.path.isdir(self.target_folder):
-            shutil.rmtree(self.target_folder, ignore_errors=False)
-            os.environ["PYTHONPATH"] = "."
-            subprocess.check_call([
-                "sphinx-build",
-                # don't use a saved environment, always read all files
-                # "-E",
-                # Do not emit colored output(default: auto - detect)
-                "--no-color",
-                # turn warnings into errors
-                "-W",
-                # no output on stdout, just warnings on stderr
-                "-q",
-                self.source_folder,
-                self.target_folder,
-            ])
+        os.environ["PYTHONPATH"] = "."
+        subprocess.check_call([
+            "sphinx-build",
+            # don't use a saved environment, always read all files
+            # "-E",
+            # Do not emit colored output(default: auto - detect)
+            "--no-color",
+            # turn warnings into errors
+            "-W",
+            # no output on stdout, just warnings on stderr
+            "-q",
+            self.source_folder,
+            self.target_folder,
+        ])
         for filename in files_under_folder(os.path.join(self.source_folder, "copy")):
             basename = os.path.basename(filename)
             copy_mkdir(filename, os.path.join(self.target_folder, basename))
