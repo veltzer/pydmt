@@ -6,13 +6,11 @@ This module build python virtual envrionments
 import os
 import shutil
 from typing import List, Generator, Tuple
-import subprocess
 
 from pydmt.api.builder import Builder, Node, SourceFile, TargetFolder
 from pydmt.utils.filesystem import files_under_folder
 from pydmt.utils.digest import sha1_file
-
-from pydmt.configs import ConfigOutput
+from pydmt.utils.subprocess import check_call
 
 SOURCE_FILE = "config/python.py"
 TARGET_FOLDER = ".venv/default"
@@ -46,10 +44,7 @@ class BuilderVenv(Builder):
             "virtualenv",
             TARGET_FOLDER,
         ]
-        if ConfigOutput.verbose:
-            subprocess.check_call(args)
-        else:
-            subprocess.check_call(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        check_call(args)
         args = [
             "venv-run",
             "--venv",
@@ -66,7 +61,7 @@ class BuilderVenv(Builder):
         args.extend(config.python.install_requires)
         args.extend(config.python.setup_requires)
         args.extend(config.python.dev_requires)
-        subprocess.check_call(args)
+        check_call(args)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
         for x in files_under_folder(TARGET_FOLDER):
