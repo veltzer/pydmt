@@ -1,4 +1,5 @@
 import os
+import pickle
 from typing import Tuple, Iterable
 
 from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file, files_under_folder
@@ -33,16 +34,16 @@ class Cache:
         list_filename = self.get_list_filename(signature)
         if list_filename not in self.name_cache:
             return False
-        for _, sig in Cache.iterate_objects(list_filename):
+        for _filename, sig in Cache.iterate_objects(list_filename):
             if self.get_object_filename(sig) is None:
                 return False
         return True
 
-    def save_list_by_signature(self, signature: str, content: str):
+    def save_list_by_signature(self, signature: str, d: dict):
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
         makedirs_for_file(full_path)
-        with open(full_path, "wt") as file_handle:
-            file_handle.write(content)
+        with open(full_path, "wb") as file_handle:
+            pickle.dump(d, file_handle)
         self.name_cache.add(full_path)
 
     def save_object_by_signature(self, signature: str, file_name: str):
@@ -52,7 +53,5 @@ class Cache:
 
     @staticmethod
     def iterate_objects(file_name: str) -> Iterable[Tuple[str, str]]:
-        with open(file_name) as file_handle:
-            for line in file_handle:
-                line = line[:-1]
-                yield tuple(line.split(" "))
+        with open(file_name, "rb") as file_handle:
+            yield from pickle.load(file_handle).items()
