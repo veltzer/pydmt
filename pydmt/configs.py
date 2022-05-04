@@ -24,3 +24,13 @@ class ConfigFlow(Config):
         help_string="Should pydmt stop after first error?",
         default=True,
     )
+
+
+class ConfigOutput(Config):
+    """
+    Parameters to configure the output of pydmt
+    """
+    verbose = ParamCreator.create_bool(
+        help_string="Should output be verbose?",
+        default=False,
+    )

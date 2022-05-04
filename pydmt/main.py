@@ -6,7 +6,7 @@ import shutil
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-from pydmt.configs import ConfigSudo, ConfigFlow
+from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
@@ -44,6 +44,7 @@ def add_to_path():
     configs=[
         ConfigSudo,
         ConfigFlow,
+        ConfigOutput,
     ],
 )
 def build():
@@ -74,6 +75,7 @@ def build():
     configs=[
         ConfigSudo,
         ConfigFlow,
+        ConfigOutput,
     ],
 )
 def build_venv():
@@ -94,6 +96,7 @@ def build_venv():
     configs=[
         ConfigSudo,
         ConfigFlow,
+        ConfigOutput,
     ],
 )
 def build_tools():
