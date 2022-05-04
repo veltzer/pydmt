@@ -9,6 +9,7 @@ from pytconf import register_endpoint, register_main, config_arg_parse_and_launc
 from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
+from pydmt.utils.subprocess import check_call
 
 from pydmt.features.sphinx import FeatureSphinx
 from pydmt.features.mako import FeatureMako
@@ -120,6 +121,7 @@ def build_tools():
     description="Clean all generated files"
 )
 def clean() -> None:
+    shutil.rmtree(".pydmt")
     print("TBD")
 
 
@@ -128,6 +130,7 @@ def clean() -> None:
 )
 def clean_hard() -> None:
     shutil.rmtree(".pydmt")
+    check_call(["git", "clean", "-qffxd"])
 
 
 @register_main(
