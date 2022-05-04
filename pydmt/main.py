@@ -6,7 +6,7 @@ import shutil
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-from pydmt.configs import ConfigSudo
+from pydmt.configs import ConfigSudo, ConfigFlow
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
@@ -15,6 +15,7 @@ from pydmt.features.mako import FeatureMako
 from pydmt.features.yaml import FeatureYaml
 from pydmt.features.apt import FeatureApt
 from pydmt.features.npm import FeatureNpm
+from pydmt.features.venv import FeatureVenv
 
 
 def add_to_path():
@@ -40,7 +41,10 @@ def add_to_path():
 
 @register_endpoint(
     description="Build the project",
-    configs=[ConfigSudo],
+    configs=[
+        ConfigSudo,
+        ConfigFlow,
+    ],
 )
 def build():
     add_to_path()
@@ -48,15 +52,37 @@ def build():
     pylogconf.core.setup()
     p = PyDMT()
 
+    f = FeatureVenv()
+    f.setup(p)
     f = FeatureMako()
+    f.setup(p)
+    f = FeatureApt()
+    f.setup(p)
+    f = FeatureNpm()
     f.setup(p)
     f = FeatureSphinx()
     f.setup(p)
     f = FeatureYaml()
     f.setup(p)
-    f = FeatureApt()
-    f.setup(p)
-    f = FeatureNpm()
+
+    stats = p.build_all()
+    sys.exit(stats.get_os_error_code())
+
+
+@register_endpoint(
+    description="Build python virtual environment",
+    configs=[
+        ConfigSudo,
+        ConfigFlow,
+    ],
+)
+def build_venv():
+    add_to_path()
+
+    pylogconf.core.setup()
+    p = PyDMT()
+
+    f = FeatureVenv()
     f.setup(p)
 
     stats = p.build_all()
@@ -65,7 +91,10 @@ def build():
 
 @register_endpoint(
     description="Build tools",
-    configs=[ConfigSudo],
+    configs=[
+        ConfigSudo,
+        ConfigFlow,
+    ],
 )
 def build_tools():
     add_to_path()
@@ -73,6 +102,8 @@ def build_tools():
     pylogconf.core.setup()
     p = PyDMT()
 
+    f = FeatureVenv()
+    f.setup(p)
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
