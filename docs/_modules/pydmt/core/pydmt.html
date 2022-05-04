@@ -141,11 +141,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
             <span class="n">stats</span><span class="o">.</span><span class="n">add_builder_ok</span><span class="p">(</span><span class="n">builder</span><span class="p">)</span>
 
-            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">for</span> <span class="n">signature</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">builder</span><span class="o">.</span><span class="n">yield_results</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">save_object_by_signature</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-                <span class="n">content</span> <span class="o">+=</span> <span class="n">target</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">signature</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">save_list_by_signature</span><span class="p">(</span><span class="n">target_signature</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">signature</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">save_list_by_signature</span><span class="p">(</span><span class="n">target_signature</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="PyDMT.build_by_target"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_by_target">[docs]</a>    <span class="k">def</span> <span class="nf">build_by_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">BuildProcessStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
