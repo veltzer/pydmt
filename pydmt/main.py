@@ -10,11 +10,11 @@ from pydmt.configs import ConfigSudo
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 
-from pydmt.features.documentation import Documentation
-from pydmt.features.templating import Templating
-from pydmt.features.yaml import Yaml
-from pydmt.features.packages import Packages
-from pydmt.features.npm import Npm
+from pydmt.features.sphinx import FeatureSphinx
+from pydmt.features.mako import FeatureMako
+from pydmt.features.yaml import FeatureYaml
+from pydmt.features.apt import FeatureApt
+from pydmt.features.npm import FeatureNpm
 
 
 def add_to_path():
@@ -48,15 +48,15 @@ def build():
     pylogconf.core.setup()
     p = PyDMT()
 
-    f = Templating()
+    f = FeatureMako()
     f.setup(p)
-    f = Documentation()
+    f = FeatureSphinx()
     f.setup(p)
-    f = Yaml()
+    f = FeatureYaml()
     f.setup(p)
-    f = Packages()
+    f = FeatureApt()
     f.setup(p)
-    f = Npm()
+    f = FeatureNpm()
     f.setup(p)
 
     stats = p.build_all()
@@ -73,9 +73,9 @@ def build_tools():
     pylogconf.core.setup()
     p = PyDMT()
 
-    f = Packages()
+    f = FeatureApt()
     f.setup(p)
-    f = Npm()
+    f = FeatureNpm()
     f.setup(p)
 
     stats = p.build_all()

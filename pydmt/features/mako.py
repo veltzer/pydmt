@@ -1,12 +1,12 @@
 import os
 
 from pydmt.api.feature import Feature
-from pydmt.builders.mako import Mako
+from pydmt.builders.mako import BuilderMako
 from pydmt.core.pydmt import PyDMT
 from pydmt.utils.filesystem import files_under_folder
 
 
-class Templating(Feature):
+class FeatureMako(Feature):
     def __init__(
         self,
         data=None,
@@ -28,7 +28,7 @@ class Templating(Feature):
                 target_base, ext = os.path.splitext(source)
                 if ext == '.mako':
                     target = os.sep.join(target_base.split(os.sep)[1:])
-                    builder = Mako(
+                    builder = BuilderMako(
                         source=source,
                         target=target,
                         data=self.data,

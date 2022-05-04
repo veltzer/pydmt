@@ -13,7 +13,7 @@ from pydmt.configs import ConfigSudo
 from pydmt.builders.one_source_one_target import OneSourceOneTarget
 
 
-class Installer(OneSourceOneTarget):
+class BuilderApt(OneSourceOneTarget):
     def __init__(self, source: str, target: str, packages: List[str]):
         super().__init__(source, target)
         self.packages = packages

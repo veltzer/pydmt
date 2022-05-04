@@ -18,7 +18,7 @@ from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
 from pydmt.utils.digest import sha1_file
 
 
-class Sphinx(Builder):
+class BuilderSphinx(Builder):
     """
     This is review of how to build a sphinx documentation:
     - if you want documentation for the code you need to run "sphinx-apidoc"
