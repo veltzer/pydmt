@@ -139,6 +139,13 @@ class PyDMT:
                 return stats
         return stats
 
+    def clean_all(self) -> None:
+        """
+        Clean all targets
+        """
+        for builder in self.builders:
+            builder.clean()
+
     def add_builder(self, b: Builder) -> None:
         self.builders.append(b)
         for target in b.get_targets():
