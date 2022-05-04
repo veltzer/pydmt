@@ -6,6 +6,9 @@ console_scripts = [
     "pydmt=pydmt.main:main",
 ]
 
+run_requires = [
+]
+
 setup_requires = [
 ]
 

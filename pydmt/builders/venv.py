@@ -50,6 +50,23 @@ class BuilderVenv(Builder):
             subprocess.check_call(args)
         else:
             subprocess.check_call(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        args = [
+            "venv-run",
+            "--venv",
+            ".venv/default",
+            "--",
+            "pip",
+            "install",
+        ]
+        # pylint: disable=import-outside-toplevel
+        import config.python
+        # pylint: disable=no-member
+        args.extend(config.python.test_requires)
+        args.extend(config.python.run_requires)
+        args.extend(config.python.install_requires)
+        args.extend(config.python.setup_requires)
+        args.extend(config.python.dev_requires)
+        subprocess.check_call(args)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
         for x in files_under_folder(TARGET_FOLDER):
