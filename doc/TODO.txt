@@ -1,3 +1,4 @@
+- my cache is bad if the filename has a space in it.
 - add the ability to add parameters to:
 	$ pydmt build [paramters]
   and control which features and builders are we running.

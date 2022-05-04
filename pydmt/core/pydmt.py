@@ -108,11 +108,11 @@ class PyDMT:
             print("OK")
             stats.add_builder_ok(builder)
 
-            content = ""
+            d = {}
             for signature, target in builder.yield_results():
                 self.cache.save_object_by_signature(signature, target)
-                content += target + " " + signature + "\n"
-            self.cache.save_list_by_signature(target_signature, content)
+                d[target] = signature
+            self.cache.save_list_by_signature(target_signature, d)
         return True
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
