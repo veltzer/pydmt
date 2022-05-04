@@ -4,26 +4,10 @@ pydmt.builders package
 Submodules
 ----------
 
-pydmt.builders.copy module
---------------------------
+pydmt.builders.apt module
+-------------------------
 
-.. automodule:: pydmt.builders.copy
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pydmt.builders.fail module
---------------------------
-
-.. automodule:: pydmt.builders.fail
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pydmt.builders.installer module
--------------------------------
-
-.. automodule:: pydmt.builders.installer
+.. automodule:: pydmt.builders.apt
    :members:
    :undoc-members:
    :show-inheritance:
@@ -40,14 +24,6 @@ pydmt.builders.npm module
 -------------------------
 
 .. automodule:: pydmt.builders.npm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pydmt.builders.one\_source\_one\_target module
-----------------------------------------------
-
-.. automodule:: pydmt.builders.one_source_one_target
    :members:
    :undoc-members:
    :show-inheritance:
