@@ -13,7 +13,7 @@ from pydmt.utils.filesystem import makedirs_for_file
 from pydmt.utils.digest import sha1_file
 
 
-class Mako(Builder):
+class BuilderMako(Builder):
     def __init__(self,
                  source: str,
                  target: str,

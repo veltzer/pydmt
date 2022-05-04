@@ -1,11 +1,11 @@
 import os
 
 from pydmt.api.feature import Feature
-from pydmt.builders.yaml import YamlValidate
+from pydmt.builders.yaml import BuilderYaml
 from pydmt.core.pydmt import PyDMT
 
 
-class Yaml(Feature):
+class FeatureYaml(Feature):
     def __init__(
         self,
         yaml_folder: str = "yaml",
@@ -23,7 +23,7 @@ class Yaml(Feature):
                 target_base, ext = os.path.splitext(source)
                 if ext == ".yaml":
                     target = os.sep.join([self.validation_folder, target_base, source + ".stamp"])
-                    builder = YamlValidate(
+                    builder = BuilderYaml(
                         source=source,
                         target=target,
                     )

@@ -13,7 +13,7 @@ SCHEMA_URL_JSON = "schema_url_json"
 SCHEMA_URL_YAML = "schema_url_yaml"
 
 
-class YamlValidate(OneSourceOneTarget):
+class BuilderYaml(OneSourceOneTarget):
     def build(self):
         with open(self.source) as yaml_stream:
             data = yaml.safe_load(yaml_stream)

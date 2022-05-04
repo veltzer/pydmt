@@ -1,9 +1,9 @@
 from pydmt.api.feature import Feature
-from pydmt.builders.installer import Installer
+from pydmt.builders.apt import BuilderApt
 from pydmt.core.pydmt import PyDMT
 
 
-class Packages(Feature):
+class FeatureApt(Feature):
     def __init__(
         self,
     ):
@@ -17,7 +17,7 @@ class Packages(Feature):
 
     def setup(self, pydmt: PyDMT) -> None:
         if self.packages is not None:
-            pydmt.add_builder(Installer(
+            pydmt.add_builder(BuilderApt(
                 source="config/deps.py",
                 target="out/deps.stamp",
                 packages=self.packages
