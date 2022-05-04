@@ -6,7 +6,7 @@ from jsonschema import validate
 
 from pydmt.utils.filesystem import mkdir_touch
 
-from pydmt.builders.one_source_one_target import OneSourceOneTarget
+from pydmt.api.one_source_one_target import OneSourceOneTarget
 
 METADATA = "metadata"
 SCHEMA_URL_JSON = "schema_url_json"
