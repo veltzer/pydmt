@@ -51,7 +51,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="kn">import</span> <span class="n">sha1_file</span>
 
 
-<div class="viewcode-block" id="Sphinx"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx">[docs]</a><span class="k">class</span> <span class="nc">Sphinx</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
+<div class="viewcode-block" id="BuilderSphinx"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.BuilderSphinx">[docs]</a><span class="k">class</span> <span class="nc">BuilderSphinx</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is review of how to build a sphinx documentation:</span>
 <span class="sd">    - if you want documentation for the code you need to run &quot;sphinx-apidoc&quot;</span>
@@ -59,7 +59,7 @@
 <span class="sd">    - after this you run &quot;sphinx-build&quot;</span>
 <span class="sd">    - &quot;sphinx-quickstart&quot; is not needed unless you are starting a new project.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Sphinx.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<div class="viewcode-block" id="BuilderSphinx.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.BuilderSphinx.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
         <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">SourceFile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_folder</span><span class="p">,</span> <span class="s2">&quot;index.rst&quot;</span><span class="p">)),</span>
             <span class="n">SourceFile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_folder</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">)),</span>
@@ -77,7 +77,7 @@
             <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFolder</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">file_list</span></div>
 
-<div class="viewcode-block" id="Sphinx.get_targets"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<div class="viewcode-block" id="BuilderSphinx.get_targets"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.BuilderSphinx.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">TargetFolder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_folder</span><span class="p">)]</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -97,7 +97,7 @@
             <span class="c1"># os.path.join(self.source_folder, &quot;{}.endpoints.rst&quot;.format(self.package_name)),</span>
         <span class="p">]</span>
 
-<div class="viewcode-block" id="Sphinx.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BuilderSphinx.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.BuilderSphinx.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">unlink_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_source_folder_targets</span><span class="p">(),</span> <span class="n">only_if_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
             <span class="s2">&quot;sphinx-apidoc&quot;</span><span class="p">,</span>
@@ -132,7 +132,7 @@
             <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
             <span class="n">copy_mkdir</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_folder</span><span class="p">,</span> <span class="n">basename</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="Sphinx.yield_results"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.Sphinx.yield_results">[docs]</a>    <span class="k">def</span> <span class="nf">yield_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<div class="viewcode-block" id="BuilderSphinx.yield_results"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.BuilderSphinx.yield_results">[docs]</a>    <span class="k">def</span> <span class="nf">yield_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="n">return_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_source_folder_targets</span><span class="p">()</span>
         <span class="n">return_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">files_under_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_folder</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">return_list</span><span class="p">:</span>

@@ -34,11 +34,11 @@
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.api.feature</span> <span class="kn">import</span> <span class="n">Feature</span>
-<span class="kn">from</span> <span class="nn">pydmt.builders.yaml</span> <span class="kn">import</span> <span class="n">YamlValidate</span>
+<span class="kn">from</span> <span class="nn">pydmt.builders.yaml</span> <span class="kn">import</span> <span class="n">BuilderYaml</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="kn">import</span> <span class="n">PyDMT</span>
 
 
-<div class="viewcode-block" id="Yaml"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.yaml.Yaml">[docs]</a><span class="k">class</span> <span class="nc">Yaml</span><span class="p">(</span><span class="n">Feature</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureYaml"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.yaml.FeatureYaml">[docs]</a><span class="k">class</span> <span class="nc">FeatureYaml</span><span class="p">(</span><span class="n">Feature</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">yaml_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;yaml&quot;</span><span class="p">,</span>
@@ -47,7 +47,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">yaml_folder</span> <span class="o">=</span> <span class="n">yaml_folder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validation_folder</span> <span class="o">=</span> <span class="n">validation_folder</span>
 
-<div class="viewcode-block" id="Yaml.setup"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.yaml.Yaml.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="FeatureYaml.setup"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.yaml.FeatureYaml.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaml_folder</span><span class="p">):</span>
             <span class="k">return</span>
         <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yaml_folder</span><span class="p">):</span>
@@ -56,7 +56,7 @@
                 <span class="n">target_base</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;.yaml&quot;</span><span class="p">:</span>
                     <span class="n">target</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">validation_folder</span><span class="p">,</span> <span class="n">target_base</span><span class="p">,</span> <span class="n">source</span> <span class="o">+</span> <span class="s2">&quot;.stamp&quot;</span><span class="p">])</span>
-                    <span class="n">builder</span> <span class="o">=</span> <span class="n">YamlValidate</span><span class="p">(</span>
+                    <span class="n">builder</span> <span class="o">=</span> <span class="n">BuilderYaml</span><span class="p">(</span>
                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
                         <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
                     <span class="p">)</span>

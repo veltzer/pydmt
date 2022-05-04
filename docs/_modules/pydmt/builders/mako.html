@@ -46,7 +46,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="kn">import</span> <span class="n">sha1_file</span>
 
 
-<div class="viewcode-block" id="Mako"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako">[docs]</a><span class="k">class</span> <span class="nc">Mako</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
+<div class="viewcode-block" id="BuilderMako"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako">[docs]</a><span class="k">class</span> <span class="nc">BuilderMako</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -65,13 +65,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFolder</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">TargetFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)]</span>
 
-<div class="viewcode-block" id="Mako.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<div class="viewcode-block" id="BuilderMako.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sources</span></div>
 
-<div class="viewcode-block" id="Mako.get_targets"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<div class="viewcode-block" id="BuilderMako.get_targets"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span></div>
 
-<div class="viewcode-block" id="Mako.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BuilderMako.build"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">lookup</span> <span class="o">=</span> <span class="n">mako</span><span class="o">.</span><span class="n">lookup</span><span class="o">.</span><span class="n">TemplateLookup</span><span class="p">(</span>
             <span class="n">directories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">],</span>
         <span class="p">)</span>
@@ -87,7 +87,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
             <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Mako.yield_results"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.Mako.yield_results">[docs]</a>    <span class="k">def</span> <span class="nf">yield_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<div class="viewcode-block" id="BuilderMako.yield_results"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako.yield_results">[docs]</a>    <span class="k">def</span> <span class="nf">yield_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">yield</span> <span class="n">sha1_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span></div></div>
 
 

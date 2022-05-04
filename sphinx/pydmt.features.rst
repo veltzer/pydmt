@@ -4,10 +4,18 @@ pydmt.features package
 Submodules
 ----------
 
-pydmt.features.documentation module
------------------------------------
+pydmt.features.apt module
+-------------------------
 
-.. automodule:: pydmt.features.documentation
+.. automodule:: pydmt.features.apt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pydmt.features.mako module
+--------------------------
+
+.. automodule:: pydmt.features.mako
    :members:
    :undoc-members:
    :show-inheritance:
@@ -20,18 +28,10 @@ pydmt.features.npm module
    :undoc-members:
    :show-inheritance:
 
-pydmt.features.packages module
-------------------------------
+pydmt.features.sphinx module
+----------------------------
 
-.. automodule:: pydmt.features.packages
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pydmt.features.templating module
---------------------------------
-
-.. automodule:: pydmt.features.templating
+.. automodule:: pydmt.features.sphinx
    :members:
    :undoc-members:
    :show-inheritance:
