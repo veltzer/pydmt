@@ -56,6 +56,8 @@ def build():
     f.setup(p)
     f = Packages()
     f.setup(p)
+    f = Npm()
+    f.setup(p)
 
     stats = p.build_all()
     sys.exit(stats.get_os_error_code())
