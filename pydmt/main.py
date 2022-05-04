@@ -19,6 +19,21 @@ from pydmt.features.npm import FeatureNpm
 from pydmt.features.venv import FeatureVenv
 
 
+def add_all_features(p):
+    f = FeatureVenv()
+    f.setup(p)
+    f = FeatureMako()
+    f.setup(p)
+    f = FeatureApt()
+    f.setup(p)
+    f = FeatureNpm()
+    f.setup(p)
+    f = FeatureSphinx()
+    f.setup(p)
+    f = FeatureYaml()
+    f.setup(p)
+
+
 def add_to_path():
     """
     This adds to PYTHONPATH various paths we need
@@ -54,18 +69,7 @@ def build():
     pylogconf.core.setup()
     p = PyDMT()
 
-    f = FeatureVenv()
-    f.setup(p)
-    f = FeatureMako()
-    f.setup(p)
-    f = FeatureApt()
-    f.setup(p)
-    f = FeatureNpm()
-    f.setup(p)
-    f = FeatureSphinx()
-    f.setup(p)
-    f = FeatureYaml()
-    f.setup(p)
+    add_all_features(p)
 
     stats = p.build_all()
     sys.exit(stats.get_os_error_code())
@@ -121,8 +125,15 @@ def build_tools():
     description="Clean all generated files"
 )
 def clean() -> None:
+    add_to_path()
+
+    pylogconf.core.setup()
+    p = PyDMT()
+
+    add_all_features(p)
+
     shutil.rmtree(".pydmt")
-    print("TBD")
+    p.clean_all()
 
 
 @register_endpoint(
