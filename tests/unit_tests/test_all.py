@@ -4,9 +4,9 @@ import shutil
 
 import os
 
-from pydmt.builders.fail import Fail
+from pydmt.api.fail import Fail
 from pydmt.core.pydmt import PyDMT, BuildProcessStats
-from pydmt.builders.copy import Copy
+from pydmt.api.copy import Copy
 from pydmt.core.tempdir import tempdir
 
 
