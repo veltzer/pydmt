@@ -7,6 +7,7 @@ from pydmt.api.builder import Builder
 from pydmt.core.cache import Cache
 from pydmt.utils.filesystem import copy_mkdir
 from pydmt.utils.digest import sha1_file
+from pydmt.configs import ConfigFlow
 
 
 class BuildProcessStats:
@@ -103,7 +104,7 @@ class PyDMT:
                 print("FAIL")
                 logger.exception("exception")
                 stats.add_builder_fail(builder, e)
-                return
+                return False
             print("OK")
             stats.add_builder_ok(builder)
 
@@ -112,6 +113,7 @@ class PyDMT:
                 self.cache.save_object_by_signature(signature, target)
                 content += target + " " + signature + "\n"
             self.cache.save_list_by_signature(target_signature, content)
+        return True
 
     def build_by_target(self, target: str, stats: BuildProcessStats) -> None:
         b = self.target_to_builder[target]
@@ -129,10 +131,12 @@ class PyDMT:
         """
         stats = BuildProcessStats()
         for builder in self.builders:
-            self.build_by_builder(
+            res = self.build_by_builder(
                 builder=builder,
                 stats=stats,
             )
+            if not res and ConfigFlow.stop_after_error:
+                return stats
         return stats
 
     def add_builder(self, b: Builder) -> None:

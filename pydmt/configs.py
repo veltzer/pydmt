@@ -14,3 +14,13 @@ class ConfigSudo(Config):
         help_string="use sudo?",
         default=True,
     )
+
+
+class ConfigFlow(Config):
+    """
+    Parameters to configure the flow of pydmt
+    """
+    stop_after_error = ParamCreator.create_bool(
+        help_string="Should pydmt stop after first error?",
+        default=True,
+    )
