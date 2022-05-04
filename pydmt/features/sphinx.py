@@ -4,21 +4,17 @@ from pydmt.api.feature import Feature
 from pydmt.builders.sphinx import BuilderSphinx
 from pydmt.core.pydmt import PyDMT
 
+SPHINX_FOLDER = "sphinx"
+
 
 class FeatureSphinx(Feature):
-    def __init__(
-        self,
-        sphinx_folder: str = "sphinx",
-    ):
-        self.sphinx_folder = sphinx_folder
+    def setup(self, pydmt: PyDMT) -> None:
         # pylint: disable=import-outside-toplevel
         try:
             import config.project
-            self.project_name = config.project.project_name
+            project_name = config.project.project_name
         except ModuleNotFoundError:
-            pass
-
-    def setup(self, pydmt: PyDMT) -> None:
-        if not os.path.isdir(self.sphinx_folder):
             return
-        pydmt.add_builder(BuilderSphinx(package_name=self.project_name))
+        if not os.path.isdir(SPHINX_FOLDER):
+            return
+        pydmt.add_builder(BuilderSphinx(package_name=project_name))
