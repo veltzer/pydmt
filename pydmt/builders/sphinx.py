@@ -11,11 +11,11 @@ to set the PYTHONPATH and get better integration with sphinx?
 import os
 import shutil
 from typing import List, Generator, Tuple
-import subprocess
 
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
 from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
 from pydmt.utils.digest import sha1_file
+from pydmt.utils.subprocess import check_call
 
 
 class BuilderSphinx(Builder):
@@ -80,9 +80,9 @@ class BuilderSphinx(Builder):
             args.append(self.package_name + '.py')
         else:
             args.append(self.package_name)
-        subprocess.check_call(args)
+        check_call(args)
         os.environ["PYTHONPATH"] = "."
-        subprocess.check_call([
+        check_call([
             "sphinx-build",
             # don't use a saved environment, always read all files
             # "-E",
