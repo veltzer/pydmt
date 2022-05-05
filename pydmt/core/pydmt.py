@@ -144,7 +144,8 @@ class PyDMT:
         Clean all targets
         """
         for builder in self.builders:
-            builder.clean()
+            for target in builder.get_targets():
+                target.remove()
 
     def add_builder(self, b: Builder) -> None:
         self.builders.append(b)

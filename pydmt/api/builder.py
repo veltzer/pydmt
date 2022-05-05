@@ -1,4 +1,7 @@
 import abc
+import os
+import shutil
+
 from typing import List, Generator, Tuple
 
 from pydmt.utils.digester import Digester
@@ -15,6 +18,10 @@ class Node(abc.ABC):
 
     @abc.abstractmethod
     def get_name(self) -> str:
+        pass
+
+    @abc.abstractmethod
+    def remove(self) -> None:
         pass
 
 
@@ -102,6 +109,9 @@ class File(Node):
     def get_name(self):
         return self.filename
 
+    def remove(self):
+        os.unlink(self.filename)
+
 
 class SourceFile(File):
     pass
@@ -125,6 +135,10 @@ class SourceFiles(Node):
     def get_name(self):
         return self.name
 
+    def remove(self):
+        for filename in self.filenames:
+            os.unlink(filename)
+
 
 class Folder(Node):
     """
@@ -138,6 +152,9 @@ class Folder(Node):
 
     def get_name(self):
         return self.folder
+
+    def remove(self):
+        shutil.rmtree(self.folder)
 
 
 class SourceFolder(Folder):
