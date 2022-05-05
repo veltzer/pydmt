@@ -17,6 +17,7 @@ from pydmt.features.yaml import FeatureYaml
 from pydmt.features.apt import FeatureApt
 from pydmt.features.npm import FeatureNpm
 from pydmt.features.venv import FeatureVenv
+from pydmt.features.reqs import FeatureReqs
 
 
 def add_all_features(p):
