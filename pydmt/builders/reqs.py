@@ -16,11 +16,19 @@ class BuilderReqs(OneSourceOneTarget):
     virtualenv [folder]
     # activate it
     source [folder]/bin/activate
-    # install package
+    # install packages from file
     pip install -r requirements.txt
+    # OR
+    python -m pip install -r requirements.txt
+    # OR if you want to install a list of packages:
+    pip install -r [list of packages]
+    # OR
+    python -m pip install [list of packages]
     """
     def build(self) -> None:
         args = [
+            "python",
+            "-m",
             "pip",
             "install",
         ]
