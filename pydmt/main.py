@@ -97,6 +97,27 @@ def build_venv():
 
 
 @register_endpoint(
+    description="Install python prerequisites",
+    configs=[
+        ConfigSudo,
+        ConfigFlow,
+        ConfigOutput,
+    ],
+)
+def build_reqs():
+    add_to_path()
+
+    pylogconf.core.setup()
+    p = PyDMT()
+
+    f = FeatureReqs()
+    f.setup(p)
+
+    stats = p.build_all()
+    sys.exit(stats.get_os_error_code())
+
+
+@register_endpoint(
     description="Build tools",
     configs=[
         ConfigSudo,

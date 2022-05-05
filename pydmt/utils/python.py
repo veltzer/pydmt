@@ -1,6 +1,7 @@
 import os
 import glob
 import pprint
+from typing import List
 
 
 def hlp_source_under(folder):
@@ -57,3 +58,14 @@ def make_hlp_wrap(level):
         return t.replace('\n', '\n' + '\t' * level)
 
     return hlp_wrap
+
+
+def collect_reqs(args: List[str]):
+    # pylint: disable=import-outside-toplevel
+    import config.python
+    # pylint: disable=no-member
+    args.extend(config.python.test_requires)
+    args.extend(config.python.run_requires)
+    args.extend(config.python.install_requires)
+    args.extend(config.python.setup_requires)
+    args.extend(config.python.dev_requires)

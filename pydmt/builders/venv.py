@@ -11,6 +11,7 @@ from pydmt.api.builder import Builder, Node, SourceFile, TargetFolder
 from pydmt.utils.filesystem import files_under_folder
 from pydmt.utils.digest import sha1_file
 from pydmt.utils.subprocess import check_call
+from pydmt.utils.python import collect_reqs
 
 SOURCE_FILE = "config/python.py"
 TARGET_FOLDER = ".venv/default"
@@ -53,14 +54,7 @@ class BuilderVenv(Builder):
             "pip",
             "install",
         ]
-        # pylint: disable=import-outside-toplevel
-        import config.python
-        # pylint: disable=no-member
-        args.extend(config.python.test_requires)
-        args.extend(config.python.run_requires)
-        args.extend(config.python.install_requires)
-        args.extend(config.python.setup_requires)
-        args.extend(config.python.dev_requires)
+        collect_reqs(args)
         check_call(args)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
