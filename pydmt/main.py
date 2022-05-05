@@ -110,8 +110,6 @@ def build_tools():
     pylogconf.core.setup()
     p = PyDMT()
 
-    f = FeatureVenv()
-    f.setup(p)
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
