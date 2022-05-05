@@ -21,8 +21,6 @@ from pydmt.features.reqs import FeatureReqs
 
 
 def add_all_features(p):
-    f = FeatureVenv()
-    f.setup(p)
     f = FeatureMako()
     f.setup(p)
     f = FeatureApt()
