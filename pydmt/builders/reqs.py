@@ -6,7 +6,7 @@ This module build python virtual envrionments
 from pydmt.api.one_source_one_target import OneSourceOneTarget
 from pydmt.utils.subprocess import check_call
 from pydmt.utils.filesystem import mkdir_touch
-from pydmt.utils.python import collect_reqs
+from pydmt.utils.python import collect_reqs, get_install_args
 
 
 class BuilderReqs(OneSourceOneTarget):
@@ -26,12 +26,8 @@ class BuilderReqs(OneSourceOneTarget):
     python -m pip install [list of packages]
     """
     def build(self) -> None:
-        args = [
-            "python",
-            "-m",
-            "pip",
-            "install",
-        ]
+        args = []
+        get_install_args(args)
         collect_reqs(args)
         check_call(args)
         mkdir_touch(self.target)
