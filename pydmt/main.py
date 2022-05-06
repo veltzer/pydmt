@@ -66,6 +66,7 @@ def add_to_path():
         ConfigSudo,
         ConfigFlow,
         ConfigOutput,
+        ConfigTarget,
     ],
 )
 def build():
