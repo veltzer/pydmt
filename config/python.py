@@ -6,42 +6,33 @@ console_scripts = [
     "pydmt=pydmt.main:main",
 ]
 
-run_requires = [
-]
-
-setup_requires = [
-]
-
 test_requires = [
-    'pylint',
-    'pytest',
-    'pytest-cov',
-    'pyflakes',
-    'flake8',
+    "pylint",
+    "pytest",
+    "pytest-cov",
+    "pyflakes",
+    "flake8",
 ]
 
 install_requires = [
-    'pyfakeuse',
-    'pylogconf',
-    'pytconf',
-    'mako',
-    'Sphinx',
-    'pyyaml',
-    'jsonschema',
+    "pyfakeuse",
+    "pylogconf",
+    "pytconf",
+    "mako",
+    "Sphinx",
+    "pyyaml",
+    "jsonschema",
 ]
 
 make_requires = [
-    'pymakehelper',
+    "pymakehelper",
 ]
 
 dev_requires = [
-    'pypitools',
-    'pydmt',
-    'pyclassifiers',
+    "pypitools",
+    "pydmt",
+    "pyclassifiers",
 ]
-
-extras_require = {
-}
 
 python_requires = ">=3.9"
 test_os = ["ubuntu-20.04"]
