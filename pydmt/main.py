@@ -28,13 +28,13 @@ def add_all_features(p):
     if ConfigTarget.dev:
         f = FeatureVenv()
         f.setup(p)
+        f = FeatureMako()
+        f.setup(p)
+        f = FeatureSphinx()
+        f.setup(p)
     else:
         f = FeatureReqs()
         f.setup(p)
-    f = FeatureMako()
-    f.setup(p)
-    f = FeatureSphinx()
-    f.setup(p)
     f = FeatureYaml()
     f.setup(p)
 
