@@ -6,7 +6,7 @@ import shutil
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput
+from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
 from pydmt.utils.subprocess import check_call
@@ -25,8 +25,12 @@ def add_all_features(p):
     f.setup(p)
     f = FeatureNpm()
     f.setup(p)
-    f = FeatureVenv()
-    f.setup(p)
+    if ConfigTarget.dev:
+        f = FeatureVenv()
+        f.setup(p)
+    else:
+        f = FeatureReqs()
+        f.setup(p)
     f = FeatureMako()
     f.setup(p)
     f = FeatureSphinx()
