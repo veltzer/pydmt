@@ -30,11 +30,14 @@ install_requires = [
     'jsonschema',
 ]
 
+make_requires = [
+    'pymakehelper',
+]
+
 dev_requires = [
     'pypitools',
     'pydmt',
     'pyclassifiers',
-    'pymakehelper',
 ]
 
 extras_require = {

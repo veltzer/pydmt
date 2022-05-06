@@ -75,6 +75,8 @@ def collect_reqs(args: List[str]):
         args.extend(config.python.setup_requires)
     if hasattr(config.python, "dev_requires") and ConfigTarget.dev:
         args.extend(config.python.dev_requires)
+    if hasattr(config.python, "make_requires"):
+        args.extend(config.python.make_requires)
 
 
 def get_install_args(args):
