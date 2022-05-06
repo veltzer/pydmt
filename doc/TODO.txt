@@ -1,3 +1,6 @@
+- do it so I would see reasonable errors when I run pymdt:
+	do not show stack trace by default
+	show the actually errors by default.
 - make pydmt be plugin based so I could Iterator all builders or features.
 - add the ability to add parameters to:
 	$ pydmt build [paramters]
