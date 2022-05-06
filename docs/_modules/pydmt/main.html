@@ -61,13 +61,13 @@
     <span class="k">if</span> <span class="n">ConfigTarget</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureVenv</span><span class="p">()</span>
         <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureMako</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureSphinx</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureReqs</span><span class="p">()</span>
         <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureMako</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureSphinx</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureYaml</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></div>
 
