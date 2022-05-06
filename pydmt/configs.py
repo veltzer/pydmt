@@ -26,6 +26,16 @@ class ConfigFlow(Config):
     )
 
 
+class ConfigTarget(Config):
+    """
+    Parameters to configure what is the target of the build
+    """
+    dev = ParamCreator.create_bool(
+        help_string="Is the target to build a dev environment?",
+        default=True,
+    )
+
+
 class ConfigOutput(Config):
     """
     Parameters to configure the output of pydmt

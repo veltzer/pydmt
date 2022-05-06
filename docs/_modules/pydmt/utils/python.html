@@ -36,6 +36,8 @@
 <span class="kn">import</span> <span class="nn">pprint</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
+<span class="kn">from</span> <span class="nn">pydmt.configs</span> <span class="kn">import</span> <span class="n">ConfigTarget</span>
+
 
 <div class="viewcode-block" id="hlp_source_under"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.hlp_source_under">[docs]</a><span class="k">def</span> <span class="nf">hlp_source_under</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -96,12 +98,25 @@
 <div class="viewcode-block" id="collect_reqs"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_reqs">[docs]</a><span class="k">def</span> <span class="nf">collect_reqs</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="c1"># pylint: disable=import-outside-toplevel</span>
     <span class="kn">import</span> <span class="nn">config.python</span>
-    <span class="c1"># pylint: disable=no-member</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">test_requires</span><span class="p">)</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">run_requires</span><span class="p">)</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">install_requires</span><span class="p">)</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">setup_requires</span><span class="p">)</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">dev_requires</span><span class="p">)</span></div>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;test_requires&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;tests&quot;</span><span class="p">):</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">test_requires</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;run_requires&quot;</span><span class="p">):</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">run_requires</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;install_requires&quot;</span><span class="p">):</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">install_requires</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;setup_requires&quot;</span><span class="p">):</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">setup_requires</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ConfigTarget</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">dev_requires</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_install_args"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.get_install_args">[docs]</a><span class="k">def</span> <span class="nf">get_install_args</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+        <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;install&quot;</span><span class="p">,</span>
+    <span class="p">])</span></div>
 </pre></div>
 
           </div>
