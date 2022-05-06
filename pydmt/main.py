@@ -21,11 +21,13 @@ from pydmt.features.reqs import FeatureReqs
 
 
 def add_all_features(p):
-    f = FeatureMako()
-    f.setup(p)
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
+    f.setup(p)
+    f = FeatureVenv()
+    f.setup(p)
+    f = FeatureMako()
     f.setup(p)
     f = FeatureSphinx()
     f.setup(p)
