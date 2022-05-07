@@ -1,3 +1,10 @@
+- tools feature:
+	every builder? can declare a tool it is using:
+	say java or htmllint etc...
+	Pydmt has a central tools manager and it knows all the tools.
+	It can also print all the tools, their locations and their versions at the begining
+	of the run and that is what we will do in CICD. This will enable us to debug
+	this easier.
 - when I run pydmt in an empty directory I don't get any warning or anything
 	just an running with no indication of anything.
 	should I have a .pydmt config file?.
