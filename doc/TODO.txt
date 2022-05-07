@@ -1,3 +1,7 @@
+- when I run pydmt in an empty directory I don't get any warning or anything
+	just an running with no indication of anything.
+	should I have a .pydmt config file?.
+	more output for pydmt is requires even for things which are ok with cache.
 - do it so I would see reasonable errors when I run pymdt:
 	do not show stack trace by default
 	show the actually errors by default.
