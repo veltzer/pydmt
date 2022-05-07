@@ -53,8 +53,8 @@ class BuilderVenv(Builder):
             "--",
         ]
         get_install_args(args)
-        collect_reqs(args)
-        check_call(args)
+        if collect_reqs(args):
+            check_call(args)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
         for x in files_under_folder(TARGET_FOLDER):
