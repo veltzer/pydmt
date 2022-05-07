@@ -123,7 +123,7 @@
 <span class="sd">    that is why the left bracket ([) does not have space following it and the</span>
 <span class="sd">    same for the right bracker (]).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">quoted</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">)</span>
+    <span class="n">quoted</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;[&quot;</span>
     <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quoted</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;]&quot;</span>
