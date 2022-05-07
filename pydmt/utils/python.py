@@ -68,8 +68,6 @@ def collect_reqs(args: List[str]) -> bool:
     import config.python
     if hasattr(config.python, "test_requires") and os.path.isdir("tests"):
         collect.extend(config.python.test_requires)
-    if hasattr(config.python, "run_requires"):
-        collect.extend(config.python.run_requires)
     if hasattr(config.python, "install_requires"):
         collect.extend(config.python.install_requires)
     if hasattr(config.python, "setup_requires"):
