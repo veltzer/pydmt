@@ -28,6 +28,6 @@ class BuilderReqs(OneSourceOneTarget):
     def build(self) -> None:
         args = []
         get_install_args(args)
-        collect_reqs(args)
-        check_call(args)
+        if collect_reqs(args):
+            check_call(args)
         mkdir_touch(self.target)

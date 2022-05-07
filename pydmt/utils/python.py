@@ -62,21 +62,24 @@ def make_hlp_wrap(level):
     return hlp_wrap
 
 
-def collect_reqs(args: List[str]):
+def collect_reqs(args: List[str]) -> bool:
+    collect = []
     # pylint: disable=import-outside-toplevel
     import config.python
     if hasattr(config.python, "test_requires") and os.path.isdir("tests"):
-        args.extend(config.python.test_requires)
+        collect.extend(config.python.test_requires)
     if hasattr(config.python, "run_requires"):
-        args.extend(config.python.run_requires)
+        collect.extend(config.python.run_requires)
     if hasattr(config.python, "install_requires"):
-        args.extend(config.python.install_requires)
+        collect.extend(config.python.install_requires)
     if hasattr(config.python, "setup_requires"):
-        args.extend(config.python.setup_requires)
+        collect.extend(config.python.setup_requires)
     if hasattr(config.python, "dev_requires") and ConfigTarget.dev:
-        args.extend(config.python.dev_requires)
+        collect.extend(config.python.dev_requires)
     if hasattr(config.python, "make_requires"):
-        args.extend(config.python.make_requires)
+        collect.extend(config.python.make_requires)
+    args.extend(collect)
+    return len(collect) > 0
 
 
 def get_install_args(args):
