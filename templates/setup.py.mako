@@ -32,7 +32,9 @@ setuptools.setup(
     license="${config.project.project_license}",
     platforms=${pydmt.helpers.python.array_indented(1, config.project.project_platforms)},
     install_requires=${pydmt.helpers.python.array_indented(1, config.python.install_requires)},
+% if hasattr(config.python, "extras_requires"):
     extras_require=${pydmt.helpers.python.dict_indented(1, config.python.extras_require)},
+% endif
     classifiers=${pydmt.helpers.python.array_indented(1, config.project.project_classifiers)},
     data_files=${pydmt.helpers.python.array_indented(1, config.project.project_data_files)},
     entry_points={"console_scripts": ${pydmt.helpers.python.array_indented(1, config.python.console_scripts)}},
