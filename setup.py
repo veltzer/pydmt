@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pydmt",
-    version="0.1.28",
+    version="0.1.29",
     packages=[
         'pydmt',
         'pydmt.api',
@@ -51,8 +51,6 @@ setuptools.setup(
         'pyyaml',
         'jsonschema',
     ],
-    extras_require={
-    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
