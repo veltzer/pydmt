@@ -82,3 +82,16 @@ def get_list_unquoted(a_list: List[str]) -> str:
     s += ", ".join(a_list)
     s += "]"
     return s
+
+
+def get_list_quoted(a_list: List[str]) -> str:
+    """
+    The exact format of this output is to be used in python code from templates,
+    that is why the left bracket ([) does not have space following it and the
+    same for the right bracker (]).
+    """
+    quoted = map(lambda x: f"{x}", a_list)
+    s = "["
+    s += ", ".join(quoted)
+    s += "]"
+    return s
