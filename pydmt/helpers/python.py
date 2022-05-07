@@ -90,7 +90,7 @@ def get_list_quoted(a_list: List[str]) -> str:
     that is why the left bracket ([) does not have space following it and the
     same for the right bracker (]).
     """
-    quoted = map(lambda x: f"{x}", a_list)
+    quoted = map(lambda x: f"\"{x}\"", a_list)
     s = "["
     s += ", ".join(quoted)
     s += "]"
