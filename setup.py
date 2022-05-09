@@ -50,6 +50,7 @@ setuptools.setup(
         'Sphinx',
         'pyyaml',
         'jsonschema',
+        'venv-run',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

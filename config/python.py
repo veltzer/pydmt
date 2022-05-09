@@ -19,6 +19,7 @@ install_requires = [
     "Sphinx",
     "pyyaml",
     "jsonschema",
+    "venv-run",
 ]
 test_requires = [
     "pylint",
