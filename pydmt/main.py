@@ -18,6 +18,7 @@ from pydmt.features.apt import FeatureApt
 from pydmt.features.npm import FeatureNpm
 from pydmt.features.venv import FeatureVenv
 from pydmt.features.reqs import FeatureReqs
+from pydmt.features.make import FeatureMake
 
 
 def add_all_features(p):
@@ -35,6 +36,8 @@ def add_all_features(p):
     else:
         f = FeatureReqs()
         f.setup(p)
+    f = FeatureMake()
+    f.setup(p)
     f = FeatureYaml()
     f.setup(p)
 
