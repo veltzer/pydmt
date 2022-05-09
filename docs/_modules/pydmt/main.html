@@ -51,6 +51,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.features.npm</span> <span class="kn">import</span> <span class="n">FeatureNpm</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.venv</span> <span class="kn">import</span> <span class="n">FeatureVenv</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.reqs</span> <span class="kn">import</span> <span class="n">FeatureReqs</span>
+<span class="kn">from</span> <span class="nn">pydmt.features.make</span> <span class="kn">import</span> <span class="n">FeatureMake</span>
 
 
 <div class="viewcode-block" id="add_all_features"><a class="viewcode-back" href="../../pydmt.html#pydmt.main.add_all_features">[docs]</a><span class="k">def</span> <span class="nf">add_all_features</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
@@ -68,6 +69,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureReqs</span><span class="p">()</span>
         <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureMake</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureYaml</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></div>
 
