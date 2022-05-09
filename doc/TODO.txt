@@ -1,3 +1,4 @@
+- make pydmt print builders which are cached and which are skipped.
 - tools feature:
 	every builder? can declare a tool it is using:
 	say java or htmllint etc...
