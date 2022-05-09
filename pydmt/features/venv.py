@@ -7,7 +7,7 @@ from pydmt.core.pydmt import PyDMT
 
 class FeatureVenv(Feature):
     def setup(self, pydmt: PyDMT) -> None:
-        if not os.path.isfile("config/python.py"):
+        if os.path.isfile("config/python.py"):
             pydmt.add_builder(BuilderVenv(
                 source="config/python.py",
                 target="out/python.stamp",
