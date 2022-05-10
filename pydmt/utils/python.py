@@ -66,14 +66,14 @@ def collect_reqs(args: List[str]) -> bool:
     collect = []
     # pylint: disable=import-outside-toplevel
     import config.python
-    if hasattr(config.python, "test_requires") and os.path.isdir("tests"):
+    if hasattr(config.python, "dev_requires") and ConfigTarget.dev:
+        collect.extend(config.python.dev_requires)
+    if hasattr(config.python, "test_requires"):
         collect.extend(config.python.test_requires)
     if hasattr(config.python, "install_requires"):
         collect.extend(config.python.install_requires)
     if hasattr(config.python, "setup_requires"):
         collect.extend(config.python.setup_requires)
-    if hasattr(config.python, "dev_requires") and ConfigTarget.dev:
-        collect.extend(config.python.dev_requires)
     if hasattr(config.python, "make_requires"):
         collect.extend(config.python.make_requires)
     args.extend(collect)
