@@ -1,3 +1,10 @@
+- write down semantics of:
+	test_requires
+	dev_requires
+	setup_requires
+	make_reuquires
+	...
+	in the md files of pydmt.
 - make pydmt print builders which are cached and which are skipped.
 - tools feature:
 	every builder? can declare a tool it is using:
