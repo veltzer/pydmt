@@ -44,3 +44,7 @@ class ConfigOutput(Config):
         help_string="Should output be verbose?",
         default=True,
     )
+    print_not = ParamCreator.create_bool(
+        help_string="print out what we are not doing",
+        default=False,
+    )
