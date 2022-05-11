@@ -14,6 +14,7 @@
 	of the run and that is what we will do in CICD. This will enable us to debug
 	this easier.
 - measure the time of everybuilder and enable to easily turn it on.
+	after that optimize the run time of pydmt.
 - when I run pydmt in an empty directory I don't get any warning or anything
 	just an running with no indication of anything.
 	should I have a .pydmt config file?.
