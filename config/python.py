@@ -32,7 +32,7 @@ make_requires = [
     "pymakehelper",
 ]
 
-python_requires = ">=3.10"
+python_requires = ">=3.6"
 
 test_os = ["ubuntu-20.04"]
 test_python = ["3.7", "3.8", "3.9", "3.10"]
