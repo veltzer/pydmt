@@ -26,8 +26,8 @@ class BuilderApt(OneSourceOneTarget):
             args.append("sudo")
         args.extend([
             'apt-get',
+            '-q=2',
             '--yes',
-            '--quiet',
             'install',
         ])
         args.extend(self.packages)
