@@ -1,8 +1,16 @@
+- when using subprocess make the policy to only print output if the command
+	fails the default policy.
+	have several policies:
+		- regular (no restriction)
+		- devnull
+		- only print on error
 - write down semantics of:
 	test_requires
 	dev_requires
 	setup_requires
-	make_reuquires
+	make_requires
+	config_requires
+	install_requires
 	...
 	in the md files of pydmt.
 - make pydmt print builders which are cached and which are skipped.
