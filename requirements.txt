@@ -10,8 +10,6 @@ jsonschema
 venv-run
 # dev requirements
 pypitools
-pydmt
-pyclassifiers
 # test requirements
 pylint
 pytest

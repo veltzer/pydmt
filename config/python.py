@@ -8,7 +8,8 @@ console_scripts = [
 
 dev_requires = [
     "pypitools",
-    "pydmt",
+]
+config_requires = [
     "pyclassifiers",
 ]
 install_requires = [

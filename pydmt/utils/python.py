@@ -72,6 +72,8 @@ def collect_reqs() -> List[str]:
         collect.extend(config.python.test_requires)
     if hasattr(config.python, "install_requires"):
         collect.extend(config.python.install_requires)
+    if hasattr(config.python, "config_requires"):
+        collect.extend(config.python.config_requires)
     if hasattr(config.python, "setup_requires"):
         collect.extend(config.python.setup_requires)
     if hasattr(config.python, "make_requires"):
