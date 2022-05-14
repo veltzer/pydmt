@@ -95,9 +95,9 @@
     <span class="k">return</span> <span class="n">hlp_wrap</span></div>
 
 
-<div class="viewcode-block" id="collect_reqs"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_reqs">[docs]</a><span class="k">def</span> <span class="nf">collect_reqs</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="collect_reqs"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_reqs">[docs]</a><span class="k">def</span> <span class="nf">collect_reqs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="n">collect</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c1"># pylint: disable=import-outside-toplevel</span>
+    <span class="c1"># pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member</span>
     <span class="kn">import</span> <span class="nn">config.python</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ConfigTarget</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
         <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">dev_requires</span><span class="p">)</span>
@@ -109,17 +109,22 @@
         <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">setup_requires</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;make_requires&quot;</span><span class="p">):</span>
         <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">make_requires</span><span class="p">)</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">collect</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">collect</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="n">collect</span></div>
 
 
-<div class="viewcode-block" id="get_install_args"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.get_install_args">[docs]</a><span class="k">def</span> <span class="nf">get_install_args</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+<div class="viewcode-block" id="collect_bootstrap_reqs"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_bootstrap_reqs">[docs]</a><span class="k">def</span> <span class="nf">collect_bootstrap_reqs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="c1"># pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member</span>
+    <span class="kn">import</span> <span class="nn">config.bootstrap</span>
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">requires</span></div>
+
+
+<div class="viewcode-block" id="get_install_args"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.get_install_args">[docs]</a><span class="k">def</span> <span class="nf">get_install_args</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span>
         <span class="s2">&quot;python&quot;</span><span class="p">,</span>
         <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
         <span class="s2">&quot;pip&quot;</span><span class="p">,</span>
         <span class="s2">&quot;install&quot;</span><span class="p">,</span>
-    <span class="p">])</span></div>
+    <span class="p">]</span></div>
 </pre></div>
 
           </div>
