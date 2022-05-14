@@ -62,9 +62,9 @@ def make_hlp_wrap(level):
     return hlp_wrap
 
 
-def collect_reqs(args: List[str]) -> bool:
+def collect_reqs() -> List[str]:
     collect = []
-    # pylint: disable=import-outside-toplevel
+    # pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member
     import config.python
     if hasattr(config.python, "dev_requires") and ConfigTarget.dev:
         collect.extend(config.python.dev_requires)
@@ -76,14 +76,19 @@ def collect_reqs(args: List[str]) -> bool:
         collect.extend(config.python.setup_requires)
     if hasattr(config.python, "make_requires"):
         collect.extend(config.python.make_requires)
-    args.extend(collect)
-    return len(collect) > 0
+    return collect
 
 
-def get_install_args(args):
-    args.extend([
+def collect_bootstrap_reqs() -> List[str]:
+    # pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member
+    import config.bootstrap
+    return config.bootstrap.requires
+
+
+def get_install_args():
+    return [
         "python",
         "-m",
         "pip",
         "install",
-    ])
+    ]

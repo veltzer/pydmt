@@ -27,7 +27,9 @@ class BuilderReqs(OneSourceOneTarget):
     """
     def build(self) -> None:
         args = []
-        get_install_args(args)
-        if collect_reqs(args):
+        args.extend(get_install_args())
+        packs = collect_reqs()
+        if packs:
+            args.extend(packs)
             check_call(args)
         mkdir_touch(self.target)

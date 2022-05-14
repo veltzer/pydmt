@@ -52,8 +52,10 @@ class BuilderVenvFull(Builder):
             ".venv/default",
             "--",
         ]
-        get_install_args(args)
-        if collect_reqs(args):
+        args.extend(get_install_args())
+        packs = collect_reqs()
+        if packs:
+            args.extend(packs)
             check_call(args)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
