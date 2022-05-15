@@ -57,6 +57,8 @@
         <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">ConfigSudo</span><span class="o">.</span><span class="n">sudo</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">)</span>
+        <span class="c1"># Here is how to keep apt-get quiet:</span>
+        <span class="c1"># https://stackoverflow.com/questions/52642097/apt-get-with-quiet-option-is-still-noisy</span>
         <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
             <span class="s1">&#39;apt-get&#39;</span><span class="p">,</span>
             <span class="s1">&#39;-q=2&#39;</span><span class="p">,</span>
