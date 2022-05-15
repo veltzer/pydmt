@@ -12,3 +12,4 @@
 - add a "make" builder for pydmt which depends on the Makefile
 	and produces an "out/make.stamp" file and run it at the
 	end of pydmt build under the venv ofcourse.
+- disabled feature was removed.

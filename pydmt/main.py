@@ -21,9 +21,6 @@ from pydmt.features.reqs import FeatureReqs
 from pydmt.features.make import FeatureMake
 
 
-DISABLE = ".build.disable"
-
-
 def add_all_features(p):
     f = FeatureApt()
     f.setup(p)
@@ -76,10 +73,6 @@ def add_to_path():
     ],
 )
 def build():
-    if os.path.isfile(DISABLE):
-        if ConfigOutput.print_not:
-            print(f"build is disabled with file {DISABLE}")
-        return
     add_to_path()
 
     pylogconf.core.setup()
