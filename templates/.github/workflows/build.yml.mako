@@ -10,8 +10,8 @@ jobs:
       matrix:
         include:
 % for os, python in config.github.workflows_platforms:
-          os: "${os}"
-          python-version: "${python}"
+          - os: "${os}"
+            python-version: "${python}"
 % endfor
     steps:
     - name: checkout
