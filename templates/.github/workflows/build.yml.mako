@@ -1,5 +1,5 @@
 <%!
-    import config.python
+    import config.github
     import pydmt.helpers.python
 %>name: build
 on: [push, pull_request, workflow_dispatch]
@@ -8,8 +8,8 @@ jobs:
     runs-on: ${"${{ matrix.os }}"}
     strategy:
       matrix:
-        os: ${pydmt.helpers.python.get_list_quoted(config.python.test_os)}
-        python-version: ${pydmt.helpers.python.get_list_quoted(config.python.test_python)}
+        os: ${pydmt.helpers.python.get_list_quoted(config.github.workflows_os)}
+        python-version: ${pydmt.helpers.python.get_list_quoted(config.github.workflows_python)}
     steps:
     - name: checkout
       uses: actions/checkout@v3
