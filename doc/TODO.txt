@@ -1,3 +1,7 @@
+- allow to say which virtual env I want in .pydmt.config
+	and create that version of the virutal env (in my case 3.10).
+	If you want to install a virtual machine of a different version of pythin you need
+	to have a different version of python installed.
 - when using subprocess make the policy to only print output if the command
 	fails the default policy.
 	have several policies:
