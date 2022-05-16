@@ -1,6 +1,6 @@
 import pyclassifiers.values
-import config.general
-import config.helpers
+import pydmt.helpers.general
+import pydmt.helpers.signature
 
 project_github_username = "veltzer"
 project_name = "pydmt"
@@ -12,8 +12,9 @@ project_website_download_ppa = "https://launchpanet/~mark-veltzer/+archive/ubunt
 project_website_download_src = project_website_source
 # project_paypal_donate_button_id="ASPRXR59H2NTQ"
 # project_google_analytics_tracking_id="UA-56436979-1"
-project_long_description = "python dependency management tool"
-project_short_description = "python dependency management tool"
+project_description = "python dependency management tool"
+project_long_description = project_description
+project_short_description = project_description
 # keywords to put on html pages or for search, dont put the name of the project or my details
 # as they will be added automatically...
 project_keywords = [
@@ -22,12 +23,12 @@ project_keywords = [
     "scons",
     "software construction",
     "make",
+    "cmake",
     "maven",
     "mvn",
 ]
 project_license = "MIT"
-project_year_started = 2016
-project_description = "python dependency management tool"
+project_year_started = 2017
 project_platforms = [
     "python3",
 ]
@@ -43,11 +44,6 @@ project_classifiers = [
     pyclassifiers.values.License__OSIApproved__MITLicense,
 ]
 project_data_files = []
+
+project_copyright_years = pydmt.helpers.signature.get_copyright_years(project_year_started)
 codacy_id = None
-
-project_google_analytics_tracking_id = None
-project_paypal_donate_button_id = None
-
-project_copyright_years = config.helpers.get_copyright_years(project_year_started)
-project_google_analytics_snipplet = config.helpers.get_google_analytics(project_google_analytics_tracking_id)
-project_paypal_donate_button_snipplet = config.helpers.get_paypal(project_paypal_donate_button_id)
