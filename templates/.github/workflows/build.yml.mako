@@ -8,8 +8,11 @@ jobs:
     runs-on: ${"${{ matrix.os }}"}
     strategy:
       matrix:
-        os: ${pydmt.helpers.python.get_list_quoted(config.github.workflows_os)}
-        python-version: ${pydmt.helpers.python.get_list_quoted(config.github.workflows_python)}
+        include:
+% for os, python in config.github.workflows_platforms:
+          os: "${os}"
+          python-version: "${python}"
+% endfor
     steps:
     - name: checkout
       uses: actions/checkout@v3
