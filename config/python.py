@@ -33,4 +33,4 @@ make_requires = [
     "pymakehelper",
 ]
 
-python_requires = ">=3.10"
+python_requires = ">=3.6"
