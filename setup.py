@@ -33,6 +33,7 @@ setuptools.setup(
         'scons',
         'software construction',
         'make',
+        'cmake',
         'maven',
         'mvn',
     ],
