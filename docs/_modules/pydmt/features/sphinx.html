@@ -45,12 +45,12 @@
         <span class="c1"># pylint: disable=import-outside-toplevel</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">config.project</span>
-            <span class="n">project_name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">project_name</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span>
         <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">SPHINX_FOLDER</span><span class="p">):</span>
             <span class="k">return</span>
-        <span class="n">pydmt</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">BuilderSphinx</span><span class="p">(</span><span class="n">package_name</span><span class="o">=</span><span class="n">project_name</span><span class="p">))</span></div></div>
+        <span class="n">pydmt</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">BuilderSphinx</span><span class="p">(</span><span class="n">package_name</span><span class="o">=</span><span class="n">name</span><span class="p">))</span></div></div>
 </pre></div>
 
           </div>

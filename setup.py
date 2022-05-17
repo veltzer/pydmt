@@ -64,8 +64,6 @@ setuptools.setup(
         'Topic :: Utilities',
         'License :: OSI Approved :: MIT License',
     ],
-    data_files=[
-    ],
     entry_points={"console_scripts": [
         'pydmt=pydmt.main:main',
     ]},
