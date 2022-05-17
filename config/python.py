@@ -1,5 +1,5 @@
-import config.project
 import pyclassifiers.values
+import config.project
 
 package_name = config.project.name
 

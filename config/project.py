@@ -17,5 +17,5 @@ keywords = [
     "maven",
     "mvn",
 ]
-license = "MIT"
+license_type = "MIT"
 year_started = 2017
