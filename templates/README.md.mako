@@ -17,7 +17,7 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/${config.python.package_name})
 
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
-% if config.project.codacy_id:
+% if hasattr(config.project, "codacy_id"):
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.project_github_username}/${config.python.package_name}&amp;utm_campaign=Badge_Grade)
 % endif
 <%doc>
@@ -32,7 +32,7 @@
 			action_name=yaml.safe_load(stream)["name"]
 			context.write(f"![{action_name}](https://github.com/{config.project.project_github_username}/{config.project.project_name}/workflows/{action_name}/badge.svg)")
 %>
-${config.project.project_short_description}
+${config.project.project_description_short}
 
 project website: ${config.project.project_website}
 
