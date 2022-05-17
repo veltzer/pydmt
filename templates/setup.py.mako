@@ -19,7 +19,7 @@ setuptools.setup(
     version="${config.version.version_str}",
     packages=${pydmt.helpers.python.array_indented(1, pydmt.helpers.python.find_packages(config.python.package_name))},
     # from here all is optional
-    description="${config.project.project_description}",
+    description="${config.project.project_description_short}",
     long_description=get_readme(),
     long_description_content_type="text/x-rst",
     author="${user.personal.personal_fullname}",
