@@ -12,9 +12,9 @@ class FeatureSphinx(Feature):
         # pylint: disable=import-outside-toplevel
         try:
             import config.project
-            project_name = config.project.project_name
+            name = config.project.name
         except ModuleNotFoundError:
             return
         if not os.path.isdir(SPHINX_FOLDER):
             return
-        pydmt.add_builder(BuilderSphinx(package_name=project_name))
+        pydmt.add_builder(BuilderSphinx(package_name=name))
