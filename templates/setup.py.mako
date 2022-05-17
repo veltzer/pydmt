@@ -15,7 +15,7 @@ def get_readme():
 
 setuptools.setup(
     # the first three fields are a must according to the documentation
-    name="${config.project.project_name}",
+    name="${config.project.name}",
     version="${config.version.version_str}",
     packages=${pydmt.helpers.python.array_indented(1, pydmt.helpers.python.find_packages(config.python.package_name))},
     # from here all is optional
