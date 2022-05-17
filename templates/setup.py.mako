@@ -29,7 +29,7 @@ setuptools.setup(
     keywords=${pydmt.helpers.python.array_indented(1, config.project.keywords)},
     url="${config.project.website}",
     download_url="${config.project.website_download_src}",
-    license="${config.project.license}",
+    license="${config.project.license_type}",
     platforms=${pydmt.helpers.python.array_indented(1, config.python.platforms)},
 % if hasattr(config.python, "install_requires"):
     install_requires=${pydmt.helpers.python.array_indented(1, config.python.install_requires)},
