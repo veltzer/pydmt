@@ -1,9 +1,11 @@
+import pydmt.helpers.project
+
 # deb section
 deb_package = True
 deb_section = "python"
 deb_priority = "optional"
 deb_architecture = "all"
-deb_pkgname = project_name
+deb_pkgname = pydmt.helpers.project.get_name()
 # to which series to publish the package?
 # https://wiki.ubuntu.com/Releases
 deb_series = [
@@ -31,4 +33,3 @@ deb_standards_version = "3.9.8"
 deb_x_python_version = ">= 3.4"
 deb_x_python3_version = ">= 3.4"
 deb_urgency = "low"
-
