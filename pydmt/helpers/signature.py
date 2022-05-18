@@ -1,9 +1,9 @@
 import datetime
-import git
 import time
 
+import git
+
 def get_project_year_started() -> int:
-    import git
     repo = git.Repo(".")
     commits = list(repo.iter_commits())
     last_commit = commits[-1]
