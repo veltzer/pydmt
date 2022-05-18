@@ -17,7 +17,7 @@ author: ${user.personal.personal_fullname}
 
 version: ${pydmt.helpers.misc.get_version_str()}
 
-## package stats
+${"##"} package stats
 
 ![PyPI - Status](https://img.shields.io/pypi/status/${config.python.package_name})
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/${config.python.package_name})
@@ -26,7 +26,7 @@ version: ${pydmt.helpers.misc.get_version_str()}
 ![PyPI - Format](https://img.shields.io/pypi/format/${config.python.package_name})
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-## download stats
+${"##"} download stats
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/${config.python.package_name})
 ![PyPI - Downloads](https://img.shields.io/pypi/dw/${config.python.package_name})
@@ -37,12 +37,11 @@ version: ${pydmt.helpers.misc.get_version_str()}
 ![Downloads](https://pepy.tech/badge/${config.python.package_name}/week)
 
 % if hasattr(config.project, "codacy_id"):
+${"##"} codacy stuff 
 
-## codacy stuff
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.github_username}/${config.python.package_name}&amp;utm_campaign=Badge_Grade)
 % endif
-
-## build status
+${"##"} build status
 
 <%
 	action_files = glob.glob('.github/workflows/*.yml')
