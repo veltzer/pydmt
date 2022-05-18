@@ -1,13 +1,14 @@
 <%!
     import pydmt.helpers.misc
     import pydmt.helpers.signature
+    import pydmt.helpers.project
+    import pydmt.helpers.python
     import config.project
-    import config.python
     import user.personal
     import glob
     import yaml
     import os
-%># *${config.project.name}* project by ${user.personal.fullname}
+%># *${pydmt.helpers.project.get_name()}* project by ${user.personal.fullname}
 
 description: ${config.project.description_short}
 
@@ -35,26 +36,26 @@ ${"##"} build
 
 ${"##"} pypi
 
-![PyPI - Status](https://img.shields.io/pypi/status/${config.python.package_name})
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/${config.python.package_name})
-![PyPI - License](https://img.shields.io/pypi/l/${config.python.package_name})
-![PyPI - Package Name](https://img.shields.io/pypi/v/${config.python.package_name})
-![PyPI - Format](https://img.shields.io/pypi/format/${config.python.package_name})
+![PyPI - Status](https://img.shields.io/pypi/status/${pydmt.helpers.python.get_package_name()})
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/${pydmt.helpers.python.get_package_name()})
+![PyPI - License](https://img.shields.io/pypi/l/${pydmt.helpers.python.get_package_name()})
+![PyPI - Package Name](https://img.shields.io/pypi/v/${pydmt.helpers.python.get_package_name()})
+![PyPI - Format](https://img.shields.io/pypi/format/${pydmt.helpers.python.get_package_name()})
 
 ${"##"} pypi download
 
-![PyPI - Downloads](https://img.shields.io/pypi/dd/${config.python.package_name})
-![PyPI - Downloads](https://img.shields.io/pypi/dw/${config.python.package_name})
-![PyPI - Downloads](https://img.shields.io/pypi/dm/${config.python.package_name})
+![PyPI - Downloads](https://img.shields.io/pypi/dd/${pydmt.helpers.python.get_package_name()})
+![PyPI - Downloads](https://img.shields.io/pypi/dw/${pydmt.helpers.python.get_package_name()})
+![PyPI - Downloads](https://img.shields.io/pypi/dm/${pydmt.helpers.python.get_package_name()})
 <%doc>
-![Downloads](https://pepy.tech/badge/${config.python.package_name})
-![Downloads](https://pepy.tech/badge/${config.python.package_name}/week)
-![Downloads](https://pepy.tech/badge/${config.python.package_name}/month)
+![Downloads](https://pepy.tech/badge/${pydmt.helpers.python.get_package_name()})
+![Downloads](https://pepy.tech/badge/${pydmt.helpers.python.get_package_name()}/week)
+![Downloads](https://pepy.tech/badge/${pydmt.helpers.python.get_package_name()}/month)
 </%doc>
 % if hasattr(config.project, "codacy_id"):
 ${"##"} codacy stuff 
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.github_username}/${config.python.package_name}&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.github_username}/${pydmt.helpers.python.get_package_name()}&amp;utm_campaign=Badge_Grade)
 % endif
 
 % if os.path.isfile("../snipplets/main.md.mako"):

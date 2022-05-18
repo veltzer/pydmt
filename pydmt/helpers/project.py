@@ -2,7 +2,7 @@ import os
 import os.path
 import importlib
 
-def get_project_name():
+def get_name():
     mod = importlib.import_module("config.project")
     if hasattr(mod, "name"):
         return getattr(mod, "name")
