@@ -19,11 +19,11 @@ ${line}
 
 project website: ${config.project.website}
 
-author: ${user.personal.personal_fullname}
+author: ${user.personal.fullname}
 
 version: ${pydmt.helpers.misc.get_version_str()}
 
 % if os.path.isfile("../snipplets/main.md.mako"):
 <%include file="../snipplets/main.rst.mako" />
 % endif
-	${user.personal.personal_origin}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
+	${user.personal.origin}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
