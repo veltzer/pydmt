@@ -1,4 +1,6 @@
 import os
+import os.path
+import importlib
 from typing import Callable, List, Dict
 import pyclassifiers
 
@@ -96,6 +98,13 @@ def get_list_quoted(a_list: List[str]) -> str:
     s += ", ".join(quoted)
     s += "]"
     return s
+
+
+def get_package_name():
+    mod = importlib.import_module("config.python")
+    if hasattr(mod, "package_name"):
+        return getattr(mod, "package_name")
+    return os.path.basename(os.getcwd())
 
 # stuff to add follows
 license_type = "MIT"
