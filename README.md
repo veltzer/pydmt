@@ -9,6 +9,7 @@ author: Mark Veltzer
 version: 0.1.52
 
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![License](https://img.shields.io/github/license/veltzer/pytconf)
 
 ## build status
 
