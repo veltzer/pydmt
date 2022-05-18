@@ -53,10 +53,12 @@ ${"##"} codacy stuff
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.github_username}/${config.python.package_name}&amp;utm_campaign=Badge_Grade)
 % endif
 
-chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
 % if os.path.isfile("../snipplets/main.md.mako"):
 <%include file="../snipplets/main.md.mako" />
 % endif
 	${user.personal.personal_origin}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
-![](https://dcbadge.vercel.app/api/shield/veltzer)
+
+${"##"} chat stuff 
+![gitter](https://img.shields.io/gitter/room/veltzer/mark.veltzer)
+![discord](https://img.shields.io/discord/719336281624281119)
