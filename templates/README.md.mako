@@ -53,16 +53,14 @@ ${"##"} codacy stuff
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.github_username}/${config.python.package_name}&amp;utm_campaign=Badge_Grade)
 % endif
 
-
 % if os.path.isfile("../snipplets/main.md.mako"):
 <%include file="../snipplets/main.md.mako" />
 % endif
-
-
-	${user.personal.origin}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
 
 ${"##"} contact me
 [mailto](mailto:${user.personal.email})
 ![gitter](https://img.shields.io/gitter/room/veltzer/mark.veltzer)
 ![discord](https://img.shields.io/discord/719336281624281119)
 ![discord](https://img.shields.io/discord/719336282194444302)
+
+${user.personal.fullname}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
