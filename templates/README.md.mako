@@ -17,6 +17,8 @@ author: ${user.personal.personal_fullname}
 
 version: ${pydmt.helpers.misc.get_version_str()}
 
+![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
+
 ${"##"} build status
 
 <%
@@ -27,14 +29,13 @@ ${"##"} build status
 			context.write(f"![{action_name}](https://github.com/{config.project.github_username}/{config.project.name}/workflows/{action_name}/badge.svg)")
 %>
 
-${"##"} package stats
+${"##"} pypi stats
 
 ![PyPI - Status](https://img.shields.io/pypi/status/${config.python.package_name})
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/${config.python.package_name})
 ![PyPI - License](https://img.shields.io/pypi/l/${config.python.package_name})
 ![PyPI - Package Name](https://img.shields.io/pypi/v/${config.python.package_name})
 ![PyPI - Format](https://img.shields.io/pypi/format/${config.python.package_name})
-![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 ${"##"} download stats
 
