@@ -107,8 +107,9 @@ def get_package_name():
         return getattr(mod, "package_name")
     return os.path.basename(os.getcwd())
 
-# stuff to add follows
+
 license_type = "MIT"
+
 platforms = [
     "python3",
 ]

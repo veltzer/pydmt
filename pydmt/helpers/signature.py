@@ -3,6 +3,7 @@ import time
 
 import git
 
+
 def get_project_year_started() -> int:
     repo = git.Repo(".")
     commits = list(repo.iter_commits())

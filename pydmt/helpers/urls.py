@@ -3,6 +3,7 @@ import importlib
 
 import pydmt.helpers.project
 
+
 def get_github_username():
     mod = importlib.import_module("user.personal")
     if hasattr(mod, "github_username"):
@@ -35,7 +36,6 @@ def get_website_git():
     return f"git://github.com/{github_username}/{name}.git"
 
 
-def get_webiste_ppa():
+def get_website_ppa():
     launchpad_username = get_github_username()
-    name = pydmt.helpers.project.get_name()
     return f"https://launchpanet/~{launchpad_username}/+archive/ubuntu/ppa"
