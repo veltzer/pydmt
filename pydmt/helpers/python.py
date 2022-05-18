@@ -2,7 +2,8 @@ import os
 import os.path
 import importlib
 from typing import Callable, List, Dict
-import pyclassifiers
+
+import pyclassifiers.values
 
 
 def make_console_script(package_name: str, main: Callable):

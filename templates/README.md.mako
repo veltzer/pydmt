@@ -3,6 +3,7 @@
     import pydmt.helpers.signature
     import pydmt.helpers.project
     import pydmt.helpers.python
+    import pydmt.helpers.urls
     import config.project
     import user.personal
     import glob
@@ -12,7 +13,7 @@
 
 description: ${config.project.description_short}
 
-project website: ${config.project.website}
+project website: ${pydmt.helpers.urls.get_website()}
 
 author: ${user.personal.fullname}
 
@@ -31,7 +32,7 @@ ${"##"} build
 	for action_file in action_files:
 		with open(action_file, 'r') as stream:
 			action_name=yaml.safe_load(stream)["name"]
-			context.write(f"![{action_name}](https://github.com/{config.project.github_username}/{config.project.name}/workflows/{action_name}/badge.svg)")
+			context.write(f"![{action_name}](https://github.com/{user.personal.github_username}/{pydmt.helpers.project.get_name()}/workflows/{action_name}/badge.svg)")
 %>
 
 ${"##"} pypi
@@ -55,7 +56,7 @@ ${"##"} pypi download
 % if hasattr(config.project, "codacy_id"):
 ${"##"} codacy stuff 
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${config.project.github_username}/${pydmt.helpers.python.get_package_name()}&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/${config.project.codacy_id})](https://www.codacy.com/app/jarrekk/imgkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${user.personal.github_username}/${pydmt.helpers.python.get_package_name()}&amp;utm_campaign=Badge_Grade)
 % endif
 
 % if os.path.isfile("../snipplets/main.md.mako"):
