@@ -29,7 +29,9 @@ version: 0.1.52
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pydmt)
 
 
-chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
 	Mark Veltzer <mark.veltzer@gmail.com>, Copyright © 2017, 2018, 2019, 2020, 2021
-![](https://dcbadge.vercel.app/api/shield/veltzer)
+
+## chat stuff 
+![gitter](https://img.shields.io/gitter/room/veltzer/mark.veltzer)
+![discord](https://img.shields.io/discord/719336281624281119)
