@@ -9,13 +9,16 @@ author: Mark Veltzer
 version: 0.1.52
 
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
+
+## github
+
 ![License](https://img.shields.io/github/license/veltzer/pytconf)
 
-## build status
+## build
 
 ![build](https://github.com/veltzer/pydmt/workflows/build/badge.svg)
 
-## pypi stats
+## pypi
 
 ![PyPI - Status](https://img.shields.io/pypi/status/pydmt)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pydmt)
@@ -23,7 +26,7 @@ version: 0.1.52
 ![PyPI - Package Name](https://img.shields.io/pypi/v/pydmt)
 ![PyPI - Format](https://img.shields.io/pypi/format/pydmt)
 
-## download stats
+## pypi download
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/pydmt)
 ![PyPI - Downloads](https://img.shields.io/pypi/dw/pydmt)
