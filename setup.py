@@ -52,6 +52,7 @@ setuptools.setup(
         'pyyaml',
         'jsonschema',
         'venv-run',
+        'gitpython',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

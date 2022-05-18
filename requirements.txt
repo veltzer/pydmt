@@ -8,6 +8,7 @@ Sphinx
 pyyaml
 jsonschema
 venv-run
+gitpython
 # dev requirements
 pypitools
 # test requirements
