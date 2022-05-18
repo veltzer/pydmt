@@ -33,8 +33,8 @@ ${"##"} download stats
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/${config.python.package_name})
 
 ![Downloads](https://pepy.tech/badge/${config.python.package_name})
-![Downloads](https://pepy.tech/badge/${config.python.package_name}/month)
 ![Downloads](https://pepy.tech/badge/${config.python.package_name}/week)
+![Downloads](https://pepy.tech/badge/${config.python.package_name}/month)
 
 % if hasattr(config.project, "codacy_id"):
 ${"##"} codacy stuff 
