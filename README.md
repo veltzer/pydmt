@@ -1,5 +1,7 @@
 # *pydmt* project by Mark Veltzer
 
+version: 0.1.51
+
 ![PyPI - Status](https://img.shields.io/pypi/status/pydmt)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pydmt)
 ![PyPI - License](https://img.shields.io/pypi/l/pydmt)

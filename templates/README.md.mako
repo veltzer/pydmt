@@ -1,10 +1,17 @@
 <%!
+    import pydmt.helpers.misc
     import config.project
     import config.python
     import user.personal
     import glob
     import yaml
 %># *${config.project.name}* project by ${user.personal.personal_fullname}
+
+project website: ${config.project.website}
+
+author: ${user.personal.personal_fullname}
+
+version: ${pydmt.helpers.misc.get_version_str()}
 
 ![PyPI - Status](https://img.shields.io/pypi/status/${config.python.package_name})
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/${config.python.package_name})
@@ -39,3 +46,5 @@ project website: ${config.project.website}
 chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
 <%include file="../snipplets/main.md.mako" />
+
+	${user.personal.personal_origin}, ${pydmt.helpers.signature.get_copyright_years_long()}
