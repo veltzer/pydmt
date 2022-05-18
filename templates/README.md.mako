@@ -62,3 +62,4 @@ ${"##"} codacy stuff
 ${"##"} chat stuff 
 ![gitter](https://img.shields.io/gitter/room/veltzer/mark.veltzer)
 ![discord](https://img.shields.io/discord/719336281624281119)
+![discord](https://img.shields.io/discord/719336282194444302)
