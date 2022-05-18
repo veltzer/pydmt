@@ -1,7 +1,4 @@
 import pyclassifiers.values
-import config.project
-
-package_name = config.project.name
 
 console_scripts = [
     "pydmt=pydmt.main:main",

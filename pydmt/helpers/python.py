@@ -1,5 +1,6 @@
 import os
 from typing import Callable, List, Dict
+import pyclassifiers
 
 
 def make_console_script(package_name: str, main: Callable):
@@ -97,7 +98,7 @@ def get_list_quoted(a_list: List[str]) -> str:
     return s
 
 # stuff to add follows
-license = "MIT"
+license_type = "MIT"
 platforms = [
     "python3",
 ]

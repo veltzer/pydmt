@@ -1,12 +1,12 @@
 import os
 import subprocess
-import config.project
+import pydmt.helpers.project
 
 deb_package = True
 deb_section = 'python'
 deb_priority = 'optional'
 deb_architecture = 'all'
-deb_package_name = config.project.name
+deb_package_name = pydmt.helpers.project.get_project_name()
 # to which series to publish the package?
 deb_series = [
     'artful',

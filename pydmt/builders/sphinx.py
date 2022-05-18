@@ -48,11 +48,10 @@ class BuilderSphinx(Builder):
         return [TargetFolder(self.target_folder)]
 
     def __init__(self,
-                 package_name: str,
                  source_folder: str = "sphinx",
                  target_folder: str = "docs"):
         super().__init__()
-        self.package_name = package_name
+        self.package_name = os.path.basename(os.getcwd())
         self.source_folder = source_folder
         self.target_folder = target_folder
 
