@@ -9,4 +9,3 @@ keywords = [
     "maven",
     "mvn",
 ]
-license_type = "MIT"
