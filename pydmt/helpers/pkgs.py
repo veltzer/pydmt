@@ -7,6 +7,7 @@ References:
 
 from importlib.metadata import metadata
 
+
 def get_package_description(name: str) -> str:
     s = metadata(name)
     return s["Summary"]
