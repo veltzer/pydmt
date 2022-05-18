@@ -7,13 +7,13 @@
     import glob
     import yaml
     import os
-%># *${config.project.name}* project by ${user.personal.personal_fullname}
+%># *${config.project.name}* project by ${user.personal.fullname}
 
 description: ${config.project.description_short}
 
 project website: ${config.project.website}
 
-author: ${user.personal.personal_fullname}
+author: ${user.personal.fullname}
 
 version: ${pydmt.helpers.misc.get_version_str()}
 
@@ -57,9 +57,12 @@ ${"##"} codacy stuff
 % if os.path.isfile("../snipplets/main.md.mako"):
 <%include file="../snipplets/main.md.mako" />
 % endif
-	${user.personal.personal_origin}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
 
-${"##"} chat stuff 
+
+	${user.personal.origin}, Copyright © ${pydmt.helpers.signature.get_copyright_years_long()}
+
+${"##"} contact me
+[mailto](mailto:${user.personal.email})
 ![gitter](https://img.shields.io/gitter/room/veltzer/mark.veltzer)
 ![discord](https://img.shields.io/discord/719336281624281119)
 ![discord](https://img.shields.io/discord/719336282194444302)
