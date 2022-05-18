@@ -1,5 +1,6 @@
 <%!
     import pydmt.helpers.misc
+    import pydmt.helpers.signature
     import config.project
     import config.python
     import user.personal

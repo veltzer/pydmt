@@ -22,6 +22,7 @@ install_requires = [
     "pyyaml",
     "jsonschema",
     "venv-run",
+    "gitpython",
 ]
 test_requires = [
     "pylint",
