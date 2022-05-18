@@ -8,6 +8,7 @@ author: Mark Veltzer
 
 version: 0.1.51
 
+## package stats
 
 ![PyPI - Status](https://img.shields.io/pypi/status/pydmt)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pydmt)
@@ -16,6 +17,7 @@ version: 0.1.51
 ![PyPI - Format](https://img.shields.io/pypi/format/pydmt)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
+## download stats
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/pydmt)
 ![PyPI - Downloads](https://img.shields.io/pypi/dw/pydmt)
@@ -25,7 +27,7 @@ version: 0.1.51
 ![Downloads](https://pepy.tech/badge/pydmt/month)
 ![Downloads](https://pepy.tech/badge/pydmt/week)
 
-
+## build status
 
 ![build](https://github.com/veltzer/pydmt/workflows/build/badge.svg)
 
