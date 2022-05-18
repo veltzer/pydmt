@@ -24,8 +24,8 @@ version: 0.1.51
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pydmt)
 
 ![Downloads](https://pepy.tech/badge/pydmt)
-![Downloads](https://pepy.tech/badge/pydmt/month)
 ![Downloads](https://pepy.tech/badge/pydmt/week)
+![Downloads](https://pepy.tech/badge/pydmt/month)
 
 ## build status
 
