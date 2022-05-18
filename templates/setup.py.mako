@@ -1,5 +1,7 @@
 <%!
     import pydmt.helpers.misc
+    import pydmt.helpers.project
+    import pydmt.helpers.python
     import config.python
     import user.personal
     import config.project
@@ -15,9 +17,9 @@ def get_readme():
 
 setuptools.setup(
     # the first three fields are a must according to the documentation
-    name="${config.project.name}",
+    name="${pydmt.helpers.project.get_name()}",
     version="${pydmt.helpers.misc.get_version_str()}",
-    packages=${pydmt.helpers.python.array_indented(1, pydmt.helpers.python.find_packages(config.python.package_name))},
+    packages=${pydmt.helpers.python.array_indented(1, pydmt.helpers.python.find_packages(pydmt.helpers.python.get_package_name()))},
     # from here all is optional
     description="${config.project.description_short}",
     long_description=get_readme(),

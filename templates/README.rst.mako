@@ -1,23 +1,26 @@
 <%!
     import pydmt.helpers.misc
     import pydmt.helpers.signature
+    import pydmt.helpers.project
+    import pydmt.helpers.python
+    import pydmt.helpers.urls
     import config.project
     import config.python
     import user.personal
     import config.version
     import os
-    line = '=' * (len(config.project.name)+2)
+    line = '=' * (len(pydmt.helpers.project.get_name())+2)
 %>${line}
-*${config.project.name}*
+*${pydmt.helpers.project.get_name()}*
 ${line}
 
-.. image:: https://img.shields.io/pypi/v/${config.python.package_name}
+... image:: https://img.shields.io/pypi/v/${pydmt.helpers.python.get_package_name()}
 
-.. image:: https://img.shields.io/github/license/veltzer/${config.project.name}
+.. image:: https://img.shields.io/github/license/veltzer/${pydmt.helpers.project.get_name()}
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
 
-project website: ${config.project.website}
+project website: ${pydmt.helpers.urls.get_website()}
 
 author: ${user.personal.fullname}
 

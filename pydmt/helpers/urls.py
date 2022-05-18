@@ -1,10 +1,34 @@
+import os
+import importlib
+
 import pydmt.helpers.project
-import user.personal
+
+def get_github_username():
+    mod = importlib.import_module("user.personal")
+    if hasattr(mod, "github_username"):
+        return getattr(mod, "github_username")
+    return os.getlogin()
+
 
 def get_website():
-    name = pydmt.helpers.project.get_project_name()
-website = f"https://{github_username}.github.io/{name}"
-website_source = f"https://github.com/{github_username}/{name}"
-website_git = f"git://github.com/{github_username}/{name}.git"
-website_download_ppa = "https://launchpanet/~{launchpad_username}/+archive/ubuntu/ppa"
-website_download_src = website_source
+    github_username = get_github_username()
+    name = pydmt.helpers.project.get_name()
+    return f"https://{github_username}.github.io/{name}"
+
+
+def get_website_source():
+    github_username = get_github_username()
+    name = pydmt.helpers.project.get_name()
+    return f"https://github.com/{github_username}/{name}"
+
+
+def get_website_git():
+    github_username = get_github_username()
+    name = pydmt.helpers.project.get_name()
+    return f"git://github.com/{github_username}/{name}.git"
+
+
+def get_webiste_ppa():
+    github_username = get_github_username()
+    name = pydmt.helpers.project.get_name()
+    return f"https://launchpanet/~{launchpad_username}/+archive/ubuntu/ppa"
