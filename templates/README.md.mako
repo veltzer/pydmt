@@ -18,6 +18,7 @@ author: ${user.personal.fullname}
 version: ${pydmt.helpers.misc.get_version_str()}
 
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![License](https://img.shields.io/github/license/veltzer/pytconf)
 
 ${"##"} build status
 
