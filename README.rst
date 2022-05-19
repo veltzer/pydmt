@@ -2,7 +2,7 @@
 *pydmt*
 =======
 
-... image:: https://img.shields.io/pypi/v/pydmt
+.. image:: https://img.shields.io/pypi/v/pydmt
 
 .. image:: https://img.shields.io/github/license/veltzer/pydmt
 
@@ -12,6 +12,6 @@ project website: https://veltzer.github.io/pydmt
 
 author: Mark Veltzer
 
-version: 0.1.55
+version: 0.1.56
 
 	Mark Veltzer <mark.veltzer@gmail.com>, Copyright © 2017, 2018, 2019, 2020, 2021
