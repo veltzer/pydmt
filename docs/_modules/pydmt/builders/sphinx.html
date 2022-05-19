@@ -81,11 +81,10 @@
         <span class="k">return</span> <span class="p">[</span><span class="n">TargetFolder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_folder</span><span class="p">)]</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="n">source_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sphinx&quot;</span><span class="p">,</span>
                  <span class="n">target_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;docs&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">=</span> <span class="n">package_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">source_folder</span> <span class="o">=</span> <span class="n">source_folder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target_folder</span> <span class="o">=</span> <span class="n">target_folder</span>
 

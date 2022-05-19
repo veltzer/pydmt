@@ -3,8 +3,6 @@ import os.path
 import importlib
 from typing import Callable, List, Dict
 
-import pyclassifiers.values
-
 
 def make_console_script(package_name: str, main: Callable):
     """
@@ -108,23 +106,24 @@ def get_package_name():
     return os.path.basename(os.getcwd())
 
 
-license_type = "MIT"
+def get_attr(attr: str):
+    mod = importlib.import_module("config.python")
+    if hasattr(mod, attr):
+        return getattr(mod, attr)
+    mod = importlib.import_module("default.python")
+    if hasattr(mod, attr):
+        return getattr(mod, attr)
+    # FIXME - need a better exception type (make my own)
+    raise ValueError(f"cannot find {attr}")
 
-platforms = [
-    "python3",
-]
-classifiers = [
-    pyclassifiers.values.DevelopmentStatus__4_Beta,
-    pyclassifiers.values.Environment__Console,
-    pyclassifiers.values.OperatingSystem__OSIndependent,
-    pyclassifiers.values.ProgrammingLanguage__Python,
-    pyclassifiers.values.ProgrammingLanguage__Python__3,
-    pyclassifiers.values.ProgrammingLanguage__Python__3__Only,
-    pyclassifiers.values.ProgrammingLanguage__Python__36,
-    pyclassifiers.values.ProgrammingLanguage__Python__37,
-    pyclassifiers.values.ProgrammingLanguage__Python__38,
-    pyclassifiers.values.ProgrammingLanguage__Python__39,
-    pyclassifiers.values.ProgrammingLanguage__Python__310,
-    pyclassifiers.values.Topic__Utilities,
-    pyclassifiers.values.License__OSIApproved__MITLicense,
-]
+
+def get_license_type():
+    return get_attr("license_type")
+
+
+def get_platforms():
+    return get_attr("platforms")
+
+
+def get_classifiers():
+    return get_attr("classifiers")

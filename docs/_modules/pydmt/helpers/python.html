@@ -32,6 +32,8 @@
             
   <h1>Source code for pydmt.helpers.python</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
 
 
@@ -128,6 +130,36 @@
     <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quoted</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;]&quot;</span>
     <span class="k">return</span> <span class="n">s</span></div>
+
+
+<div class="viewcode-block" id="get_package_name"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.get_package_name">[docs]</a><span class="k">def</span> <span class="nf">get_package_name</span><span class="p">():</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;config.python&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;package_name&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;package_name&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="get_attr"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.get_attr">[docs]</a><span class="k">def</span> <span class="nf">get_attr</span><span class="p">(</span><span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;config.python&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;default.python&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="c1"># FIXME - need a better exception type (make my own)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cannot find </span><span class="si">{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_license_type"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.get_license_type">[docs]</a><span class="k">def</span> <span class="nf">get_license_type</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;license_type&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_platforms"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.get_platforms">[docs]</a><span class="k">def</span> <span class="nf">get_platforms</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;platforms&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_classifiers"><a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.python.get_classifiers">[docs]</a><span class="k">def</span> <span class="nf">get_classifiers</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;classifiers&quot;</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
