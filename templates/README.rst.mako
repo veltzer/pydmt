@@ -14,7 +14,7 @@
 *${pydmt.helpers.project.get_name()}*
 ${line}
 
-... image:: https://img.shields.io/pypi/v/${pydmt.helpers.python.get_package_name()}
+.. image:: https://img.shields.io/pypi/v/${pydmt.helpers.python.get_package_name()}
 
 .. image:: https://img.shields.io/github/license/veltzer/${pydmt.helpers.project.get_name()}
 
