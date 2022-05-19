@@ -2,6 +2,7 @@
     import pydmt.helpers.misc
     import pydmt.helpers.project
     import pydmt.helpers.python
+    import pydmt.helpers.urls
     import config.python
     import user.personal
     import config.project
@@ -29,17 +30,17 @@ setuptools.setup(
     maintainer="${user.personal.fullname}",
     maintainer_email="${user.personal.email}",
     keywords=${pydmt.helpers.python.array_indented(1, config.project.keywords)},
-    url="${config.project.website}",
-    download_url="${config.project.website_download_src}",
-    license="${config.project.license_type}",
-    platforms=${pydmt.helpers.python.array_indented(1, config.python.platforms)},
+    url="${pydmt.helpers.urls.get_website()}",
+    download_url="${pydmt.helpers.urls.get_website_source()}",
+    license="${pydmt.helpers.python.get_license_type()}",
+    platforms=${pydmt.helpers.python.array_indented(1, pydmt.helpers.python.get_platforms())},
 % if hasattr(config.python, "install_requires"):
     install_requires=${pydmt.helpers.python.array_indented(1, config.python.install_requires)},
 % endif
 % if hasattr(config.python, "extras_requires"):
     extras_require=${pydmt.helpers.python.dict_indented(1, config.python.extras_require)},
 % endif
-    classifiers=${pydmt.helpers.python.array_indented(1, config.python.classifiers)},
+    classifiers=${pydmt.helpers.python.array_indented(1, pydmt.helpers.python.get_classifiers())},
 % if hasattr(config.python, "data_files"):
     data_files=${pydmt.helpers.python.array_indented(1, config.project.data_files)},
 % endif
