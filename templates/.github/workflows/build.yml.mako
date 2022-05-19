@@ -1,5 +1,5 @@
 <%!
-    import config.github
+    import pydmt.helpers.github
     import pydmt.helpers.python
 %>name: build
 on: [push, pull_request, workflow_dispatch]
@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         include:
-% for os, python in config.github.workflows_platforms:
+% for os, python in pydmt.helpers.github.get_workflows_platforms():
           - os: "${os}"
             python-version: "${python}"
 % endfor

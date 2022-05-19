@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pydmt",
-    version="0.1.54",
+    version="0.1.55",
     packages=[
         'pydmt',
         'pydmt.api',
@@ -72,5 +72,4 @@ setuptools.setup(
     entry_points={"console_scripts": [
         'pydmt=pydmt.main:main',
     ]},
-    python_requires=">=3.6",
 )
