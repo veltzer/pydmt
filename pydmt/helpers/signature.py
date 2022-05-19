@@ -15,7 +15,7 @@ def get_project_year_started() -> int:
 def get_copyright_years_long():
     project_year_started = get_project_year_started()
     general_current_year = datetime.datetime.now().year
-    return ", ".join(map(str, range(int(project_year_started), general_current_year+1)))
+    return ", ".join(map(str, range(int(project_year_started), general_current_year + 1)))
 
 
 def get_copyright_years_short():
