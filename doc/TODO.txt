@@ -1,3 +1,10 @@
+- take care of "double build" needs.
+	This means that I run:
+	$ pydmt build
+	everything builds ok and then I run:
+	$ pydmt build
+	again and something builds.
+	If you want to see an example then you can use the "pyclassifiers" project.
 - allow to say which virtual env I want in .pydmt.config
 	and create that version of the virutal env (in my case 3.10).
 	If you want to install a virtual machine of a different version of pythin you need
