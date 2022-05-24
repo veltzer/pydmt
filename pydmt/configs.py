@@ -1,7 +1,4 @@
-"""
-All configurations for pydmt
-"""
-
+import logging
 
 from pytconf import Config, ParamCreator
 
@@ -47,4 +44,24 @@ class ConfigOutput(Config):
     print_not = ParamCreator.create_bool(
         help_string="print out what we are not doing",
         default=False,
+    )
+
+
+class ConfigLogging(Config):
+    """
+    Parameters to control logging
+    """
+    loglevel = ParamCreator.create_choice(
+        choice_list=[
+            logging.getLevelName(logging.NOTSET),
+            logging.getLevelName(logging.DEBUG),
+            logging.getLevelName(logging.INFO),
+            logging.getLevelName(logging.WARNING),
+            logging.getLevelName(logging.WARN),
+            logging.getLevelName(logging.ERROR),
+            logging.getLevelName(logging.FATAL),
+            logging.getLevelName(logging.CRITICAL),
+        ],
+        help_string="What log level to use?",
+        default=logging.getLevelName(logging.INFO),
     )

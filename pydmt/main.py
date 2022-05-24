@@ -2,13 +2,14 @@ import sys
 import os
 import pathlib
 import shutil
+import logging
 
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget
+from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget, ConfigLogging
 from pydmt.core.pydmt import PyDMT
-from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION
+from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION, LOGGER_NAME
 from pydmt.utils.subprocess import check_call
 
 from pydmt.features.sphinx import FeatureSphinx
@@ -70,6 +71,7 @@ def add_to_path():
         ConfigFlow,
         ConfigOutput,
         ConfigTarget,
+        ConfigLogging,
     ],
 )
 def build():
@@ -77,6 +79,9 @@ def build():
 
     pylogconf.core.setup()
     p = PyDMT()
+
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(ConfigLogging.loglevel)
 
     add_all_features(p)
 
@@ -90,6 +95,7 @@ def build():
         ConfigSudo,
         ConfigFlow,
         ConfigOutput,
+        ConfigLogging,
     ],
 )
 def build_venv():
@@ -111,6 +117,7 @@ def build_venv():
         ConfigSudo,
         ConfigFlow,
         ConfigOutput,
+        ConfigLogging,
     ],
 )
 def build_reqs():
@@ -132,6 +139,7 @@ def build_reqs():
         ConfigSudo,
         ConfigFlow,
         ConfigOutput,
+        ConfigLogging,
     ],
 )
 def build_tools():
@@ -150,7 +158,10 @@ def build_tools():
 
 
 @register_endpoint(
-    description="Clean all generated files"
+    description="Clean all generated files",
+    configs=[
+        ConfigLogging,
+    ],
 )
 def clean() -> None:
     add_to_path()
@@ -165,7 +176,10 @@ def clean() -> None:
 
 
 @register_endpoint(
-    description="Clean all files and pydmt cache"
+    description="Clean all files and pydmt cache",
+    configs=[
+        ConfigLogging,
+    ],
 )
 def clean_hard() -> None:
     shutil.rmtree(".pydmt")
