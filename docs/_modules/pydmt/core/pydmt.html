@@ -41,6 +41,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">copy_mkdir</span>
 <span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="kn">import</span> <span class="n">sha1_file</span>
 <span class="kn">from</span> <span class="nn">pydmt.configs</span> <span class="kn">import</span> <span class="n">ConfigFlow</span>
+<span class="kn">from</span> <span class="nn">pydmt.static</span> <span class="kn">import</span> <span class="n">LOGGER_NAME</span>
 
 
 <div class="viewcode-block" id="BuildProcessStats"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.BuildProcessStats">[docs]</a><span class="k">class</span> <span class="nc">BuildProcessStats</span><span class="p">:</span>
@@ -92,7 +93,7 @@
 
 <div class="viewcode-block" id="PyDMT.build_by_builder"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.pydmt.PyDMT.build_by_builder">[docs]</a>    <span class="k">def</span> <span class="nf">build_by_builder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">:</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="n">BuildProcessStats</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; run one builder, return statistics about the run &quot;&quot;&quot;</span>
-        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">LOGGER_NAME</span><span class="p">)</span>
         <span class="n">target_signature</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_signature</span><span class="p">()</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;examining [</span><span class="si">{</span><span class="n">builder</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">list_sig_ok</span><span class="p">(</span><span class="n">target_signature</span><span class="p">):</span>

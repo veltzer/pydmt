@@ -8,6 +8,7 @@ from pydmt.core.cache import Cache
 from pydmt.utils.filesystem import copy_mkdir
 from pydmt.utils.digest import sha1_file
 from pydmt.configs import ConfigFlow
+from pydmt.static import LOGGER_NAME
 
 
 class BuildProcessStats:
@@ -59,7 +60,7 @@ class PyDMT:
 
     def build_by_builder(self, builder: Builder, stats: BuildProcessStats):
         """ run one builder, return statistics about the run """
-        logger = logging.getLogger(__name__)
+        logger = logging.getLogger(LOGGER_NAME)
         target_signature = builder.get_signature()
         logger.debug(f"examining [{builder.get_name()}]")
         if self.cache.list_sig_ok(target_signature):
