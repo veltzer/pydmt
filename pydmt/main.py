@@ -105,6 +105,9 @@ def build_venv():
     pylogconf.core.setup()
     p = PyDMT()
 
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(ConfigLogging.loglevel)
+
     f = FeatureVenv()
     f.setup(p)
 
@@ -126,6 +129,9 @@ def build_reqs():
 
     pylogconf.core.setup()
     p = PyDMT()
+
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(ConfigLogging.loglevel)
 
     f = FeatureReqs()
     f.setup(p)
@@ -149,6 +155,9 @@ def build_tools():
     pylogconf.core.setup()
     p = PyDMT()
 
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(ConfigLogging.loglevel)
+
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
@@ -170,6 +179,9 @@ def clean() -> None:
     pylogconf.core.setup()
     p = PyDMT()
 
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(ConfigLogging.loglevel)
+
     add_all_features(p)
 
     shutil.rmtree(".pydmt")
@@ -183,6 +195,9 @@ def clean() -> None:
     ],
 )
 def clean_hard() -> None:
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(ConfigLogging.loglevel)
+
     shutil.rmtree(".pydmt")
     check_call(["git", "clean", "-qffxd"])
 
