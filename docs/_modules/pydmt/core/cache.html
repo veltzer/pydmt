@@ -33,9 +33,11 @@
   <h1>Source code for pydmt.core.cache</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Iterable</span>
 
-<span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">copy_mkdir</span><span class="p">,</span> <span class="n">makedirs_for_file</span><span class="p">,</span> <span class="n">files_under_folder</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">copy_mkdir</span><span class="p">,</span> <span class="n">makedirs_for_file</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.logging</span> <span class="kn">import</span> <span class="n">get_logger</span>
 
 <span class="n">NAME_OBJECTS</span> <span class="o">=</span> <span class="s2">&quot;objects&quot;</span>
 <span class="n">NAME_LISTS</span> <span class="o">=</span> <span class="s2">&quot;lists&quot;</span>
@@ -44,18 +46,29 @@
 
 <div class="viewcode-block" id="Cache"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache">[docs]</a><span class="k">class</span> <span class="nc">Cache</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">files_under_folder</span><span class="p">(</span><span class="n">FOLDER_NAME</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FOLDER_NAME</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">)))</span>
+        <span class="c1"># self.name_cache = set(files_under_folder(FOLDER_NAME))</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Cache.get_list_filename"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache.get_list_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_list_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;get_list_filename [</span><span class="si">{</span><span class="n">signature</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
         <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FOLDER_NAME</span><span class="p">,</span> <span class="n">NAME_LISTS</span><span class="p">,</span> <span class="n">signature</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">signature</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
         <span class="k">if</span> <span class="n">full_path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;return [</span><span class="si">{</span><span class="n">full_path</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">full_path</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;return None&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="Cache.get_object_filename"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache.get_object_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_object_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;get_object_filename [</span><span class="si">{</span><span class="n">signature</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
         <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FOLDER_NAME</span><span class="p">,</span> <span class="n">NAME_OBJECTS</span><span class="p">,</span> <span class="n">signature</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">signature</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
         <span class="k">if</span> <span class="n">full_path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;return [</span><span class="si">{</span><span class="n">full_path</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">full_path</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;return None&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="Cache.list_sig_ok"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache.list_sig_ok">[docs]</a>    <span class="k">def</span> <span class="nf">list_sig_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -64,12 +77,17 @@
 <span class="sd">        :param signature:</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;list_sig_ok [</span><span class="si">{</span><span class="n">signature</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
         <span class="n">list_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list_filename</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">list_filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_cache</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">list_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;return False&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">_filename</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">Cache</span><span class="o">.</span><span class="n">iterate_objects</span><span class="p">(</span><span class="n">list_filename</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object_filename</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;return False for </span><span class="si">{</span><span class="n">sig</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;return True&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="Cache.save_list_by_signature"><a class="viewcode-back" href="../../../pydmt.core.html#pydmt.core.cache.Cache.save_list_by_signature">[docs]</a>    <span class="k">def</span> <span class="nf">save_list_by_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
