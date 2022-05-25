@@ -1,11 +1,12 @@
 import sys
 import os
+import pickle
 import pathlib
 import shutil
 import logging
 
 import pylogconf.core
-from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
+from pytconf import register_endpoint, register_main, config_arg_parse_and_launch, get_free_args
 
 from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget, ConfigLogging
 from pydmt.core.pydmt import PyDMT
@@ -184,6 +185,20 @@ def clean() -> None:
 def clean_hard() -> None:
     shutil.rmtree(".pydmt")
     check_call(["git", "clean", "-qffxd"])
+
+
+@register_endpoint(
+    description="print a pickle file for debug purposes",
+    configs=[
+    ],
+    allow_free_args=True,
+)
+def print_pickle() -> None:
+    for filename in get_free_args():
+        with open(filename, "rb") as file_handle:
+            print(f"{filename}")
+            for x, y in pickle.load(file_handle).items():
+                print(x, y)
 
 
 @register_main(

@@ -1,8 +1,9 @@
 import os
 import pickle
+import glob
 from typing import Tuple, Iterable
 
-from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file, files_under_folder
+from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file
 
 NAME_OBJECTS = "objects"
 NAME_LISTS = "lists"
@@ -11,7 +12,8 @@ FOLDER_NAME = ".pydmt"
 
 class Cache:
     def __init__(self):
-        self.name_cache = set(files_under_folder(FOLDER_NAME))
+        self.name_cache = set(glob.glob(os.path.join(FOLDER_NAME,"*","*","*")))
+        # self.name_cache = set(files_under_folder(FOLDER_NAME))
 
     def get_list_filename(self, signature: str):
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
@@ -32,7 +34,7 @@ class Cache:
         :return:
         """
         list_filename = self.get_list_filename(signature)
-        if list_filename not in self.name_cache:
+        if list_filename is None:
             return False
         for _filename, sig in Cache.iterate_objects(list_filename):
             if self.get_object_filename(sig) is None:
