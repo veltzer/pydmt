@@ -45,6 +45,8 @@
 <span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">makedirs_for_file</span>
 <span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="kn">import</span> <span class="n">sha1_file</span>
 
+<span class="n">FOLDER_CONFIG</span> <span class="o">=</span> <span class="s2">&quot;config&quot;</span>
+<span class="n">FOLDER_SNIPPLETS</span> <span class="o">=</span> <span class="s2">&quot;snipplets&quot;</span>
 
 <div class="viewcode-block" id="BuilderMako"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako">[docs]</a><span class="k">class</span> <span class="nc">BuilderMako</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -61,8 +63,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">config_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config_files</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">snipplet_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">snipplet_files</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">SourceFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFolder</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">FOLDER_CONFIG</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFolder</span><span class="p">(</span><span class="n">FOLDER_CONFIG</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">FOLDER_SNIPPLETS</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceFolder</span><span class="p">(</span><span class="n">FOLDER_SNIPPLETS</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">TargetFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)]</span>
 
 <div class="viewcode-block" id="BuilderMako.get_sources"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.mako.BuilderMako.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
