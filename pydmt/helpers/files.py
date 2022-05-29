@@ -1,7 +1,7 @@
 import os
 
 
-def find_count_files(path: str, suffix: str) -> int:
+def count_files(path: str, suffix: str) -> int:
     """
     find number of files in a certain path that have a certain suffix
     """
