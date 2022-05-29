@@ -1,6 +1,8 @@
 import os
 import os.path
 import importlib
+import glob
+import pprint
 from typing import Callable, List, Dict
 
 
@@ -127,3 +129,56 @@ def get_platforms():
 
 def get_classifiers():
     return get_attr("classifiers")
+
+
+def hlp_source_under(folder):
+    """
+    this function finds all the python packages under a folder and
+    write the 'packages' and 'package_dir' entries for a python setup.py
+    script
+    """
+    # walk the folder and find the __init__.py entries for packages.
+    packages = []
+    package_dir = {}
+    for root, _dirs, files in os.walk(folder):
+        for file in files:
+            if file != '__init__.py':
+                continue
+            full = os.path.dirname(os.path.join(root, file))
+            relative = os.path.relpath(full, folder)
+            packages.append(relative)
+            package_dir[relative] = full
+    # we use pprint because we want the order to always remain the same
+    return f"packages={sorted(packages)},\npackage_dir={pprint.pformat(package_dir)}"
+
+
+def hlp_files_under(dest_folder, pat):
+    return f"('{dest_folder}', {[x for x in glob.glob(pat) if os.path.isfile(x)]})"
+
+
+def make_hlp_project_keywords(d):
+    def hlp_project_keywords():
+        return f"{d.project_keywords.split()}"
+    return hlp_project_keywords
+
+
+def make_hlp_project_platforms(d):
+    def hlp_project_platforms():
+        return f"{d.project_platforms.split()}"
+
+    return hlp_project_platforms
+
+
+def make_hlp_project_classifiers(d):
+    def hlp_project_classifiers():
+        cls_list = d.project_classifiers.split('\n')
+        cls_list = [x.strip()[1:-1] for x in cls_list]
+        return f"{cls_list}"
+
+    return hlp_project_classifiers
+
+
+def make_hlp_wrap(level):
+    def hlp_wrap(t):
+        return t.replace('\n', '\n' + '\t' * level)
+    return hlp_wrap
