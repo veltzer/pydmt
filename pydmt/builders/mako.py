@@ -12,6 +12,8 @@ from pydmt.api.builder import Builder, Node, SourceFile, TargetFile, SourceFolde
 from pydmt.utils.filesystem import makedirs_for_file
 from pydmt.utils.digest import sha1_file
 
+FOLDER_CONFIG = "config"
+FOLDER_SNIPPLETS = "snipplets"
 
 class BuilderMako(Builder):
     def __init__(self,
@@ -28,8 +30,10 @@ class BuilderMako(Builder):
         self.config_files: List[str] = config_files
         self.snipplet_files: List[str] = snipplet_files
         self.sources = [SourceFile(self.source)]
-        if os.path.isdir("config"):
-            self.sources.append(SourceFolder("config"))
+        if os.path.isdir(FOLDER_CONFIG):
+            self.sources.append(SourceFolder(FOLDER_CONFIG))
+        if os.path.isdir(FOLDER_SNIPPLETS):
+            self.sources.append(SourceFolder(FOLDER_SNIPPLETS))
         self.targets = [TargetFile(self.target)]
 
     def get_sources(self) -> List[Node]:
