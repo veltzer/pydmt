@@ -15,6 +15,7 @@ from pydmt.utils.digest import sha1_file
 FOLDER_CONFIG = "config"
 FOLDER_SNIPPLETS = "snipplets"
 
+
 class BuilderMako(Builder):
     def __init__(self,
                  source: str,
