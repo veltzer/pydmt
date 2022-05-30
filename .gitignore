@@ -44,6 +44,7 @@ modules.order
 /src/kernel/.*.tmp
 .modules.*.cmd
 .Module.*.cmd
+/flags.cfg
 
 # sphinx
 /docs/_build/
