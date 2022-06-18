@@ -115,7 +115,7 @@ def get_attr(attr: str):
     mod = importlib.import_module("default.python")
     if hasattr(mod, attr):
         return getattr(mod, attr)
-    # FIXME - need a better exception type (make my own)
+    # TODO: need a better exception type (make my own)
     raise ValueError(f"cannot find {attr}")
 
 
