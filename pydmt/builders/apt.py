@@ -24,8 +24,16 @@ class BuilderApt(OneSourceOneTarget):
         args = []
         if ConfigSudo.sudo:
             args.append("sudo")
-        # Here is how to keep apt-get quiet:
-        # https://stackoverflow.com/questions/52642097/apt-get-with-quiet-option-is-still-noisy
+        args.extend([
+            'apt-get',
+            '-q=2',
+            '--yes',
+            'update',
+        ])
+        check_call(args)
+        args = []
+        if ConfigSudo.sudo:
+            args.append("sudo")
         args.extend([
             'apt-get',
             '-q=2',
