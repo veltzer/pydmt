@@ -79,3 +79,13 @@ class ConfigSubprocess(Config):
         help_string="Suppress output?",
         default=False,
     )
+
+
+class ConfigApt(Config):
+    """
+    Parameters to configure how we run apt
+    """
+    apt_quiet = ParamCreator.create_bool(
+        help_string="pass -q=2 to apt",
+        default=False,
+    )
