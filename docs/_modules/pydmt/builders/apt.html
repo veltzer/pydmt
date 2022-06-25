@@ -41,7 +41,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">unlink_files</span><span class="p">,</span> <span class="n">mkdir_touch</span>
-<span class="kn">from</span> <span class="nn">pydmt.configs</span> <span class="kn">import</span> <span class="n">ConfigSudo</span>
+<span class="kn">from</span> <span class="nn">pydmt.configs</span> <span class="kn">import</span> <span class="n">ConfigSudo</span><span class="p">,</span> <span class="n">ConfigApt</span>
 <span class="kn">from</span> <span class="nn">pydmt.utils.subprocess</span> <span class="kn">import</span> <span class="n">check_call</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.api.one_source_one_target</span> <span class="kn">import</span> <span class="n">OneSourceOneTarget</span>
@@ -60,7 +60,10 @@
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">)</span>
         <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
             <span class="s1">&#39;apt-get&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;-q=2&#39;</span><span class="p">,</span>
+        <span class="p">])</span>
+        <span class="k">if</span> <span class="n">ConfigApt</span><span class="o">.</span><span class="n">apt_quiet</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-q=2&quot;</span><span class="p">)</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
             <span class="s1">&#39;--yes&#39;</span><span class="p">,</span>
             <span class="s1">&#39;update&#39;</span><span class="p">,</span>
         <span class="p">])</span>
@@ -70,7 +73,10 @@
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">)</span>
         <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
             <span class="s1">&#39;apt-get&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;-q=2&#39;</span><span class="p">,</span>
+        <span class="p">])</span>
+        <span class="k">if</span> <span class="n">ConfigApt</span><span class="o">.</span><span class="n">apt_quiet</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-q=2&quot;</span><span class="p">)</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
             <span class="s1">&#39;--yes&#39;</span><span class="p">,</span>
             <span class="s1">&#39;install&#39;</span><span class="p">,</span>
         <span class="p">])</span>
