@@ -7,7 +7,7 @@ from typing import List
 import os
 
 from pydmt.utils.filesystem import unlink_files, mkdir_touch
-from pydmt.configs import ConfigSudo
+from pydmt.configs import ConfigSudo, ConfigApt
 from pydmt.utils.subprocess import check_call
 
 from pydmt.api.one_source_one_target import OneSourceOneTarget
@@ -26,7 +26,10 @@ class BuilderApt(OneSourceOneTarget):
             args.append("sudo")
         args.extend([
             'apt-get',
-            '-q=2',
+        ])
+        if ConfigApt.apt_quiet:
+            args.append("-q=2")
+        args.extend([
             '--yes',
             'update',
         ])
@@ -36,7 +39,10 @@ class BuilderApt(OneSourceOneTarget):
             args.append("sudo")
         args.extend([
             'apt-get',
-            '-q=2',
+        ])
+        if ConfigApt.apt_quiet:
+            args.append("-q=2")
+        args.extend([
             '--yes',
             'install',
         ])
