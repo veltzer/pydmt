@@ -99,6 +99,20 @@
         <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;What log level to use?&quot;</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">),</span>
     <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigSubprocess"><a class="viewcode-back" href="../../pydmt.html#pydmt.configs.ConfigSubprocess">[docs]</a><span class="k">class</span> <span class="nc">ConfigSubprocess</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters to configure how we run subprocess</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">print_command</span> <span class="o">=</span> <span class="n">ParamCreator</span><span class="o">.</span><span class="n">create_bool</span><span class="p">(</span>
+        <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;print out commands&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">quiet</span> <span class="o">=</span> <span class="n">ParamCreator</span><span class="o">.</span><span class="n">create_bool</span><span class="p">(</span>
+        <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;Suppress output?&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span></div>
 </pre></div>
 
           </div>
