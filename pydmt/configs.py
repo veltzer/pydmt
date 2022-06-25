@@ -65,3 +65,17 @@ class ConfigLogging(Config):
         help_string="What log level to use?",
         default=logging.getLevelName(logging.INFO),
     )
+
+
+class ConfigSubprocess(Config):
+    """
+    Parameters to configure how we run subprocess
+    """
+    print_command = ParamCreator.create_bool(
+        help_string="print out commands",
+        default=True,
+    )
+    quiet = ParamCreator.create_bool(
+        help_string="Suppress output?",
+        default=False,
+    )
