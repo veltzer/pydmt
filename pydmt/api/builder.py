@@ -2,7 +2,7 @@ import abc
 import os
 import shutil
 
-from typing import List, Generator, Tuple
+from typing import List, Generator, Tuple, Sequence
 
 from pydmt.utils.digester import Digester
 
@@ -58,7 +58,7 @@ class Builder(abc.ABC):
         """
 
     @abc.abstractmethod
-    def get_sources(self) -> List[Node]:
+    def get_sources(self) -> Sequence[Node]:
         """
         return the name of the source files for this builder
         If the builder takes a whole folder the list all the filers in that folder.
@@ -69,7 +69,7 @@ class Builder(abc.ABC):
         In the future the get_signature method will go away.
         """
     @abc.abstractmethod
-    def get_targets(self) -> List[Node]:
+    def get_targets(self) -> Sequence[Node]:
         """
         return list of targets
         """

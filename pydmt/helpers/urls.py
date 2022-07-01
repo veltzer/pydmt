@@ -39,3 +39,10 @@ def get_website_git():
 def get_website_ppa():
     launchpad_username = get_github_username()
     return f"https://launchpanet/~{launchpad_username}/+archive/ubuntu/ppa"
+
+
+def get_deps():
+    mod = importlib.import_module("config.deps")
+    if hasattr(mod, "packages"):
+        return getattr(mod, "packages")
+    return []

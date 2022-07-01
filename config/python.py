@@ -26,6 +26,7 @@ test_requires = [
     "pyflakes",
     "flake8",
     "mypy",
+    "types-PyYAML",
 ]
 make_requires = [
     "pymakehelper",

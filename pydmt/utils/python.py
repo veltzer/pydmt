@@ -2,6 +2,7 @@ import os
 import glob
 import pprint
 from typing import List
+import importlib
 
 from pydmt.configs import ConfigTarget
 
@@ -64,20 +65,19 @@ def make_hlp_wrap(level):
 
 def collect_reqs() -> List[str]:
     collect = []
-    # pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member
-    import config.python
-    if hasattr(config.python, "dev_requires") and ConfigTarget.dev:
-        collect.extend(config.python.dev_requires)
-    if hasattr(config.python, "test_requires"):
-        collect.extend(config.python.test_requires)
-    if hasattr(config.python, "install_requires"):
-        collect.extend(config.python.install_requires)
-    if hasattr(config.python, "config_requires"):
-        collect.extend(config.python.config_requires)
-    if hasattr(config.python, "setup_requires"):
-        collect.extend(config.python.setup_requires)
-    if hasattr(config.python, "make_requires"):
-        collect.extend(config.python.make_requires)
+    mod = importlib.import_module("config.python")
+    if hasattr(mod, "dev_requires") and ConfigTarget.dev:
+        collect.extend(getattr(mod, "dev_requires"))
+    if hasattr(mod, "test_requires"):
+        collect.extend(getattr(mod, "test_requires"))
+    if hasattr(mod, "install_requires"):
+        collect.extend(getattr(mod, "install_requires"))
+    if hasattr(mod, "config_requires"):
+        collect.extend(getattr(mod, "config_requires"))
+    if hasattr(mod, "setup_requires"):
+        collect.extend(getattr(mod, "setup_requires"))
+    if hasattr(mod, "make_requires"):
+        collect.extend(getattr(mod, "make_requires"))
     return collect
 
 

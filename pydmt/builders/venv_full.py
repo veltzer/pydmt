@@ -5,7 +5,7 @@ This module build python virtual envrionments
 
 import os
 import shutil
-from typing import List, Generator, Tuple
+from typing import Generator, Tuple, Sequence
 
 from pydmt.api.builder import Builder, Node, SourceFile, TargetFolder
 from pydmt.utils.filesystem import files_under_folder
@@ -31,11 +31,10 @@ class BuilderVenvFull(Builder):
         # pylint: disable=useless-super-delegation
         super().__init__()
 
-    def get_sources(self) -> List[Node]:
-        file_list = [SourceFile(SOURCE_FILE)]
-        return file_list
+    def get_sources(self) -> Sequence[Node]:
+        return [SourceFile(SOURCE_FILE)]
 
-    def get_targets(self) -> List[Node]:
+    def get_targets(self) -> Sequence[Node]:
         return [TargetFolder(TARGET_FOLDER)]
 
     def build(self) -> None:

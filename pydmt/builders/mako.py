@@ -30,12 +30,12 @@ class BuilderMako(Builder):
         self.data = data
         self.config_files: List[str] = config_files
         self.snipplet_files: List[str] = snipplet_files
-        self.sources = [SourceFile(self.source)]
+        self.sources: List[Node] = [SourceFile(self.source)]
         if os.path.isdir(FOLDER_CONFIG):
             self.sources.append(SourceFolder(FOLDER_CONFIG))
         if os.path.isdir(FOLDER_SNIPPLETS):
             self.sources.append(SourceFolder(FOLDER_SNIPPLETS))
-        self.targets = [TargetFile(self.target)]
+        self.targets: List[Node] = [TargetFile(self.target)]
 
     def get_sources(self) -> List[Node]:
         return self.sources
