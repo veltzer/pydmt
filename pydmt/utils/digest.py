@@ -34,7 +34,7 @@ def sha1_folders(folders: List[str]) -> str:
     return sha1_files(filenames=files_under_folders(folders=folders))
 
 
-def sha1_files_folders(files: List[str] = (), folders: List[str] = ()) -> str:
+def sha1_files_folders(files: List[str], folders: List[str]) -> str:
     f = files
     f.extend(files_under_folders(folders=folders))
     return sha1_files(f)
