@@ -17,3 +17,5 @@ pytest
 pytest-cov
 pyflakes
 flake8
+mypy
+types-PyYAML
