@@ -11,7 +11,6 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -36,6 +35,7 @@
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">pprint</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.configs</span> <span class="kn">import</span> <span class="n">ConfigTarget</span>
 
@@ -98,20 +98,19 @@
 
 <div class="viewcode-block" id="collect_reqs"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_reqs">[docs]</a><span class="k">def</span> <span class="nf">collect_reqs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="n">collect</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c1"># pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member</span>
-    <span class="kn">import</span> <span class="nn">config.python</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ConfigTarget</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
-        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">dev_requires</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;test_requires&quot;</span><span class="p">):</span>
-        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">test_requires</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;install_requires&quot;</span><span class="p">):</span>
-        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">install_requires</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;config_requires&quot;</span><span class="p">):</span>
-        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">config_requires</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;setup_requires&quot;</span><span class="p">):</span>
-        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">setup_requires</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;make_requires&quot;</span><span class="p">):</span>
-        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">make_requires</span><span class="p">)</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;config.python&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ConfigTarget</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
+        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;test_requires&quot;</span><span class="p">):</span>
+        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;test_requires&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;install_requires&quot;</span><span class="p">):</span>
+        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;install_requires&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;config_requires&quot;</span><span class="p">):</span>
+        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;config_requires&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;setup_requires&quot;</span><span class="p">):</span>
+        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;setup_requires&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;make_requires&quot;</span><span class="p">):</span>
+        <span class="n">collect</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;make_requires&quot;</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">collect</span></div>
 
 
@@ -153,7 +152,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -162,7 +161,7 @@
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

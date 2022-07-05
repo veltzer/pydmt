@@ -11,7 +11,6 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -32,7 +31,7 @@
           <div class="body" role="main">
             
   <h1>Source code for pydmt.api.one_source_one_target</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">SourceFile</span><span class="p">,</span> <span class="n">TargetFile</span><span class="p">,</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="kn">import</span> <span class="n">sha1_file</span>
@@ -47,13 +46,13 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">SourceFile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">source</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">TargetFile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">target</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">SourceFile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">source</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">TargetFile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">target</span><span class="p">)]</span>
 
-<div class="viewcode-block" id="OneSourceOneTarget.get_sources"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.one_source_one_target.OneSourceOneTarget.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<div class="viewcode-block" id="OneSourceOneTarget.get_sources"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.one_source_one_target.OneSourceOneTarget.get_sources">[docs]</a>    <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sources</span></div>
 
-<div class="viewcode-block" id="OneSourceOneTarget.get_targets"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.one_source_one_target.OneSourceOneTarget.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<div class="viewcode-block" id="OneSourceOneTarget.get_targets"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.one_source_one_target.OneSourceOneTarget.get_targets">[docs]</a>    <span class="k">def</span> <span class="nf">get_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span></div>
 
 <div class="viewcode-block" id="OneSourceOneTarget.yield_results"><a class="viewcode-back" href="../../../pydmt.api.html#pydmt.api.one_source_one_target.OneSourceOneTarget.yield_results">[docs]</a>    <span class="k">def</span> <span class="nf">yield_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
@@ -83,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -92,7 +91,7 @@
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

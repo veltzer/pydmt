@@ -11,7 +11,6 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -35,19 +34,14 @@
 <span></span><span class="kn">from</span> <span class="nn">pydmt.api.feature</span> <span class="kn">import</span> <span class="n">Feature</span>
 <span class="kn">from</span> <span class="nn">pydmt.builders.apt</span> <span class="kn">import</span> <span class="n">BuilderApt</span>
 <span class="kn">from</span> <span class="nn">pydmt.core.pydmt</span> <span class="kn">import</span> <span class="n">PyDMT</span>
+<span class="kn">from</span> <span class="nn">pydmt.helpers.urls</span> <span class="kn">import</span> <span class="n">get_deps</span>
 
 
 <div class="viewcode-block" id="FeatureApt"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.apt.FeatureApt">[docs]</a><span class="k">class</span> <span class="nc">FeatureApt</span><span class="p">(</span><span class="n">Feature</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="c1"># pylint: disable=import-outside-toplevel</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">config.deps</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">deps</span><span class="o">.</span><span class="n">packages</span>
-        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-            <span class="k">pass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="o">=</span> <span class="n">get_deps</span><span class="p">()</span>
 
 <div class="viewcode-block" id="FeatureApt.setup"><a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.apt.FeatureApt.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">packages</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -81,7 +75,7 @@
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -90,7 +84,7 @@
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
