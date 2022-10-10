@@ -1,7 +1,6 @@
 console_scripts = [
     "pydmt=pydmt.main:main",
 ]
-
 dev_requires = [
     "pypitools",
 ]
@@ -11,6 +10,7 @@ config_requires = [
 make_requires = [
     "pymakehelper",
     "pydmt",
+    "pyclassifiers",
 ]
 install_requires = [
     "pyfakeuse",
