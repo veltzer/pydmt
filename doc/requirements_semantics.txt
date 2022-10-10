@@ -1,0 +1,12 @@
+test_requires
+	what is required to do testing, coverage anaysis.
+dev_requires
+	what is required for a person to maintain this product.
+setup_requires
+	what is required to run python setup.py for this package.
+make_requires
+	what is required for the Makefile to function.
+config_requires
+	what is required for the config/*.py subfolder.
+install_requires
+	what is required on the target system to install this package.
