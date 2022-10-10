@@ -16,15 +16,6 @@
 		- devnull
 		- only print on error
 - make pydmt print builders which are cached and which are skipped.
-- write down semantics of:
-	test_requires
-	dev_requires
-	setup_requires
-	make_requires
-	config_requires
-	install_requires
-	...
-	in the md files of pydmt.
 - add infrastructure support for pydmt to run a command and only
 	print it's output if it fails.
 	Make that the default behaviour for all commands that pydmt runs.
