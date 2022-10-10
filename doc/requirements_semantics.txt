@@ -10,3 +10,12 @@ config_requires
 	what is required for the config/*.py subfolder.
 install_requires
 	what is required on the target system to install this package.
+
+examples of specific modules
+pydmt -> make_requires
+	it seems that we don't need pydmt at all because in workflow integration
+	we install it as part of a "bootstrap" phase.
+	But really we do need it as part of our build tools because we don't
+	always work as a workflow.
+	We didn't feel the problem so actutely because we had pydmt installed
+	as part of the system/user python and not the virtual env python.
