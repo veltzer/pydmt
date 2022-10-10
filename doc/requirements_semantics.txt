@@ -6,10 +6,17 @@ setup_requires
 	what is required to run python setup.py for this package.
 make_requires
 	what is required for the Makefile to function.
+	this is currently take to mean "build_requires"
+	which means what is needed for both make and pydmt
+	but this really needs to be separated into
+	"pydmt_requires" and "make_requires"
+	curreny everything is in "make_requires"
 config_requires
 	what is required for the config/*.py subfolder.
 install_requires
 	what is required on the target system to install this package.
+
+
 
 examples of specific modules
 pydmt -> make_requires
