@@ -16,6 +16,14 @@ config_requires
 install_requires
 	what is required on the target system to install this package.
 
+future things which are not yet implements
+pydmt_requires
+	packages that pydmt needs to run
+build_requires
+	what is neede for the build which is not covered by 'make_requires'
+	and 'pydmt_requires'.
+	example of this is "pydmt" itself which is needed to run the entire build.
+
 
 
 examples of specific modules
