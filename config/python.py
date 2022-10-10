@@ -8,6 +8,10 @@ dev_requires = [
 config_requires = [
     "pyclassifiers",
 ]
+make_requires = [
+    "pymakehelper",
+    "pydmt",
+]
 install_requires = [
     "pyfakeuse",
     "pylogconf",
@@ -27,7 +31,4 @@ test_requires = [
     "flake8",
     "mypy",
     "types-PyYAML",
-]
-make_requires = [
-    "pymakehelper",
 ]
