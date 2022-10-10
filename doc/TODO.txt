@@ -1,9 +1,3 @@
-- it seems that pydmt mako build with python from the system and not
-	from the virtual environment.
-	Here is how to test this:
-	remove pyclassifiers from the user python and system python
-	and make sure it is in the venv and try to build the 'pyanyzip' module.
-	fix this.
 - take care of "double build" needs.
 	This means that I run:
 	$ pydmt build
