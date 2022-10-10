@@ -11,6 +11,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -33,9 +34,9 @@
           <div class="body" role="main">
             
   <div class="section" id="pydmt-package">
-<h1>pydmt package<a class="headerlink" href="#pydmt-package" title="Permalink to this headline">¶</a></h1>
+<h1>pydmt package<a class="headerlink" href="#pydmt-package" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pydmt.api.html">pydmt.api package</a><ul>
@@ -97,14 +98,14 @@
 </div>
 </div>
 <div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
 </div>
 <div class="section" id="module-pydmt.configs">
-<span id="pydmt-configs-module"></span><h2>pydmt.configs module<a class="headerlink" href="#module-pydmt.configs" title="Permalink to this headline">¶</a></h2>
+<span id="pydmt-configs-module"></span><h2>pydmt.configs module<a class="headerlink" href="#module-pydmt.configs" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigApt">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigApt</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigApt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigApt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to configure how we run apt</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigApt.apt_quiet">
@@ -116,7 +117,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigFlow">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigFlow</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigFlow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigFlow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to configure the flow of pydmt</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigFlow.stop_after_error">
@@ -128,7 +129,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigLogging">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigLogging</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigLogging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigLogging" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to control logging</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigLogging.loglevel">
@@ -140,7 +141,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigOutput">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigOutput</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigOutput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to configure the output of pydmt</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigOutput.print_not">
@@ -157,7 +158,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigSubprocess">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigSubprocess</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigSubprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigSubprocess" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to configure how we run subprocess</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigSubprocess.print_command">
@@ -174,7 +175,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigSudo">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigSudo</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigSudo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigSudo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to control whether we use ‘sudo’ or not</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigSudo.sudo">
@@ -186,7 +187,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigTarget">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pydmt.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigTarget</span></span><a class="reference internal" href="_modules/pydmt/configs.html#ConfigTarget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.configs.ConfigTarget" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
 <p>Parameters to configure what is the target of the build</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pydmt.configs.ConfigTarget.dev">
@@ -197,7 +198,7 @@
 
 </div>
 <div class="section" id="module-pydmt.main">
-<span id="pydmt-main-module"></span><h2>pydmt.main module<a class="headerlink" href="#module-pydmt.main" title="Permalink to this headline">¶</a></h2>
+<span id="pydmt-main-module"></span><h2>pydmt.main module<a class="headerlink" href="#module-pydmt.main" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="pydmt.main.add_all_features">
 <span class="sig-prename descclassname"><span class="pre">pydmt.main.</span></span><span class="sig-name descname"><span class="pre">add_all_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/main.html#add_all_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.main.add_all_features" title="Permalink to this definition">¶</a></dt>
@@ -252,11 +253,11 @@ If you disable this then templates would not be able to find things like ‘conf
 
 </div>
 <div class="section" id="module-pydmt.static">
-<span id="pydmt-static-module"></span><h2>pydmt.static module<a class="headerlink" href="#module-pydmt.static" title="Permalink to this headline">¶</a></h2>
+<span id="pydmt-static-module"></span><h2>pydmt.static module<a class="headerlink" href="#module-pydmt.static" title="Permalink to this heading">¶</a></h2>
 <p>version which can be consumed from within the module</p>
 </div>
 <div class="section" id="module-pydmt">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pydmt" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pydmt" title="Permalink to this heading">¶</a></h2>
 </div>
 </div>
 
@@ -286,7 +287,7 @@ If you disable this then templates would not be able to find things like ‘conf
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -295,7 +296,7 @@ If you disable this then templates would not be able to find things like ‘conf
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
