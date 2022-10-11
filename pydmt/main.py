@@ -1,12 +1,12 @@
 import sys
 import os
-import pickle
+import os.path
 import pathlib
 import shutil
 import logging
 
 import pylogconf.core
-from pytconf import register_endpoint, register_main, config_arg_parse_and_launch, get_free_args
+from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
 from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget, ConfigLogging
 from pydmt.core.pydmt import PyDMT
@@ -76,6 +76,8 @@ def add_to_path():
     ],
 )
 def build():
+    check_config_and_load()
+
     add_to_path()
 
     pylogconf.core.setup()
@@ -100,6 +102,8 @@ def build():
     ],
 )
 def build_venv():
+    check_config_and_load()
+
     add_to_path()
 
     pylogconf.core.setup()
@@ -125,6 +129,8 @@ def build_venv():
     ],
 )
 def build_reqs():
+    check_config_and_load()
+
     add_to_path()
 
     pylogconf.core.setup()
@@ -150,6 +156,8 @@ def build_reqs():
     ],
 )
 def build_tools():
+    check_config_and_load()
+
     add_to_path()
 
     pylogconf.core.setup()
@@ -174,6 +182,8 @@ def build_tools():
     ],
 )
 def clean() -> None:
+    check_config_and_load()
+
     add_to_path()
 
     pylogconf.core.setup()
@@ -195,25 +205,13 @@ def clean() -> None:
     ],
 )
 def clean_hard() -> None:
+    check_config_and_load()
+
     logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(ConfigLogging.loglevel)
 
     shutil.rmtree(".pydmt")
     check_call(["git", "clean", "-qffxd"])
-
-
-@register_endpoint(
-    description="print a pickle file for debug purposes",
-    configs=[
-    ],
-    allow_free_args=True,
-)
-def print_pickle() -> None:
-    for filename in get_free_args():
-        with open(filename, "rb") as file_handle:
-            print(f"{filename}")
-            for x, y in pickle.load(file_handle).items():
-                print(x, y)
 
 
 @register_main(
