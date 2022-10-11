@@ -23,6 +23,12 @@ from pydmt.features.reqs import FeatureReqs
 from pydmt.features.make import FeatureMake
 
 
+def check_config_and_load():
+    if not os.path.isfile(".pydmt.config"):
+        print("pydmt: not a pydmt folder", file=sys.stderr)
+        sys.exit(1)
+
+
 def add_all_features(p):
     f = FeatureApt()
     f.setup(p)
