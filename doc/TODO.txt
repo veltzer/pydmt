@@ -1,3 +1,10 @@
+- add a subprocess runner that allows the programmer
+	to control if it's running a process from within the virtual
+	env (or any other path) or not.
+	use that all over pydmt
+	This will allow me to block running things like pdymt from the system/user
+	python and force it to be inside the virtual env.
+	It could also force something to be used outside the virtual env.
 - take care of "double build" needs.
 	This means that I run:
 	$ pydmt build
