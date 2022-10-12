@@ -48,4 +48,4 @@ def get_deps():
             return getattr(mod, "packages")
     except ModuleNotFoundError:
         pass
-    return []
+    return None
