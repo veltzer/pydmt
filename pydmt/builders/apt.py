@@ -20,6 +20,9 @@ class BuilderApt(OneSourceOneTarget):
 
     def build(self) -> None:
         unlink_files([self.target])
+        if not self.packages:
+            mkdir_touch(self.target)
+            return
         os.environ['DEBIAN_FRONTEND'] = 'noninteractive'
         args = []
         if ConfigSudo.sudo:
