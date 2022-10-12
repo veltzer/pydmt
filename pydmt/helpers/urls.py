@@ -42,7 +42,10 @@ def get_website_ppa():
 
 
 def get_deps():
-    mod = importlib.import_module("config.deps")
-    if hasattr(mod, "packages"):
-        return getattr(mod, "packages")
+    try:
+        mod = importlib.import_module("config.deps")
+        if hasattr(mod, "packages"):
+            return getattr(mod, "packages")
+    except ModuleNotFoundError:
+        pass
     return []
