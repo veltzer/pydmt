@@ -2,7 +2,7 @@ import sys
 import os
 import os.path
 import pathlib
-import shutil
+# import shutil
 import logging
 
 import pylogconf.core
@@ -182,7 +182,7 @@ def build_tools():
 
 
 @register_endpoint(
-    description="Clean all generated files",
+    description="Clean all generated files by asking each builder to clean it's generated files",
     configs=[
         ConfigLogging,
     ],
@@ -200,12 +200,12 @@ def clean() -> None:
 
     add_all_features(p)
 
-    shutil.rmtree(".pydmt")
+    # shutil.rmtree(".pydmt")
     p.clean_all()
 
 
 @register_endpoint(
-    description="Clean all files and pydmt cache",
+    description="Clean all non git tracked files (including pydmt cache)",
     configs=[
         ConfigLogging,
     ],
@@ -216,7 +216,7 @@ def clean_hard() -> None:
     logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(ConfigLogging.loglevel)
 
-    shutil.rmtree(".pydmt")
+    # shutil.rmtree(".pydmt")
     check_call(["git", "clean", "-qffxd"])
 
 

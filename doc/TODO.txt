@@ -1,3 +1,5 @@
+- why do we have a different feature set of dev and not dev?
+	Investigate and make it one.
 - add a subprocess runner that allows the programmer
 	to control if it's running a process from within the virtual
 	env (or any other path) or not.
