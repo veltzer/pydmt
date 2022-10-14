@@ -25,7 +25,8 @@ build_requires
 	what is neede for the build which is not covered by 'make_requires'
 	and 'pydmt_requires'.
 	example of this is "pydmt" itself which is needed to run the entire build.
-
+config/bootstrap.py:requires:
+	packages which are needed to be able to import python.py
 
 
 examples of specific modules
