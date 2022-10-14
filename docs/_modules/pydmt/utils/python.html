@@ -117,9 +117,10 @@
 
 
 <div class="viewcode-block" id="collect_bootstrap_reqs"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_bootstrap_reqs">[docs]</a><span class="k">def</span> <span class="nf">collect_bootstrap_reqs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="c1"># pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member</span>
-    <span class="kn">import</span> <span class="nn">config.bootstrap</span>
-    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">requires</span></div>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;config.bootstrap&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[]</span></div>
 
 
 <div class="viewcode-block" id="get_install_args"><a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.get_install_args">[docs]</a><span class="k">def</span> <span class="nf">get_install_args</span><span class="p">():</span>

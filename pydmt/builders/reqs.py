@@ -1,5 +1,5 @@
 """
-This module build python virtual envrionments
+Install requirements
 """
 
 
@@ -26,6 +26,7 @@ class BuilderReqs(OneSourceOneTarget):
     python -m pip install [list of packages]
     """
     def build(self) -> None:
+        # Why do we do this in two stages? What's wrong with doing this in one stage?
         args = get_install_args()
         packs = collect_bootstrap_reqs()
         if packs:

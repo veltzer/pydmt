@@ -82,9 +82,10 @@ def collect_reqs() -> List[str]:
 
 
 def collect_bootstrap_reqs() -> List[str]:
-    # pylint: disable=import-outside-toplevel,no-name-in-module,import-error,no-member
-    import config.bootstrap
-    return config.bootstrap.requires
+    mod = importlib.import_module("config.bootstrap")
+    if hasattr(mod, "requires"):
+        return getattr(mod, "requires")
+    return []
 
 
 def get_install_args():
