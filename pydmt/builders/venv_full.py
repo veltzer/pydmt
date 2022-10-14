@@ -1,5 +1,5 @@
 """
-This module build python virtual envrionments
+This module builds python virtual envrionments
 """
 
 
