@@ -15,7 +15,7 @@ from typing import List, Generator, Tuple
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
 from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
 from pydmt.utils.digest import sha1_file
-from pydmt.utils.subprocess import check_call
+from pydmt.utils.subprocess import check_call_ve
 
 
 class BuilderSphinx(Builder):
@@ -79,9 +79,9 @@ class BuilderSphinx(Builder):
             args.append(self.package_name + '.py')
         else:
             args.append(self.package_name)
-        check_call(args)
+        check_call_ve(args)
         os.environ["PYTHONPATH"] = "."
-        check_call([
+        check_call_ve([
             "sphinx-build",
             # don't use a saved environment, always read all files
             # "-E",
