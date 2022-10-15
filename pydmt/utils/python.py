@@ -82,9 +82,12 @@ def collect_reqs() -> List[str]:
 
 
 def collect_bootstrap_reqs() -> List[str]:
-    mod = importlib.import_module("config.bootstrap")
-    if hasattr(mod, "requires"):
-        return getattr(mod, "requires")
+    try:
+        mod = importlib.import_module("config.bootstrap")
+        if hasattr(mod, "requires"):
+            return getattr(mod, "requires")
+    except ModuleNotFoundError:
+        pass
     return []
 
 
