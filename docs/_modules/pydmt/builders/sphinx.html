@@ -11,7 +11,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
    
@@ -48,7 +50,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.api.builder</span> <span class="kn">import</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">SourceFile</span><span class="p">,</span> <span class="n">SourceFolder</span><span class="p">,</span> <span class="n">TargetFolder</span>
 <span class="kn">from</span> <span class="nn">pydmt.utils.filesystem</span> <span class="kn">import</span> <span class="n">files_under_folder</span><span class="p">,</span> <span class="n">unlink_files</span><span class="p">,</span> <span class="n">copy_mkdir</span>
 <span class="kn">from</span> <span class="nn">pydmt.utils.digest</span> <span class="kn">import</span> <span class="n">sha1_file</span>
-<span class="kn">from</span> <span class="nn">pydmt.utils.subprocess</span> <span class="kn">import</span> <span class="n">check_call</span>
+<span class="kn">from</span> <span class="nn">pydmt.utils.subprocess</span> <span class="kn">import</span> <span class="n">check_call_ve</span>
 
 
 <div class="viewcode-block" id="BuilderSphinx"><a class="viewcode-back" href="../../../pydmt.builders.html#pydmt.builders.sphinx.BuilderSphinx">[docs]</a><span class="k">class</span> <span class="nc">BuilderSphinx</span><span class="p">(</span><span class="n">Builder</span><span class="p">):</span>
@@ -112,9 +114,9 @@
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="p">)</span>
-        <span class="n">check_call</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">check_call_ve</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYTHONPATH&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-        <span class="n">check_call</span><span class="p">([</span>
+        <span class="n">check_call_ve</span><span class="p">([</span>
             <span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span>
             <span class="c1"># don&#39;t use a saved environment, always read all files</span>
             <span class="c1"># &quot;-E&quot;,</span>
@@ -161,7 +163,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -170,7 +172,7 @@
       &copy;2017, Mark Veltzer.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
