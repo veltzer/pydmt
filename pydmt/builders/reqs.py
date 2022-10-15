@@ -26,7 +26,11 @@ class BuilderReqs(OneSourceOneTarget):
     python -m pip install [list of packages]
     """
     def build(self) -> None:
-        # Why do we do this in two stages? What's wrong with doing this in one stage?
+        """
+        Why do we do this in two stages? What's wrong with doing this in one stage?
+        Because importing python.py may fail because of prereqs that python.py
+        needs. In this case the user specifies these prereqs in bootstrap.py
+        """
         args = get_install_args()
         packs = collect_bootstrap_reqs()
         if packs:
