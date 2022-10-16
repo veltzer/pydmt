@@ -9,13 +9,3 @@ pyyaml
 jsonschema
 venv-run
 gitpython
-# dev requirements
-pypitools
-# test requirements
-pylint
-pytest
-pytest-cov
-pyflakes
-flake8
-mypy
-types-PyYAML

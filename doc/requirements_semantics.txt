@@ -6,6 +6,7 @@ dev_requires
 	in this list only.
 setup_requires
 	what is required to run python setup.py for this package.
+	these things may not be required for running.
 make_requires
 	what is required for the Makefile to function.
 	this is currently take to mean "build_requires"
