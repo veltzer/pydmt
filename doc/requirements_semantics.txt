@@ -16,9 +16,12 @@ make_requires
 config_requires
 	what is required for the config/*.py subfolder.
 install_requires
-	what is required on the target system to install this package.
+	what is required on the target system to install this package
+	(may or may not be needed for runtime)
 
-future things which are not yet implements
+future things which are not yet implemented:
+run_requires
+	what is needed to run the code locally or at the target machine
 pydmt_requires
 	packages that pydmt needs to run
 build_requires
@@ -26,8 +29,8 @@ build_requires
 	and 'pydmt_requires'.
 	example of this is "pydmt" itself which is needed to run the entire build.
 config/bootstrap.py:requires:
-	packages which are needed to be able to import python.py
-
+	packages which are needed to be able to import python.py or possibly
+	other files of the form PROJECT_ROOT/config/*.py
 
 examples of specific modules
 pydmt -> make_requires
