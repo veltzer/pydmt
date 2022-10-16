@@ -17,7 +17,7 @@ install_requires = [
     "pylogconf",
     "pytconf",
     "mako",
-    "Sphinx",
+    "sphinx",
     "pyyaml",
     "jsonschema",
     "venv-run",
