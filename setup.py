@@ -48,7 +48,7 @@ setuptools.setup(
         'pylogconf',
         'pytconf',
         'mako',
-        'Sphinx',
+        'sphinx',
         'pyyaml',
         'jsonschema',
         'venv-run',
