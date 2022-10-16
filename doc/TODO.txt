@@ -1,3 +1,10 @@
+- take care of "double build" needs.
+	This means that I run:
+	$ pydmt build
+	everything builds ok and then I run:
+	$ pydmt build
+	again and something builds.
+	If you want to see an example then you can use the "pyclassifiers" project.
 - why do we have a different feature set of dev and not dev?
 	Investigate and make it one.
 - add a subprocess runner that allows the programmer
@@ -7,13 +14,6 @@
 	This will allow me to block running things like pdymt from the system/user
 	python and force it to be inside the virtual env.
 	It could also force something to be used outside the virtual env.
-- take care of "double build" needs.
-	This means that I run:
-	$ pydmt build
-	everything builds ok and then I run:
-	$ pydmt build
-	again and something builds.
-	If you want to see an example then you can use the "pyclassifiers" project.
 - allow to say which virtual env I want in .pydmt.config
 	and create that version of the virutal env (in my case 3.10).
 	If you want to install a virtual machine of a different version of pythin you need
