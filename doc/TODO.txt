@@ -1,3 +1,4 @@
+- "pydmt build_venv" is too slow. Take care of this.
 - take care of "double build" needs.
 	This means that I run:
 	$ pydmt build
