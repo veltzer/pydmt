@@ -8,10 +8,10 @@ from typing import Callable, List, Dict
 
 def make_console_script(package_name: str, main: Callable):
     """
-    return a string suitable to be used as the section 'console_scripts'
-    of the 'entry_points' parameters of setup.py.
+    return a string suitable to be used as the section "console_scripts"
+    of the "entry_points" parameters of setup.py.
 
-    example: 'pycmdtools=pycmdtools.endpoints.main:main'
+    example: "pycmdtools=pycmdtools.endpoints.main:main"
     :param package_name:
     :param main:
     :return:
@@ -19,7 +19,7 @@ def make_console_script(package_name: str, main: Callable):
     return f"{package_name}={getattr(main, '__module__')}:{main.__name__,}"
 
 
-def array_indented(level: int, array: List[str], quote_char='\'', comma_after=False) -> str:
+def array_indented(level: int, array: List[str], quote_char="\"", comma_after=False) -> str:
     """
     return an array indented according to indent level
     :param level:
@@ -30,14 +30,14 @@ def array_indented(level: int, array: List[str], quote_char='\'', comma_after=Fa
     """
     out = "[\n"
     for x in array:
-        out += (((level + 1) * 4) * " ") + '{qc}{x}{qc}'.format(qc=quote_char, x=x) + ",\n"
+        out += (((level + 1) * 4) * " ") + f"{quote_char}{x}{quote_char}" + ",\n"
     out += ((level * 4) * " ") + "]"
     if comma_after:
         out += ","
     return out
 
 
-def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char='\'', comma_after=False) -> str:
+def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char="\"", comma_after=False) -> str:
     """
     return an dict indented according to indent level
     :param level:
@@ -49,12 +49,7 @@ def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char='\'',
     out = "{\n"
     for k, v in dictionary.items():
         spaces = (((level + 1) * 4) * " ")
-        out += '{spaces}{qc}{k}{qc}: {v},\n'.format(
-            spaces=spaces,
-            qc=quote_char,
-            k=k,
-            v=v,
-        )
+        out += f"{spaces}{quote_char}{k}{quote_char}: {v},\n"
     spaces = ((level * 4) * " ")
     out += f"{spaces}}}"
     if comma_after:
@@ -71,7 +66,7 @@ def find_packages(path: str) -> List[str]:
     """
     ret = []
     for root, _dir, files in os.walk(path):
-        if '__init__.py' in files:
+        if "__init__.py" in files:
             ret.append(root.replace("/", "."))
     return sorted(ret)
 
@@ -134,7 +129,7 @@ def get_classifiers():
 def hlp_source_under(folder):
     """
     this function finds all the python packages under a folder and
-    write the 'packages' and 'package_dir' entries for a python setup.py
+    write the "packages" and "package_dir" entries for a python setup.py
     script
     """
     # walk the folder and find the __init__.py entries for packages.
@@ -142,7 +137,7 @@ def hlp_source_under(folder):
     package_dir = {}
     for root, _dirs, files in os.walk(folder):
         for file in files:
-            if file != '__init__.py':
+            if file != "__init__.py":
                 continue
             full = os.path.dirname(os.path.join(root, file))
             relative = os.path.relpath(full, folder)
@@ -153,7 +148,7 @@ def hlp_source_under(folder):
 
 
 def hlp_files_under(dest_folder, pat):
-    return f"('{dest_folder}', {[x for x in glob.glob(pat) if os.path.isfile(x)]})"
+    return f"(\"{dest_folder}\", {[x for x in glob.glob(pat) if os.path.isfile(x)]})"
 
 
 def make_hlp_project_keywords(d):
@@ -171,7 +166,7 @@ def make_hlp_project_platforms(d):
 
 def make_hlp_project_classifiers(d):
     def hlp_project_classifiers():
-        cls_list = d.project_classifiers.split('\n')
+        cls_list = d.project_classifiers.split("\n")
         cls_list = [x.strip()[1:-1] for x in cls_list]
         return f"{cls_list}"
 
@@ -180,5 +175,5 @@ def make_hlp_project_classifiers(d):
 
 def make_hlp_wrap(level):
     def hlp_wrap(t):
-        return t.replace('\n', '\n' + '\t' * level)
+        return t.replace("\n", "\n" + "\t" * level)
     return hlp_wrap
