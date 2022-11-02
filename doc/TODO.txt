@@ -1,4 +1,10 @@
 - "pydmt build_venv" is too slow. Take care of this.
+- BuilderApt is wasteful in that it always runs
+	"apt-get update"
+	make it more efficient by holding a file in ~/.config/pydmt/builderapt
+	whose date is the timestamp of the last update.
+	Only update if the difference of time between now and the file is say more
+	than two hours.
 - take care of "double build" needs.
 	This means that I run:
 	$ pydmt build
