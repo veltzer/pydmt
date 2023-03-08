@@ -48,9 +48,9 @@ def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char="\"",
     """
     out = "{\n"
     for k, v in dictionary.items():
-        spaces = (((level + 1) * 4) * " ")
+        spaces = ((level + 1) * 4) * " "
         out += f"{spaces}{quote_char}{k}{quote_char}: {v},\n"
-    spaces = ((level * 4) * " ")
+    spaces = (level * 4) * " "
     out += f"{spaces}}}"
     if comma_after:
         out += ","
