@@ -4,6 +4,7 @@
 /target/
 /out/
 *.out
+/.mypy_cache
 
 # hive
 /derby.log
