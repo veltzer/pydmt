@@ -10,7 +10,7 @@ from typing import Generator, Tuple, Sequence
 from pydmt.api.builder import Builder, Node, SourceFile, TargetFolder
 from pydmt.utils.filesystem import files_under_folder
 from pydmt.utils.digest import sha1_file
-from pydmt.utils.subprocess import check_call
+from pydmt.utils.subprocess import check_call, check_call_ve
 from pydmt.utils.python import collect_reqs, get_install_args
 
 SOURCE_FILE = "config/python.py"
@@ -45,17 +45,12 @@ class BuilderVenvFull(Builder):
             TARGET_FOLDER,
         ]
         check_call(args)
-        args = [
-            "venv-run",
-            "--venv",
-            ".venv/default",
-            "--",
-        ]
-        args.extend(get_install_args())
+        # packages
         packs = collect_reqs()
         if packs:
+            args = get_install_args()
             args.extend(packs)
-            check_call(args)
+            check_call_ve(args)
 
     def yield_results(self) -> Generator[Tuple[str, str], None, None]:
         for x in files_under_folder(TARGET_FOLDER):
