@@ -4,7 +4,7 @@ This module runs make
 
 
 from pydmt.utils.filesystem import mkdir_touch
-from pydmt.utils.subprocess import check_call
+from pydmt.utils.subprocess import check_call_ve
 
 from pydmt.api.one_source_one_target import OneSourceOneTarget
 
@@ -15,11 +15,7 @@ TARGET_FOLDER = ".venv/default"
 class BuilderMake(OneSourceOneTarget):
     def build(self) -> None:
         args = [
-            "venv-run",
-            "--venv",
-            ".venv/default",
-            "--",
             "make",
         ]
-        check_call(args)
+        check_call_ve(args)
         mkdir_touch(self.target)

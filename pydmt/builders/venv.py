@@ -7,7 +7,7 @@ import os
 import shutil
 
 from pydmt.utils.filesystem import mkdir_touch
-from pydmt.utils.subprocess import check_call
+from pydmt.utils.subprocess import check_call, check_call_ve
 from pydmt.utils.python import collect_reqs, collect_bootstrap_reqs, get_install_args
 
 from pydmt.api.one_source_one_target import OneSourceOneTarget
@@ -36,28 +36,17 @@ class BuilderVenv(OneSourceOneTarget):
             TARGET_FOLDER,
         ]
         check_call(args)
-        # now create bootstrap packages so that we could read config/*.py
-        args = [
-            "venv-run",
-            "--venv",
-            ".venv/default",
-            "--",
-        ]
-        args.extend(get_install_args())
+        # install bootstrap packages so that we could read config/* files
         packs = collect_bootstrap_reqs()
         if packs:
+            args = get_install_args()
             args.extend(packs)
-            check_call(args)
+            check_call_ve(args)
         # now install regular packages (we only run the install if there are packages to install)
-        args = [
-            "venv-run",
-            "--venv",
-            ".venv/default",
-            "--",
-        ]
-        args.extend(get_install_args())
         packs = collect_reqs()
         if packs:
             args.extend(packs)
-            check_call(args)
+            args = get_install_args()
+            args.extend(packs)
+            check_call_ve(args)
         mkdir_touch(self.target)
