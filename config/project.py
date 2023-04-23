@@ -1,4 +1,4 @@
-description_short = "python dependency management tool"
+description_short = "Python dependency management tool"
 keywords = [
     "pydmt",
     "cons",

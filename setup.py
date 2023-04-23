@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pydmt",
-    version="0.1.79",
+    version="0.1.80",
     packages=[
         "pydmt",
         "pydmt.api",
@@ -20,7 +20,7 @@ setuptools.setup(
         "pydmt.utils",
     ],
     # from here all is optional
-    description="python dependency management tool",
+    description="Python dependency management tool",
     long_description=get_readme(),
     long_description_content_type="text/x-rst",
     author="Mark Veltzer",
