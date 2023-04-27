@@ -36,7 +36,7 @@ class BuilderVenv(OneSourceOneTarget):
             "virtualenv",
         ]
         if ConfigVenv.system_site_packages:
-            args.append("-system-site-packages")
+            args.append("--system-site-packages")
         args.append(TARGET_FOLDER)
         check_call(args)
         # install bootstrap packages so that we could read config/* files
