@@ -33,6 +33,16 @@ class ConfigTarget(Config):
     )
 
 
+class ConfigVenv(Config):
+    """
+    Parameters to configure how to create virtual environments
+    """
+    system_site_packages = ParamCreator.create_bool(
+        help_string="Allow access to system packages?",
+        default=True,
+    )
+
+
 class ConfigOutput(Config):
     """
     Parameters to configure the output of pydmt

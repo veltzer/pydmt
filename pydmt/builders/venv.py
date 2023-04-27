@@ -11,6 +11,7 @@ from pydmt.utils.subprocess import check_call, check_call_ve
 from pydmt.utils.python import collect_reqs, collect_bootstrap_reqs, get_install_args
 
 from pydmt.api.one_source_one_target import OneSourceOneTarget
+from pydmt.configs import ConfigVenv
 
 SOURCE_FILE = "config/python.py"
 TARGET_FOLDER = ".venv/default"
@@ -33,8 +34,10 @@ class BuilderVenv(OneSourceOneTarget):
         # create new virtual env
         args = [
             "virtualenv",
-            TARGET_FOLDER,
         ]
+        if ConfigVenv.system_site_packages:
+            args.append("-system-site-packages")
+        args.append(TARGET_FOLDER)
         check_call(args)
         # install bootstrap packages so that we could read config/* files
         packs = collect_bootstrap_reqs()
