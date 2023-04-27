@@ -39,7 +39,7 @@ class ConfigVenv(Config):
     """
     system_site_packages = ParamCreator.create_bool(
         help_string="Allow access to system packages?",
-        default=True,
+        default=False,
     )
 
 
