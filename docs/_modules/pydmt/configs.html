@@ -65,6 +65,16 @@
     <span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="ConfigVenv"><a class="viewcode-back" href="../../pydmt.html#pydmt.configs.ConfigVenv">[docs]</a><span class="k">class</span> <span class="nc">ConfigVenv</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters to configure how to create virtual environments</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">system_site_packages</span> <span class="o">=</span> <span class="n">ParamCreator</span><span class="o">.</span><span class="n">create_bool</span><span class="p">(</span>
+        <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;Allow access to system packages?&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="ConfigOutput"><a class="viewcode-back" href="../../pydmt.html#pydmt.configs.ConfigOutput">[docs]</a><span class="k">class</span> <span class="nc">ConfigOutput</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters to configure the output of pydmt</span>
