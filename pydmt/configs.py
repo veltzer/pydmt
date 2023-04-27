@@ -73,7 +73,7 @@ class ConfigSubprocess(Config):
     """
     print_command = ParamCreator.create_bool(
         help_string="print out commands",
-        default=True,
+        default=False,
     )
     quiet = ParamCreator.create_bool(
         help_string="Suppress output?",
