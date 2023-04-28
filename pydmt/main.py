@@ -8,7 +8,8 @@ import logging
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget, ConfigLogging, ConfigVenv
+from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget, ConfigLogging, ConfigVenv,\
+    ConfigImport
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION, LOGGER_NAME
 from pydmt.utils.subprocess import check_call
@@ -55,18 +56,15 @@ def add_to_path():
     This adds to PYTHONPATH various paths we need
     If you disable this then templates would not be able to find things like 'config/python.py'
     """
-    add_import_of_cwd = True
-    add_import_of_home = True
-    add_import_of_shared = True
-    if add_import_of_shared:
+    if ConfigImport.import_system:
         folder = "/etc/pydmt"
         if folder not in sys.path:
             sys.path.insert(0, folder)
-    if add_import_of_home:
+    if ConfigImport.import_home:
         folder = os.path.join(str(pathlib.Path.home()), ".config/pydmt")
         if folder not in sys.path:
             sys.path.insert(0, folder)
-    if add_import_of_cwd:
+    if ConfigImport.import_cwd:
         if "" not in sys.path:
             sys.path.insert(0, "")
 
