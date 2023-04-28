@@ -99,3 +99,21 @@ class ConfigApt(Config):
         help_string="pass -q=2 to apt",
         default=False,
     )
+
+
+class ConfigImport(Config):
+    """
+    Configure how to set PYTHONPATH
+    """
+    import_cwd = ParamCreator.create_bool(
+        help_string="Add . to PYTHONPATH",
+        default=True,
+    )
+    import_home = ParamCreator.create_bool(
+        help_string="Add ~/.config/pydmt to PYTHONPATH",
+        default=True,
+    )
+    import_system = ParamCreator.create_bool(
+        help_string="Add /etc/pydmt to PYTHONPATH",
+        default=True,
+    )
