@@ -107,13 +107,13 @@ class ConfigImport(Config):
     """
     import_cwd = ParamCreator.create_bool(
         help_string="Add . to PYTHONPATH",
-        default=True,
+        default=False,
     )
     import_home = ParamCreator.create_bool(
         help_string="Add ~/.config/pydmt to PYTHONPATH",
-        default=True,
+        default=False,
     )
     import_system = ParamCreator.create_bool(
         help_string="Add /etc/pydmt to PYTHONPATH",
-        default=True,
+        default=False,
     )
