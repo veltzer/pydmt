@@ -107,7 +107,7 @@ class ConfigImport(Config):
     """
     import_cwd = ParamCreator.create_bool(
         help_string="Add . to PYTHONPATH",
-        default=False,
+        default=True,
     )
     import_home = ParamCreator.create_bool(
         help_string="Add ~/.config/pydmt to PYTHONPATH",
