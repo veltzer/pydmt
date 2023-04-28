@@ -5,14 +5,14 @@ import pydmt.helpers.project
 
 
 def get_github_username():
-    mod = importlib.import_module("user.personal")
+    mod = importlib.import_module("config.personal")
     if hasattr(mod, "github_username"):
         return getattr(mod, "github_username")
     return os.getlogin()
 
 
 def get_launchpad_username():
-    mod = importlib.import_module("user.personal")
+    mod = importlib.import_module("config.personal")
     if hasattr(mod, "launchpad_username"):
         return getattr(mod, "launchpad_username")
     return os.getlogin()
