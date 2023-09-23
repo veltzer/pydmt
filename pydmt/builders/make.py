@@ -18,7 +18,7 @@ class BuilderMake(OneSourceOneTarget):
         args = [
             "make",
         ]
-        if ConfigTarget.dev:
+        if not ConfigTarget.dev:
             args.append("DEV=0")
         check_call_ve(args)
         mkdir_touch(self.target)
