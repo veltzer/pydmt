@@ -8,8 +8,9 @@ from pydmt.utils.subprocess import check_call_ve
 
 from pydmt.api.one_source_one_target import OneSourceOneTarget
 
+from pydmt.configs import ConfigTarget
+
 SOURCE_FILE = "Makefile"
-TARGET_FOLDER = ".venv/default"
 
 
 class BuilderMake(OneSourceOneTarget):
@@ -17,5 +18,7 @@ class BuilderMake(OneSourceOneTarget):
         args = [
             "make",
         ]
+        if ConfigTarget.dev:
+            args.append("DEV=0")
         check_call_ve(args)
         mkdir_touch(self.target)
