@@ -11,6 +11,7 @@ make_requires = [
     "pymakehelper",
     "pydmt",
     "pyclassifiers",
+    "types-jsonschema",
 ]
 install_requires = [
     "pyfakeuse",
