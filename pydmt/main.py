@@ -22,6 +22,7 @@ from pydmt.features.npm import FeatureNpm
 from pydmt.features.venv import FeatureVenv
 from pydmt.features.reqs import FeatureReqs
 from pydmt.features.make import FeatureMake
+from pydmt.features.gem import FeatureGem
 
 from pydmt.builders.venv import BuilderVenv
 
@@ -36,6 +37,8 @@ def add_all_features(p):
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
+    f.setup(p)
+    f = FeatureGem()
     f.setup(p)
     if ConfigTarget.dev:
         f = FeatureVenv()
@@ -180,6 +183,8 @@ def build_tools():
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
+    f.setup(p)
+    f = FeatureGem()
     f.setup(p)
 
     stats = p.build_all()
