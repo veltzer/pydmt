@@ -1,7 +1,7 @@
 import os.path
 
 from pydmt.api.feature import Feature
-from pydmt.builders.npm import Installer
+from pydmt.builders.gem import Installer
 from pydmt.core.pydmt import PyDMT
 
 
