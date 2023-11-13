@@ -53,6 +53,7 @@
 <span class="kn">from</span> <span class="nn">pydmt.features.venv</span> <span class="kn">import</span> <span class="n">FeatureVenv</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.reqs</span> <span class="kn">import</span> <span class="n">FeatureReqs</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.make</span> <span class="kn">import</span> <span class="n">FeatureMake</span>
+<span class="kn">from</span> <span class="nn">pydmt.features.gem</span> <span class="kn">import</span> <span class="n">FeatureGem</span>
 
 <span class="kn">from</span> <span class="nn">pydmt.builders.venv</span> <span class="kn">import</span> <span class="n">BuilderVenv</span>
 
@@ -72,6 +73,8 @@
     <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureApt</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureNpm</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureGem</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ConfigTarget</span><span class="o">.</span><span class="n">dev</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureVenv</span><span class="p">()</span>
@@ -231,6 +234,8 @@
     <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureApt</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureNpm</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureGem</span><span class="p">()</span>
     <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
     <span class="n">stats</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">build_all</span><span class="p">()</span>
