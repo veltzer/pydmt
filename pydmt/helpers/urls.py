@@ -1,21 +1,21 @@
-import os
 import importlib
 
 import pydmt.helpers.project
+from pydmt.utils.importlib import module_exists
 
 
 def get_github_username():
     mod = importlib.import_module("config.personal")
     if hasattr(mod, "github_username"):
         return getattr(mod, "github_username")
-    return os.getlogin()
+    return None
 
 
 def get_launchpad_username():
     mod = importlib.import_module("config.personal")
     if hasattr(mod, "launchpad_username"):
         return getattr(mod, "launchpad_username")
-    return os.getlogin()
+    return None
 
 
 def get_website():
@@ -42,10 +42,9 @@ def get_website_ppa():
 
 
 def get_deps():
-    try:
+    if module_exists("config.deps"):
         mod = importlib.import_module("config.deps")
         if hasattr(mod, "packages"):
             return getattr(mod, "packages")
-    except ModuleNotFoundError:
-        pass
+        return None
     return None

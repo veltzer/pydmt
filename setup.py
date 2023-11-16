@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pydmt",
-    version="0.1.98",
+    version="0.1.99",
     packages=[
         "pydmt",
         "pydmt.api",
