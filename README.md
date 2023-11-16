@@ -6,7 +6,7 @@ project website: https://veltzer.github.io/pydmt
 
 author: Mark Veltzer
 
-version: 0.1.99
+version: 0.2.10
 
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
