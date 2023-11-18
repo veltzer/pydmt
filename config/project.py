@@ -4,7 +4,7 @@ keywords = [
     "pydmt",
     "cons",
     "scons",
-    "software construction",
+    "software-construction",
     "make",
     "cmake",
     "maven",
