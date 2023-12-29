@@ -34,6 +34,9 @@ def check_config_and_load():
 
 
 def add_all_features(p):
+    """
+    This method should be automatic, order matters here which is not good, order should be derived and not set in stone
+    """
     f = FeatureApt()
     f.setup(p)
     f = FeatureNpm()
@@ -42,11 +45,11 @@ def add_all_features(p):
     f.setup(p)
     f = FeatureVenv()
     f.setup(p)
+    f = FeatureReqs()
+    f.setup(p)
     f = FeatureMako()
     f.setup(p)
     f = FeatureSphinx()
-    f.setup(p)
-    f = FeatureReqs()
     f.setup(p)
     f = FeatureMake()
     f.setup(p)
