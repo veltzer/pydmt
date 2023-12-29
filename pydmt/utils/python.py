@@ -4,8 +4,6 @@ import pprint
 from typing import List
 import importlib
 
-from pydmt.configs import ConfigTarget
-
 
 def hlp_source_under(folder):
     """
@@ -64,21 +62,13 @@ def make_hlp_wrap(level):
 
 
 def collect_reqs() -> List[str]:
-    collect = []
-    mod = importlib.import_module("config.python")
-    if hasattr(mod, "dev_requires") and ConfigTarget.dev:
-        collect.extend(getattr(mod, "dev_requires"))
-    if hasattr(mod, "test_requires"):
-        collect.extend(getattr(mod, "test_requires"))
-    if hasattr(mod, "install_requires"):
-        collect.extend(getattr(mod, "install_requires"))
-    if hasattr(mod, "config_requires"):
-        collect.extend(getattr(mod, "config_requires"))
-    if hasattr(mod, "setup_requires"):
-        collect.extend(getattr(mod, "setup_requires"))
-    if hasattr(mod, "make_requires"):
-        collect.extend(getattr(mod, "make_requires"))
-    return collect
+    try:
+        mod = importlib.import_module("config.python")
+        if hasattr(mod, "requires"):
+            return getattr(mod, "requires")
+    except ModuleNotFoundError:
+        pass
+    return []
 
 
 def collect_bootstrap_reqs() -> List[str]:

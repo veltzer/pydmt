@@ -48,7 +48,6 @@ class BuilderVenv(OneSourceOneTarget):
         # now install regular packages (we only run the install if there are packages to install)
         packs = collect_reqs()
         if packs:
-            args.extend(packs)
             args = get_install_args()
             args.extend(packs)
             check_call_ve(args)
