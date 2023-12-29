@@ -7,6 +7,8 @@ from pydmt.core.pydmt import PyDMT
 
 class FeatureVenv(Feature):
     def setup(self, pydmt: PyDMT) -> None:
+        if "GITHUB_WORKFLOW" in os.environ:
+            return
         if os.path.isfile("config/python.py"):
             pydmt.add_builder(BuilderVenv(
                 source="config/python.py",
