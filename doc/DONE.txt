@@ -14,3 +14,4 @@
 	end of pydmt build under the venv ofcourse.
 - disabled feature was removed.
 - added ability to control log level from the command line.
+- removed the various different imports from config/python.py and settled for just one import.

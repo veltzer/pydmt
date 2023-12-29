@@ -8,7 +8,7 @@ import logging
 import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
-from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigTarget, ConfigLogging, ConfigVenv,\
+from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigLogging, ConfigVenv,\
     ConfigImport
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION, LOGGER_NAME
@@ -40,16 +40,14 @@ def add_all_features(p):
     f.setup(p)
     f = FeatureGem()
     f.setup(p)
-    if ConfigTarget.dev:
-        f = FeatureVenv()
-        f.setup(p)
-        f = FeatureMako()
-        f.setup(p)
-        f = FeatureSphinx()
-        f.setup(p)
-    else:
-        f = FeatureReqs()
-        f.setup(p)
+    f = FeatureVenv()
+    f.setup(p)
+    f = FeatureMako()
+    f.setup(p)
+    f = FeatureSphinx()
+    f.setup(p)
+    f = FeatureReqs()
+    f.setup(p)
     f = FeatureMake()
     f.setup(p)
     f = FeatureYaml()
@@ -80,7 +78,6 @@ def add_to_path():
         ConfigSudo,
         ConfigFlow,
         ConfigOutput,
-        ConfigTarget,
         ConfigLogging,
     ],
 )

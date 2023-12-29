@@ -23,16 +23,6 @@ class ConfigFlow(Config):
     )
 
 
-class ConfigTarget(Config):
-    """
-    Parameters to configure what is the target of the build
-    """
-    dev = ParamCreator.create_bool(
-        help_string="Is the target to build a dev environment?",
-        default=True,
-    )
-
-
 class ConfigVenv(Config):
     """
     Parameters to configure how to create virtual environments
