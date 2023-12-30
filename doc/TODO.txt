@@ -12,8 +12,6 @@
 	$ pydmt build
 	again and something builds.
 	If you want to see an example then you can use the "pyclassifiers" project.
-- why do we have a different feature set of dev and not dev?
-	Investigate and make it one.
 - add a subprocess runner that allows the programmer
 	to control if it's running a process from within the virtual
 	env (or any other path) or not.
@@ -59,16 +57,12 @@
 - do it so I would see reasonable errors when I run pymdt:
 	do not show stack trace by default
 	show the actually errors by default.
-- make pydmt be plugin based so I could Iterator all builders or features.
+- make pydmt be plugin based so I could Iterate all builders or features.
 - add the ability to add parameters to:
 	$ pydmt build [paramters]
   and control which features and builders are we running.
   this will enabled me to not run templating when doing CI/CD
 	which currently breaks my code.
-- add installer for gems which works like this:
-	$ bundle install --local
-	and works from a Gemfile and Gemfile.lock
-	look at site-personal-jekyll.
 
 - add to YAML scanning and finding of vscode type schema and
 	using it.
