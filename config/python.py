@@ -1,19 +1,22 @@
-console_scripts = [
+from typing import List
+
+
+console_scripts: List[str] = [
     "pydmt=pydmt.main:main",
 ]
-dev_requires = [
+dev_requires: List[str] = [
     "pypitools",
 ]
-config_requires = [
+config_requires: List[str] = [
     "pyclassifiers",
 ]
-make_requires = [
+make_requires: List[str] = [
     "pymakehelper",
     "pydmt",
     "pyclassifiers",
     "types-jsonschema",
 ]
-install_requires = [
+install_requires: List[str] = [
     "pyfakeuse",
     "pylogconf",
     "pytconf",
@@ -24,7 +27,7 @@ install_requires = [
     "venv-run",
     "gitpython",
 ]
-test_requires = [
+test_requires: List[str] = [
     "pylint",
     "pytest",
     "pytest-cov",
