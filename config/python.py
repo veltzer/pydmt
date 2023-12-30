@@ -4,11 +4,11 @@ from typing import List
 console_scripts: List[str] = [
     "pydmt=pydmt.main:main",
 ]
-dev_requires: List[str] = [
-    "pypitools",
-]
 config_requires: List[str] = [
     "pyclassifiers",
+]
+dev_requires: List[str] = [
+    "pypitools",
 ]
 make_requires: List[str] = [
     "pymakehelper",
@@ -36,3 +36,4 @@ test_requires: List[str] = [
     "mypy",
     "types-PyYAML",
 ]
+requires = config_requires + install_requires + make_requires + test_requires
