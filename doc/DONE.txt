@@ -15,3 +15,7 @@
 - disabled feature was removed.
 - added ability to control log level from the command line.
 - removed the various different imports from config/python.py and settled for just one import.
+- add installer for gems which works like this:
+	$ bundle install --local
+	and works from a Gemfile and Gemfile.lock
+	look at site-personal-jekyll.
