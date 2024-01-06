@@ -31,6 +31,10 @@ class ConfigVenv(Config):
         help_string="Allow access to system packages?",
         default=False,
     )
+    upgrade_pip = ParamCreator.create_bool(
+        help_string="Upgrade pip on virtualenv creation?",
+        default=True,
+    )
 
 
 class ConfigOutput(Config):

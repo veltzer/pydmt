@@ -39,6 +39,15 @@ class BuilderVenv(OneSourceOneTarget):
             args.append("--system-site-packages")
         args.append(TARGET_FOLDER)
         check_call(args)
+        # upgrade pip if the condig says so
+        if ConfigVenv.upgrade_pip:
+            args = [
+                "pip",
+                "install",
+                "--upgrade",
+                "pip",
+            ]
+            check_call_ve(args)
         # install bootstrap packages so that we could read config/* files
         packs = collect_bootstrap_reqs()
         if packs:
