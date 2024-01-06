@@ -1,4 +1,14 @@
+- add a command:
+	$ pydmt build --printsummary
+	which only prints what the different builders will do.
+	This will enable to take this text and put it in the README.md
+	to show what the "build passing" sticker means.
 - "pydmt build_venv" is too slow. Take care of this.
+	how???
+	is the idea to use the current env and just modify it instead of erasing
+	it and recreating it from scratch? this sould good.
+	There should be a flag that will say if we really want to recreate the entire
+	venv or just update it.
 - BuilderApt is wasteful in that it always runs
 	"apt-get update"
 	make it more efficient by holding a file in ~/.config/pydmt/builderapt
