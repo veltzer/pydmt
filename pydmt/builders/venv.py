@@ -28,6 +28,15 @@ class BuilderVenv(OneSourceOneTarget):
     pip install -r requirements.txt
     """
     def build(self) -> None:
+        if ConfigVenv.incremental and os.path.isdir(TARGET_FOLDER):
+            # now install regular packages (we only run the install if there are packages to install)
+            packs = collect_reqs()
+            if packs:
+                args = get_install_args()
+                args.extend(packs)
+                check_call_ve(args)
+            mkdir_touch(self.target)
+            return
         # remove previous virtual env
         if os.path.isdir(TARGET_FOLDER):
             shutil.rmtree(TARGET_FOLDER)

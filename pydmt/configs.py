@@ -35,6 +35,10 @@ class ConfigVenv(Config):
         help_string="Upgrade pip on virtualenv creation?",
         default=True,
     )
+    incremental = ParamCreator.create_bool(
+        help_string="Erase venv or work with existing venv?",
+        default=True,
+    )
 
 
 class ConfigOutput(Config):
