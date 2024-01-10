@@ -30,7 +30,7 @@ class BuilderVenv(OneSourceOneTarget):
     def build(self) -> None:
         if ConfigVenv.incremental and os.path.isdir(TARGET_FOLDER):
             # now install regular packages (we only run the install if there are packages to install)
-            packs = collect_reqs()
+            packs = collect_reqs(add_dev=ConfigVenv.add_dev)
             if packs:
                 args = get_install_args()
                 args.extend(packs)
@@ -64,7 +64,7 @@ class BuilderVenv(OneSourceOneTarget):
             args.extend(packs)
             check_call_ve(args)
         # now install regular packages (we only run the install if there are packages to install)
-        packs = collect_reqs()
+        packs = collect_reqs(add_dev=ConfigVenv.add_dev)
         if packs:
             args = get_install_args()
             args.extend(packs)

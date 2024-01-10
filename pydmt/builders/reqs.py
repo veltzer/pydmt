@@ -7,6 +7,7 @@ from pydmt.api.one_source_one_target import OneSourceOneTarget
 from pydmt.utils.subprocess import check_call
 from pydmt.utils.filesystem import mkdir_touch
 from pydmt.utils.python import collect_reqs, collect_bootstrap_reqs, get_install_args
+from pydmt.configs import ConfigReqs
 
 
 class BuilderReqs(OneSourceOneTarget):
@@ -37,7 +38,7 @@ class BuilderReqs(OneSourceOneTarget):
             args.extend(packs)
             check_call(args)
         args = get_install_args()
-        packs = collect_reqs()
+        packs = collect_reqs(add_dev=ConfigReqs.reqs_add_dev)
         if packs:
             args.extend(packs)
             check_call(args)
