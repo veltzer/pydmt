@@ -4,16 +4,15 @@ from typing import List
 console_scripts: List[str] = [
     "pydmt=pydmt.main:main",
 ]
-config_requires: List[str] = [
-    "pyclassifiers",
-]
 dev_requires: List[str] = [
     "pypitools",
+]
+config_requires: List[str] = [
+    "pyclassifiers",
 ]
 make_requires: List[str] = [
     "pymakehelper",
     "pydmt",
-    "pyclassifiers",
     "types-jsonschema",
 ]
 install_requires: List[str] = [
