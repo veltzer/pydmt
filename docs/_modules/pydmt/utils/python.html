@@ -7,7 +7,7 @@
     <title>pydmt.utils.python &#8212; pydmt Documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=039e1c02" />
-    <script src="../../../_static/documentation_options.js?v=1e28cc32"></script>
+    <script src="../../../_static/documentation_options.js?v=ba50482b"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -112,11 +112,15 @@
 
 <div class="viewcode-block" id="collect_reqs">
 <a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.collect_reqs">[docs]</a>
-<span class="k">def</span> <span class="nf">collect_reqs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span> <span class="nf">collect_reqs</span><span class="p">(</span><span class="n">add_dev</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="k">try</span><span class="p">:</span>
+        <span class="n">reqs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;config.python&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">)</span>
+            <span class="n">reqs</span> <span class="o">+=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">add_dev</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">):</span>
+            <span class="n">reqs</span> <span class="o">+=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;dev_requires&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reqs</span>
     <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
         <span class="k">pass</span>
     <span class="k">return</span> <span class="p">[]</span></div>

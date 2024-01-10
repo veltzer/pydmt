@@ -7,7 +7,7 @@
     <title>pydmt.configs &#8212; pydmt Documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
-    <script src="../../_static/documentation_options.js?v=1e28cc32"></script>
+    <script src="../../_static/documentation_options.js?v=ba50482b"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -60,6 +60,19 @@
 
 
 
+<div class="viewcode-block" id="ConfigReqs">
+<a class="viewcode-back" href="../../pydmt.html#pydmt.configs.ConfigReqs">[docs]</a>
+<span class="k">class</span> <span class="nc">ConfigReqs</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters to configure addgin requirements</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reqs_add_dev</span> <span class="o">=</span> <span class="n">ParamCreator</span><span class="o">.</span><span class="n">create_bool</span><span class="p">(</span>
+        <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;add dev requirements?&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
 <div class="viewcode-block" id="ConfigVenv">
 <a class="viewcode-back" href="../../pydmt.html#pydmt.configs.ConfigVenv">[docs]</a>
 <span class="k">class</span> <span class="nc">ConfigVenv</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
@@ -77,6 +90,10 @@
     <span class="n">incremental</span> <span class="o">=</span> <span class="n">ParamCreator</span><span class="o">.</span><span class="n">create_bool</span><span class="p">(</span>
         <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;Erase venv or work with existing venv?&quot;</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">add_dev</span> <span class="o">=</span> <span class="n">ParamCreator</span><span class="o">.</span><span class="n">create_bool</span><span class="p">(</span>
+        <span class="n">help_string</span><span class="o">=</span><span class="s2">&quot;add dev requirements?&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span></div>
 
 
