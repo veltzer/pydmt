@@ -10,11 +10,6 @@ dev_requires: List[str] = [
 config_requires: List[str] = [
     "pyclassifiers",
 ]
-make_requires: List[str] = [
-    "pymakehelper",
-    "pydmt",
-    "types-jsonschema",
-]
 install_requires: List[str] = [
     "pyfakeuse",
     "pylogconf",
@@ -25,6 +20,11 @@ install_requires: List[str] = [
     "jsonschema",
     "venv-run",
     "gitpython",
+]
+make_requires: List[str] = [
+    "pymakehelper",
+    "pydmt",
+    "types-jsonschema",
 ]
 test_requires: List[str] = [
     "pylint",
