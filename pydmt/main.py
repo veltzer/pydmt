@@ -9,7 +9,7 @@ import pylogconf.core
 from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
 
 from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigLogging, ConfigVenv,\
-    ConfigImport
+    ConfigImport, ConfigReqs
 from pydmt.core.pydmt import PyDMT
 from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION, LOGGER_NAME
 from pydmt.utils.subprocess import check_call
@@ -82,6 +82,8 @@ def add_to_path():
         ConfigFlow,
         ConfigOutput,
         ConfigLogging,
+        ConfigVenv,
+        ConfigReqs,
     ],
 )
 def build():
@@ -109,6 +111,7 @@ def build():
         ConfigOutput,
         ConfigLogging,
         ConfigVenv,
+        ConfigReqs,
     ],
 )
 def build_venv():
@@ -140,6 +143,8 @@ def build_venv():
         ConfigFlow,
         ConfigOutput,
         ConfigLogging,
+        ConfigVenv,
+        ConfigReqs,
     ],
 )
 def build_reqs():
@@ -167,6 +172,8 @@ def build_reqs():
         ConfigFlow,
         ConfigOutput,
         ConfigLogging,
+        ConfigVenv,
+        ConfigReqs,
     ],
 )
 def build_tools():

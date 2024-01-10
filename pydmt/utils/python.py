@@ -61,11 +61,15 @@ def make_hlp_wrap(level):
     return hlp_wrap
 
 
-def collect_reqs() -> List[str]:
+def collect_reqs(add_dev=False) -> List[str]:
     try:
+        reqs = []
         mod = importlib.import_module("config.python")
         if hasattr(mod, "requires"):
-            return getattr(mod, "requires")
+            reqs += getattr(mod, "requires")
+        if add_dev and hasattr(mod, "dev_requires"):
+            reqs += getattr(mod, "dev_requires")
+        return reqs
     except ModuleNotFoundError:
         pass
     return []

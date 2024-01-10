@@ -23,6 +23,16 @@ class ConfigFlow(Config):
     )
 
 
+class ConfigReqs(Config):
+    """
+    Parameters to configure addgin requirements
+    """
+    reqs_add_dev = ParamCreator.create_bool(
+        help_string="add dev requirements?",
+        default=False,
+    )
+
+
 class ConfigVenv(Config):
     """
     Parameters to configure how to create virtual environments
@@ -38,6 +48,10 @@ class ConfigVenv(Config):
     incremental = ParamCreator.create_bool(
         help_string="Erase venv or work with existing venv?",
         default=True,
+    )
+    add_dev = ParamCreator.create_bool(
+        help_string="add dev requirements?",
+        default=False,
     )
 
 
