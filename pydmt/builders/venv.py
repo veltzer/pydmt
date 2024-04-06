@@ -15,6 +15,7 @@ from pydmt.configs import ConfigVenv
 
 SOURCE_FILE = "config/python.py"
 TARGET_FOLDER = ".venv/default"
+REQUIREMENTS = "requirements.txt"
 
 
 class BuilderVenv(OneSourceOneTarget):
@@ -29,6 +30,11 @@ class BuilderVenv(OneSourceOneTarget):
     """
     def build(self) -> None:
         if ConfigVenv.incremental and os.path.isdir(TARGET_FOLDER):
+            if os.path.isfile(REQUIREMENTS):
+                args = get_install_args()
+                args.extend(["-r", REQUIREMENTS])
+                check_call(args)
+                return
             # now install regular packages (we only run the install if there are packages to install)
             packs = collect_reqs(add_dev=ConfigVenv.add_dev)
             if packs:
@@ -57,6 +63,11 @@ class BuilderVenv(OneSourceOneTarget):
                 "pip",
             ]
             check_call_ve(args)
+        if os.path.isfile(REQUIREMENTS):
+            args = get_install_args()
+            args.extend(["-r", REQUIREMENTS])
+            check_call(args)
+            return
         # install bootstrap packages so that we could read config/* files
         packs = collect_bootstrap_reqs()
         if packs:
