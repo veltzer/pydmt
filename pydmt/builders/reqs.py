@@ -40,7 +40,7 @@ class BuilderReqs(OneSourceOneTarget):
         """
         if os.path.isfile(REQUIREMENTS):
             args = get_install_args()
-            args.append(REQUIREMENTS)
+            args.extend(["-r", REQUIREMENTS])
             check_call(args)
             return
         args = get_install_args()
