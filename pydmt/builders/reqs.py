@@ -42,6 +42,7 @@ class BuilderReqs(OneSourceOneTarget):
             args = get_install_args()
             args.extend(["-r", REQUIREMENTS])
             check_call(args)
+            mkdir_touch(self.target)
             return
         args = get_install_args()
         packs = collect_bootstrap_reqs()

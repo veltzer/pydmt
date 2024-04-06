@@ -34,6 +34,7 @@ class BuilderVenv(OneSourceOneTarget):
                 args = get_install_args()
                 args.extend(["-r", REQUIREMENTS])
                 check_call(args)
+                mkdir_touch(self.target)
                 return
             # now install regular packages (we only run the install if there are packages to install)
             packs = collect_reqs(add_dev=ConfigVenv.add_dev)
@@ -67,6 +68,7 @@ class BuilderVenv(OneSourceOneTarget):
             args = get_install_args()
             args.extend(["-r", REQUIREMENTS])
             check_call(args)
+            mkdir_touch(self.target)
             return
         # install bootstrap packages so that we could read config/* files
         packs = collect_bootstrap_reqs()
