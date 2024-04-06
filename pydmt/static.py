@@ -1,5 +1,5 @@
 """ version which can be consumed from within the module """
-VERSION_STR = "0.3.5"
+VERSION_STR = "0.3.6"
 DESCRIPTION = "Python dependency management tool"
 APP_NAME = "pydmt"
 LOGGER_NAME = "pydmt"

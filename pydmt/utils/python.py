@@ -71,8 +71,7 @@ def collect_reqs(add_dev=False) -> List[str]:
             reqs += getattr(mod, "dev_requires")
         return reqs
     except ModuleNotFoundError:
-        pass
-    return []
+        return []
 
 
 def collect_bootstrap_reqs() -> List[str]:
@@ -80,9 +79,9 @@ def collect_bootstrap_reqs() -> List[str]:
         mod = importlib.import_module("config.bootstrap")
         if hasattr(mod, "requires"):
             return getattr(mod, "requires")
+        return []
     except ModuleNotFoundError:
-        pass
-    return []
+        return []
 
 
 def get_install_args():
