@@ -1,0 +1,21 @@
+# THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
+pyclassifiers
+pyfakeuse
+pylogconf
+pytconf
+mako
+sphinx
+pyyaml
+jsonschema
+venv-run
+gitpython
+pymakehelper
+pydmt
+types-jsonschema
+pylint
+pytest
+pytest-cov
+pyflakes
+flake8
+mypy
+types-PyYAML
