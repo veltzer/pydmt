@@ -19,3 +19,4 @@
 	$ bundle install --local
 	and works from a Gemfile and Gemfile.lock
 	look at site-personal-jekyll.
+- added option to remove packages in the apt builder.
