@@ -28,3 +28,12 @@ def get_packages():
     if not hasattr(mod, "packages"):
         return None
     return getattr(mod, "packages")
+
+
+def get_packages_remove():
+    if not module_exists("config.deps"):
+        return None
+    mod = importlib.import_module("config.deps")
+    if not hasattr(mod, "packages_remove"):
+        return None
+    return getattr(mod, "packages_remove")
