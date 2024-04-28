@@ -21,7 +21,7 @@ def get_launchpad_username():
     return getattr(mod, "launchpad_username")
 
 
-def get_deps():
+def get_packages():
     if not module_exists("config.deps"):
         return None
     mod = importlib.import_module("config.deps")
