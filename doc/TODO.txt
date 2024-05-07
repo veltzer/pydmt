@@ -1,3 +1,5 @@
+- make sure that when you add .pydmt.config
+	in an empty folder pydmt works.
 - add a command:
 	$ pydmt build --printsummary
 	which only prints what the different builders will do.
