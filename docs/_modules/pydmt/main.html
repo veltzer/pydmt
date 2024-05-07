@@ -7,7 +7,7 @@
     <title>pydmt.main &#8212; pydmt Documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
-    <script src="../../_static/documentation_options.js?v=a88e2c6e"></script>
+    <script src="../../_static/documentation_options.js?v=6307bca3"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -55,8 +55,6 @@
 <span class="kn">from</span> <span class="nn">pydmt.features.reqs</span> <span class="kn">import</span> <span class="n">FeatureReqs</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.make</span> <span class="kn">import</span> <span class="n">FeatureMake</span>
 <span class="kn">from</span> <span class="nn">pydmt.features.gem</span> <span class="kn">import</span> <span class="n">FeatureGem</span>
-
-<span class="kn">from</span> <span class="nn">pydmt.builders.venv</span> <span class="kn">import</span> <span class="n">BuilderVenv</span>
 
 
 <div class="viewcode-block" id="check_config_and_load">
@@ -171,12 +169,8 @@
     <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">LOGGER_NAME</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">ConfigLogging</span><span class="o">.</span><span class="n">loglevel</span><span class="p">)</span>
 
-    <span class="c1"># f = FeatureVenv()</span>
-    <span class="c1"># f.setup(p)</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">BuilderVenv</span><span class="p">(</span>
-        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;config/python.py&quot;</span><span class="p">,</span>
-        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;out/python.stamp&quot;</span><span class="p">,</span>
-    <span class="p">))</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">FeatureVenv</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
     <span class="n">stats</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">build_all</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_os_error_code</span><span class="p">())</span></div>
