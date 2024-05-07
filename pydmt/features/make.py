@@ -7,8 +7,9 @@ from pydmt.core.pydmt import PyDMT
 
 class FeatureMake(Feature):
     def setup(self, pydmt: PyDMT) -> None:
-        if os.path.isfile("Makefile"):
-            pydmt.add_builder(BuilderMake(
-                source="Makefile",
-                target="out/make.stamp",
-            ))
+        if not os.path.isfile("Makefile"):
+            return
+        pydmt.add_builder(BuilderMake(
+            source="Makefile",
+            target="out/make.stamp",
+        ))

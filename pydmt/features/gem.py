@@ -7,8 +7,9 @@ from pydmt.core.pydmt import PyDMT
 
 class FeatureGem(Feature):
     def setup(self, pydmt: PyDMT) -> None:
-        if os.path.isfile("Gemfile"):
-            pydmt.add_builder(Installer(
-                source="Gemfile",
-                target="out/gem.stamp",
-            ))
+        if not os.path.isfile("Gemfile"):
+            return
+        pydmt.add_builder(Installer(
+            source="Gemfile",
+            target="out/gem.stamp",
+        ))

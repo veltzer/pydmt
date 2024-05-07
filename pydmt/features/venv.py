@@ -9,8 +9,9 @@ class FeatureVenv(Feature):
     def setup(self, pydmt: PyDMT) -> None:
         if "GITHUB_WORKFLOW" in os.environ:
             return
-        if os.path.isfile("config/python.py"):
-            pydmt.add_builder(BuilderVenv(
-                source="config/python.py",
-                target="out/python.stamp",
-            ))
+        if not os.path.isfile("config/python.py"):
+            return
+        pydmt.add_builder(BuilderVenv(
+            source="config/python.py",
+            target="out/python.stamp",
+        ))

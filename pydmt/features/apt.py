@@ -1,3 +1,5 @@
+import os
+
 from pydmt.api.feature import Feature
 from pydmt.builders.apt import BuilderApt
 from pydmt.core.pydmt import PyDMT
@@ -12,10 +14,13 @@ class FeatureApt(Feature):
         self.packages_remove = get_packages_remove()
 
     def setup(self, pydmt: PyDMT) -> None:
-        if self.packages is not None:
-            pydmt.add_builder(BuilderApt(
-                source="config/deps.py",
-                target="out/deps.stamp",
-                packages=self.packages,
-                packages_remove=self.packages_remove,
-            ))
+        if self.packages is None:
+            return
+        if not os.path.isfile("config/deps.py"):
+            return
+        pydmt.add_builder(BuilderApt(
+            source="config/deps.py",
+            target="out/deps.stamp",
+            packages=self.packages,
+            packages_remove=self.packages_remove,
+        ))
