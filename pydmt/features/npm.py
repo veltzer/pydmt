@@ -7,8 +7,9 @@ from pydmt.core.pydmt import PyDMT
 
 class FeatureNpm(Feature):
     def setup(self, pydmt: PyDMT) -> None:
-        if os.path.isfile("package.json"):
-            pydmt.add_builder(Installer(
-                source="package.json",
-                target="out/npm.stamp",
-            ))
+        if not os.path.isfile("package.json"):
+            return
+        pydmt.add_builder(Installer(
+            source="package.json",
+            target="out/npm.stamp",
+        ))

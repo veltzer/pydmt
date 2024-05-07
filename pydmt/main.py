@@ -24,8 +24,6 @@ from pydmt.features.reqs import FeatureReqs
 from pydmt.features.make import FeatureMake
 from pydmt.features.gem import FeatureGem
 
-from pydmt.builders.venv import BuilderVenv
-
 
 def check_config_and_load():
     if not os.path.isfile(".pydmt.config"):
@@ -125,12 +123,8 @@ def build_venv():
     logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(ConfigLogging.loglevel)
 
-    # f = FeatureVenv()
-    # f.setup(p)
-    p.add_builder(BuilderVenv(
-        source="config/python.py",
-        target="out/python.stamp",
-    ))
+    f = FeatureVenv()
+    f.setup(p)
 
     stats = p.build_all()
     sys.exit(stats.get_os_error_code())
