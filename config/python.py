@@ -6,6 +6,7 @@ console_scripts: List[str] = [
 ]
 dev_requires: List[str] = [
     "pypitools",
+    "black",
 ]
 config_requires: List[str] = [
     "pyclassifiers",
@@ -24,7 +25,6 @@ install_requires: List[str] = [
 build_requires: List[str] = [
     "pymakehelper",
     "pydmt",
-    "types-jsonschema",
 ]
 test_requires: List[str] = [
     "pylint",
@@ -33,6 +33,8 @@ test_requires: List[str] = [
     "pyflakes",
     "flake8",
     "mypy",
+    # types
     "types-PyYAML",
+    "types-jsonschema",
 ]
 requires = config_requires + install_requires + build_requires + test_requires
