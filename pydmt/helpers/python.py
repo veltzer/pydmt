@@ -16,7 +16,7 @@ def make_console_script(package_name: str, main: Callable):
     :param main:
     :return:
     """
-    return f"{package_name}={getattr(main, '__module__')}:{main.__name__,}"
+    return f"{package_name}={getattr(main, '__module__')}:{main.__name__, }"
 
 
 def array_indented(level: int, array: List[str], quote_char="\"", comma_after=False) -> str:
