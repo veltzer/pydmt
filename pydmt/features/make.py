@@ -5,11 +5,14 @@ from pydmt.builders.make import BuilderMake
 from pydmt.core.pydmt import PyDMT
 
 
+SOURCE_FILE = "Makefile"
+
+
 class FeatureMake(Feature):
     def setup(self, pydmt: PyDMT) -> None:
-        if not os.path.isfile("Makefile"):
+        if not os.path.isfile(SOURCE_FILE):
             return
         pydmt.add_builder(BuilderMake(
-            source="Makefile",
+            source=SOURCE_FILE,
             target="out/make.stamp",
         ))
