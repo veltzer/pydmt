@@ -1,3 +1,4 @@
+""" project definitions """
 name = "pydmt"
 description_short = "Python dependency management tool"
 keywords = [
