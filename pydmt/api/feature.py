@@ -1,3 +1,7 @@
+"""
+feature.py
+"""
+
 import abc
 
 from pydmt.core.pydmt import PyDMT

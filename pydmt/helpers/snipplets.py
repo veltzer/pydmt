@@ -1,3 +1,8 @@
+"""
+snipplets.py
+"""
+
+
 def get_google_analytics(project_google_analytics_tracking_id):
     return f"""<script type="text/javascript">
     (function(i,s,o,g,r,a,m){{i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){{

@@ -1,3 +1,7 @@
+"""
+urls.py
+"""
+
 import pydmt.helpers.project
 from pydmt.helpers.attrs import get_github_username
 

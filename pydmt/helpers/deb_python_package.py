@@ -1,3 +1,7 @@
+"""
+deb_python_package.py
+"""
+
 import pydmt.helpers.project
 
 # deb section

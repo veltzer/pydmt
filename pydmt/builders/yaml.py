@@ -1,3 +1,7 @@
+"""
+yaml.py
+"""
+
 import json
 from urllib.request import urlopen
 import yaml

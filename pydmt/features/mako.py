@@ -1,5 +1,8 @@
-import os
+"""
+mako.py
+"""
 
+import os
 from pydmt.api.feature import Feature
 from pydmt.builders.mako import BuilderMako
 from pydmt.core.pydmt import PyDMT

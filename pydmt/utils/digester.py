@@ -1,3 +1,7 @@
+"""
+digester.py
+"""
+
 import hashlib
 from typing import List
 

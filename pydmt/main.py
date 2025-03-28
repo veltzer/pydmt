@@ -1,8 +1,11 @@
+"""
+main.py
+"""
+
 import sys
 import os
 import os.path
 import pathlib
-# import shutil
 import logging
 
 import pylogconf.core
