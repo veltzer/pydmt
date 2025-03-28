@@ -1,3 +1,7 @@
+"""
+tempdir.py
+"""
+
 import contextlib
 import os
 import shutil

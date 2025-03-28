@@ -1,3 +1,7 @@
+"""
+composites.py
+"""
+
 import pydmt.helpers.apt
 import pydmt.helpers.git
 

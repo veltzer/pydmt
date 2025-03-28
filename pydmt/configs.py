@@ -1,5 +1,8 @@
-import logging
+"""
+configurations for this project
+"""
 
+import logging
 from pytconf import Config, ParamCreator
 
 

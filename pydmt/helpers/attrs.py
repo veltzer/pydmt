@@ -1,5 +1,8 @@
-import importlib
+"""
+attrs.py
+"""
 
+import importlib
 from pydmt.utils.importlib import module_exists
 
 

@@ -1,3 +1,7 @@
+"""
+logging.py
+"""
+
 import logging
 
 from pydmt.static import LOGGER_NAME
