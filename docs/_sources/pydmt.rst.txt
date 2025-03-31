@@ -22,29 +22,29 @@ pydmt.configs module
 
 .. automodule:: pydmt.configs
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 pydmt.main module
 -----------------
 
 .. automodule:: pydmt.main
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 pydmt.static module
 -------------------
 
 .. automodule:: pydmt.static
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: pydmt
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
