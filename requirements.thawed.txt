@@ -11,7 +11,6 @@ pylogconf
 pymakehelper
 pytconf
 pytest
-pytest-cov
 pyyaml
 ruff
 sphinx
