@@ -6,7 +6,7 @@ import contextlib
 import os
 import shutil
 import tempfile
-from typing import Callable
+from collections.abc import Callable
 
 
 @contextlib.contextmanager

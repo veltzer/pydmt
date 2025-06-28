@@ -5,7 +5,7 @@ cache.py
 import os
 import pickle
 import glob
-from typing import Tuple, Iterable
+from collections.abc import Iterable
 
 from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file
 from pydmt.utils.logging import get_logger
@@ -74,6 +74,6 @@ class Cache:
         self.name_cache.add(full_path)
 
     @staticmethod
-    def iterate_objects(file_name: str) -> Iterable[Tuple[str, str]]:
+    def iterate_objects(file_name: str) -> Iterable[tuple[str, str]]:
         with open(file_name, "rb") as file_handle:
             yield from pickle.load(file_handle).items()
