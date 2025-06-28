@@ -33,9 +33,7 @@ class BuilderSphinx(Builder):
             SourceFolder(os.path.join(self.source_folder, "static")),
             SourceFolder(os.path.join(self.source_folder, "copy")),
         ]
-        if os.path.isfile(self.package_name + ".py"):
-            file_list.append(SourceFile(self.package_name + ".py"))
-        if os.path.isdir(self.package_name):
+        if os.path.isdir("src"):
             # we add only py files because python source folder may have .pyc
             # and other junk floating around...
             for fname in files_under_folder(self.package_name, suffix=".py"):
@@ -71,8 +69,9 @@ class BuilderSphinx(Builder):
             "sphinx-apidoc",
             "-q",  # quiet
             "-o",
-            # self.target_folder,
             self.source_folder,
+            # self.target_folder,
+            "src",
         ]
         # single file module vs package
         if os.path.isfile(self.package_name + '.py'):
