@@ -48,27 +48,19 @@ all: $(ALL)
 
 $(ALL_TESTS): $(ALL_PYTHON) .pylintrc .mypy.ini
 	$(Q)pymakehelper only_print_on_error $(PYTHON) -m pytest tests
+	$(Q)pymakehelper only_print_on_error $(PYTHON) -m ruff check src $(ALL_PACKAGES)
 	$(Q)pymakehelper error_on_print $(PYTHON) -m pylint --reports=n --score=n src $(ALL_PACKAGES) 
-	$(Q)pymakehelper only_print_on_error $(PYTHON) -m pycodestyle $(ALL_PACKAGES)
-	$(Q)pymakehelper only_print_on_error $(PYTHON) -m pytest --cov=$(PACKAGE_NAME) --cov-report=xml --cov-report=html
-	$(Q)pymakehelper only_print_on_error $(PYTHON) -m mypy .
+	$(Q)pymakehelper only_print_on_error $(PYTHON) -m mypy src $(ALL_PACKAGES) 
 	$(Q)pymakehelper touch_mkdir $@
+# $(Q)pymakehelper only_print_on_error $(PYTHON) -m pytest --cov=$(PACKAGE_NAME) --cov-report=xml --cov-report=html
 
 .PHONY: pytest
 pytest:
 	$(Q)pytest tests
 
-.PHONY: pyflakes
-pyflakes:
-	$(Q)pyflakes $(ALL_PACKAGES)
-
 .PHONY: pylint
 pylint:
 	$(Q)pylint --reports=n --score=n $(ALL_PACKAGES)
-
-.PHONY: flake8
-flake8:
-	$(Q)flake8 $(ALL_PACKAGES)
 
 .PHONY: unittest
 unittest:
@@ -81,11 +73,6 @@ cov:
 .PHONY: pyre
 pyre:
 	$(Q)pyre check
-
-# turn all code to black style
-.PHONY: black
-black:
-	$(Q)black --target-version py36 $(ALL_PACKAGES)
 
 .PHONY: clean
 clean:
