@@ -10,7 +10,7 @@ to set the PYTHONPATH and get better integration with sphinx?
 
 import os
 import shutil
-from typing import List, Generator, Tuple
+from collections.abc import Generator
 
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
 from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
@@ -26,7 +26,7 @@ class BuilderSphinx(Builder):
     - after this you run "sphinx-build"
     - "sphinx-quickstart" is not needed unless you are starting a new project.
     """
-    def get_sources(self) -> List[Node]:
+    def get_sources(self) -> list[Node]:
         file_list = [
             SourceFile(os.path.join(self.source_folder, "index.rst")),
             SourceFile(os.path.join(self.source_folder, "conf.py")),
@@ -44,7 +44,7 @@ class BuilderSphinx(Builder):
             file_list.append(SourceFolder("config"))
         return file_list
 
-    def get_targets(self) -> List[Node]:
+    def get_targets(self) -> list[Node]:
         return [TargetFolder(self.target_folder)]
 
     def __init__(self,
@@ -55,7 +55,7 @@ class BuilderSphinx(Builder):
         self.source_folder = source_folder
         self.target_folder = target_folder
 
-    def _get_source_folder_targets(self) -> List[str]:
+    def _get_source_folder_targets(self) -> list[str]:
         return [
             os.path.join(self.source_folder, "modules.rst"),
             os.path.join(self.source_folder, f"{self.package_name}.rst"),
@@ -98,7 +98,7 @@ class BuilderSphinx(Builder):
             basename = os.path.basename(filename)
             copy_mkdir(filename, os.path.join(self.target_folder, basename))
 
-    def yield_results(self) -> Generator[Tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str], None, None]:
         return_list = self._get_source_folder_targets()
         return_list.extend(files_under_folder(self.target_folder))
         for x in return_list:

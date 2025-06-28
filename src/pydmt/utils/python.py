@@ -5,7 +5,6 @@ python.y
 import os
 import glob
 import pprint
-from typing import List
 import importlib
 
 
@@ -65,7 +64,7 @@ def make_hlp_wrap(level):
     return hlp_wrap
 
 
-def collect_reqs(add_dev=False) -> List[str]:
+def collect_reqs(add_dev=False) -> list[str]:
     try:
         reqs = []
         mod = importlib.import_module("config.python")
@@ -78,7 +77,7 @@ def collect_reqs(add_dev=False) -> List[str]:
         return []
 
 
-def collect_bootstrap_reqs() -> List[str]:
+def collect_bootstrap_reqs() -> list[str]:
     try:
         mod = importlib.import_module("config.bootstrap")
         if hasattr(mod, "requires"):

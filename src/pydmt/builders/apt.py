@@ -3,7 +3,6 @@ This is a module that will install OS packages for you.
 """
 
 
-from typing import List
 import os
 
 from pydmt.utils.filesystem import unlink_files, mkdir_touch
@@ -14,7 +13,7 @@ from pydmt.api.one_source_one_target import OneSourceOneTarget
 
 
 class BuilderApt(OneSourceOneTarget):
-    def __init__(self, source: str, target: str, packages: List[str], packages_remove: List[str]):
+    def __init__(self, source: str, target: str, packages: list[str], packages_remove: list[str]):
         super().__init__(source, target)
         self.packages = packages
         self.packages_remove = packages_remove

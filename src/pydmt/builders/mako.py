@@ -5,7 +5,7 @@ mako.py
 import sys
 import os
 import os.path
-from typing import List, Dict, Union, Generator, Tuple
+from collections.abc import Generator
 
 import mako
 import mako.exceptions
@@ -25,27 +25,27 @@ class BuilderMako(Builder):
     def __init__(self,
                  source: str,
                  target: str,
-                 data: Union[Dict[str, object], None],
-                 config_files: List[str],
-                 snipplet_files: List[str],
+                 data: dict[str, object] | None,
+                 config_files: list[str],
+                 snipplet_files: list[str],
                  ):
         # super().__init__()
         self.source = source
         self.target = target
         self.data = data
-        self.config_files: List[str] = config_files
-        self.snipplet_files: List[str] = snipplet_files
-        self.sources: List[Node] = [SourceFile(self.source)]
+        self.config_files: list[str] = config_files
+        self.snipplet_files: list[str] = snipplet_files
+        self.sources: list[Node] = [SourceFile(self.source)]
         if os.path.isdir(FOLDER_CONFIG):
             self.sources.append(SourceFolder(FOLDER_CONFIG))
         if os.path.isdir(FOLDER_SNIPPLETS):
             self.sources.append(SourceFolder(FOLDER_SNIPPLETS))
-        self.targets: List[Node] = [TargetFile(self.target)]
+        self.targets: list[Node] = [TargetFile(self.target)]
 
-    def get_sources(self) -> List[Node]:
+    def get_sources(self) -> list[Node]:
         return self.sources
 
-    def get_targets(self) -> List[Node]:
+    def get_targets(self) -> list[Node]:
         return self.targets
 
     def build(self):
@@ -64,7 +64,7 @@ class BuilderMako(Builder):
         with open(self.target, "w") as file_handle:
             file_handle.write(output)
 
-    def yield_results(self) -> Generator[Tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str], None, None]:
         yield sha1_file(self.target), self.target
 
 

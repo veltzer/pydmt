@@ -6,7 +6,7 @@ import abc
 import os
 import shutil
 
-from typing import List, Generator, Tuple, Sequence
+from collections.abc import Generator, Sequence
 
 from pydmt.utils.digester import Digester
 
@@ -79,7 +79,7 @@ class Builder(abc.ABC):
         """
 
     @abc.abstractmethod
-    def yield_results(self) -> Generator[Tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str], None, None]:
         """
         Return the signatures and names of results
         :return:
@@ -129,7 +129,7 @@ class SourceFiles(Node):
     """
     This is a source of many files
     """
-    def __init__(self, filenames: List[str], name: str):
+    def __init__(self, filenames: list[str], name: str):
         self.filenames = filenames
         self.name = name
 

@@ -3,7 +3,6 @@ pydmt.py
 """
 
 import logging
-from typing import List, Dict
 
 import os
 
@@ -58,8 +57,8 @@ class BuildProcessStats:
 
 class PyDMT:
     def __init__(self):
-        self.builders: List[Builder] = []
-        self.target_to_builder: Dict[str, Builder] = {}
+        self.builders: list[Builder] = []
+        self.target_to_builder: dict[str, Builder] = {}
         self.cache = Cache()
 
     def build_by_builder(self, builder: Builder, stats: BuildProcessStats):
@@ -125,7 +124,7 @@ class PyDMT:
         b = self.target_to_builder[target]
         self.build_by_builder(b, stats)
 
-    def build_by_targets(self, targets: List[str], stats: BuildProcessStats) -> None:
+    def build_by_targets(self, targets: list[str], stats: BuildProcessStats) -> None:
         for target in targets:
             self.build_by_target(target, stats)
 

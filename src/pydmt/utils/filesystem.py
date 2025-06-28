@@ -4,7 +4,6 @@ filesystem.py
 
 import os
 import shutil
-from typing import List, Union
 
 
 def makedirs_for_file(filename: str):
@@ -18,7 +17,7 @@ def copy_mkdir(source: str, destination: str):
     shutil.copy(source, destination)
 
 
-def unlink_files(files: List[str], only_if_exist: bool = True) -> None:
+def unlink_files(files: list[str], only_if_exist: bool = True) -> None:
     for file in files:
         if only_if_exist:
             if os.path.isfile(file):
@@ -27,7 +26,7 @@ def unlink_files(files: List[str], only_if_exist: bool = True) -> None:
             os.unlink(file)
 
 
-def files_under_folder(folder: str, suffix: Union[str, None] = None) -> List[str]:
+def files_under_folder(folder: str, suffix: str | None = None) -> list[str]:
     file_list = []
     for dir_path, _, filenames in os.walk(folder):
         for filename in filenames:
@@ -36,7 +35,7 @@ def files_under_folder(folder: str, suffix: Union[str, None] = None) -> List[str
     return file_list
 
 
-def files_under_folders(folders: List[str]) -> List[str]:
+def files_under_folders(folders: list[str]) -> list[str]:
     file_list = []
     for folder in folders:
         file_list.extend(files_under_folder(folder))

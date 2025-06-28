@@ -2,7 +2,7 @@
 one_source_one_target.py
 """
 
-from typing import Generator, Tuple, Sequence
+from collections.abc import Generator, Sequence
 from pydmt.api.builder import Builder, SourceFile, TargetFile, Node
 from pydmt.utils.digest import sha1_file
 
@@ -25,5 +25,5 @@ class OneSourceOneTarget(Builder):
     def get_targets(self) -> Sequence[Node]:
         return self.targets
 
-    def yield_results(self) -> Generator[Tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str], None, None]:
         yield sha1_file(self.target), self.target

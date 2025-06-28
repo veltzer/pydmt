@@ -7,7 +7,7 @@ import os.path
 import importlib
 import glob
 import pprint
-from typing import Callable, List, Dict
+from collections.abc import Callable
 
 
 def make_console_script(package_name: str, main: Callable):
@@ -23,7 +23,7 @@ def make_console_script(package_name: str, main: Callable):
     return f"{package_name}={getattr(main, '__module__')}:{main.__name__, }"
 
 
-def array_indented(level: int, array: List[str], quote_char="\"", comma_after=False) -> str:
+def array_indented(level: int, array: list[str], quote_char="\"", comma_after=False) -> str:
     """
     return an array indented according to indent level
     :param level:
@@ -41,7 +41,7 @@ def array_indented(level: int, array: List[str], quote_char="\"", comma_after=Fa
     return out
 
 
-def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char="\"", comma_after=False) -> str:
+def dict_indented(level: int, dictionary: dict[str, list[int]], quote_char="\"", comma_after=False) -> str:
     """
     return an dict indented according to indent level
     :param level:
@@ -61,7 +61,7 @@ def dict_indented(level: int, dictionary: Dict[str, List[int]], quote_char="\"",
     return out
 
 
-def find_packages(path: str) -> List[str]:
+def find_packages(path: str) -> list[str]:
     """
     A better version of find_packages than what setuptools offers
     This function needs to be deterministic.
@@ -75,7 +75,7 @@ def find_packages(path: str) -> List[str]:
     return sorted(ret)
 
 
-def get_list_unquoted(a_list: List[str]) -> str:
+def get_list_unquoted(a_list: list[str]) -> str:
     """
     The exact format of this output is to be used in python code from templates,
     that is why the left bracket ([) does not have space following it and the
@@ -87,7 +87,7 @@ def get_list_unquoted(a_list: List[str]) -> str:
     return s
 
 
-def get_list_quoted(a_list: List[str]) -> str:
+def get_list_quoted(a_list: list[str]) -> str:
     """
     The exact format of this output is to be used in python code from templates,
     that is why the left bracket ([) does not have space following it and the
