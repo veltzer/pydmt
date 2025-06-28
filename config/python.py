@@ -1,10 +1,7 @@
-""" python depedencies for this project """
-
+""" python deps for this project """
 
 console_scripts: list[str] = [
     "pydmt=pydmt.main:main",
-]
-dev_requires: list[str] = [
 ]
 config_requires: list[str] = [
     "pyclassifiers",
