@@ -14,8 +14,7 @@ pydmt
 pylint
 pytest
 pytest-cov
-pyflakes
-flake8
 mypy
+ruff
 types-PyYAML
 types-jsonschema

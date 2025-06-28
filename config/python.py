@@ -1,8 +1,8 @@
 """ python deps for this project """
 
-console_scripts: list[str] = [
-    "pydmt=pydmt.main:main",
-]
+scripts: dict[str,str] = {
+    "pydmt": "pydmt.main:main",
+}
 config_requires: list[str] = [
     "pyclassifiers",
 ]
@@ -26,6 +26,7 @@ test_requires: list[str] = [
     "pytest",
     "pytest-cov",
     "mypy",
+    "ruff",
     # types
     "types-PyYAML",
     "types-jsonschema",
