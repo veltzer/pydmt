@@ -52,7 +52,7 @@ ptyprocess==0.7.0
 pyclassifiers==0.0.19
 pycodestyle==2.13.0
 pycparser==2.22
-pydmt==0.3.20
+pydmt==0.3.22
 pyfakeuse==0.0.9
 pyflakes==3.3.2
 Pygments==2.19.1
