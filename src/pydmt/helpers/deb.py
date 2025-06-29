@@ -2,9 +2,9 @@
 deb.py
 """
 
-import os
-import subprocess
-import pydmt.helpers.project
+# import os
+# import subprocess
+# import pydmt.helpers.project
 
 def old():
     """
