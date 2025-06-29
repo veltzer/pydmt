@@ -78,11 +78,11 @@ class BuilderSphinx(Builder):
         else:
             args.append(self.package_name)
         check_call_ve(args)
-        os.environ["PYTHONPATH"] = "."
+        # os.environ["PYTHONPATH"] = "."
         check_call_ve([
             "sphinx-build",
             # don't use a saved environment, always read all files
-            # "-E",
+            "-E",
             # Do not emit colored output(default: auto - detect)
             "--no-color",
             # turn warnings into errors
