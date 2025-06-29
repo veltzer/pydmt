@@ -4,6 +4,12 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
 ]
+import os
+import sys
+
+# Add the project's 'src' directory to the Python path.
+# This allows Sphinx to find and import your package.
+sys.path.insert(0, os.path.abspath("src"))
 
 import config.project
 project = config.project.name
