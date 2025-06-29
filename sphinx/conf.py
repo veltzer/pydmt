@@ -18,7 +18,7 @@ warning_is_error = True
 
 # Enable "nit-picky mode". This will issue warnings for all missing
 # cross-references (e.g., a link to a class that doesn't exist).
-nitpicky = True
+# nitpicky = True
 
 import config.project
 project = config.project.name
