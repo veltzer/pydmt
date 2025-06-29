@@ -13,7 +13,7 @@ import shutil
 from collections.abc import Generator
 
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
-from pydmt.utils.filesystem import files_under_folder, unlink_files, copy_mkdir
+from pydmt.utils.filesystem import files_under_folder, copy_mkdir, remove_files_by_suffix
 from pydmt.utils.digest import sha1_file
 from pydmt.utils.subprocess import check_call_ve
 
@@ -62,9 +62,10 @@ class BuilderSphinx(Builder):
         ]
 
     def build(self) -> None:
-        unlink_files(self._get_source_folder_targets(), only_if_exist=True)
-        if os.path.isdir(self.target_folder):
-            shutil.rmtree(self.target_folder, ignore_errors=False)
+        # remove results
+        # unlink_files(self._get_source_folder_targets(), only_if_exist=True)
+        shutil.rmtree(self.target_folder, ignore_errors=True)
+        remove_files_by_suffix(self.source_folder, suffix=".rst", exceptions=["index.rst"])
         args = [
             "sphinx-apidoc",
             "-q",  # quiet
