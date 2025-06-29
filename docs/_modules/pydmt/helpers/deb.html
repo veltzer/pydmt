@@ -35,43 +35,45 @@
 <span class="sd">deb.py</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pydmt.helpers.project</span>
+<span class="c1"># import os</span>
+<span class="c1"># import subprocess</span>
+<span class="c1"># import pydmt.helpers.project</span>
 
 <div class="viewcode-block" id="old">
 <a class="viewcode-back" href="../../../pydmt.helpers.html#pydmt.helpers.deb.old">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">old</span><span class="p">():</span>
-    <span class="n">deb_package</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">deb_section</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
-    <span class="n">deb_priority</span> <span class="o">=</span> <span class="s1">&#39;optional&#39;</span>
-    <span class="n">deb_architecture</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span>
-    <span class="n">deb_package_name</span> <span class="o">=</span> <span class="n">pydmt</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
-    <span class="c1"># to which series to publish the package?</span>
-    <span class="n">deb_series</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">&#39;artful&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;zesty&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;xenial&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;trusty&#39;</span><span class="p">,</span>
-    <span class="p">]</span>
-    <span class="n">deb_depends</span> <span class="o">=</span> <span class="s1">&#39;${misc:Depends}, ${python3:Depends}, python3-mako&#39;</span>
-    <span class="n">deb_build_depends</span> <span class="o">=</span> <span class="s1">&#39;python3, python3-setuptools, debhelper, dh-python&#39;</span>
-    <span class="n">deb_standards_version</span> <span class="o">=</span> <span class="s1">&#39;3.9.8&#39;</span>
-    <span class="n">deb_x_python_version</span> <span class="o">=</span> <span class="s1">&#39;&gt;= 3.4&#39;</span>
-    <span class="n">deb_x_python3_version</span> <span class="o">=</span> <span class="s1">&#39;&gt;= 3.4&#39;</span>
-    <span class="n">deb_urgency</span> <span class="o">=</span> <span class="s1">&#39;low&#39;</span>
-    <span class="c1"># archive of package</span>
-    <span class="n">deb_repo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/packages&#39;</span><span class="p">)</span>
-    <span class="c1"># where to put packages that are built?</span>
-    <span class="n">deb_out_folder</span> <span class="o">=</span> <span class="s1">&#39;out&#39;</span>
-    <span class="c1"># build_all = build.all</span>
-    <span class="c1"># where to build source packages?</span>
-    <span class="c1"># build_source = build.source</span>
-    <span class="c1"># where to build source packages?</span>
-    <span class="c1"># build_gbp = build.gbp</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    deb_package = True</span>
+<span class="sd">    deb_section = &#39;python&#39;</span>
+<span class="sd">    deb_priority = &#39;optional&#39;</span>
+<span class="sd">    deb_architecture = &#39;all&#39;</span>
+<span class="sd">    deb_package_name = pydmt.helpers.project.get_name()</span>
+<span class="sd">    # to which series to publish the package?</span>
+<span class="sd">    deb_series = [</span>
+<span class="sd">        &#39;artful&#39;,</span>
+<span class="sd">        &#39;zesty&#39;,</span>
+<span class="sd">        &#39;xenial&#39;,</span>
+<span class="sd">        &#39;trusty&#39;,</span>
+<span class="sd">    ]</span>
+<span class="sd">    deb_depends = &#39;${misc:Depends}, ${python3:Depends}, python3-mako&#39;</span>
+<span class="sd">    deb_build_depends = &#39;python3, python3-setuptools, debhelper, dh-python&#39;</span>
+<span class="sd">    deb_standards_version = &#39;3.9.8&#39;</span>
+<span class="sd">    deb_x_python_version = &#39;&gt;= 3.4&#39;</span>
+<span class="sd">    deb_x_python3_version = &#39;&gt;= 3.4&#39;</span>
+<span class="sd">    deb_urgency = &#39;low&#39;</span>
+<span class="sd">    # archive of package</span>
+<span class="sd">    deb_repo = os.path.expanduser(&#39;~/packages&#39;)</span>
+<span class="sd">    # where to put packages that are built?</span>
+<span class="sd">    deb_out_folder = &#39;out&#39;</span>
+<span class="sd">    # build_all = build.all</span>
+<span class="sd">    # where to build source packages?</span>
+<span class="sd">    # build_source = build.source</span>
+<span class="sd">    # where to build source packages?</span>
+<span class="sd">    # build_gbp = build.gbp</span>
 
-    <span class="c1"># for example &#39;Mon, 17 Oct 2016 09:44:00 +0300&#39;</span>
-    <span class="n">deb_date</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s2">&quot;date -R&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span></div>
+<span class="sd">    # for example &#39;Mon, 17 Oct 2016 09:44:00 +0300&#39;</span>
+<span class="sd">    deb_date = subprocess.check_output(&quot;date -R&quot;).decode().rstrip()</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 </pre></div>
 
