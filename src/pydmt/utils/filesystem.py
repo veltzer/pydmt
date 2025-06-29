@@ -53,18 +53,6 @@ def mkdir_touch(filename: str) -> None:
 
 
 def remove_files_by_suffix(folder:str, suffix:str, exceptions: list[str]):
-    """
-    Removes all files in a folder with a given suffix, excluding a specified list of files.
-
-    Args:
-        folder(str): The path to the folder.
-        suffix (str): The file suffix to target for deletion (e.g., '.rst').
-        exceptions (list, optional): A list of filenames to exclude from deletion.
-                                        Defaults to an empty list.
-    Raises:
-        OSError: If a file cannot be removed (e.g., due to permissions).
-        FileNotFoundError: If the specified folder does not exist.
-    """
     for filename in os.listdir(folder):
         file= os.path.join(folder, filename)
         if (
