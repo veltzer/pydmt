@@ -75,46 +75,6 @@
 <dd></dd></dl>
 
 </section>
-<section id="module-pydmt.helpers.deb">
-<span id="pydmt-helpers-deb-module"></span><h2>pydmt.helpers.deb module<a class="headerlink" href="#module-pydmt.helpers.deb" title="Link to this heading">¶</a></h2>
-<p>deb.py</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="pydmt.helpers.deb.old">
-<span class="sig-prename descclassname"><span class="pre">pydmt.helpers.deb.</span></span><span class="sig-name descname"><span class="pre">old</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pydmt/helpers/deb.html#old"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pydmt.helpers.deb.old" title="Link to this definition">¶</a></dt>
-<dd><p>deb_package = True
-deb_section = ‘python’
-deb_priority = ‘optional’
-deb_architecture = ‘all’
-deb_package_name = pydmt.helpers.project.get_name()
-# to which series to publish the package?
-deb_series = [</p>
-<blockquote>
-<div><p>‘artful’,
-‘zesty’,
-‘xenial’,
-‘trusty’,</p>
-</div></blockquote>
-<p>]
-deb_depends = ‘${misc:Depends}, ${python3:Depends}, python3-mako’
-deb_build_depends = ‘python3, python3-setuptools, debhelper, dh-python’
-deb_standards_version = ‘3.9.8’
-deb_x_python_version = ‘&gt;= 3.4’
-deb_x_python3_version = ‘&gt;= 3.4’
-deb_urgency = ‘low’
-# archive of package
-deb_repo = os.path.expanduser(‘~/packages’)
-# where to put packages that are built?
-deb_out_folder = ‘out’
-# build_all = build.all
-# where to build source packages?
-# build_source = build.source
-# where to build source packages?
-# build_gbp = build.gbp</p>
-<p># for example ‘Mon, 17 Oct 2016 09:44:00 +0300’
-deb_date = subprocess.check_output(“date -R”).decode().rstrip()</p>
-</dd></dl>
-
-</section>
 <section id="module-pydmt.helpers.deb_python_package">
 <span id="pydmt-helpers-deb-python-package-module"></span><h2>pydmt.helpers.deb_python_package module<a class="headerlink" href="#module-pydmt.helpers.deb_python_package" title="Link to this heading">¶</a></h2>
 <p>deb_python_package.py</p>
