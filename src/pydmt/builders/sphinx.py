@@ -70,8 +70,7 @@ class BuilderSphinx(Builder):
             "-q",  # quiet
             "-o",
             self.source_folder,
-            # self.target_folder,
-            "src",
+            os.path.join("src", self.package_name),
         ]
         # single file module vs package
         if os.path.isfile(self.package_name + '.py'):
