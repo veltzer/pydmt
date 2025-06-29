@@ -7,6 +7,7 @@ import subprocess
 import pydmt.helpers.project
 
 def old():
+    """
     deb_package = True
     deb_section = 'python'
     deb_priority = 'optional'
@@ -37,3 +38,4 @@ def old():
 
     # for example 'Mon, 17 Oct 2016 09:44:00 +0300'
     deb_date = subprocess.check_output("date -R").decode().rstrip()
+    """
