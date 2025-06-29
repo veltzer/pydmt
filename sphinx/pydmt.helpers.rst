@@ -28,14 +28,6 @@ pydmt.helpers.composites module
    :show-inheritance:
    :undoc-members:
 
-pydmt.helpers.deb module
-------------------------
-
-.. automodule:: pydmt.helpers.deb
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 pydmt.helpers.deb\_python\_package module
 -----------------------------------------
 
