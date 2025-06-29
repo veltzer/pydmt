@@ -1,5 +1,5 @@
-src
-===
+pydmt
+=====
 
 .. toctree::
    :maxdepth: 4
