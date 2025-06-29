@@ -1,9 +1,11 @@
 # THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
 gitpython
+hatch
 jsonschema
 mako
 mypy
 pyclassifiers
+pycmdtools
 pydmt
 pyfakeuse
 pylint
