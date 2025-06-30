@@ -9,37 +9,37 @@ pydmt.core.cache module
 
 .. automodule:: pydmt.core.cache
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pydmt.core.graph module
 -----------------------
 
 .. automodule:: pydmt.core.graph
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pydmt.core.pydmt module
 -----------------------
 
 .. automodule:: pydmt.core.pydmt
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pydmt.core.tempdir module
 -------------------------
 
 .. automodule:: pydmt.core.tempdir
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: pydmt.core
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
