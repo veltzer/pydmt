@@ -16,5 +16,5 @@ class FeatureVenv(Feature):
             return
         pydmt.add_builder(BuilderVenv(
             source="config/python.py",
-            target="out/python.stamp",
+            target="out/venv.stamp",
         ))
