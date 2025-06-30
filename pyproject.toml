@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pydmt"
-version = "0.3.25"
+version = "0.3.26"
 requires-python = ">=3.12"
 authors = [
 	{ name = "Mark Veltzer", email = "mark.veltzer@gmail.com" }
