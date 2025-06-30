@@ -4,7 +4,6 @@ hatch
 jsonschema
 mako
 mypy
-pyclassifiers
 pycmdtools
 pydmt
 pyfakeuse
