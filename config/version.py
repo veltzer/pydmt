@@ -1,2 +1,2 @@
 """ version of this software """
-tup = (0, 3, 25)
+tup = (0, 3, 26)

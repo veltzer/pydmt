@@ -14,6 +14,8 @@ class FeatureVenv(Feature):
             return
         if not os.path.isfile("config/python.py"):
             return
+        if not os.path.isfile(".pydmt.venv"):
+            return
         pydmt.add_builder(BuilderVenv(
             source="config/python.py",
             target="out/venv.stamp",
