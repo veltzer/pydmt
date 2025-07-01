@@ -2,10 +2,6 @@
 
 import config.shared
 
-scripts: dict[str,str] = {
-    "pydmt": "pydmt.main:main",
-}
-
 install_requires: list[str] = [
     "pyfakeuse",
     "pylogconf",
@@ -24,3 +20,7 @@ types_requires: list[str] = [
     "types-jsonschema",
 ]
 requires = install_requires + build_requires + test_requires + types_requires
+
+scripts: dict[str,str] = {
+    "pydmt": "pydmt.main:main",
+}
