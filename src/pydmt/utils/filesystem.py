@@ -32,14 +32,14 @@ def files_under_folder(folder: str, suffix: str | None = None) -> list[str]:
         for filename in filenames:
             if suffix is None or filename.endswith(suffix):
                 file_list.append(os.path.join(dir_path, filename))
-    return file_list
+    return sorted(file_list)
 
 
 def files_under_folders(folders: list[str]) -> list[str]:
     file_list = []
     for folder in folders:
         file_list.extend(files_under_folder(folder))
-    return file_list
+    return sorted(file_list)
 
 
 def touch(filename: str) -> None:
