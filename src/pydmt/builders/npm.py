@@ -13,10 +13,10 @@ class Installer(OneSourceOneTarget):
     def build(self) -> None:
         unlink_files([self.target])
         args = [
-            'npm',
-            'install',
-            '--quiet',
-            '--silent',
+            "npm",
+            "install",
+            "--quiet",
+            "--silent",
         ]
         check_call(args)
         mkdir_touch(self.target)

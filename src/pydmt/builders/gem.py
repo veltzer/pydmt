@@ -15,8 +15,8 @@ class Installer(OneSourceOneTarget):
         unlink_files([self.target])
         os.environ["GEM_HOME"] = "gems"
         args = [
-            'bundle',
-            'install',
+            "bundle",
+            "install",
         ]
         check_call(args)
         mkdir_touch(self.target)

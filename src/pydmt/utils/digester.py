@@ -16,7 +16,7 @@ class Digester:
         self.hash_object = hashlib.new(ALGORITHM_NAME)
 
     def add_file(self, filename: str) -> None:
-        with open(filename, 'rb') as file_handle:
+        with open(filename, "rb") as file_handle:
             buf = file_handle.read(BLOCK_SIZE)
             while len(buf) > 0:
                 self.hash_object.update(buf)

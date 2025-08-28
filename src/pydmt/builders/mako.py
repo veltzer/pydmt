@@ -50,7 +50,7 @@ class BuilderMako(Builder):
 
     def build(self):
         lookup = mako.lookup.TemplateLookup(
-            directories=['.'],
+            directories=["."],
         )
         template = mako.template.Template(
             filename=self.source,

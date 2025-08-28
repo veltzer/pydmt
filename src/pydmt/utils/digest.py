@@ -13,7 +13,7 @@ BLOCK_SIZE = 65536
 def hex_digest_files(filenames: list[str], algorithm_name: str) -> str:
     hash_object = hashlib.new(algorithm_name)
     for filename in filenames:
-        with open(filename, 'rb') as file_handle:
+        with open(filename, "rb") as file_handle:
             buf = file_handle.read(BLOCK_SIZE)
             while len(buf) > 0:
                 hash_object.update(buf)

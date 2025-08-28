@@ -11,7 +11,7 @@ import importlib
 def hlp_source_under(folder):
     """
     this function finds all the python packages under a folder and
-    write the 'packages' and 'package_dir' entries for a python setup.py
+    write the "packages" and "package_dir" entries for a python setup.py
     script
     """
     # walk the folder and find the __init__.py entries for packages.
@@ -19,7 +19,7 @@ def hlp_source_under(folder):
     package_dir = {}
     for root, _, files in os.walk(folder):
         for file in files:
-            if file != '__init__.py':
+            if file != "__init__.py":
                 continue
             full = os.path.dirname(os.path.join(root, file))
             relative = os.path.relpath(full, folder)
@@ -31,7 +31,7 @@ def hlp_source_under(folder):
 
 def hlp_files_under(destination_folder, pat):
     file_list = [x for x in glob.glob(pat) if os.path.isfile(x)]
-    return f"('{destination_folder}', {file_list})"
+    return f"(\'{destination_folder}\', {file_list})"
 
 
 def make_hlp_project_keywords(d):
@@ -50,7 +50,7 @@ def make_hlp_project_platforms(d):
 
 def make_hlp_project_classifiers(d):
     def hlp_project_classifiers():
-        classifiers = d.project_classifiers.split('\n')
+        classifiers = d.project_classifiers.split("\n")
         classifiers = [x.strip()[1:-1] for x in classifiers]
         return f"{classifiers}"
 
@@ -59,7 +59,7 @@ def make_hlp_project_classifiers(d):
 
 def make_hlp_wrap(level):
     def hlp_wrap(t):
-        return t.replace('\n', '\n' + '\t' * level)
+        return t.replace("\n", "\n" + "\t" * level)
 
     return hlp_wrap
 

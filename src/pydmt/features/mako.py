@@ -29,7 +29,7 @@ class FeatureMako(Feature):
             for filename in filenames:
                 source = os.path.join(root, filename)
                 target_base, ext = os.path.splitext(source)
-                if ext == '.mako':
+                if ext == ".mako":
                     target = os.sep.join(target_base.split(os.sep)[1:])
                     builder = BuilderMako(
                         source=source,

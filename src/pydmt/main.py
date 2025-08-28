@@ -61,7 +61,7 @@ def add_all_features(p):
 def add_to_path():
     """
     This adds to PYTHONPATH various paths we need
-    If you disable this then templates would not be able to find things like 'config/python.py'
+    If you disable this then templates would not be able to find things like "config/python.py"
     """
     if ConfigImport.import_system:
         folder = "/etc/pydmt"
@@ -196,7 +196,7 @@ def build_tools():
 
 
 @register_endpoint(
-    description="Clean all generated files by asking each builder to clean it's generated files",
+    description="Clean all generated files by asking each builder to clean its generated files",
     configs=[
         ConfigLogging,
     ],
@@ -244,5 +244,5 @@ def main():
     config_arg_parse_and_launch()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
