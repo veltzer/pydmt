@@ -74,8 +74,8 @@ class BuilderSphinx(Builder):
             os.path.join("src", self.package_name),
         ]
         # single file module vs package
-        if os.path.isfile(self.package_name + '.py'):
-            args.append(self.package_name + '.py')
+        if os.path.isfile(self.package_name + ".py"):
+            args.append(self.package_name + ".py")
         else:
             args.append(self.package_name)
         # check_call_ve(args)
@@ -84,7 +84,7 @@ class BuilderSphinx(Builder):
         # check_call_ve([
         check_call([
             "sphinx-build",
-            # don't use a saved environment, always read all files
+            # dont use a saved environment, always read all files
             "-E",
             # Do not emit colored output(default: auto - detect)
             "--no-color",

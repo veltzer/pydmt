@@ -2,4 +2,4 @@
 messages.py
 """
 
-messages_dne = 'THIS FILE IS AUTO GENERATED. DO NOT EDIT!!!'
+messages_dne = "THIS FILE IS AUTO GENERATED. DO NOT EDIT!!!"

@@ -31,7 +31,7 @@ def check_call_ve_env(args: list[str]) -> None:
 
 
 def check_call_ve(orig_args: list[str]) -> None:
-    # we call 'venv-run' with absolute path since it may change folder
+    # we call "venv-run" with absolute path since it may change folder
     args = [
         "venv-run",
         "--venv",

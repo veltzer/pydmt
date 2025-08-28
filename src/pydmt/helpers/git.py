@@ -28,4 +28,4 @@ def get_git_version() -> str:
 
 def count_files(pattern: str) -> int:
     """ Count the number of sources files of a certain pattern """
-    return int(subprocess.check_output(f"git ls-files -- '{pattern}' | wc -l", shell=True).decode().rstrip())
+    return int(subprocess.check_output(f"git ls-files -- \"{pattern}\" | wc -l", shell=True).decode().rstrip())
