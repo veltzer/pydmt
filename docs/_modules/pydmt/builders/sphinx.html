@@ -117,8 +117,8 @@
             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="p">),</span>
         <span class="p">]</span>
         <span class="c1"># single file module vs package</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span><span class="p">):</span>
-            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">):</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_name</span><span class="p">)</span>
         <span class="c1"># check_call_ve(args)</span>
@@ -127,7 +127,7 @@
         <span class="c1"># check_call_ve([</span>
         <span class="n">check_call</span><span class="p">([</span>
             <span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span>
-            <span class="c1"># don&#39;t use a saved environment, always read all files</span>
+            <span class="c1"># dont use a saved environment, always read all files</span>
             <span class="s2">&quot;-E&quot;</span><span class="p">,</span>
             <span class="c1"># Do not emit colored output(default: auto - detect)</span>
             <span class="s2">&quot;--no-color&quot;</span><span class="p">,</span>

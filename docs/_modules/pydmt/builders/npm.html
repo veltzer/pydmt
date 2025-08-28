@@ -50,10 +50,10 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">unlink_files</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">])</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;npm&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;install&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;--quiet&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;--silent&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;npm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;install&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--quiet&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--silent&quot;</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="n">check_call</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
         <span class="n">mkdir_touch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span></div>

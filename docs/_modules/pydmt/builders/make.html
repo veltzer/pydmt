@@ -53,7 +53,7 @@
             <span class="s2">&quot;make&quot;</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="k">if</span> <span class="s2">&quot;GITHUB_WORKFLOW&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-            <span class="c1"># TODO: I&#39;m assuming here that there is no previous MAKEFLAGS variable. Not good.</span>
+            <span class="c1"># TODO: Im assuming here that there is no previous MAKEFLAGS variable. Not good.</span>
             <span class="c1"># -j will cause endless parallel jobs to be run and that is why we add the number</span>
             <span class="c1"># of cores</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MAKEFLAGS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;-j</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>

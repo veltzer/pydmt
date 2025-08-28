@@ -46,7 +46,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">hlp_source_under</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    this function finds all the python packages under a folder and</span>
-<span class="sd">    write the &#39;packages&#39; and &#39;package_dir&#39; entries for a python setup.py</span>
+<span class="sd">    write the &quot;packages&quot; and &quot;package_dir&quot; entries for a python setup.py</span>
 <span class="sd">    script</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># walk the folder and find the __init__.py entries for packages.</span>
@@ -54,7 +54,7 @@
     <span class="n">package_dir</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">file</span> <span class="o">!=</span> <span class="s1">&#39;__init__.py&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file</span> <span class="o">!=</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="n">full</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
             <span class="n">relative</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">full</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
@@ -69,7 +69,7 @@
 <a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.hlp_files_under">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">hlp_files_under</span><span class="p">(</span><span class="n">destination_folder</span><span class="p">,</span> <span class="n">pat</span><span class="p">):</span>
     <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pat</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(&#39;</span><span class="si">{</span><span class="n">destination_folder</span><span class="si">}</span><span class="s2">&#39;, </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="se">\&#39;</span><span class="si">{</span><span class="n">destination_folder</span><span class="si">}</span><span class="se">\&#39;</span><span class="s2">, </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s2">)&quot;</span></div>
 
 
 
@@ -97,7 +97,7 @@
 <a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.make_hlp_project_classifiers">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">make_hlp_project_classifiers</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">hlp_project_classifiers</span><span class="p">():</span>
-        <span class="n">classifiers</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">project_classifiers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">classifiers</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">project_classifiers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">classifiers</span><span class="p">]</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">classifiers</span><span class="si">}</span><span class="s2">&quot;</span>
 
@@ -109,7 +109,7 @@
 <a class="viewcode-back" href="../../../pydmt.utils.html#pydmt.utils.python.make_hlp_wrap">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">make_hlp_wrap</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">hlp_wrap</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="n">level</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="n">level</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">hlp_wrap</span></div>
 
