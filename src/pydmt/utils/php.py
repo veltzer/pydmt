@@ -5,7 +5,7 @@ php.py
 
 def to_php(x):
     if isinstance(x, str):
-        return f"'{x}'"
+        return f"\'{x}\'"
     if isinstance(x, bool):
         if x:
             return "TRUE"
