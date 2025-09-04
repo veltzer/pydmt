@@ -12,6 +12,14 @@ pydmt.builders.apt module
    :undoc-members:
    :show-inheritance:
 
+pydmt.builders.copy module
+--------------------------
+
+.. automodule:: pydmt.builders.copy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pydmt.builders.gem module
 -------------------------
 
