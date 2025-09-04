@@ -41,7 +41,7 @@ class FeatureMako(Feature):
                     )
                     pydmt.add_builder(builder)
                 else:
-                    target = target_base
+                    target = os.sep.join(source.split(os.sep)[1:])
                     builder_copy = BuilderCopy(
                         source=source,
                         target=target,
