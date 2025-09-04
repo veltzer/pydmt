@@ -5,6 +5,7 @@ mako.py
 import os
 from pydmt.api.feature import Feature
 from pydmt.builders.mako import BuilderMako
+from pydmt.builders.copy import BuilderCopy
 from pydmt.core.pydmt import PyDMT
 from pydmt.utils.filesystem import files_under_folder
 
@@ -39,3 +40,10 @@ class FeatureMako(Feature):
                         snipplet_files=files_under_folder(self.snipplet_folder, suffix=".mako"),
                     )
                     pydmt.add_builder(builder)
+                else:
+                    target = os.sep.join(target_base.split(os.sep)[1:])
+                    builder_copy = BuilderCopy(
+                        source=source,
+                        target=target,
+                    )
+                    pydmt.add_builder(builder_copy)
