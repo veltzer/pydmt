@@ -14,7 +14,7 @@ class FeatureMako(Feature):
     def __init__(
         self,
         data=None,
-        templates_folder: str = "templates",
+        templates_folder: str = "templates.mako",
         config_folder: str = "config",
         snipplet_folder: str = "snipplets",
     ):
