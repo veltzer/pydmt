@@ -1,5 +1,5 @@
 """
-snipplets.py
+snippets.py
 """
 
 

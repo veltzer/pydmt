@@ -16,12 +16,12 @@ class FeatureMako(Feature):
         data=None,
         templates_folder: str = "templates.mako",
         config_folder: str = "config",
-        snipplet_folder: str = "snipplets",
+        snippet_folder: str = "snippets",
     ):
         self.data = data
         self.templates_folder = templates_folder
         self.config_folder = config_folder
-        self.snipplet_folder = snipplet_folder
+        self.snippet_folder = snippet_folder
 
     def setup(self, pydmt: PyDMT) -> None:
         if not os.path.isdir(self.templates_folder):
@@ -37,7 +37,7 @@ class FeatureMako(Feature):
                         target=target,
                         data=self.data,
                         config_files=files_under_folder(self.config_folder, suffix=".py"),
-                        snipplet_files=files_under_folder(self.snipplet_folder, suffix=".mako"),
+                        snippet_files=files_under_folder(self.snippet_folder, suffix=".mako"),
                     )
                     pydmt.add_builder(builder)
                 else:
