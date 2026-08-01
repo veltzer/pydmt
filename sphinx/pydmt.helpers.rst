@@ -116,10 +116,10 @@ pydmt.helpers.signature module
    :show-inheritance:
    :undoc-members:
 
-pydmt.helpers.snipplets module
-------------------------------
+pydmt.helpers.snippets module
+-----------------------------
 
-.. automodule:: pydmt.helpers.snipplets
+.. automodule:: pydmt.helpers.snippets
    :members:
    :show-inheritance:
    :undoc-members:
