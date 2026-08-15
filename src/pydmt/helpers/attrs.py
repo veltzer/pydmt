@@ -2,7 +2,7 @@
 attrs.py
 """
 
-from pydmt.utils.lua import load_config, config_exists
+from pydmt.utils.lua import config_exists, load_config
 
 
 def _get(config_name: str, attr: str):

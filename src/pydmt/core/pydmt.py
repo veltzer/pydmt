@@ -3,15 +3,14 @@ pydmt.py
 """
 
 import logging
-
 import os
 
 from pydmt.api.builder import Builder
-from pydmt.core.cache import Cache
-from pydmt.utils.filesystem import copy_mkdir
-from pydmt.utils.digest import sha1_file
 from pydmt.configs import ConfigFlow
+from pydmt.core.cache import Cache
 from pydmt.static import LOGGER_NAME
+from pydmt.utils.digest import sha1_file
+from pydmt.utils.filesystem import copy_mkdir
 
 
 class BuildProcessStats:

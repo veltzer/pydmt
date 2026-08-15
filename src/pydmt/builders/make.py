@@ -4,10 +4,10 @@ This module runs make
 
 
 import os
-from pydmt.utils.filesystem import mkdir_touch
-from pydmt.utils.subprocess import check_call_ve
 
 from pydmt.api.one_source_one_target import OneSourceOneTarget
+from pydmt.utils.filesystem import mkdir_touch
+from pydmt.utils.subprocess import check_call_ve
 
 
 class BuilderMake(OneSourceOneTarget):

@@ -6,12 +6,11 @@ This module builds python virtual envrionments
 import os
 import shutil
 
-from pydmt.utils.filesystem import mkdir_touch
-from pydmt.utils.subprocess import check_call, check_call_ve
-from pydmt.utils.python import collect_reqs, collect_bootstrap_reqs, get_install_args
-
 from pydmt.api.one_source_one_target import OneSourceOneTarget
 from pydmt.configs import ConfigVenv
+from pydmt.utils.filesystem import mkdir_touch
+from pydmt.utils.python import collect_bootstrap_reqs, collect_reqs, get_install_args
+from pydmt.utils.subprocess import check_call, check_call_ve
 
 SOURCE_FILE = "config/python.py"
 TARGET_FOLDER = ".venv/default"

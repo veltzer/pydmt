@@ -2,9 +2,9 @@
 cache.py
 """
 
+import glob
 import os
 import pickle
-import glob
 from collections.abc import Iterable
 
 from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file

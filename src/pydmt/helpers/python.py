@@ -2,9 +2,9 @@
 python.py
 """
 
+import glob
 import os
 import os.path
-import glob
 import pprint
 from collections.abc import Callable
 
@@ -21,7 +21,7 @@ def make_console_script(package_name: str, main: Callable):
     :param main:
     :return:
     """
-    module = getattr(main, "__module__")
+    module = main.__module__
     return f"{package_name}={module}:{main.__name__, }"
 
 
@@ -95,7 +95,7 @@ def get_list_quoted(a_list: list[str]) -> str:
     that is why the left bracket ([) does not have space following it and the
     same for the right bracker (]).
     """
-    quoted = map(lambda x: f"\"{x}\"", a_list)
+    quoted = (f"\"{x}\"" for x in a_list)
     s = "["
     s += ", ".join(quoted)
     s += "]"
@@ -105,7 +105,7 @@ def get_list_quoted(a_list: list[str]) -> str:
 def get_package_name():
     mod = load_config("python")
     if hasattr(mod, "package_name"):
-        return getattr(mod, "package_name")
+        return mod.package_name
     return os.path.basename(os.getcwd())
 
 
