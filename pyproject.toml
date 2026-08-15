@@ -46,6 +46,7 @@ dependencies = [
     "jsonschema",
     "venv-run",
     "gitpython",
+    "lupa",
 ]
 
 [project.urls]

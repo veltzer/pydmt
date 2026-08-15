@@ -1,7 +1,7 @@
-""" project definitions """
-name = "pydmt"
-description_short = "Python dependency management tool"
-keywords = [
+-- project definitions
+NAME = "pydmt"
+DESCRIPTION_SHORT = "Python dependency management tool"
+KEYWORDS = {
     "pydmt",
     "cons",
     "scons",
@@ -10,4 +10,4 @@ keywords = [
     "cmake",
     "maven",
     "mvn",
-]
+}
