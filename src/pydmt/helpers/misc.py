@@ -2,10 +2,9 @@
 misc.py
 """
 
-import importlib
+from pydmt.utils.lua import load_config
 
 
 def get_version_str():
-    mod = importlib.import_module("config.version")
-    tup = getattr(mod, "tup")
+    tup = getattr(load_config("version"), "tup")
     return ".".join(str(x) for x in tup)

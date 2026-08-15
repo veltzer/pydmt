@@ -4,10 +4,11 @@ python.py
 
 import os
 import os.path
-import importlib
 import glob
 import pprint
 from collections.abc import Callable
+
+from pydmt.utils.lua import load_config
 
 
 def make_console_script(package_name: str, main: Callable):
@@ -102,14 +103,14 @@ def get_list_quoted(a_list: list[str]) -> str:
 
 
 def get_package_name():
-    mod = importlib.import_module("config.python")
+    mod = load_config("python")
     if hasattr(mod, "package_name"):
         return getattr(mod, "package_name")
     return os.path.basename(os.getcwd())
 
 
 def get_attr(attr: str):
-    mod = importlib.import_module("config.python")
+    mod = load_config("python")
     if hasattr(mod, attr):
         return getattr(mod, attr)
     # TODO: need a better exception type (make my own)

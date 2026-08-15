@@ -5,7 +5,8 @@ python.y
 import os
 import glob
 import pprint
-import importlib
+
+from pydmt.utils.lua import load_config
 
 
 def hlp_source_under(folder):
@@ -67,23 +68,23 @@ def make_hlp_wrap(level):
 def collect_reqs(add_dev=False) -> list[str]:
     try:
         reqs = []
-        mod = importlib.import_module("config.python")
+        mod = load_config("python")
         if hasattr(mod, "requires"):
             reqs += getattr(mod, "requires")
         if add_dev and hasattr(mod, "dev_requires"):
             reqs += getattr(mod, "dev_requires")
         return reqs
-    except ModuleNotFoundError:
+    except FileNotFoundError:
         return []
 
 
 def collect_bootstrap_reqs() -> list[str]:
     try:
-        mod = importlib.import_module("config.bootstrap")
+        mod = load_config("bootstrap")
         if hasattr(mod, "requires"):
             return getattr(mod, "requires")
         return []
-    except ModuleNotFoundError:
+    except FileNotFoundError:
         return []
 
 

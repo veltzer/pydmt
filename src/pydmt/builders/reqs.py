@@ -33,10 +33,10 @@ class BuilderReqs(OneSourceOneTarget):
         If we check if there is a "requirements.txt" file with frozen requirements
         and install it if there is.
 
-        If we do not have a frozen requirements we install from config/{python|bootstrap}.py
+        If we do not have a frozen requirements we install from config/{python|bootstrap}.lua
         Why do we do this in two stages? Whats wrong with doing this in one stage?
-        Because importing python.py may fail because of prereqs that python.py
-        needs. In this case the user specifies these prereqs in bootstrap.py
+        Because loading python.lua may fail because of prereqs that python.lua
+        needs. In this case the user specifies these prereqs in bootstrap.lua
         """
         if os.path.isfile(REQUIREMENTS):
             args = get_install_args()

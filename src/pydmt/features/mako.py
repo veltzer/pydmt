@@ -36,7 +36,7 @@ class FeatureMako(Feature):
                         source=source,
                         target=target,
                         data=self.data,
-                        config_files=files_under_folder(self.config_folder, suffix=".py"),
+                        config_files=files_under_folder(self.config_folder, suffix=".lua"),
                         snippet_files=files_under_folder(self.snippet_folder, suffix=".mako"),
                     )
                     pydmt.add_builder(builder)

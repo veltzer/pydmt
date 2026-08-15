@@ -2,11 +2,13 @@
 github.py
 """
 
-import importlib
+from pydmt.utils.lua import load_config, config_exists
 
 
 def get_workflows_platforms():
-    mod = importlib.import_module("config.github")
+    if not config_exists("github"):
+        return None
+    mod = load_config("github")
     if hasattr(mod, "workflows_platforms"):
         return getattr(mod, "workflows_platforms")
     return None
