@@ -28,4 +28,6 @@ pip = [
     "pyyaml",
     "sphinx",
     "venv-run",
+    "types-jsonschema",
+    "types-PyYAML",
 ]
