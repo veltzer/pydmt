@@ -13,8 +13,8 @@ import shutil
 from collections.abc import Generator
 
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
-from pydmt.utils.filesystem import files_under_folder, copy_mkdir, remove_files_by_suffix
 from pydmt.utils.digest import sha1_file
+from pydmt.utils.filesystem import copy_mkdir, files_under_folder, remove_files_by_suffix
 from pydmt.utils.subprocess import check_call
 
 

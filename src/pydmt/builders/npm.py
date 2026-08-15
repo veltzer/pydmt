@@ -3,10 +3,9 @@ This module installs npm packages
 """
 
 
-from pydmt.utils.filesystem import unlink_files, mkdir_touch
-from pydmt.utils.subprocess import check_call
-
 from pydmt.api.one_source_one_target import OneSourceOneTarget
+from pydmt.utils.filesystem import mkdir_touch, unlink_files
+from pydmt.utils.subprocess import check_call
 
 
 class Installer(OneSourceOneTarget):

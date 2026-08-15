@@ -2,15 +2,13 @@
 test_all.py
 """
 
+import os
+import shutil
 import unittest
 
-import shutil
-
-import os
-
-from pydmt.api.fail import Fail
-from pydmt.core.pydmt import PyDMT, BuildProcessStats
 from pydmt.api.copy import Copy
+from pydmt.api.fail import Fail
+from pydmt.core.pydmt import BuildProcessStats, PyDMT
 from pydmt.core.tempdir import tempdir
 
 

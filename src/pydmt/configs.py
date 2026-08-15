@@ -3,6 +3,7 @@ configurations for this project
 """
 
 import logging
+
 from pytconf import Config, ParamCreator
 
 
@@ -82,7 +83,7 @@ class ConfigLogging(Config):
             logging.getLevelName(logging.DEBUG),
             logging.getLevelName(logging.INFO),
             logging.getLevelName(logging.WARNING),
-            logging.getLevelName(logging.WARN),
+            logging.getLevelName(logging.WARNING),
             logging.getLevelName(logging.ERROR),
             logging.getLevelName(logging.FATAL),
             logging.getLevelName(logging.CRITICAL),

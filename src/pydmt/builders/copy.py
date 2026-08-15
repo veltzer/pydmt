@@ -5,8 +5,8 @@ copy.py
 from collections.abc import Generator
 
 from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
-from pydmt.utils.filesystem import copy_mkdir
 from pydmt.utils.digest import sha1_file
+from pydmt.utils.filesystem import copy_mkdir
 
 
 class BuilderCopy(Builder):

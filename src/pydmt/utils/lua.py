@@ -21,7 +21,6 @@ from typing import Any
 # by name. Going through the package attribute works for any bundled version.
 import lupa
 
-
 CONFIG_FOLDER = "config"
 
 
@@ -79,7 +78,7 @@ def load_config(name: str) -> LuaConfig:
         runtime.execute(stream.read())
     globals_table = runtime.globals()
     values = {}
-    for key in globals_table.keys():
+    for key in globals_table:
         # skip the lua standard library, we only want what the file declared
         if key in _LUA_BUILTINS:
             continue

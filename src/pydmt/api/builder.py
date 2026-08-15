@@ -5,7 +5,6 @@ builder.py
 import abc
 import os
 import shutil
-
 from collections.abc import Generator, Sequence
 
 from pydmt.utils.digester import Digester

@@ -3,7 +3,8 @@ one_source_one_target.py
 """
 
 from collections.abc import Generator, Sequence
-from pydmt.api.builder import Builder, SourceFile, TargetFile, Node
+
+from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
 from pydmt.utils.digest import sha1_file
 
 

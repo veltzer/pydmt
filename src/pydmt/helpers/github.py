@@ -2,7 +2,7 @@
 github.py
 """
 
-from pydmt.utils.lua import load_config, config_exists
+from pydmt.utils.lua import config_exists, load_config
 
 
 def get_workflows_platforms():
@@ -10,5 +10,5 @@ def get_workflows_platforms():
         return None
     mod = load_config("github")
     if hasattr(mod, "workflows_platforms"):
-        return getattr(mod, "workflows_platforms")
+        return mod.workflows_platforms
     return None

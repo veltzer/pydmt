@@ -3,11 +3,12 @@ Install requirements
 """
 
 import os.path
+
 from pydmt.api.one_source_one_target import OneSourceOneTarget
-from pydmt.utils.subprocess import check_call
-from pydmt.utils.filesystem import mkdir_touch
-from pydmt.utils.python import collect_reqs, collect_bootstrap_reqs, get_install_args
 from pydmt.configs import ConfigReqs
+from pydmt.utils.filesystem import mkdir_touch
+from pydmt.utils.python import collect_bootstrap_reqs, collect_reqs, get_install_args
+from pydmt.utils.subprocess import check_call
 
 REQUIREMENTS = "requirements.txt"
 

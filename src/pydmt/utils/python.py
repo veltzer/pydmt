@@ -2,8 +2,8 @@
 python.y
 """
 
-import os
 import glob
+import os
 import pprint
 
 from pydmt.utils.lua import load_config
@@ -70,9 +70,9 @@ def collect_reqs(add_dev=False) -> list[str]:
         reqs = []
         mod = load_config("python")
         if hasattr(mod, "requires"):
-            reqs += getattr(mod, "requires")
+            reqs += mod.requires
         if add_dev and hasattr(mod, "dev_requires"):
-            reqs += getattr(mod, "dev_requires")
+            reqs += mod.dev_requires
         return reqs
     except FileNotFoundError:
         return []
@@ -82,7 +82,7 @@ def collect_bootstrap_reqs() -> list[str]:
     try:
         mod = load_config("bootstrap")
         if hasattr(mod, "requires"):
-            return getattr(mod, "requires")
+            return mod.requires
         return []
     except FileNotFoundError:
         return []

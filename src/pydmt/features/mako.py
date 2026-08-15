@@ -3,9 +3,10 @@ mako.py
 """
 
 import os
+
 from pydmt.api.feature import Feature
-from pydmt.builders.mako import BuilderMako
 from pydmt.builders.copy import BuilderCopy
+from pydmt.builders.mako import BuilderMako
 from pydmt.core.pydmt import PyDMT
 from pydmt.utils.filesystem import files_under_folder
 

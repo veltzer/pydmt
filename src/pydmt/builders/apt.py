@@ -5,11 +5,10 @@ This is a module that will install OS packages for you.
 
 import os
 
-from pydmt.utils.filesystem import unlink_files, mkdir_touch
-from pydmt.configs import ConfigSudo, ConfigApt
-from pydmt.utils.subprocess import check_call
-
 from pydmt.api.one_source_one_target import OneSourceOneTarget
+from pydmt.configs import ConfigApt, ConfigSudo
+from pydmt.utils.filesystem import mkdir_touch, unlink_files
+from pydmt.utils.subprocess import check_call
 
 
 class BuilderApt(OneSourceOneTarget):

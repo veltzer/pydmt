@@ -2,30 +2,28 @@
 main.py
 """
 
-import sys
+import logging
 import os
 import os.path
 import pathlib
-import logging
+import sys
 
 import pylogconf.core
-from pytconf import register_endpoint, register_main, config_arg_parse_and_launch
+from pytconf import config_arg_parse_and_launch, register_endpoint, register_main
 
-from pydmt.configs import ConfigSudo, ConfigFlow, ConfigOutput, ConfigLogging, ConfigVenv, \
-    ConfigImport, ConfigReqs
+from pydmt.configs import ConfigFlow, ConfigImport, ConfigLogging, ConfigOutput, ConfigReqs, ConfigSudo, ConfigVenv
 from pydmt.core.pydmt import PyDMT
-from pydmt.static import APP_NAME, VERSION_STR, DESCRIPTION, LOGGER_NAME
-from pydmt.utils.subprocess import check_call
-
-from pydmt.features.sphinx import FeatureSphinx
-from pydmt.features.mako import FeatureMako
-from pydmt.features.yaml import FeatureYaml
 from pydmt.features.apt import FeatureApt
-from pydmt.features.npm import FeatureNpm
-from pydmt.features.venv import FeatureVenv
-from pydmt.features.reqs import FeatureReqs
-from pydmt.features.make import FeatureMake
 from pydmt.features.gem import FeatureGem
+from pydmt.features.make import FeatureMake
+from pydmt.features.mako import FeatureMako
+from pydmt.features.npm import FeatureNpm
+from pydmt.features.reqs import FeatureReqs
+from pydmt.features.sphinx import FeatureSphinx
+from pydmt.features.venv import FeatureVenv
+from pydmt.features.yaml import FeatureYaml
+from pydmt.static import APP_NAME, DESCRIPTION, LOGGER_NAME, VERSION_STR
+from pydmt.utils.subprocess import check_call
 
 
 def check_config_and_load():
@@ -71,9 +69,8 @@ def add_to_path():
         folder = os.path.join(str(pathlib.Path.home()), ".config/pydmt")
         if folder not in sys.path:
             sys.path.insert(0, folder)
-    if ConfigImport.import_cwd:
-        if "" not in sys.path:
-            sys.path.insert(0, "")
+    if ConfigImport.import_cwd and "" not in sys.path:
+        sys.path.insert(0, "")
 
 
 @register_endpoint(

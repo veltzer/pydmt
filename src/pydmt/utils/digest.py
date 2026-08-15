@@ -6,7 +6,6 @@ import hashlib
 
 from pydmt.utils.filesystem import files_under_folders
 
-
 BLOCK_SIZE = 65536
 
 
