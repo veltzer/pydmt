@@ -14,7 +14,7 @@ version: {{ version_str(path="config/version.lua") }}
 
 ## github
 
-![License](https://img.shields.io/github/license/veltzer/{{ project.NAME }})
+![License](https://img.shields.io/github/license/{{ personal.GITHUB_USERNAME }}/{{ project.NAME }})
 
 ## build
 
@@ -36,6 +36,7 @@ version: {{ version_str(path="config/version.lua") }}
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/{{ project.NAME }})
 
 ## contact me
+
 [mailto](mailto:{{ personal.EMAIL }})
 ![gitter](https://img.shields.io/gitter/room/veltzer/mark.veltzer)
 ![discord](https://img.shields.io/discord/719336281624281119)
