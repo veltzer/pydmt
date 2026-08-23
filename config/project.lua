@@ -11,3 +11,4 @@ KEYWORDS = {
     "maven",
     "mvn",
 }
+PYPI = true
