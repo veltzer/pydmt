@@ -1,6 +1,6 @@
 -- platform definition
 
-PYTHON_REQUIRES = ">=3.12"
+PYTHON_REQUIRES = ">=3.14"
 
 LICENSE_TYPE = "MIT"
 
@@ -18,7 +18,7 @@ CLASSIFIERS = {
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Utilities",
     "License :: OSI Approved :: MIT License",
 }
