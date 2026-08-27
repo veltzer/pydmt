@@ -1,5 +1,0 @@
-{% set python = load_lua(path="config/python.lua") -%}
-# THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
-{% for a in python.REQUIRES | sort -%}
-{{ a }}
-{% endfor -%}
