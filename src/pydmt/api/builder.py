@@ -78,7 +78,7 @@ class Builder(abc.ABC):
         """
 
     @abc.abstractmethod
-    def yield_results(self) -> Generator[tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str]]:
         """
         Return the signatures and names of results
         :return:

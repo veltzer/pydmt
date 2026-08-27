@@ -29,5 +29,5 @@ class BuilderCopy(Builder):
     def build(self):
         copy_mkdir(self.source, self.target)
 
-    def yield_results(self) -> Generator[tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str]]:
         yield sha1_file(self.target), self.target
