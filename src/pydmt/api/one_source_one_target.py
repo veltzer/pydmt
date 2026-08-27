@@ -26,5 +26,5 @@ class OneSourceOneTarget(Builder):
     def get_targets(self) -> Sequence[Node]:
         return self.targets
 
-    def yield_results(self) -> Generator[tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str]]:
         yield sha1_file(self.target), self.target

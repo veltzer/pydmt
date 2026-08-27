@@ -22,9 +22,6 @@ dep_auto = [
 	"config/shared.lua",
 ]
 src_dirs = ["tera.templates"]
-dep_inputs = [
-	"config/platform.lua",
-]
 
 [processor.ruff]
 src_dirs = ["src", "config", "tests"]
@@ -45,3 +42,7 @@ src_dirs = ["config"]
 
 [processor.taplo]
 src_dirs = ["."]
+
+# lint the GitHub Actions workflow files with actionlint
+[processor.actionlint]
+src_dirs = [".github/workflows"]

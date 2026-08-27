@@ -99,7 +99,7 @@ class BuilderSphinx(Builder):
             basename = os.path.basename(filename)
             copy_mkdir(filename, os.path.join(self.target_folder, basename))
 
-    def yield_results(self) -> Generator[tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str]]:
         return_list = self._get_source_folder_targets()
         return_list.extend(files_under_folder(self.target_folder))
         for x in return_list:

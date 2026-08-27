@@ -64,7 +64,7 @@ class BuilderMako(Builder):
         with open(self.target, "w") as file_handle:
             file_handle.write(output)
 
-    def yield_results(self) -> Generator[tuple[str, str], None, None]:
+    def yield_results(self) -> Generator[tuple[str, str]]:
         yield sha1_file(self.target), self.target
 
 
