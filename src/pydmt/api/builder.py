@@ -93,7 +93,7 @@ class Builder(abc.ABC):
         d = Digester()
         for source in self.get_sources():
             source.add_to_digester(d)
-        return d.get_hexdigest()
+        return str(d.get_hexdigest())
 
     def get_targets_as_string(self) -> str:
         return ",".join([x.get_name() for x in self.get_targets()])
