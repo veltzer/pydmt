@@ -82,7 +82,7 @@ def collect_bootstrap_reqs() -> list[str]:
     try:
         mod = load_config("bootstrap")
         if hasattr(mod, "requires"):
-            return mod.requires
+            return list(mod.requires)
         return []
     except FileNotFoundError:
         return []
