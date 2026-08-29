@@ -111,6 +111,10 @@ prerelease = "disallow"
 
 [dependency-groups]
 dev = [
+    "mypy",
+    "pylint",
+    "pytest",
+    "ruff",
     "types-jsonschema",
     "types-PyYAML",
 ]
