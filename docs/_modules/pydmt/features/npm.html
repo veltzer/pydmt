@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
     <script src="../../../_static/documentation_options.js?v=0ee09832"></script>
-    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
    
@@ -31,9 +31,9 @@
           <div class="body" role="main">
             
   <h1>Source code for pydmt.features.npm</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">npm.py</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
 
@@ -48,11 +48,11 @@
 <div class="viewcode-block" id="FeatureNpm.setup">
 <a class="viewcode-back" href="../../../pydmt.features.html#pydmt.features.npm.FeatureNpm.setup">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pydmt</span><span class="p">:</span> <span class="n">PyDMT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;package.json&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">"package.json"</span><span class="p">):</span>
             <span class="k">return</span>
         <span class="n">pydmt</span><span class="o">.</span><span class="n">add_builder</span><span class="p">(</span><span class="n">Installer</span><span class="p">(</span>
-            <span class="n">source</span><span class="o">=</span><span class="s2">&quot;package.json&quot;</span><span class="p">,</span>
-            <span class="n">target</span><span class="o">=</span><span class="s2">&quot;out/npm.stamp&quot;</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="s2">"package.json"</span><span class="p">,</span>
+            <span class="n">target</span><span class="o">=</span><span class="s2">"out/npm.stamp"</span><span class="p">,</span>
         <span class="p">))</span></div>
 </div>
 
@@ -110,7 +110,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &#169;2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Mark Veltzer.
+      &#169;2026 Mark Veltzer.
       
     </div>
 
