@@ -27,7 +27,7 @@ class BuilderSphinx(Builder):
     - "sphinx-quickstart" is not needed unless you are starting a new project.
     """
     def get_sources(self) -> list[Node]:
-        file_list = [
+        file_list: list[Node] = [
             SourceFile(os.path.join(self.source_folder, "index.rst")),
             SourceFile(os.path.join(self.source_folder, "conf.py")),
             SourceFolder(os.path.join(self.source_folder, "static")),
