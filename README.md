@@ -5,7 +5,7 @@
 
 description: Python dependency management tool
 
-project website: https://veltzer.github.io/pydmt
+project website: <https://veltzer.github.io/pydmt>
 
 author: Mark Veltzer
 
