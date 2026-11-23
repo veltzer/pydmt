@@ -19,7 +19,7 @@ def get_project_year_started(repo=".") -> int:
 def get_copyright_years_long(repo="."):
     project_year_started = get_project_year_started(repo=repo)
     general_current_year = datetime.datetime.now().astimezone().year
-    return ", ".join(map(str, range(int(project_year_started), general_current_year + 1)))
+    return ", ".join(map(str, range(project_year_started, general_current_year + 1)))
 
 
 def get_copyright_years_short(repo="."):

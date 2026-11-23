@@ -73,7 +73,7 @@ def load_config(name: str) -> LuaConfig:
     path = config_path(name)
     if not os.path.isfile(path):
         raise FileNotFoundError(path)
-    runtime = lupa.LuaRuntime()
+    runtime = lupa.LuaRuntime(unpack_returned_tuples=False)
     with open(path, encoding="utf-8") as stream:
         runtime.execute(stream.read())
     globals_table = runtime.globals()

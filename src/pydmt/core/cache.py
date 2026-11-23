@@ -22,7 +22,7 @@ class Cache:
         logger = get_logger()
         logger.debug(self.name_cache)
 
-    def get_list_filename(self, signature: str):
+    def get_list_filename(self, signature: str) -> str | None:
         logger = get_logger()
         logger.debug(f"get_list_filename [{signature}]")
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
@@ -32,7 +32,7 @@ class Cache:
         logger.debug("return None")
         return None
 
-    def get_object_filename(self, signature: str):
+    def get_object_filename(self, signature: str) -> str | None:
         logger = get_logger()
         logger.debug(f"get_object_filename [{signature}]")
         full_path = os.path.join(FOLDER_NAME, NAME_OBJECTS, signature[:2], signature[2:])

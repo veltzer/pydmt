@@ -72,8 +72,12 @@ class PyDMT:
             file_missing = 0
             file_total = 0
             list_filename = self.cache.get_list_filename(target_signature)
+            if list_filename is None:
+                raise RuntimeError(f"cache list for [{builder.get_name()}] disappeared")
             for object_name, signature in Cache.iterate_objects(list_filename):
                 filename = self.cache.get_object_filename(signature)
+                if filename is None:
+                    raise RuntimeError(f"cache object [{signature}] disappeared")
                 if os.path.isfile(object_name):
                     object_name_signature = sha1_file(object_name)
                     if object_name_signature != signature:

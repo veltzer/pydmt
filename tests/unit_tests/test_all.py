@@ -20,14 +20,14 @@ class TestAll(unittest.TestCase):
         # pylogconf.core.setup()
         pass
 
-    def test00CreatePyDMT(self):
+    def test00_create_pydmt(self):
         PyDMT()
 
-    def test01NullBuild(self):
+    def test01_null_build(self):
         p = PyDMT()
         p.build_all()
 
-    def test02ReturnType(self):
+    def test02_return_type(self):
         p = PyDMT()
         stats = p.build_all()
         self.assertIsInstance(stats, BuildProcessStats, "must be BuildProcessStats")
@@ -40,20 +40,20 @@ class TestAll(unittest.TestCase):
         p.add_builder(b)
         return p.build_all()
 
-    def test03SimpleCopy(self):
+    def test03_simple_copy(self):
         with tempdir():
             stats = self.get_std_test()
             self.assertEqual(stats.get_builder_ok(), 1)
             self.assertEqual(stats.get_copy_missing(), 0)
 
-    def test04Incremental(self):
+    def test04_incremental(self):
         with tempdir():
             stats = self.get_std_test()
             self.assertEqual(stats.get_builder_ok(), 1)
             self.assertEqual(stats.get_copy_missing(), 0)
             self.assertEqual(stats.get_nop(), 0)
 
-    def test05CopyAfterRemove(self):
+    def test05_copy_after_remove(self):
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()
@@ -67,7 +67,7 @@ class TestAll(unittest.TestCase):
             self.assertEqual(stats.get_nop(), 0)
             self.assertEqual(stats.get_copy_missing(), 1)
 
-    def test06Fail(self):
+    def test06_fail(self):
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()

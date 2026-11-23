@@ -36,8 +36,9 @@ class BuilderSphinx(Builder):
         if os.path.isdir("src"):
             # we add only py files because python source folder may have .pyc
             # and other junk floating around...
-            for fname in files_under_folder(self.package_name, suffix=".py"):
-                file_list.append(SourceFile(fname))
+            file_list.extend(
+                SourceFile(fname) for fname in files_under_folder(self.package_name, suffix=".py")
+            )
         if os.path.isdir("config"):
             file_list.append(SourceFolder("config"))
         return file_list

@@ -57,10 +57,7 @@ class BuilderMako(Builder):
             lookup=lookup,
         )
         makedirs_for_file(self.target)
-        if self.data is None:
-            output = template.render()
-        else:
-            output = template.render(**self.data)
+        output = template.render() if self.data is None else template.render(**self.data)
         with open(self.target, "w") as file_handle:
             file_handle.write(output)
 
