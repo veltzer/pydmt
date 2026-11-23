@@ -2,7 +2,7 @@
 signature.py
 """
 
-import datetime
+import datetime as dt
 import time
 
 import git
@@ -18,13 +18,13 @@ def get_project_year_started(repo=".") -> int:
 
 def get_copyright_years_long(repo="."):
     project_year_started = get_project_year_started(repo=repo)
-    general_current_year = datetime.datetime.now().astimezone().year
+    general_current_year = dt.datetime.now().astimezone().year
     return ", ".join(map(str, range(project_year_started, general_current_year + 1)))
 
 
 def get_copyright_years_short(repo="."):
     project_year_started = get_project_year_started(repo=repo)
-    general_current_year = datetime.datetime.now().astimezone().year
+    general_current_year = dt.datetime.now().astimezone().year
     if general_current_year == project_year_started:
         return general_current_year
     return f"{project_year_started} - {general_current_year}"

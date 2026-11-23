@@ -30,7 +30,7 @@ class TestAll(unittest.TestCase):
     def test02_return_type(self):
         p = PyDMT()
         stats = p.build_all()
-        self.assertIsInstance(stats, BuildProcessStats, "must be BuildProcessStats")
+        assert isinstance(stats, BuildProcessStats), "must be BuildProcessStats"
 
     @staticmethod
     def get_std_test():
@@ -43,15 +43,15 @@ class TestAll(unittest.TestCase):
     def test03_simple_copy(self):
         with tempdir():
             stats = self.get_std_test()
-            self.assertEqual(stats.get_builder_ok(), 1)
-            self.assertEqual(stats.get_copy_missing(), 0)
+            assert stats.get_builder_ok() == 1
+            assert stats.get_copy_missing() == 0
 
     def test04_incremental(self):
         with tempdir():
             stats = self.get_std_test()
-            self.assertEqual(stats.get_builder_ok(), 1)
-            self.assertEqual(stats.get_copy_missing(), 0)
-            self.assertEqual(stats.get_nop(), 0)
+            assert stats.get_builder_ok() == 1
+            assert stats.get_copy_missing() == 0
+            assert stats.get_nop() == 0
 
     def test05_copy_after_remove(self):
         with tempdir():
@@ -62,10 +62,10 @@ class TestAll(unittest.TestCase):
             p.build_all()
             os.unlink("copy_of_passwd")
             stats = p.build_all()
-            self.assertEqual(stats.get_builder_ok(), 0)
-            self.assertEqual(stats.get_builder_fail(), 0)
-            self.assertEqual(stats.get_nop(), 0)
-            self.assertEqual(stats.get_copy_missing(), 1)
+            assert stats.get_builder_ok() == 0
+            assert stats.get_builder_fail() == 0
+            assert stats.get_nop() == 0
+            assert stats.get_copy_missing() == 1
 
     def test06_fail(self):
         with tempdir():
@@ -74,7 +74,7 @@ class TestAll(unittest.TestCase):
             b = Fail("passwd", "copy_of_passwd")
             p.add_builder(b)
             stats = p.build_all()
-            self.assertEqual(stats.get_builder_ok(), 0)
-            self.assertEqual(stats.get_builder_fail(), 1)
-            self.assertEqual(stats.get_copy_missing(), 0)
-            self.assertEqual(stats.get_nop(), 0)
+            assert stats.get_builder_ok() == 0
+            assert stats.get_builder_fail() == 1
+            assert stats.get_copy_missing() == 0
+            assert stats.get_nop() == 0

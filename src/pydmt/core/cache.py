@@ -24,20 +24,20 @@ class Cache:
 
     def get_list_filename(self, signature: str) -> str | None:
         logger = get_logger()
-        logger.debug(f"get_list_filename [{signature}]")
+        logger.debug("get_list_filename [%s]", signature)
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
         if full_path in self.name_cache:
-            logger.debug(f"return [{full_path}]")
+            logger.debug("return [%s]", full_path)
             return full_path
         logger.debug("return None")
         return None
 
     def get_object_filename(self, signature: str) -> str | None:
         logger = get_logger()
-        logger.debug(f"get_object_filename [{signature}]")
+        logger.debug("get_object_filename [%s]", signature)
         full_path = os.path.join(FOLDER_NAME, NAME_OBJECTS, signature[:2], signature[2:])
         if full_path in self.name_cache:
-            logger.debug(f"return [{full_path}]")
+            logger.debug("return [%s]", full_path)
             return full_path
         logger.debug("return None")
         return None
@@ -49,14 +49,14 @@ class Cache:
         :return:
         """
         logger = get_logger()
-        logger.debug(f"list_sig_ok [{signature}]")
+        logger.debug("list_sig_ok [%s]", signature)
         list_filename = self.get_list_filename(signature)
         if list_filename is None:
             logger.debug("return False")
             return False
         for _filename, sig in Cache.iterate_objects(list_filename):
             if self.get_object_filename(sig) is None:
-                logger.debug(f"return False for {sig}")
+                logger.debug("return False for %s", sig)
                 return False
         logger.debug("return True")
         return True

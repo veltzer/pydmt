@@ -21,7 +21,6 @@ FOLDER_SNIPPETS = "snippets"
 
 
 class BuilderMako(Builder):
-    # pylint: disable=too-many-positional-arguments
     def __init__(self,
                  source: str,
                  target: str,
