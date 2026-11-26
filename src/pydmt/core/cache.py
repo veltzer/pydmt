@@ -5,10 +5,13 @@ cache.py
 import glob
 import os
 import pickle
-from collections.abc import Iterable
+from typing import TYPE_CHECKING
 
 from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file
 from pydmt.utils.logging import get_logger
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 NAME_OBJECTS = "objects"
 NAME_LISTS = "lists"

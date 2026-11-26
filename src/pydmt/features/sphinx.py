@@ -3,10 +3,13 @@ sphinx.py
 """
 
 import os
+from typing import TYPE_CHECKING
 
 from pydmt.api.feature import Feature
 from pydmt.builders.sphinx import BuilderSphinx
-from pydmt.core.pydmt import PyDMT
+
+if TYPE_CHECKING:
+    from pydmt.core.pydmt import PyDMT
 
 SPHINX_FOLDER = "sphinx"
 

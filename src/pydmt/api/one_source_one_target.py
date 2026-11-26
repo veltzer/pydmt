@@ -2,10 +2,14 @@
 one_source_one_target.py
 """
 
-from collections.abc import Generator, Sequence
+
+from typing import TYPE_CHECKING
 
 from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
 from pydmt.utils.digest import sha1_file
+
+if TYPE_CHECKING:
+    from collections.abc import Generator, Sequence
 
 
 class OneSourceOneTarget(Builder):

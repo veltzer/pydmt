@@ -29,3 +29,5 @@ Findings from a code scan on 2026-10-04.
 - `src/pydmt/core/pydmt.py:103` - `# pylint: disable=broad-except` (also `builders/mako.py:24`) are leftovers: pylint is not run by the build; remove them.
 - `tests/unit_tests/test_all.py:49` - `test04Incremental` is a copy of `test03SimpleCopy` and never runs a second build, so incremental rebuild (cache hit / `nop`) is untested; build twice and assert `get_nop() == 1`.
 - `pyproject.toml:101` - the mypy override lists the project's own package `pydmt.*` under `ignore_missing_imports`; remove that entry.
+- `src/pydmt/builders/make.py` - the GitHub workflow branch assumes no previous `MAKEFLAGS` variable; merge with an existing one. (was a TODO comment in the code)
+- `src/pydmt/helpers/python.py` - `get_attr` needs an exception type of its own. (was a TODO comment in the code)

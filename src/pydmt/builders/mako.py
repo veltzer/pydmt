@@ -5,7 +5,7 @@ mako.py
 import os
 import os.path
 import sys
-from collections.abc import Generator
+from typing import TYPE_CHECKING
 
 import mako
 import mako.exceptions
@@ -15,6 +15,9 @@ import mako.template
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFile
 from pydmt.utils.digest import sha1_file
 from pydmt.utils.filesystem import makedirs_for_file
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 FOLDER_CONFIG = "config"
 FOLDER_SNIPPETS = "snippets"

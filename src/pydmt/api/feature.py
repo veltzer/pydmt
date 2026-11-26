@@ -3,8 +3,10 @@ feature.py
 """
 
 import abc
+from typing import TYPE_CHECKING
 
-from pydmt.core.pydmt import PyDMT
+if TYPE_CHECKING:
+    from pydmt.core.pydmt import PyDMT
 
 
 class Feature(abc.ABC):

@@ -6,9 +6,12 @@ import glob
 import os
 import os.path
 import pprint
-from collections.abc import Callable
+from typing import TYPE_CHECKING
 
 from pydmt.utils.lua import load_config
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def make_console_script(package_name: str, main: Callable):
@@ -113,7 +116,7 @@ def get_attr(attr: str):
     mod = load_config("python")
     if hasattr(mod, attr):
         return getattr(mod, attr)
-    # TODO: need a better exception type (make my own)
+    # a plain exception for now (doc/TOFIX.md)
     raise ValueError(f"cannot find {attr}")
 
 

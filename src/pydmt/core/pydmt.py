@@ -4,13 +4,16 @@ pydmt.py
 
 import logging
 import os
+from typing import TYPE_CHECKING
 
-from pydmt.api.builder import Builder
 from pydmt.configs import ConfigFlow
 from pydmt.core.cache import Cache
 from pydmt.static import LOGGER_NAME
 from pydmt.utils.digest import sha1_file
 from pydmt.utils.filesystem import copy_mkdir
+
+if TYPE_CHECKING:
+    from pydmt.api.builder import Builder
 
 
 class BuildProcessStats:

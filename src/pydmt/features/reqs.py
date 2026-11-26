@@ -3,10 +3,13 @@ reqs.py
 """
 
 import os
+from typing import TYPE_CHECKING
 
 from pydmt.api.feature import Feature
 from pydmt.builders.reqs import BuilderReqs
-from pydmt.core.pydmt import PyDMT
+
+if TYPE_CHECKING:
+    from pydmt.core.pydmt import PyDMT
 
 SOURCE_FILE = "config/python.py"
 TARGET_FILE = "out/reqs.stamp"

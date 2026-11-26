@@ -16,7 +16,7 @@ class BuilderMake(OneSourceOneTarget):
             "make",
         ]
         if "GITHUB_WORKFLOW" in os.environ:
-            # TODO: Im assuming here that there is no previous MAKEFLAGS variable. Not good.
+            # this assumes there is no previous MAKEFLAGS variable (doc/TOFIX.md)
             # -j will cause endless parallel jobs to be run and that is why we add the number
             # of cores
             os.environ["MAKEFLAGS"] = f"-j{os.cpu_count()}"

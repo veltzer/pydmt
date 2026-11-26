@@ -10,12 +10,15 @@ to set the PYTHONPATH and get better integration with sphinx?
 
 import os
 import shutil
-from collections.abc import Generator
+from typing import TYPE_CHECKING
 
 from pydmt.api.builder import Builder, Node, SourceFile, SourceFolder, TargetFolder
 from pydmt.utils.digest import sha1_file
 from pydmt.utils.filesystem import copy_mkdir, files_under_folder, remove_files_by_suffix
 from pydmt.utils.subprocess import check_call
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 
 class BuilderSphinx(Builder):

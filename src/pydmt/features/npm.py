@@ -3,10 +3,13 @@ npm.py
 """
 
 import os.path
+from typing import TYPE_CHECKING
 
 from pydmt.api.feature import Feature
 from pydmt.builders.npm import Installer
-from pydmt.core.pydmt import PyDMT
+
+if TYPE_CHECKING:
+    from pydmt.core.pydmt import PyDMT
 
 
 class FeatureNpm(Feature):

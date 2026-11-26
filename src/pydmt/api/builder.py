@@ -5,9 +5,12 @@ builder.py
 import abc
 import os
 import shutil
-from collections.abc import Generator, Sequence
+from typing import TYPE_CHECKING
 
 from pydmt.utils.digester import Digester
+
+if TYPE_CHECKING:
+    from collections.abc import Generator, Sequence
 
 
 class Node(abc.ABC):

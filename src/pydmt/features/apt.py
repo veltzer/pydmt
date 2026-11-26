@@ -3,11 +3,14 @@ apt.py
 """
 
 import os
+from typing import TYPE_CHECKING
 
 from pydmt.api.feature import Feature
 from pydmt.builders.apt import BuilderApt
-from pydmt.core.pydmt import PyDMT
 from pydmt.helpers.attrs import get_packages, get_packages_remove
+
+if TYPE_CHECKING:
+    from pydmt.core.pydmt import PyDMT
 
 
 class FeatureApt(Feature):

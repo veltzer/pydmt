@@ -2,11 +2,15 @@
 copy.py
 """
 
-from collections.abc import Generator
+
+from typing import TYPE_CHECKING
 
 from pydmt.api.builder import Builder, Node, SourceFile, TargetFile
 from pydmt.utils.digest import sha1_file
 from pydmt.utils.filesystem import copy_mkdir
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 
 class BuilderCopy(Builder):
