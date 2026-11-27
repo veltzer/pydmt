@@ -67,7 +67,7 @@ def make_hlp_wrap(level):
 
 def collect_reqs(*, add_dev=False) -> list[str]:
     try:
-        reqs = []
+        reqs: list[str] = []
         mod = load_config("python")
         if hasattr(mod, "requires"):
             reqs += mod.requires
