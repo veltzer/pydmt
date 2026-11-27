@@ -16,8 +16,6 @@ class TestAll(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # import pylogconf.core
-        # pylogconf.core.setup()
         pass
 
     def test00_create_pydmt(self):

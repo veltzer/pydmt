@@ -21,7 +21,6 @@ FOLDER_NAME = ".pydmt"
 class Cache:
     def __init__(self):
         self.name_cache = set(glob.glob(os.path.join(FOLDER_NAME, "*", "*", "*")))
-        # self.name_cache = set(files_under_folder(FOLDER_NAME))
         logger = get_logger()
         logger.debug(self.name_cache)
 

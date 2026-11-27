@@ -52,7 +52,6 @@ class BuilderSphinx(Builder):
     def __init__(self,
                  source_folder: str = "sphinx",
                  target_folder: str = "docs"):
-        # super().__init__()
         self.package_name = os.path.basename(os.getcwd())
         self.source_folder = source_folder
         self.target_folder = target_folder
@@ -62,12 +61,10 @@ class BuilderSphinx(Builder):
             os.path.join(self.source_folder, "modules.rst"),
             os.path.join(self.source_folder, f"{self.package_name}.rst"),
             # We need to add the list of all output files of running sphinx-apidoc
-            # os.path.join(self.source_folder, "{}.endpoints.rst".format(self.package_name)),
         ]
 
     def build(self) -> None:
         # remove results
-        # unlink_files(self._get_source_folder_targets(), only_if_exist=True)
         shutil.rmtree(self.target_folder, ignore_errors=True)
         remove_files_by_suffix(self.source_folder, suffix=".rst", exceptions=["index.rst"])
         args = [
@@ -82,10 +79,7 @@ class BuilderSphinx(Builder):
             args.append(self.package_name + ".py")
         else:
             args.append(self.package_name)
-        # check_call_ve(args)
         check_call(args)
-        # os.environ["PYTHONPATH"] = "."
-        # check_call_ve([
         check_call([
             "sphinx-build",
             # dont use a saved environment, always read all files

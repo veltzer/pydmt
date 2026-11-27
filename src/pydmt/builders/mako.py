@@ -31,7 +31,6 @@ class BuilderMako(Builder):
                  config_files: list[str],
                  snippet_files: list[str],
                  ):
-        # super().__init__()
         self.source = source
         self.target = target
         self.data = data

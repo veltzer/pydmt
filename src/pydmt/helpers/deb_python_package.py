@@ -28,12 +28,9 @@ deb_series = [
     # "saucy", # 13.10 EOL
     # "raring", # 13.04 EOL
 ]
-# these are dependencies for runtime
-# deb_depends = f"${misc:Depends}, ${python3:Depends}, python3-mako"
 # these are dependencies for buildtime at launchpad ppa
 deb_builddepends = "python3, python3-setuptools, debhelper, dh-python"
 deb_standards_version = "3.9.8"
-# deb_standards_version="3.9.5"
 deb_x_python_version = ">= 3.4"
 deb_x_python3_version = ">= 3.4"
 deb_urgency = "low"

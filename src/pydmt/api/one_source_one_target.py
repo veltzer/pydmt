@@ -18,7 +18,6 @@ class OneSourceOneTarget(Builder):
     """
 
     def __init__(self, source: str, target: str):
-        # super().__init__()
         self.source = source
         self.target = target
         self.sources: Sequence[Node] = [SourceFile(filename=source)]

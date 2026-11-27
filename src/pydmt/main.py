@@ -211,7 +211,6 @@ def clean() -> None:
 
     add_all_features(p)
 
-    # shutil.rmtree(".pydmt")
     p.clean_all()
 
 
@@ -227,7 +226,6 @@ def clean_hard() -> None:
     logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(ConfigLogging.loglevel)
 
-    # shutil.rmtree(".pydmt")
     check_call(["git", "clean", "-qffxd"])
 
 

@@ -18,7 +18,6 @@ class BuilderCopy(Builder):
                  source: str,
                  target: str,
                  ):
-        # super().__init__()
         self.source = source
         self.sources: list[Node] = [SourceFile(self.source)]
         self.target = target
