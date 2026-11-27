@@ -3,7 +3,7 @@ php.py
 """
 
 
-def to_php(x):
+def to_php(x: object) -> str:
     if isinstance(x, str):
         return f"\'{x}\'"
     if isinstance(x, bool):

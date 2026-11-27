@@ -47,7 +47,7 @@ class Builder(abc.ABC):
         return f"{self.__class__.__name__}"
 
     @abc.abstractmethod
-    def __init__(self):
+    def __init__(self) -> None:
         """ initialize your builder here """
 
     @abc.abstractmethod
@@ -106,16 +106,16 @@ class File(Node):
     """
     This is a node which is a file
     """
-    def __init__(self, filename: str):
+    def __init__(self, filename: str) -> None:
         self.filename = filename
 
     def add_to_digester(self, d: Digester) -> None:
         d.add_file(self.filename)
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.filename
 
-    def remove(self):
+    def remove(self) -> None:
         os.unlink(self.filename)
 
 
@@ -131,17 +131,17 @@ class SourceFiles(Node):
     """
     This is a source of many files
     """
-    def __init__(self, filenames: list[str], name: str):
+    def __init__(self, filenames: list[str], name: str) -> None:
         self.filenames = filenames
         self.name = name
 
     def add_to_digester(self, d: Digester) -> None:
         d.add_files(self.filenames)
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
-    def remove(self):
+    def remove(self) -> None:
         for filename in self.filenames:
             os.unlink(filename)
 
@@ -150,16 +150,16 @@ class Folder(Node):
     """
     This is a node representing a single Folder
     """
-    def __init__(self, folder: str):
+    def __init__(self, folder: str) -> None:
         self.folder = folder
 
     def add_to_digester(self, d: Digester) -> None:
         d.add_folders(folders=[self.folder])
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.folder
 
-    def remove(self):
+    def remove(self) -> None:
         shutil.rmtree(self.folder)
 
 

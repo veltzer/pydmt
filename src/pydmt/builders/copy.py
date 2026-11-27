@@ -17,7 +17,7 @@ class BuilderCopy(Builder):
     def __init__(self,
                  source: str,
                  target: str,
-                 ):
+                 ) -> None:
         self.source = source
         self.sources: list[Node] = [SourceFile(self.source)]
         self.target = target
@@ -29,7 +29,7 @@ class BuilderCopy(Builder):
     def get_targets(self) -> list[Node]:
         return self.targets
 
-    def build(self):
+    def build(self) -> None:
         copy_mkdir(self.source, self.target)
 
     def yield_results(self) -> Generator[tuple[str, str]]:

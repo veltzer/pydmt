@@ -17,7 +17,7 @@ SCHEMA_URL_YAML = "schema_url_yaml"
 
 
 class BuilderYaml(OneSourceOneTarget):
-    def build(self):
+    def build(self) -> None:
         with open(self.source) as yaml_stream:
             datas = yaml.safe_load_all(yaml_stream)
             for data in datas:

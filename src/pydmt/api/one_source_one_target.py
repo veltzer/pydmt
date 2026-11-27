@@ -17,7 +17,7 @@ class OneSourceOneTarget(Builder):
     This is a builder which has one source file and one target file
     """
 
-    def __init__(self, source: str, target: str):
+    def __init__(self, source: str, target: str) -> None:
         self.source = source
         self.target = target
         self.sources: Sequence[Node] = [SourceFile(filename=source)]

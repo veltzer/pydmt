@@ -51,7 +51,7 @@ class BuilderSphinx(Builder):
 
     def __init__(self,
                  source_folder: str = "sphinx",
-                 target_folder: str = "docs"):
+                 target_folder: str = "docs") -> None:
         self.package_name = os.path.basename(os.getcwd())
         self.source_folder = source_folder
         self.target_folder = target_folder

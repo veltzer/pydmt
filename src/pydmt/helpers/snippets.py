@@ -3,7 +3,7 @@ snippets.py
 """
 
 
-def get_google_analytics(project_google_analytics_tracking_id):
+def get_google_analytics(project_google_analytics_tracking_id: str) -> str:
     return f"""<script type="text/javascript">
     (function(i,s,o,g,r,a,m){{i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){{
     (i[r].q=i[r].q||[]).push(arguments)}},i[r].l=1*new Date();a=s.createElement(o),
@@ -14,7 +14,7 @@ def get_google_analytics(project_google_analytics_tracking_id):
     </script>"""
 
 
-def get_paypal(project_paypal_donate_button_id):
+def get_paypal(project_paypal_donate_button_id: str) -> str:
     return f"""<form action="https://www.paypal.com/cgi-bin/webscr"
     method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">

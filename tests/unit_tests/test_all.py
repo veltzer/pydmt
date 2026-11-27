@@ -17,43 +17,43 @@ class TestAll(unittest.TestCase):
 
     @classmethod
     @override
-    def setUpClass(cls):
+    def setUpClass(cls) -> None:
         pass
 
-    def test00_create_pydmt(self):
+    def test00_create_pydmt(self) -> None:
         PyDMT()
 
-    def test01_null_build(self):
+    def test01_null_build(self) -> None:
         p = PyDMT()
         p.build_all()
 
-    def test02_return_type(self):
+    def test02_return_type(self) -> None:
         p = PyDMT()
         stats = p.build_all()
         assert isinstance(stats, BuildProcessStats), "must be BuildProcessStats"
 
     @staticmethod
-    def get_std_test():
+    def get_std_test() -> BuildProcessStats:
         shutil.copy("/etc/passwd", "passwd")
         p = PyDMT()
         b = Copy("passwd", "copy_of_passwd")
         p.add_builder(b)
         return p.build_all()
 
-    def test03_simple_copy(self):
+    def test03_simple_copy(self) -> None:
         with tempdir():
             stats = self.get_std_test()
             assert stats.get_builder_ok() == 1
             assert stats.get_copy_missing() == 0
 
-    def test04_incremental(self):
+    def test04_incremental(self) -> None:
         with tempdir():
             stats = self.get_std_test()
             assert stats.get_builder_ok() == 1
             assert stats.get_copy_missing() == 0
             assert stats.get_nop() == 0
 
-    def test05_copy_after_remove(self):
+    def test05_copy_after_remove(self) -> None:
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()
@@ -67,7 +67,7 @@ class TestAll(unittest.TestCase):
             assert stats.get_nop() == 0
             assert stats.get_copy_missing() == 1
 
-    def test06_fail(self):
+    def test06_fail(self) -> None:
         with tempdir():
             shutil.copy("/etc/passwd", "passwd")
             p = PyDMT()

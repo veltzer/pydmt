@@ -17,7 +17,7 @@ class FeatureYaml(Feature):
         self,
         yaml_folder: str = "yaml",
         validation_folder: str = "out"
-    ):
+    ) -> None:
         self.yaml_folder = yaml_folder
         self.validation_folder = validation_folder
 

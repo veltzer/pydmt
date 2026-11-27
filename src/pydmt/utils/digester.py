@@ -11,7 +11,7 @@ ALGORITHM_NAME = "sha1"
 
 
 class Digester:
-    def __init__(self):
+    def __init__(self) -> None:
         self.hash_object = hashlib.new(ALGORITHM_NAME)
 
     def add_file(self, filename: str) -> None:
@@ -34,5 +34,5 @@ class Digester:
         f.extend(files_under_folders(folders=folders))
         self.add_files(f)
 
-    def get_hexdigest(self):
+    def get_hexdigest(self) -> str:
         return self.hash_object.hexdigest()

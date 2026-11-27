@@ -17,38 +17,38 @@ if TYPE_CHECKING:
 
 
 class BuildProcessStats:
-    def __init__(self):
+    def __init__(self) -> None:
         self.builder_fail = []
         self.builder_ok = []
         self.copy_missing = []
         self.copy_sha1 = []
         self.nop = []
 
-    def add_copy_missing(self, filename: str, object_name: str):
+    def add_copy_missing(self, filename: str, object_name: str) -> None:
         self.copy_missing.append((filename, object_name))
 
-    def get_copy_missing(self):
+    def get_copy_missing(self) -> int:
         return len(self.copy_missing)
 
-    def add_copy_sha1(self, filename: str, object_name: str):
+    def add_copy_sha1(self, filename: str, object_name: str) -> None:
         self.copy_sha1.append((filename, object_name))
 
-    def add_nop(self, filename: str, object_name: str):
+    def add_nop(self, filename: str, object_name: str) -> None:
         self.nop.append((filename, object_name))
 
-    def get_nop(self):
+    def get_nop(self) -> int:
         return len(self.nop)
 
-    def add_builder_ok(self, builder: Builder):
+    def add_builder_ok(self, builder: Builder) -> None:
         self.builder_ok.append(builder)
 
-    def add_builder_fail(self, builder: Builder, e: Exception):
+    def add_builder_fail(self, builder: Builder, e: Exception) -> None:
         self.builder_fail.append((builder, e))
 
-    def get_builder_ok(self):
+    def get_builder_ok(self) -> int:
         return len(self.builder_ok)
 
-    def get_builder_fail(self):
+    def get_builder_fail(self) -> int:
         return len(self.builder_fail)
 
     def get_os_error_code(self) -> int:
@@ -58,12 +58,12 @@ class BuildProcessStats:
 
 
 class PyDMT:
-    def __init__(self):
+    def __init__(self) -> None:
         self.builders: list[Builder] = []
         self.target_to_builder: dict[str, Builder] = {}
         self.cache = Cache()
 
-    def build_by_builder(self, builder: Builder, stats: BuildProcessStats):
+    def build_by_builder(self, builder: Builder, stats: BuildProcessStats) -> bool:
         """ run one builder, return statistics about the run """
         logger = logging.getLogger(LOGGER_NAME)
         target_signature = builder.get_signature()

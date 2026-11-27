@@ -30,7 +30,7 @@ class BuilderMako(Builder):
                  data: dict[str, object] | None,
                  config_files: list[str],
                  snippet_files: list[str],
-                 ):
+                 ) -> None:
         self.source = source
         self.target = target
         self.data = data
@@ -49,7 +49,7 @@ class BuilderMako(Builder):
     def get_targets(self) -> list[Node]:
         return self.targets
 
-    def build(self):
+    def build(self) -> None:
         lookup = mako.lookup.TemplateLookup(
             directories=["."],
         )
@@ -66,7 +66,7 @@ class BuilderMako(Builder):
         yield sha1_file(self.target), self.target
 
 
-def print_full_exception():
+def print_full_exception() -> None:
     print("printing full exception")
     traceback = mako.exceptions.RichTraceback()
     for (filename, line_number, function_name, line) in traceback.traceback:
@@ -75,7 +75,7 @@ def print_full_exception():
     print(f"{traceback.error.__class__.__name__}: {traceback.error}")
 
 
-def print_exception(e, input_file):
+def print_exception(e: BaseException, input_file: str) -> None:
     found = False
     traceback = mako.exceptions.RichTraceback()
     for (filename, line_number, function_name, line) in traceback.traceback:

@@ -8,21 +8,20 @@ import time
 import git
 
 
-def get_project_year_started(repo=".") -> int:
-    repo = git.Repo(repo)
-    commits = list(repo.iter_commits())
+def get_project_year_started(repo: str = ".") -> int:
+    commits = list(git.Repo(repo).iter_commits())
     last_commit = commits[-1]
     t = time.gmtime(last_commit.authored_date)
     return t.tm_year
 
 
-def get_copyright_years_long(repo="."):
+def get_copyright_years_long(repo: str = ".") -> str:
     project_year_started = get_project_year_started(repo=repo)
     general_current_year = dt.datetime.now().astimezone().year
     return ", ".join(map(str, range(project_year_started, general_current_year + 1)))
 
 
-def get_copyright_years_short(repo="."):
+def get_copyright_years_short(repo: str = ".") -> int | str:
     project_year_started = get_project_year_started(repo=repo)
     general_current_year = dt.datetime.now().astimezone().year
     if general_current_year == project_year_started:

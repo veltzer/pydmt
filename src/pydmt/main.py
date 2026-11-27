@@ -26,13 +26,13 @@ from pydmt.static import APP_NAME, DESCRIPTION, LOGGER_NAME, VERSION_STR
 from pydmt.utils.subprocess import check_call
 
 
-def check_config_and_load():
+def check_config_and_load() -> None:
     if not os.path.isfile(".pydmt.config"):
         print("pydmt: not a pydmt folder", file=sys.stderr)
         sys.exit(1)
 
 
-def add_all_features(p):
+def add_all_features(p: PyDMT) -> None:
     """
     This method should be automatic, order matters here which is not good, order should be derived and not set in stone
     """
@@ -56,7 +56,7 @@ def add_all_features(p):
     f.setup(p)
 
 
-def add_to_path():
+def add_to_path() -> None:
     """
     This adds to PYTHONPATH various paths we need
     If you disable this then templates would not be able to find things like "config/python.py"
@@ -234,7 +234,7 @@ def clean_hard() -> None:
     version=VERSION_STR,
     main_description=DESCRIPTION,
 )
-def main():
+def main() -> None:
     pylogconf.core.setup()
     config_arg_parse_and_launch()
 

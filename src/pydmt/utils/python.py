@@ -5,11 +5,15 @@ python.y
 import glob
 import os
 import pprint
+from typing import TYPE_CHECKING, Any
 
 from pydmt.utils.lua import load_config
 
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
-def hlp_source_under(folder):
+
+def hlp_source_under(folder: str) -> str:
     """
     this function finds all the python packages under a folder and
     write the "packages" and "package_dir" entries for a python setup.py
@@ -30,27 +34,27 @@ def hlp_source_under(folder):
     return f"packages={sorted(packages)},\npackage_dir={pprint.pformat(package_dir)}"
 
 
-def hlp_files_under(destination_folder, pat):
+def hlp_files_under(destination_folder: str, pat: str) -> str:
     file_list = [x for x in glob.glob(pat) if os.path.isfile(x)]
     return f"(\'{destination_folder}\', {file_list})"
 
 
-def make_hlp_project_keywords(d):
-    def hlp_project_keywords():
+def make_hlp_project_keywords(d: Any) -> Callable[[], str]:
+    def hlp_project_keywords() -> str:
         return f"{d.project_keywords.split()}"
 
     return hlp_project_keywords
 
 
-def make_hlp_project_platforms(d):
-    def hlp_project_platforms():
+def make_hlp_project_platforms(d: Any) -> Callable[[], str]:
+    def hlp_project_platforms() -> str:
         return f"{d.project_platforms.split()}"
 
     return hlp_project_platforms
 
 
-def make_hlp_project_classifiers(d):
-    def hlp_project_classifiers():
+def make_hlp_project_classifiers(d: Any) -> Callable[[], str]:
+    def hlp_project_classifiers() -> str:
         classifiers = d.project_classifiers.split("\n")
         classifiers = [x.strip()[1:-1] for x in classifiers]
         return f"{classifiers}"
@@ -58,14 +62,14 @@ def make_hlp_project_classifiers(d):
     return hlp_project_classifiers
 
 
-def make_hlp_wrap(level):
-    def hlp_wrap(t):
+def make_hlp_wrap(level: int):
+    def hlp_wrap(t: str) -> str:
         return t.replace("\n", "\n" + "\t" * level)
 
     return hlp_wrap
 
 
-def collect_reqs(*, add_dev=False) -> list[str]:
+def collect_reqs(*, add_dev: bool = False) -> list[str]:
     try:
         reqs: list[str] = []
         mod = load_config("python")
@@ -90,7 +94,7 @@ def collect_bootstrap_reqs() -> list[str]:
         return []
 
 
-def get_install_args():
+def get_install_args() -> list[str]:
     return [
         "python",
         "-m",

@@ -19,7 +19,7 @@ FOLDER_NAME = ".pydmt"
 
 
 class Cache:
-    def __init__(self):
+    def __init__(self) -> None:
         self.name_cache = set(glob.glob(os.path.join(FOLDER_NAME, "*", "*", "*")))
         logger = get_logger()
         logger.debug(self.name_cache)
@@ -44,7 +44,7 @@ class Cache:
         logger.debug("return None")
         return None
 
-    def list_sig_ok(self, signature: str):
+    def list_sig_ok(self, signature: str) -> bool:
         """
         return if a signature is indeed a list and all objects are intact
         :param signature:
@@ -63,14 +63,14 @@ class Cache:
         logger.debug("return True")
         return True
 
-    def save_list_by_signature(self, signature: str, d: dict[str, Any]):
+    def save_list_by_signature(self, signature: str, d: dict[str, Any]) -> None:
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
         makedirs_for_file(full_path)
         with open(full_path, "wb") as file_handle:
             pickle.dump(d, file_handle)
         self.name_cache.add(full_path)
 
-    def save_object_by_signature(self, signature: str, file_name: str):
+    def save_object_by_signature(self, signature: str, file_name: str) -> None:
         full_path = os.path.join(FOLDER_NAME, NAME_OBJECTS, signature[:2], signature[2:])
         copy_mkdir(file_name, full_path)
         self.name_cache.add(full_path)

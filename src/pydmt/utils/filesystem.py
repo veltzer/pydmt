@@ -6,13 +6,13 @@ import os
 import shutil
 
 
-def makedirs_for_file(filename: str):
+def makedirs_for_file(filename: str) -> None:
     folder = os.path.dirname(filename)
     if folder != "":
         os.makedirs(folder, exist_ok=True)
 
 
-def copy_mkdir(source: str, destination: str):
+def copy_mkdir(source: str, destination: str) -> None:
     makedirs_for_file(destination)
     shutil.copy(source, destination)
 
@@ -54,7 +54,7 @@ def mkdir_touch(filename: str) -> None:
     touch(filename)
 
 
-def remove_files_by_suffix(folder:str, suffix:str, exceptions: list[str]):
+def remove_files_by_suffix(folder:str, suffix:str, exceptions: list[str]) -> None:
     for filename in os.listdir(folder):
         file= os.path.join(folder, filename)
         if (

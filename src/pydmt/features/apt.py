@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 class FeatureApt(Feature):
     def __init__(
         self,
-    ):
+    ) -> None:
         self.packages = get_packages()
         self.packages_remove = get_packages_remove()
 

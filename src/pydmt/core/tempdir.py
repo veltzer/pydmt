@@ -27,7 +27,7 @@ def cd(new_dir: str, cleanup: Callable[..., Any]):
 def tempdir():
     dir_path = tempfile.mkdtemp()
 
-    def cleanup():
+    def cleanup() -> None:
         shutil.rmtree(dir_path)
     with cd(dir_path, cleanup):
         yield dir_path

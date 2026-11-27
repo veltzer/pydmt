@@ -3,7 +3,7 @@ mako.py
 """
 
 import os
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from pydmt.api.feature import Feature
 from pydmt.builders.copy import BuilderCopy
@@ -17,11 +17,11 @@ if TYPE_CHECKING:
 class FeatureMako(Feature):
     def __init__(
         self,
-        data=None,
+        data: dict[str, Any] | None = None,
         templates_folder: str = "templates.mako",
         config_folder: str = "config",
         snippet_folder: str = "snippets",
-    ):
+    ) -> None:
         self.data = data
         self.templates_folder = templates_folder
         self.config_folder = config_folder

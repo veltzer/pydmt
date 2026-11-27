@@ -12,7 +12,7 @@ from pydmt.utils.subprocess import check_call
 
 
 class BuilderApt(OneSourceOneTarget):
-    def __init__(self, source: str, target: str, packages: list[str], packages_remove: list[str] | None):
+    def __init__(self, source: str, target: str, packages: list[str], packages_remove: list[str] | None) -> None:
         super().__init__(source, target)
         self.packages = packages
         self.packages_remove = packages_remove

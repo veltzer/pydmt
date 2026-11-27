@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from collections.abc import Callable
 
 
-def make_console_script(package_name: str, main: Callable[..., Any]):
+def make_console_script(package_name: str, main: Callable[..., Any]) -> str:
     """
     return a string suitable to be used as the section "console_scripts"
     of the "entry_points" parameters of setup.py.
@@ -28,7 +28,7 @@ def make_console_script(package_name: str, main: Callable[..., Any]):
     return f"{package_name}={module}:{main.__name__, }"
 
 
-def array_indented(level: int, array: list[str], quote_char="\"", *, comma_after=False) -> str:
+def array_indented(level: int, array: list[str], quote_char: str = "\"", *, comma_after: bool = False) -> str:
     """
     return an array indented according to indent level
     :param level:
@@ -46,7 +46,7 @@ def array_indented(level: int, array: list[str], quote_char="\"", *, comma_after
     return out
 
 
-def dict_indented(level: int, dictionary: dict[str, list[int]], quote_char="\"", *, comma_after=False) -> str:
+def dict_indented(level: int, dictionary: dict[str, list[int]], quote_char: str = "\"", *, comma_after: bool = False) -> str:
     """
     return an dict indented according to indent level
     :param level:
@@ -132,7 +132,7 @@ def get_classifiers():
     return get_attr("classifiers")
 
 
-def hlp_source_under(folder):
+def hlp_source_under(folder: str) -> str:
     """
     this function finds all the python packages under a folder and
     write the "packages" and "package_dir" entries for a python setup.py
@@ -153,25 +153,25 @@ def hlp_source_under(folder):
     return f"packages={sorted(packages)},\npackage_dir={pprint.pformat(package_dir)}"
 
 
-def hlp_files_under(dest_folder, pat):
+def hlp_files_under(dest_folder: str, pat: str) -> str:
     return f"(\"{dest_folder}\", {[x for x in glob.glob(pat) if os.path.isfile(x)]})"
 
 
-def make_hlp_project_keywords(d):
-    def hlp_project_keywords():
+def make_hlp_project_keywords(d: Any):
+    def hlp_project_keywords() -> str:
         return f"{d.project_keywords.split()}"
     return hlp_project_keywords
 
 
-def make_hlp_project_platforms(d):
-    def hlp_project_platforms():
+def make_hlp_project_platforms(d: Any):
+    def hlp_project_platforms() -> str:
         return f"{d.project_platforms.split()}"
 
     return hlp_project_platforms
 
 
-def make_hlp_project_classifiers(d):
-    def hlp_project_classifiers():
+def make_hlp_project_classifiers(d: Any):
+    def hlp_project_classifiers() -> str:
         cls_list = d.project_classifiers.split("\n")
         cls_list = [x.strip()[1:-1] for x in cls_list]
         return f"{cls_list}"
@@ -179,7 +179,7 @@ def make_hlp_project_classifiers(d):
     return hlp_project_classifiers
 
 
-def make_hlp_wrap(level):
-    def hlp_wrap(t):
+def make_hlp_wrap(level: int):
+    def hlp_wrap(t: str) -> str:
         return t.replace("\n", "\n" + "\t" * level)
     return hlp_wrap

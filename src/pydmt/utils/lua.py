@@ -42,7 +42,7 @@ def lua_to_python(value: Any) -> Any:
 
 class LuaConfig:
     """ A loaded lua config file, accessed like a module """
-    def __init__(self, values: dict[str, Any]):
+    def __init__(self, values: dict[str, Any]) -> None:
         # keyed by lower case name so that "name" finds the lua global "NAME"
         self._values = {k.lower(): v for k, v in values.items()}
 
