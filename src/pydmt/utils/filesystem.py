@@ -17,7 +17,7 @@ def copy_mkdir(source: str, destination: str):
     shutil.copy(source, destination)
 
 
-def unlink_files(files: list[str], only_if_exist: bool = True) -> None:
+def unlink_files(files: list[str], *, only_if_exist: bool = True) -> None:
     for file in files:
         if only_if_exist:
             if os.path.isfile(file):

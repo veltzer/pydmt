@@ -28,7 +28,7 @@ def make_console_script(package_name: str, main: Callable):
     return f"{package_name}={module}:{main.__name__, }"
 
 
-def array_indented(level: int, array: list[str], quote_char="\"", comma_after=False) -> str:
+def array_indented(level: int, array: list[str], quote_char="\"", *, comma_after=False) -> str:
     """
     return an array indented according to indent level
     :param level:
@@ -46,7 +46,7 @@ def array_indented(level: int, array: list[str], quote_char="\"", comma_after=Fa
     return out
 
 
-def dict_indented(level: int, dictionary: dict[str, list[int]], quote_char="\"", comma_after=False) -> str:
+def dict_indented(level: int, dictionary: dict[str, list[int]], quote_char="\"", *, comma_after=False) -> str:
     """
     return an dict indented according to indent level
     :param level:
