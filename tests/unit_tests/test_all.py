@@ -5,6 +5,7 @@ test_all.py
 import os
 import shutil
 import unittest
+from typing import override
 
 from pydmt.api.copy import Copy
 from pydmt.api.fail import Fail
@@ -15,6 +16,7 @@ from pydmt.core.tempdir import tempdir
 class TestAll(unittest.TestCase):
 
     @classmethod
+    @override
     def setUpClass(cls):
         pass
 
