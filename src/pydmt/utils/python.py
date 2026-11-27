@@ -73,9 +73,10 @@ def collect_reqs(*, add_dev=False) -> list[str]:
             reqs += mod.requires
         if add_dev and hasattr(mod, "dev_requires"):
             reqs += mod.dev_requires
-        return reqs
     except FileNotFoundError:
         return []
+    else:
+        return reqs
 
 
 def collect_bootstrap_reqs() -> list[str]:
@@ -83,8 +84,9 @@ def collect_bootstrap_reqs() -> list[str]:
         mod = load_config("bootstrap")
         if hasattr(mod, "requires"):
             return list(mod.requires)
-        return []
     except FileNotFoundError:
+        return []
+    else:
         return []
 
 
