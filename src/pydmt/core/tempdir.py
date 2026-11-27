@@ -6,14 +6,14 @@ import contextlib
 import os
 import shutil
 import tempfile
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from collections.abc import Callable
 
 
 @contextlib.contextmanager
-def cd(new_dir: str, cleanup: Callable):
+def cd(new_dir: str, cleanup: Callable[..., Any]):
     prev_dir = os.getcwd()
     os.chdir(os.path.expanduser(new_dir))
     try:

@@ -6,7 +6,7 @@ import glob
 import os
 import os.path
 import pprint
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from pydmt.utils.lua import load_config
 
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from collections.abc import Callable
 
 
-def make_console_script(package_name: str, main: Callable):
+def make_console_script(package_name: str, main: Callable[..., Any]):
     """
     return a string suitable to be used as the section "console_scripts"
     of the "entry_points" parameters of setup.py.

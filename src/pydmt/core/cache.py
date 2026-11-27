@@ -5,7 +5,7 @@ cache.py
 import glob
 import os
 import pickle
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from pydmt.utils.filesystem import copy_mkdir, makedirs_for_file
 from pydmt.utils.logging import get_logger
@@ -63,7 +63,7 @@ class Cache:
         logger.debug("return True")
         return True
 
-    def save_list_by_signature(self, signature: str, d: dict):
+    def save_list_by_signature(self, signature: str, d: dict[str, Any]):
         full_path = os.path.join(FOLDER_NAME, NAME_LISTS, signature[:2], signature[2:])
         makedirs_for_file(full_path)
         with open(full_path, "wb") as file_handle:
